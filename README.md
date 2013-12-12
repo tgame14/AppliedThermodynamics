@@ -1,11 +1,6 @@
-AdditionalFeatures
+Applied Thermodynamics
 ==================
 This is the Github for the Upcoming mod, Applied Thermodynamics.
-
-its named additional features since i am not near release yet, and additional features has some examples i made that i use.
-
-
-Other than that. 
 
 AT (Applied Thermodynamics) is a mod that adds Heat to ME Networks, the bigger and more power hungry the network is, the faster it heats up,
 the hotter the network gets, more and more bad effects happen, from particles and sounds to the Melting of your network into Liquid ME.
@@ -20,3 +15,18 @@ More and More.
 As for suggestions and comments about my code and more ideas, visit #AppliedEnergistics @ irc.esper.net which is where i usually am when i work on AT.
 
 My hope for release is 1.7 for AE2. no promises at all.
+
+
+License
+=========
+THIS MOD IS OPEN-SOURCE, YOU MAY USE SMALL SAMPLES OF IT FOR LEARNING PURPOSES AND PRIVATE PROJECTS.
+IN ALL CASES THIS WEBPAGE MUST BE LINKED AS THE SOURCE AND CREDIT MUST BE GIVEN PROPERLY.
+THE DISTRIBUTION OF THIS MOD BY ANYONE OTHER THAN THE CREATOR IS STRICTLY FORBIDDEN.
+COMPILING THIS MOD IS ALLOWED FOR PERSONAL USE ONLY.
+
+IN THE CASE OF MODPACKS:
+ADDING THIS MOD TO YOUR MODPACK IS STRICTLY PROHIBITED WITHOUT WRITTEN PERMISSION FROM THE CREATOR.
+IN ORDER TO AQUIRE PERMISSION CONTACT WITH A REQUEST: tgameBusiness@gmail.com
+RECEIVING PERMISSION THROUGH ASKING TGAME14 DIRECTLY on irc.esper.net #AppliedEnergistics IS ALSO VIABLE.
+
+IN THE CASE OF AQUIRING PERMISSION, YOU MUST CREDIT WITH A LINK TO THIS WEBPAGE.
