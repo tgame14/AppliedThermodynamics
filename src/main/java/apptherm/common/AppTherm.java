@@ -17,6 +17,7 @@ import apptherm.common.network.PacketHandler;
 import apptherm.common.proxies.CommonProxy;
 import apptherm.common.tileentities.TileEntities;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -76,7 +77,7 @@ public class AppTherm {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		System.out.println("[" + ModInfo.NAME + "] loaded Correctly");
+		FMLLog.info("Applied Thermodynamics loaded");
 
 	}
 
