@@ -43,7 +43,7 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements IFluidHa
 		FluidStack coldfluid = null;
 		int fluidDrain = 0;
 
-		for (CoolingFluids dir : CoolingFluids.values()) {
+		for (CoolingFluids dir : CoolingFluids.VALID_FLUIDS) {
 			coldfluid = FluidRegistry.getFluidStack(dir.fluidName, resource.amount);
 
 			if (coldfluid == null)

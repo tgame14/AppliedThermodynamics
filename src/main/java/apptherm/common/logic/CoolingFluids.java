@@ -25,6 +25,9 @@ public enum CoolingFluids {
 	/** The fluid name. */
 	public final String fluidName;
 
+	public static final CoolingFluids[] VALID_FLUIDS = { WATER, SEEDOIL, HONEY,
+			FUEL, ICE, SHORTMEAD };
+
 	/**
 	 * Instantiates a new cooling fluids.
 	 * 
