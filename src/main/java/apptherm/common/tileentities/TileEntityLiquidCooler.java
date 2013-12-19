@@ -16,54 +16,45 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 	private int drainValue;
 
 	public TileEntityLiquidCooler() {
-		this.drainValue = 2;
+		this.drainValue = 5;
 
 	}
-	
+
 	@Override
 	public void updateEntity() {
-		if(!worldObj.isRemote) {
-			if(!this.tank.isEmpty()) {
-				this.drain(ForgeDirection.UP, this.drainValue, true);
-				
-				
-				
-				
-			}
-		}		
-		
+		this.drain(ForgeDirection.UP, this.drainValue, true);
+
 	}
 
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
-		if (this.tank.isEmpty()) {
-			String attemptFluidName = resource.getFluid().getName();
+		String attemptFluidName = resource.getFluid().getName();
 
-			for (CoolingFluids dir : CoolingFluids.VALID_FLUIDS)
-				if (dir.fluidName.equalsIgnoreCase(attemptFluidName)) {
-					this.drainValue = dir.consumePerTick;
-					return this.tank.fill(resource, doFill);
-				}
+		for (CoolingFluids dir : CoolingFluids.VALID_FLUIDS)
+			if (dir.fluidName.equalsIgnoreCase(attemptFluidName)) {
+				this.drainValue = dir.consumePerTick;
+				this.setIsActive(true);
+				return this.tank.fill(resource, doFill);
 
-		} else {
-			return 0;
-		}
-		
+			}
+		this.setIsActive(true);
 		return this.tank.fill(resource, doFill);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource,
 			boolean doDrain) {
-		if (resource == null || !resource.isFluidEqual(tank.getFluid())) {
+		if (resource == null || !resource.isFluidEqual(tank.getFluid()))
 			return null;
-		}
 
 		return this.drain(from, resource.amount, doDrain);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
+		if (this.tank.getFluidAmount() == maxDrain)
+			this.setIsActive(false);
+
 		return this.tank.drain(maxDrain, doDrain);
 	}
 
