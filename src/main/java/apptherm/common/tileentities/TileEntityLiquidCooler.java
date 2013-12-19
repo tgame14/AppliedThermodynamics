@@ -7,16 +7,22 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-import apptherm.common.logic.CoolingFluids;
+import apptherm.common.fluids.ATTank;
+import apptherm.common.fluids.CoolingFluids;
 
-public class TileEntityLiquidCooler extends AEActiveCoolants implements IFluidHandler {
+public class TileEntityLiquidCooler extends AEActiveCoolants implements
+		IFluidHandler {
 
-	protected FluidTank tank = new FluidTank(16000);
+	protected ATTank tank = new ATTank(16000);
 	private int drainValue;
 	private FluidStack prevFluid;
 
 	public TileEntityLiquidCooler() {
 		drainValue = 2;
+	}
+
+	protected void onTankFilled() {
+		
 	}
 
 	@Override
@@ -25,8 +31,7 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements IFluidHa
 
 			if (tank.drain(drainValue, true) == null) {
 				setIsActive(false);
-			}
-			else {
+			} else {
 				setIsActive(true);
 			}
 
@@ -37,14 +42,17 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements IFluidHa
 
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
-		if (resource == null || (tank.getFluid() != null && resource.fluidID != tank.getFluid().fluidID))
+		if (resource == null
+				|| (tank.getFluid() != null && resource.fluidID != tank
+						.getFluid().fluidID))
 			return 0;
 
 		FluidStack coldfluid = null;
 		int fluidDrain = 0;
 
 		for (CoolingFluids dir : CoolingFluids.VALID_FLUIDS) {
-			coldfluid = FluidRegistry.getFluidStack(dir.fluidName, resource.amount);
+			coldfluid = FluidRegistry.getFluidStack(dir.fluidName,
+					resource.amount);
 
 			if (coldfluid == null)
 				return 0;
@@ -65,7 +73,8 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements IFluidHa
 	}
 
 	@Override
-	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain) {
+	public FluidStack drain(ForgeDirection from, FluidStack resource,
+			boolean doDrain) {
 		if (tank.getFluid() == null)
 			return null;
 

@@ -1,4 +1,4 @@
-package apptherm.common.logic;
+package apptherm.common.fluids;
 
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
