@@ -1,0 +1,12 @@
+[{
+    "modid": "AddFeat",
+    "name": "Additional Features",
+    "description": "An Addon to AE that Adds a new Mechanic to ME Networks, HEAT!, also melts Yo S***",
+    "version": "pre-alpha1",
+    "mcversion": "1.6.4",
+    "url": "https://github.com/tgame14/AdditionalFeatures",
+    "updateUrl": "http://google.com/",
+    "authors": [ "tgame14" ],
+    "credits": "Made possible with #AppliedEnergistics.",
+    "requiredMods": [ "Forge", "AE" ]
+}]
