@@ -20,17 +20,10 @@ public class ATTank extends FluidTank {
 		this(new FluidStack(fluid, amount), capacity);
 	}
 
-	@Override
-	public int fill(FluidStack resource, boolean doFill) {
-		if(doFill && this.getFluid() == null) {
-			if(this.tile instanceof TileEntityLiquidCooler) {
-				
-			}
-		}
+	public boolean isEmpty() {
+		if(this.getFluidAmount() == 0)
+			return true;
+		return false;
 		
-		
-		
-		
-		return super.fill(resource, doFill);
 	}
 }

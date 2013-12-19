@@ -1,10 +1,9 @@
 package apptherm.common.tileentities;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import apptherm.common.fluids.ATTank;
@@ -15,92 +14,84 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 
 	protected ATTank tank = new ATTank(16000);
 	private int drainValue;
-	private FluidStack prevFluid;
 
 	public TileEntityLiquidCooler() {
-		drainValue = 2;
-	}
+		this.drainValue = 2;
 
-	protected void onTankFilled() {
+	}
+	
+	@Override
+	public void updateEntity() {
+		if(!worldObj.isRemote) {
+			if(!this.tank.isEmpty()) {
+				this.drain(ForgeDirection.UP, this.drainValue, true);
+				
+				
+				
+				
+			}
+		}		
 		
 	}
 
 	@Override
-	public void updateEntity() {
-		if (!worldObj.isRemote && isMachineActive()) {
-
-			if (tank.drain(drainValue, true) == null) {
-				setIsActive(false);
-			} else {
-				setIsActive(true);
-			}
-
-			System.out.println(isActive);
-			System.out.println(drainValue);
-		}
-	}
-
-	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
-		if (resource == null
-				|| (tank.getFluid() != null && resource.fluidID != tank
-						.getFluid().fluidID))
+		if (this.tank.isEmpty()) {
+			String attemptFluidName = resource.getFluid().getName();
+
+			for (CoolingFluids dir : CoolingFluids.VALID_FLUIDS)
+				if (dir.fluidName.equalsIgnoreCase(attemptFluidName)) {
+					this.drainValue = dir.consumePerTick;
+					return this.tank.fill(resource, doFill);
+				}
+
+		} else {
 			return 0;
-
-		FluidStack coldfluid = null;
-		int fluidDrain = 0;
-
-		for (CoolingFluids dir : CoolingFluids.VALID_FLUIDS) {
-			coldfluid = FluidRegistry.getFluidStack(dir.fluidName,
-					resource.amount);
-
-			if (coldfluid == null)
-				return 0;
-
-			if (resource.isFluidEqual(coldfluid)) {
-				coldfluid = resource;
-				fluidDrain = dir.consumePerTick;
-			}
-			coldfluid = resource;
 		}
-		coldfluid = resource;
-
-		if (prevFluid != null && !resource.isFluidEqual(prevFluid))
-			drainValue = fluidDrain;
-
-		prevFluid = resource;
-		return tank.fill(resource, doFill);
+		
+		return this.tank.fill(resource, doFill);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource,
 			boolean doDrain) {
-		if (tank.getFluid() == null)
+		if (resource == null || !resource.isFluidEqual(tank.getFluid())) {
 			return null;
+		}
 
-		return tank.drain(resource.amount, doDrain);
+		return this.drain(from, resource.amount, doDrain);
 	}
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
-		if (tank.getFluid() == null)
-			return null;
-
-		return drain(from, new FluidStack(tank.getFluid(), maxDrain), doDrain);
+		return this.tank.drain(maxDrain, doDrain);
 	}
 
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid) {
-		return tank.getFluid() == null || tank.getFluid().getFluid() == fluid;
+		return true;
 	}
 
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid) {
-		return tank.getFluid() == null || tank.getFluid().getFluid() == fluid;
+		return true;
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound tag) {
+		super.readFromNBT(tag);
+		tank.writeToNBT(tag);
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound tag) {
+		super.writeToNBT(tag);
+		tank.readFromNBT(tag);
 	}
 
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
 		return new FluidTankInfo[] { tank.getInfo() };
 	}
+
 }
