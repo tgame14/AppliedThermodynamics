@@ -5,6 +5,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -30,6 +32,7 @@ public class BlockLiquidCooler extends BlockContainer {
 		setUnlocalizedName(BlockInfo.LIQUICOOL_UNLOCALIZED_NAME);
 
 	}
+	
 
 	@SideOnly(Side.CLIENT)
 	public Icon frontIcon;
@@ -92,13 +95,16 @@ public class BlockLiquidCooler extends BlockContainer {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
 			float hitY, float hitZ) {
 		ItemStack stack = player.inventory.getCurrentItem();
+		System.out.println("clicked");
 
 		if (stack != null) {
+			System.out.println("stackisntnull");
 			FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(stack);
 
 			TileEntityLiquidCooler tile = (TileEntityLiquidCooler) world.getBlockTileEntity(x, y, z);
 
 			if (liquid != null) {
+				System.out.println("liquidIsntnull");
 				int value = tile.fill(ForgeDirection.UNKNOWN, liquid, true);
 
 				if (value != 0 && !player.capabilities.isCreativeMode) {
@@ -108,7 +114,7 @@ public class BlockLiquidCooler extends BlockContainer {
 			}
 		}
 
-		return false;
+		return true;
 	}
 
 	@Override

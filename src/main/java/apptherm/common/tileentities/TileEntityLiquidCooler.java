@@ -22,8 +22,9 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 
 	@Override
 	public void updateEntity() {
-		this.drain(ForgeDirection.UP, this.drainValue, true);
-
+		this.drain(ForgeDirection.UNKNOWN, this.drainValue, true);
+		System.out.println(this.drainValue);
+		System.out.println(this.isActive);
 	}
 
 	@Override
