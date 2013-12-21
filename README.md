@@ -5,7 +5,11 @@ This is the Github for the Upcoming mod, Applied Thermodynamics.
 Currently the mod is IN OPEN BETA!
 
 DOWNLOAD:
+https://github.com/tgame14/AppliedThermodynamics/releases
+
+Or if that doesnt work. then theres a Dropbox.
 https://www.dropbox.com/sh/aww100bjsxy7v5t/xOxANquF8C
+
 
 USE WITH CARE. I AM NOT RESPONSIBLE FOR ANY KIND OF DAMAGE DONE.
 
