@@ -2,6 +2,13 @@ Applied Thermodynamics
 ==================
 This is the Github for the Upcoming mod, Applied Thermodynamics.
 
+Currently the mod is IN OPEN BETA!
+
+DOWNLOAD:
+https://www.dropbox.com/sh/aww100bjsxy7v5t/xOxANquF8C
+
+USE WITH CARE. I AM NOT RESPONSIBLE FOR ANY KIND OF DAMAGE DONE.
+
 AT (Applied Thermodynamics) is a mod that adds Heat to ME Networks, the bigger and more power hungry the network is, the faster it heats up,
 the hotter the network gets, more and more bad effects happen, from particles and sounds to the Melting of your network into Liquid ME.
 
@@ -23,6 +30,9 @@ THIS MOD IS OPEN-SOURCE, YOU MAY USE SMALL SAMPLES OF IT FOR LEARNING PURPOSES A
 IN ALL CASES THIS WEBPAGE MUST BE LINKED AS THE SOURCE AND CREDIT MUST BE GIVEN PROPERLY.
 THE DISTRIBUTION OF THIS MOD BY ANYONE OTHER THAN THE CREATOR IS STRICTLY FORBIDDEN.
 COMPILING THIS MOD IS ALLOWED FOR PERSONAL USE ONLY.
+
+USE THE MOD WITH SPECIAL CARE. I AM NOT RESPONSIBLE FOR ANY SORT OR KIND OF DAMAGE DONE TO YOU,
+YOUR PROPERTY OR ANY OTHER EXTENSION OF YOURSELF. THIS MOD IS SUPPLIED 'AS IS'. NO GUARRANTIES.
 
 IN THE CASE OF MODPACKS:
 ADDING THIS MOD TO YOUR MODPACK IS STRICTLY PROHIBITED WITHOUT WRITTEN PERMISSION FROM THE CREATOR.
