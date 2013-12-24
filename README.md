@@ -44,3 +44,19 @@ IN ORDER TO AQUIRE PERMISSION CONTACT WITH A REQUEST: tgameBusiness@gmail.com
 RECEIVING PERMISSION THROUGH ASKING TGAME14 DIRECTLY on irc.esper.net #AppliedEnergistics IS ALSO VIABLE.
 
 IN THE CASE OF AQUIRING PERMISSION, YOU MUST CREDIT WITH A LINK TO THIS WEBPAGE.
+
+Thank You!
+=========
+This mod would have been far harder without the help of a few Notable resources,
+
+#AppliedEnergistics @ irc.esper.net For Great Ideas and help with technical issues Especially :
+raydeejay
+AlgorithmX2
+thatsIch
+M3gaFr3ak
+
+AbrarSyed for Helping me a whole Lot with configuring forge gradle
+Pahimar for making his build script open source for me to Copy parts :)
+Vswe For his tutorials
+
+And Mostly, Thanks to you, the player, i hope you enjoy this as much as i did Making it.
