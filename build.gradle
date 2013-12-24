@@ -1,0 +1,76 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+apply plugin: 'java'
+
+targetCompatibility = JavaVersion.VERSION_1_6
+
+// define the properties file
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    // read config.  it shall from now on be referenced as simply config or as project.config
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
+version = config.mod_version + "." + config.build_number
+group= "com.tgame.apptherm" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "apptherm"
+
+minecraft {
+	version = config.mod_version + "." + config.forge_version
+}
+
+processResources
+{
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+         include '**/*.lang'
+        include '**/*.info'
+        include '**/*.properties'
+                
+        // replaces
+        expand 'version' : project.config.mod_version, 'buildnumber' : project.config.build_number
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude '**/*.lang'
+        exclude '**/*.info'
+        exclude '**/*.properties'
+    }
+}
+
+task deobfJar(type: Jar) {
+        from sourceSets.main.output
+        appendix = 'deobf'
+}
+ 
+artifacts {
+        archives deobfJar
+}
+
+task incrementBuildNumber() {
+    doLast {
+        // increment
+        config.build_number = (config.build_number.toString().toInteger()) + 1
+
+        // write back to the file
+        configFile.withWriter {
+            config.toProperties().store(it, "")
+        }
+    }
+}

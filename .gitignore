@@ -214,4 +214,11 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-src/api/*
+src/api
+*.txt
+gradle/
+eclipse/
+build/
+bin/
+.gradle/
+gradlew.*
