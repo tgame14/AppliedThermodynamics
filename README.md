@@ -49,7 +49,7 @@ Thank You!
 =========
 This mod would have been far harder without the help of a few Notable resources,
 
-#AppliedEnergistics @ irc.esper.net For Great Ideas and help with technical issues Especially :
+The Channel #AppliedEnergistics @ irc.esper.net For Great Ideas and help with technical issues Especially :
 raydeejay
 AlgorithmX2
 thatsIch
