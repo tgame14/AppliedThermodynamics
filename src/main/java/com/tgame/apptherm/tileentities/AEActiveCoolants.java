@@ -1,6 +1,8 @@
 package com.tgame.apptherm.tileentities;
 
-public class AEActiveCoolants extends AEBaseMachine {
+import net.minecraft.nbt.NBTTagCompound;
+
+public abstract class AEActiveCoolants extends AEBaseMachine {
 
 	protected boolean isActive;
 	
@@ -10,12 +12,22 @@ public class AEActiveCoolants extends AEBaseMachine {
 	}
 	
 	public boolean getIsActive() {
-		return isActive;
+		return this.isActive;
 	}
 	
 	public void setIsActive(boolean state) {
-		isActive = state;
+		this.isActive = state;
 		
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound tag) {
+		tag.setBoolean("activeState", this.isActive);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound tag) {
+		this.isActive = tag.getBoolean("activeState");
 	}
 	
 }

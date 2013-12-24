@@ -1,9 +1,9 @@
 [{
-    "modid": "AddFeat",
-    "name": "Additional Features",
+    "modid": "AppTherm",
+    "name": "Applied Thermodynamics",
     "description": "An Addon to AE that Adds a new Mechanic to ME Networks, HEAT!, also melts Yo S***",
-    "version": "0.01b",
-    "mcversion": "1.6.4",
+    "version": "${version}",
+  "mcversion": "${mcversion}",
     "url": "http://tgame14.github.io/AppliedThermodynamics/",
     "updateUrl": "https://github.com/tgame14/AppliedThermodynamics/releases",
     "authors": [ "tgame14" ],

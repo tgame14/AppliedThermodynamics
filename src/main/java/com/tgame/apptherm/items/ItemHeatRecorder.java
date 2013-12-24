@@ -23,58 +23,57 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemHeatRecorder extends Item {
 
-	int restrictor = 0;
-
 	public ItemHeatRecorder(int id) {
 		super(id);
 
-		setCreativeTab(AppTherm.AppThermTab);
-		setUnlocalizedName(ItemInfo.RECORDER_UNLOCALIZED_NAME);
+		this.setCreativeTab(AppTherm.AppThermTab);
+		this.setUnlocalizedName(ItemInfo.RECORDER_UNLOCALIZED_NAME);
 
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
-		itemIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + ItemInfo.RECORDER_ICON);
+		this.itemIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+				+ ItemInfo.RECORDER_ICON);
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+	public boolean onItemUse(ItemStack itemstack, EntityPlayer player,
+			World world, int x, int y, int z, int side, float hitX, float hitY,
+			float hitZ) {
 		if (!world.isRemote) {
 			TileEntity te = world.getBlockTileEntity(x, y, z);
-			
+
 			double heatValue;
 
 			if (te instanceof IGridTileEntity) {
 				IGridTileEntity gridTile = (IGridTileEntity) te;
 				if (gridTile.getGrid() != null) {
-					LogicBase logic = (LogicBase) gridTile.getGrid().getCacheByID(ModInfo.heatCacheID);
+					LogicBase logic = (LogicBase) gridTile.getGrid()
+							.getCacheByID(ModInfo.heatCacheID);
 					heatValue = logic.getFinalHeat();
-
-					PacketDistributer.sendHeatItemData((byte) 2, heatValue, player, gridTile.getGrid().getPowerUsageAvg());
-					return false;
-				}
-				else {
+					PacketDistributer.sendHeatItemData((byte) 2, heatValue,
+							player, gridTile.getGrid().getPowerUsageAvg());
+					return true;
+				} else {
 					PacketDistributer.sendHeatItemData((byte) 1, 0, player, 0);
-					return false;
+					return true;
 				}
 
-			}
-			else {
+			} else {
 				PacketDistributer.sendHeatItemData((byte) 0, 0, player, 0);
-				return false;
+				return true;
 			}
 
 		}
 		return false;
 
 	}
-	
-	
 
 	@SideOnly(Side.CLIENT)
-	public static void receiveHeatDataPacket(EntityPlayer player, double heatValue, int textId, double powerintake) {
+	public static void receiveHeatDataPacket(EntityPlayer player,
+			double heatValue, int textId, double powerintake) {
 
 		ChatMessageComponent chat = new ChatMessageComponent();
 
@@ -85,14 +84,15 @@ public class ItemHeatRecorder extends Item {
 			break;
 
 		case 1:
-			player.sendChatToPlayer(chat.createFromText("Block not Connected to network"));
+			player.sendChatToPlayer(chat
+					.createFromText("Block not Connected to network"));
 			break;
-		case 2:
-			player.sendChatToPlayer(chat.createFromText("Heat : " + heatValue + " Power : " + powerintake));
+		case 2:			
+			player.sendChatToPlayer(chat.createFromText("Heat : "
+					+ ((int) (heatValue * 100)) + "% Power : " + powerintake));
 
 			break;
 
 		}
 	}
-
 }

@@ -1,11 +1,11 @@
 package com.tgame.apptherm;
 
-import com.tgame.apptherm.ModInfo.Mods;
+import net.minecraft.creativetab.CreativeTabs;
+import appeng.api.Util;
+
 import com.tgame.apptherm.blocks.Blocks;
 import com.tgame.apptherm.client.interfaces.GuiHandler;
-import com.tgame.apptherm.client.renderers.Renderers;
 import com.tgame.apptherm.config.ConfigHandler;
-import com.tgame.apptherm.config.ConfigInfo;
 import com.tgame.apptherm.entities.Entities;
 import com.tgame.apptherm.events.EventBusListener;
 import com.tgame.apptherm.fluids.Fluids;
@@ -15,10 +15,6 @@ import com.tgame.apptherm.network.PacketHandler;
 import com.tgame.apptherm.proxies.CommonProxy;
 import com.tgame.apptherm.tileentities.TileEntities;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.creativetab.CreativeTabs;
-import appeng.api.Util;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -28,10 +24,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = "required-after:" + Mods.APPLIED_ENERGISTICS)
+@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = "required-after:" + ModInfo.APPLIED_ENERGISTICS)
 @NetworkMod(channels = { ModInfo.CHANNEL }, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = false)
 public class AppTherm {
 
@@ -65,8 +59,8 @@ public class AppTherm {
 		Items.addNames();
 		Blocks.addNames();
 
-		Items.registerRecipes();
-		Blocks.registerRecipes();
+//		Items.registerRecipes();
+//		Blocks.registerRecipes();
 		
 		Entities.init();
 		new GuiHandler();

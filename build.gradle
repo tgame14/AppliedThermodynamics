@@ -31,19 +31,18 @@ group= "com.tgame.apptherm" // http://maven.apache.org/guides/mini/guide-naming-
 archivesBaseName = "apptherm"
 
 minecraft {
-	version = config.mod_version + "." + config.forge_version
+	version = config.minecraft_version + "-" + config.forge_version
+	
+	replace "@VERSION@", project.version
 }
 
 processResources
 {
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
-         include '**/*.lang'
-        include '**/*.info'
-        include '**/*.properties'
+		include 'mcmod.info'
                 
-        // replaces
-        expand 'version' : project.config.mod_version, 'buildnumber' : project.config.build_number
+        expand 'version' : project.version, 'mcversion' : project.minecraft.version
     }
         
     // copy everything else, thats not the mcmod.info
@@ -64,6 +63,7 @@ artifacts {
 }
 
 task incrementBuildNumber() {
+	dependsOn "reobf"
     doLast {
         // increment
         config.build_number = (config.build_number.toString().toInteger()) + 1
@@ -74,3 +74,5 @@ task incrementBuildNumber() {
         }
     }
 }
+
+tasks.build.dependsOn "incrementBuildNumber"

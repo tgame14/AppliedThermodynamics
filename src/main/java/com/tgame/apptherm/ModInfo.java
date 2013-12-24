@@ -4,15 +4,14 @@ public class ModInfo {
 
 	public static final String ID = "AppTherm";
 	public static final String NAME = "Applied Thermodynamics";
-	public static final String VERSION = "0.0.1b";
+	public static final String VERSION = "@VERSION@";
 	public static final String RESOURCE_LOCATION = "apptherm";
 	public static final String CHANNEL = "apptherm";
 	
+	/** the Cache ID of LogicBase */
 	public static int heatCacheID;
 	
 	/** modids of other mods, Useful in general. */
-	
-	public static class Mods {
 		
 		public static final String IC2 = "IC2";
         public static final String BUILDCRAFT = "BuildCraft|Core";
@@ -30,7 +29,7 @@ public class ModInfo {
         public static final String MYSTCRAFT = "Mystcraft";
         public static final String PROJECTRED_TRANSMISSION = "ProjRed|Transmission";
         public static final String TCONSTRUCT = "TConstruct";
-	}
+	
 	
 	
 }

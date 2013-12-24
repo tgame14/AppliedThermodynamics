@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -17,14 +18,15 @@ import appeng.api.events.GridTileUnloadEvent;
 import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.util.IGridInterface;
 
-public class AEBaseMachine extends TileEntity implements IGridMachine {
+public abstract class AEBaseMachine extends TileEntity implements IGridMachine {
 
-	protected boolean powerStatus = false;
-	protected boolean networkReady = false;
+	protected boolean powerStatus;
+	protected boolean networkReady;
 	protected IGridInterface grid;
 
 	public AEBaseMachine() {
-		
+		this.powerStatus = false;
+		this.networkReady = false;
 	}
 
 	@Override
@@ -90,7 +92,7 @@ public class AEBaseMachine extends TileEntity implements IGridMachine {
 
 	@Override
 	public void setNetworkReady(boolean isReady) {
-		networkReady = isReady;
+		this.networkReady = isReady;
 
 	}
 
@@ -100,6 +102,18 @@ public class AEBaseMachine extends TileEntity implements IGridMachine {
 			return true;
 		return false;
 		
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound tag) {
+		tag.setBoolean("powerstatus", this.powerStatus);
+		tag.setBoolean("networkReady", this.networkReady);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound tag) {
+		this.powerStatus = tag.getBoolean("powerstatus");
+		this.networkReady = tag.getBoolean("networkReady");
 	}
 
 }
