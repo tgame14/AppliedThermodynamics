@@ -40,6 +40,5 @@ public class ATTank extends FluidTank {
 		if (this.getFluidAmount() == 0)
 			return true;
 		return false;
-
 	}
 }

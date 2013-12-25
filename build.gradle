@@ -26,7 +26,7 @@ configFile.withReader {
     ext.config = new ConfigSlurper().parse prop
 }
 
-version = config.mod_version + "." + config.build_number
+version = config.mod_version + "-" + config.build_number
 group= "com.tgame.apptherm" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "apptherm"
 
