@@ -11,7 +11,7 @@ public class ModInfo {
 	/** the Cache ID of LogicBase */
 	public static int heatCacheID;
 	
-	/** modids of other mods, Useful in general. */
+	/** modid's of other mods, Useful in general. */
 		
 		public static final String IC2 = "IC2";
         public static final String BUILDCRAFT = "BuildCraft|Core";
