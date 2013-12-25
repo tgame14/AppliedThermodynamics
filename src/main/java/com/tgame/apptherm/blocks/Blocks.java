@@ -30,6 +30,7 @@ public class Blocks {
 	public static Block liquidCooler;
 	public static Block airIntake;
 	public static Block EAS;
+	public static Block Eater;
 
 	public static void init() {
 		playerDetector = new BlockPlayerDetector(BlockInfo.DETECTOR_ID);
@@ -69,6 +70,9 @@ public class Blocks {
 		
 		EAS = new BlockEAS(BlockInfo.EAS_ID);
 		GameRegistry.registerBlock(EAS, BlockInfo.EAS_KEY);
+		
+		Eater = new BlockEnergyEater(BlockInfo.EATER_ID);
+		GameRegistry.registerBlock(Eater, BlockInfo.EATER_KEY);
 
 	}
 
@@ -88,6 +92,7 @@ public class Blocks {
 		LanguageRegistry.addName(liquidCooler, BlockInfo.LIQUICOOL_NAME);
 		LanguageRegistry.addName(airIntake, BlockInfo.INTAKE_NAME);
 		LanguageRegistry.addName(EAS, BlockInfo.EAS_NAME);
+		LanguageRegistry.addName(Eater, BlockInfo.EATER_NAME);
 	}
 
 

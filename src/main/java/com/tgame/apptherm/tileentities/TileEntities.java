@@ -8,6 +8,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class TileEntities {
 
 	public static void init() {
+		
 		GameRegistry.registerTileEntity(TileEntityBomb.class, BlockInfo.BOMB_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityPlayerDetector.class, BlockInfo.DETECTOR_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityOceanFiller.class, BlockInfo.FILLER_TE_KEY);
@@ -26,6 +27,10 @@ public class TileEntities {
 		GameRegistry.registerTileEntity(TileEntityAirIntake.class, BlockInfo.INTAKE_TE_KEY);
 
 		GameRegistry.registerTileEntity(TileEntityHeatMonitor.class, BlockInfo.MONITOR_TE_KEY);
+		
+		GameRegistry.registerTileEntity(TileEntityEAS.class, BlockInfo.EAS_TE_KEY);
+		
+		GameRegistry.registerTileEntity(TileEntityEater.class, BlockInfo.EATER_TE_KEY);
 	}
 
 }

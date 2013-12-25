@@ -50,7 +50,10 @@ public class ConfigHandler {
 				BlockInfo.LIQUICOOL_DEFAULT).getInt();
 		BlockInfo.INTAKE_ID = config.getBlock(BlockInfo.INTAKE_KEY,
 				BlockInfo.INTAKE_DEFAULT).getInt();
-		BlockInfo.EAS_ID = config.getBlock(BlockInfo.EAS_KEY, BlockInfo.EAS_DEFAULT).getInt();
+		BlockInfo.EAS_ID = config.getBlock(BlockInfo.EAS_KEY,
+				BlockInfo.EAS_DEFAULT).getInt();
+		BlockInfo.EATER_ID = config.getBlock(BlockInfo.EATER_KEY,
+				BlockInfo.EATER_DEFAULT).getInt();
 
 		// Config Registry for Disabling and Enabling Features
 		ConfigInfo.FURNACE_RECIPES = config.get(ConfigInfo.FEATURE_KEY,

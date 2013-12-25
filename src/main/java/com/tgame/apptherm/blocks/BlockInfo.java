@@ -128,5 +128,12 @@ public class BlockInfo {
 	public static final String EAS_UNLOCALIZED_NAME = "EAS";
 	public static final String EAS_TE_KEY = "TileEntityEAS";
 	public static final String EAS_TEXTURE = "EASFace";
+	
+	public static int EATER_ID;
+	public static final int EATER_DEFAULT = config++;
+	public static final String EATER_KEY = "Eater";
+	public static final String EATER_NAME = "ME Eater";
+	public static final String EATER_UNLOCALIZED_NAME = "meEater";
+	public static final String EATER_TE_KEY = "TileEntityEater";
 
 }

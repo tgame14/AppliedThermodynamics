@@ -220,6 +220,10 @@ public class HeatEffects {
 		List<TileRef<IGridMachine>> list = grid.getMachines();
 		int lengthOfList = list.size();
 		int indexOfList;
+		
+		if(lengthOfList < 1) {
+			return null;
+		}
 
 		if (lengthOfList == 1) {
 			indexOfList = 0;
