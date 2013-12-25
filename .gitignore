@@ -214,7 +214,7 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-src/api
+
 *.txt
 eclipse/
 build/
