@@ -15,15 +15,21 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 
 	protected ATTank tank = new ATTank(16000);
 	private int drainValue;
+	private byte timer;
 
 	public TileEntityLiquidCooler() {
 		this.drainValue = 5;
-
+		this.timer = 21;
 	}
 
 	@Override
 	public void updateEntity() {
-		this.drain(ForgeDirection.UNKNOWN, this.drainValue, true);
+		if(this.timer <= 0) {
+			this.drain(ForgeDirection.UNKNOWN, this.drainValue, true);
+			this.timer = 21;
+			
+		}
+		this.timer--;
 		
 	}
 
@@ -71,12 +77,14 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
+		this.timer = tag.getByte("secTimer");
 		super.readFromNBT(tag);
 		tank.writeToNBT(tag);
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag) {
+		tag.setByte("secTimer", timer);
 		super.writeToNBT(tag);
 		tank.readFromNBT(tag);
 	}

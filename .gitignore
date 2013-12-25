@@ -216,9 +216,8 @@ pip-log.txt
 
 src/api
 *.txt
-gradle/
 eclipse/
 build/
 bin/
 .gradle/
-gradlew.*
+
