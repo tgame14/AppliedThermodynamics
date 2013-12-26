@@ -14,6 +14,10 @@ buildscript {
 apply plugin: 'forge'
 apply plugin: 'java'
 
+// jenkins Env
+
+env = System.getenv()
+
 targetCompatibility = JavaVersion.VERSION_1_6
 
 // define the properties file
@@ -26,7 +30,7 @@ configFile.withReader {
     ext.config = new ConfigSlurper().parse prop
 }
 
-version = config.mod_version + "." + BUILD_NUMBER
+version = config.mod_version + "." + env.BUILD_NUMBER
 group= "com.tgame.apptherm" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "apptherm"
 
