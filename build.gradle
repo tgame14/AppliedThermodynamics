@@ -10,13 +10,12 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
     }
 }
+env = System.getenv()
 
 apply plugin: 'forge'
 apply plugin: 'java'
 
-// jenkins Env
 
-env = System.getenv()
 
 targetCompatibility = JavaVersion.VERSION_1_6
 
