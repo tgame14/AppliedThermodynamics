@@ -10,7 +10,8 @@ Downloads!
 https://github.com/tgame14/AppliedThermodynamics/releases
 
 For the Latest Dev Builds (thanks themattabase!) :
-http://themattabase.com:9090/job/Applied%20Thermodynamics/
+(click the button below)
+[![Build Status](http://themattabase.com:9090/buildStatus/icon?job=Applied Thermodynamics)](http://themattabase.com:9090/job/Applied%20Thermodynamics/)
 
 USE WITH CARE. I AM NOT RESPONSIBLE FOR ANY KIND OF DAMAGE DONE.
 
@@ -26,7 +27,7 @@ More and More. (I am Taking Suggestions freely, as far as its a Solid suggestion
 
 As for suggestions and comments about my code and more ideas, visit #AppliedEnergistics @ irc.esper.net which is where i usually am when i work on AT.
 
-My hope for release is 1.7 for AE2. no promises at all.
+My hope for release is 1.7 for AE2. no promises at all (non Dev Release - Right now its open beta, See downloads above).
 
 
 License
@@ -49,6 +50,14 @@ IN THE CASE OF AQUIRING PERMISSION, YOU MUST CREDIT WITH A LINK TO THIS WEBPAGE.
 Compiling
 =========
 First of all, you dont need to compile it yourself, the jenkins link above is always synced to latest Github Commit!
+Look for the big Downloads line above.
+
+Yet if you are still interested in building manually..
+
+1) Clone this github page to a directory.
+2) open a cmd line at the folder and run 'gradlew.bat setupCIWorkspace'.
+3) When thats done, make sure its done successfuly, Then simply run in the same cmd line 'gradlew.bat build'.
+4) Done, Look inside the build/libs for it (The version will be Stated as dev both in the mcmod.info and in the src).
 
 
 
