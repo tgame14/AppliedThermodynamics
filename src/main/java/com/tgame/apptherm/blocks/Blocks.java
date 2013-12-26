@@ -1,28 +1,14 @@
 package com.tgame.apptherm.blocks;
 
-import com.tgame.apptherm.config.ConfigInfo;
-import com.tgame.apptherm.items.Items;
-import com.tgame.apptherm.tileentities.TileEntityBomb;
-import com.tgame.apptherm.tileentities.TileEntityCrate;
-import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
-import com.tgame.apptherm.tileentities.TileEntityLiquidME;
-import com.tgame.apptherm.tileentities.TileEntityMEExhaust;
-import com.tgame.apptherm.tileentities.TileEntityOceanFiller;
-import com.tgame.apptherm.tileentities.TileEntityPlayerDetector;
-import com.tgame.apptherm.tileentities.TileEntityWeatherBox;
-
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+
+import com.tgame.apptherm.config.ConfigInfo;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class Blocks {
-	public static Block playerDetector;
-	public static Block bomb;
-	public static Block oceanFiller;
-	public static Block weatherBox;
-	public static Block crate;
+
 	public static Block fluidME;
 	public static Block jelloBrick;
 	public static Block exhaustME;
@@ -33,21 +19,7 @@ public class Blocks {
 	public static Block Eater;
 
 	public static void init() {
-		playerDetector = new BlockPlayerDetector(BlockInfo.DETECTOR_ID);
-		GameRegistry.registerBlock(playerDetector, BlockInfo.DETECTOR_KEY);
-
-		bomb = new BlockBomb(BlockInfo.BOMB_ID);
-		GameRegistry.registerBlock(bomb, BlockInfo.BOMB_KEY);
-
-		oceanFiller = new BlockOceanFiller(BlockInfo.FILLER_ID);
-		GameRegistry.registerBlock(oceanFiller, BlockInfo.FILLER_KEY);
-
-		weatherBox = new BlockWeatherBox(BlockInfo.WEATHER_ID);
-		GameRegistry.registerBlock(weatherBox, BlockInfo.WEATHER_KEY);
-
-		crate = new BlockCrate(BlockInfo.CRATE_ID);
-		GameRegistry.registerBlock(crate, BlockInfo.CRATE_KEY);
-
+		
 		if (ConfigInfo.LIQUID_CONSUME) {
 			fluidME = new BlockFluidME(BlockInfo.LIQUID_ME_ID);
 			GameRegistry.registerBlock(fluidME, BlockInfo.LIQUID_ME_KEY);
@@ -77,12 +49,7 @@ public class Blocks {
 	}
 
 	public static void addNames() {
-		LanguageRegistry.addName(playerDetector, BlockInfo.DETECTOR_NAME);
-		LanguageRegistry.addName(bomb, BlockInfo.BOMB_NAME);
-		LanguageRegistry.addName(oceanFiller, BlockInfo.FILLER_NAME);
-		LanguageRegistry.addName(weatherBox, BlockInfo.WEATHER_NAME);
-		LanguageRegistry.addName(crate, BlockInfo.CRATE_NAME);
-
+		
 		if (ConfigInfo.LIQUID_CONSUME)
 			LanguageRegistry.addName(fluidME, BlockInfo.LIQUID_ME_NAME);
 
@@ -93,18 +60,6 @@ public class Blocks {
 		LanguageRegistry.addName(airIntake, BlockInfo.INTAKE_NAME);
 		LanguageRegistry.addName(EAS, BlockInfo.EAS_NAME);
 		LanguageRegistry.addName(Eater, BlockInfo.EATER_NAME);
-	}
-
-
-	public static void registerRecipes() {
-
-		GameRegistry.addRecipe(new ItemStack(playerDetector, 1, 0), "XYX",
-				"YZY", "XYX", 'X', Item.glowstone, 'Y', Block.blockRedstone,
-				'Z', new ItemStack(Items.Core, 1, 0));
-
-		GameRegistry.addRecipe(new ItemStack(oceanFiller, 1, 0), "XYX", "YZY",
-				"XYX", 'X', Item.bucketWater, 'Z', new ItemStack(Items.Core, 1,
-						2), 'Y', Item.poisonousPotato);
 	}
 
 }

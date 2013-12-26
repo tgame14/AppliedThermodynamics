@@ -1,15 +1,15 @@
 package com.tgame.apptherm.client.interfaces;
 
-import com.tgame.apptherm.ModInfo;
-import com.tgame.apptherm.logic.LogicBase;
-import com.tgame.apptherm.network.PacketDistributer;
-import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
+import com.tgame.apptherm.logic.LogicBase;
+import com.tgame.apptherm.network.PacketDistributer;
+import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
+import com.tgame.apptherm.util.Refference;
 
 public class ContainerMonitor extends Container {
 
@@ -20,7 +20,7 @@ public class ContainerMonitor extends Container {
 	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
 		LogicBase logic = (LogicBase) tile.getGrid().getCacheByID(
-				ModInfo.heatCacheID);
+				Refference.heatCacheID);
 		heatvalue = (float) logic.getFinalHeat();
 
 		PacketDistributer.sendHeatDataToGui(heatvalue, tile.xCoord,

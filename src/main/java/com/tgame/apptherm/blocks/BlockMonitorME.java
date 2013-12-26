@@ -1,15 +1,7 @@
 package com.tgame.apptherm.blocks;
 
-import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.ModInfo;
-import com.tgame.apptherm.client.renderers.ATBlockRendererHelper;
-import com.tgame.apptherm.network.PacketDistributer;
-import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -17,12 +9,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+
+import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
+import com.tgame.apptherm.util.Refference;
+
 import cpw.mods.fml.common.network.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -56,14 +51,14 @@ public class BlockMonitorME extends BlockContainer {
 	@Override
 	public void registerIcons(IconRegister register) {
 
-		frontIconFull = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[1]);
-		frontIconNearFull = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[2]);
-		frontIconNearEmpty = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[3]);
-		frontIconEmpty = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[4]);
+		frontIconFull = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[1]);
+		frontIconNearFull = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[2]);
+		frontIconNearEmpty = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[3]);
+		frontIconEmpty = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[4]);
 
-		sideIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURES[1]);
-		bottomIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
-		topIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
+		sideIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURES[1]);
+		bottomIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
+		topIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
 	}
 
 	@SideOnly(Side.CLIENT)

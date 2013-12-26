@@ -1,14 +1,5 @@
 package com.tgame.apptherm.items;
 
-import java.util.List;
-
-import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.ModInfo;
-import com.tgame.apptherm.logic.HeatEffects;
-import com.tgame.apptherm.logic.LogicBase;
-import com.tgame.apptherm.network.PacketDistributer;
-import com.tgame.apptherm.network.PacketHandler;
-
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -17,7 +8,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.world.World;
 import appeng.api.me.tiles.IGridTileEntity;
-import appeng.api.me.util.IGridInterface;
+
+import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.logic.LogicBase;
+import com.tgame.apptherm.network.PacketDistributer;
+import com.tgame.apptherm.util.Refference;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -34,7 +30,7 @@ public class ItemHeatRecorder extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
-		this.itemIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+		this.itemIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":"
 				+ ItemInfo.RECORDER_ICON);
 	}
 
@@ -51,7 +47,7 @@ public class ItemHeatRecorder extends Item {
 				IGridTileEntity gridTile = (IGridTileEntity) te;
 				if (gridTile.getGrid() != null) {
 					LogicBase logic = (LogicBase) gridTile.getGrid()
-							.getCacheByID(ModInfo.heatCacheID);
+							.getCacheByID(Refference.heatCacheID);
 					heatValue = logic.getFinalHeat();
 					PacketDistributer.sendHeatItemData((byte) 2, heatValue,
 							player, gridTile.getGrid().getPowerUsageAvg());

@@ -1,11 +1,5 @@
 package com.tgame.apptherm.blocks;
 
-import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.ModInfo;
-import com.tgame.apptherm.tileentities.TileEntityAirIntake;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -17,6 +11,13 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.tileentities.TileEntityAirIntake;
+import com.tgame.apptherm.util.Refference;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAirIntake extends BlockContainer {
 
@@ -42,13 +43,13 @@ public class BlockAirIntake extends BlockContainer {
 	@Override
 	public void registerIcons(IconRegister iconregister) {
 
-		frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+		frontIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":"
 				+ BlockInfo.INTAKE_TEXTURE);
-		sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+		sideIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":"
 				+ BlockInfo.DEFAULT_TEXTURES[1]);
-		bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+		bottomIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":"
 				+ BlockInfo.DEFAULT_TEXTURES[0]);
-		topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+		topIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":"
 				+ BlockInfo.DEFAULT_TEXTURES[0]);
 	}
 

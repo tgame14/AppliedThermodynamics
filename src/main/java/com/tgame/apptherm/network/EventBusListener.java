@@ -1,11 +1,11 @@
 package com.tgame.apptherm.network;
 
-import com.tgame.apptherm.blocks.Blocks;
-import com.tgame.apptherm.fluids.Fluids;
-
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
+
+import com.tgame.apptherm.blocks.Blocks;
+import com.tgame.apptherm.fluids.Fluids;
 
 public class EventBusListener {
 

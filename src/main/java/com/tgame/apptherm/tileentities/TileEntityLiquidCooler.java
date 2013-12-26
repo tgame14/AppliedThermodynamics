@@ -1,14 +1,14 @@
 package com.tgame.apptherm.tileentities;
 
-import com.tgame.apptherm.fluids.ATTank;
-import com.tgame.apptherm.fluids.CoolingFluids;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import com.tgame.apptherm.fluids.ATTank;
+import com.tgame.apptherm.fluids.CoolingFluids;
 
 public class TileEntityLiquidCooler extends AEActiveCoolants implements
 		IFluidHandler {

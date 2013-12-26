@@ -1,14 +1,15 @@
 package com.tgame.apptherm.events;
 
+import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.ForgeSubscribe;
+
 import com.tgame.apptherm.blocks.Blocks;
 import com.tgame.apptherm.fluids.Fluids;
 import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
 
 public class EventBusListener {
 

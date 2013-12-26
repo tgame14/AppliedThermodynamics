@@ -2,16 +2,15 @@ package com.tgame.apptherm.items;
 
 import java.util.List;
 
-import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.ModInfo;
-
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
-import net.minecraft.world.World;
+
+import com.tgame.apptherm.util.Refference;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -55,9 +54,9 @@ public class ItemShard extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
-		itemIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+		itemIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":"
 				+ ItemInfo.SHARD_ICON);
-		chargedIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+		chargedIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":"
 				+ ItemInfo.SHARD_ICON2);
 	}
 

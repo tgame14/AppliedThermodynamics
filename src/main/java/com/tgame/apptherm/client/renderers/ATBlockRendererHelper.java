@@ -1,18 +1,16 @@
 package com.tgame.apptherm.client.renderers;
 
-import com.tgame.apptherm.ModInfo;
-import com.tgame.apptherm.blocks.BlockMonitorME;
-import com.tgame.apptherm.logic.LogicBase;
-import com.tgame.apptherm.tileentities.AEBaseMachine;
-import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.ForgeDirection;
+
+import com.tgame.apptherm.blocks.BlockMonitorME;
+import com.tgame.apptherm.logic.LogicBase;
+import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
+import com.tgame.apptherm.util.Refference;
+
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
@@ -71,7 +69,7 @@ public class ATBlockRendererHelper implements ISimpleBlockRenderingHandler {
 		
 		te = (TileEntityHeatMonitor) world.getBlockTileEntity(x, y, z);
 		if (te.getGrid() != null) {
-			logic = (LogicBase) te.getGrid().getCacheByID(ModInfo.heatCacheID);
+			logic = (LogicBase) te.getGrid().getCacheByID(Refference.heatCacheID);
 			heatValue = logic.getFinalHeat();
 		}
 

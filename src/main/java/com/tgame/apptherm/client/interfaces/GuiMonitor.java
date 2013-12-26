@@ -7,9 +7,6 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.tgame.apptherm.ModInfo;
-import com.tgame.apptherm.logic.LogicBase;
-import com.tgame.apptherm.network.PacketDistributer;
 import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
 
 import cpw.mods.fml.relauncher.Side;

@@ -1,19 +1,10 @@
 package com.tgame.apptherm.tileentities;
 
-import com.tgame.apptherm.ModInfo;
-import com.tgame.apptherm.client.interfaces.ContainerMonitor;
-import com.tgame.apptherm.logic.LogicBase;
-import com.tgame.apptherm.network.PacketDistributer;
-
-import cpw.mods.fml.common.Mod;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraftforge.client.event.GuiOpenEvent;
-import appeng.api.me.util.IGridInterface;
 
 public class TileEntityHeatMonitor extends AEBaseMachine implements IInventory {
 

@@ -1,7 +1,5 @@
 package com.tgame.apptherm.tileentities;
 
-import com.tgame.apptherm.blocks.BlockInfo;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -12,6 +10,8 @@ import appeng.api.events.GridTileLoadEvent;
 import appeng.api.events.GridTileUnloadEvent;
 import appeng.api.me.tiles.IGridTileEntity;
 import appeng.api.me.util.IGridInterface;
+
+import com.tgame.apptherm.blocks.BlockInfo;
 
 public class TileEntityLiquidME extends TileEntity implements IGridTileEntity {
 

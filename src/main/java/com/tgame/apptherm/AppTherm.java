@@ -1,5 +1,7 @@
 package com.tgame.apptherm;
 
+import java.util.logging.Logger;
+
 import net.minecraft.creativetab.CreativeTabs;
 import appeng.api.Util;
 
@@ -14,6 +16,8 @@ import com.tgame.apptherm.logic.LogicBase;
 import com.tgame.apptherm.network.PacketHandler;
 import com.tgame.apptherm.proxies.CommonProxy;
 import com.tgame.apptherm.tileentities.TileEntities;
+import com.tgame.apptherm.util.AppThermTab;
+import com.tgame.apptherm.util.Refference;
 
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
@@ -25,24 +29,29 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = "required-after:" + ModInfo.APPLIED_ENERGISTICS)
-@NetworkMod(channels = { ModInfo.CHANNEL }, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = false)
+@Mod(modid = Refference.ID, name = Refference.NAME, version = Refference.VERSION, dependencies = "required-after:"
+		+ Refference.APPLIED_ENERGISTICS)
+@NetworkMod(channels = { Refference.CHANNEL }, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = false)
 public class AppTherm {
 
-	public static final CreativeTabs AppThermTab = new AppThermTab(
-			CreativeTabs.getNextID(), ModInfo.NAME);
-
-	@Instance(ModInfo.ID)
+	@Instance(Refference.ID)
 	public static AppTherm instance;
 
 	@SidedProxy(clientSide = "com.tgame.apptherm.proxies.ProxyClient", serverSide = "com.tgame.apptherm.proxies.CommonProxy")
 	public static CommonProxy proxy;
 
+	public static final CreativeTabs AppThermTab = new AppThermTab(
+			CreativeTabs.getNextID(), Refference.NAME);
+		
+	public static Logger logger = Logger.getLogger(Refference.NAME);
+	
+	
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
-		
-		Fluids.registerFluids();
+
+		Fluids.init();
 		Items.init();
 		Blocks.init();
 		TileEntities.init();
@@ -59,14 +68,13 @@ public class AppTherm {
 		Items.addNames();
 		Blocks.addNames();
 
-//		Items.registerRecipes();
-//		Blocks.registerRecipes();
-		
+		// Items.registerRecipes();
+		// Blocks.registerRecipes();
+
 		Entities.init();
 		new GuiHandler();
 
-		
-		ModInfo.heatCacheID = Util.getAppEngApi().getGridCacheRegistry()
+		Refference.heatCacheID = Util.getAppEngApi().getGridCacheRegistry()
 				.registerGridCache(LogicBase.class);
 
 	}

@@ -1,7 +1,5 @@
 package com.tgame.apptherm.fluids;
 
-import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;

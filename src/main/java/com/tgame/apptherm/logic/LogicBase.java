@@ -1,7 +1,5 @@
 package com.tgame.apptherm.logic;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.nbt.NBTTagCompound;
 import appeng.api.me.util.IGridCache;
 import appeng.api.me.util.IGridInterface;

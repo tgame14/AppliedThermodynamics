@@ -3,10 +3,6 @@ package com.tgame.apptherm.logic;
 import java.util.List;
 import java.util.Random;
 
-import com.tgame.apptherm.blocks.BlockInfo;
-import com.tgame.apptherm.events.ATOverHeatEvent;
-import com.tgame.apptherm.network.PacketDistributer;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFlameFX;
 import net.minecraft.client.particle.EntitySmokeFX;
@@ -15,6 +11,11 @@ import net.minecraftforge.common.MinecraftForge;
 import appeng.api.TileRef;
 import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.util.IGridInterface;
+
+import com.tgame.apptherm.blocks.BlockInfo;
+import com.tgame.apptherm.events.ATOverHeatEvent;
+import com.tgame.apptherm.network.PacketDistributer;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

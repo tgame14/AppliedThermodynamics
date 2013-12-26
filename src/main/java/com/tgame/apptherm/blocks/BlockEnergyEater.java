@@ -6,7 +6,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.tileentities.AEBaseMachine;
 import com.tgame.apptherm.tileentities.TileEntityEater;
 
 public class BlockEnergyEater extends BlockContainer {

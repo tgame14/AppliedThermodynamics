@@ -1,12 +1,8 @@
 package com.tgame.apptherm.tileentities;
 
-import com.tgame.apptherm.events.ATOverHeatEvent;
-
-import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeSubscribe;
-import appeng.api.WorldCoord;
-import appeng.api.me.tiles.IGridMachine;
-import appeng.api.me.util.IGridInterface;
+
+import com.tgame.apptherm.events.ATOverHeatEvent;
 
 public class TileEntityEAS extends AEBaseMachine {
 	public TileEntityEAS() {

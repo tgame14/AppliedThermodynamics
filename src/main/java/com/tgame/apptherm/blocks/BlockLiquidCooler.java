@@ -1,16 +1,10 @@
 package com.tgame.apptherm.blocks;
 
-import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.ModInfo;
-import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
-
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -20,6 +14,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
+
+import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
+import com.tgame.apptherm.util.Refference;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -47,10 +46,10 @@ public class BlockLiquidCooler extends BlockContainer {
 	@Override
 	public void registerIcons(IconRegister iconregister) {
 
-		frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.LIQUICOOL_TEXUTRES[0]);
-		sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[1]);
-		bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
-		topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
+		frontIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.LIQUICOOL_TEXUTRES[0]);
+		sideIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[1]);
+		bottomIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
+		topIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
 	}
 
 	@SideOnly(Side.CLIENT)

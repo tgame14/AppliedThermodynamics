@@ -1,9 +1,5 @@
 package com.tgame.apptherm.blocks;
 
-import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.ModInfo;
-import com.tgame.apptherm.tileentities.TileEntityMEExhaust;
-
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -14,6 +10,11 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.tileentities.TileEntityMEExhaust;
+import com.tgame.apptherm.util.Refference;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -39,10 +40,10 @@ public class BlockExhaustME extends BlockContainer {
 	@Override
 	public void registerIcons(IconRegister iconregister) {
 
-		frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURES[0]);
-        sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURES[1]);
-        bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
-        topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
+		frontIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURES[0]);
+        sideIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURES[1]);
+        bottomIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
+        topIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
 	}
 	
 	@Override

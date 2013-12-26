@@ -4,32 +4,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import com.tgame.apptherm.ModInfo;
-
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatMessageComponent;
-import net.minecraft.util.ChunkCoordinates;
-import cpw.mods.fml.common.Mod;
+
+import com.tgame.apptherm.util.Refference;
+
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 
 public class PacketDistributer {
-
-	public static void sendButtonPacket(byte id) {
-		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-		DataOutputStream dataStream = new DataOutputStream(byteStream);
-
-		try {
-			dataStream.writeByte((byte) 0);
-			dataStream.writeByte(id);
-
-			PacketDispatcher.sendPacketToServer(PacketDispatcher.getPacket(ModInfo.CHANNEL, byteStream.toByteArray()));
-		}
-		catch (IOException ex) {
-			System.err.append("Failed to send button click packet");
-			ex.printStackTrace();
-		}
-	}
 
 	public static void sendEffectPacket(byte id, int x, int y, int z, int dimID) {
 
@@ -44,7 +26,7 @@ public class PacketDistributer {
 			dataStream.writeInt(z);
 
 			PacketDispatcher.sendPacketToAllAround(x, y, z, 100, dimID,
-					PacketDispatcher.getPacket(ModInfo.CHANNEL, byteStream.toByteArray()));
+					PacketDispatcher.getPacket(Refference.CHANNEL, byteStream.toByteArray()));
 
 		}
 		catch (IOException ex) {
@@ -63,7 +45,7 @@ public class PacketDistributer {
 			dataStream.writeFloat((float) heatValue);
 			dataStream.writeFloat((float) poweruptake);
 
-			PacketDispatcher.sendPacketToPlayer(PacketDispatcher.getPacket(ModInfo.CHANNEL, byteStream.toByteArray()),
+			PacketDispatcher.sendPacketToPlayer(PacketDispatcher.getPacket(Refference.CHANNEL, byteStream.toByteArray()),
 					(Player) player);
 
 		}
@@ -82,7 +64,7 @@ public class PacketDistributer {
 			dataStream.writeFloat(heatValue);
 
 			PacketDispatcher.sendPacketToAllAround(x, y, z, 10, dimId,
-					PacketDispatcher.getPacket(ModInfo.CHANNEL, byteStream.toByteArray()));
+					PacketDispatcher.getPacket(Refference.CHANNEL, byteStream.toByteArray()));
 		}
 		catch (IOException ex) {
 			System.err.append("Failed to Send Heat Data to Monitor Gui");

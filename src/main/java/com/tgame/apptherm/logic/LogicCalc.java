@@ -2,13 +2,13 @@ package com.tgame.apptherm.logic;
 
 import java.util.List;
 
-import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
-
 import appeng.api.TileRef;
 import appeng.api.exceptions.AppEngTileMissingException;
 import appeng.api.me.tiles.ICellContainer;
 import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.util.IGridInterface;
+
+import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
 
 /**
  * @author tgame14
