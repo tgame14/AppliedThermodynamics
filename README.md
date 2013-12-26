@@ -1,15 +1,16 @@
 Applied Thermodynamics
 ==================
-This is the Github for the Upcoming mod, Applied Thermodynamics.
+This is the Current Website (and github) for the Upcoming mod, Applied Thermodynamics.
 
 Currently the mod is IN OPEN BETA!
 
-DOWNLOAD:
+
+Downloads!
+==================
 https://github.com/tgame14/AppliedThermodynamics/releases
 
-Or if that doesnt work. then theres a Dropbox.
-https://www.dropbox.com/sh/aww100bjsxy7v5t/xOxANquF8C
-
+For the Latest Dev Builds (thanks themattabase!) :
+http://themattabase.com:9090/job/Applied%20Thermodynamics/
 
 USE WITH CARE. I AM NOT RESPONSIBLE FOR ANY KIND OF DAMAGE DONE.
 
@@ -21,7 +22,7 @@ there are also ways to cool your system, right now non are fully implemented, bu
 Wind Crank ( manually operated cooling machine)
 Liquid Cooler (cools the network based on the liquid it is supplied)
 Fan (it blows wind)
-More and More.
+More and More. (I am Taking Suggestions freely, as far as its a Solid suggestion and logical i may add it)
 
 As for suggestions and comments about my code and more ideas, visit #AppliedEnergistics @ irc.esper.net which is where i usually am when i work on AT.
 
@@ -45,6 +46,12 @@ RECEIVING PERMISSION THROUGH ASKING TGAME14 DIRECTLY on irc.esper.net #AppliedEn
 
 IN THE CASE OF AQUIRING PERMISSION, YOU MUST CREDIT WITH A LINK TO THIS WEBPAGE.
 
+Compiling
+=========
+First of all, you dont need to compile it yourself, the jenkins link above is always synced to latest Github Commit!
+
+
+
 Thank You!
 =========
 This mod would have been far harder without the help of a few Notable resources,
@@ -54,9 +61,13 @@ raydeejay
 AlgorithmX2
 thatsIch
 M3gaFr3ak
+Blarghedy
 
-AbrarSyed for Helping me a whole Lot with configuring forge gradle
+
+AbrarSyed for Helping me a whole Lot with configuring forge gradle.
+
 Pahimar for making his build script open source for me to Copy parts :)
+
 Vswe For his tutorials
 
 And Mostly, Thanks to you, the player, i hope you enjoy this as much as i did Making it.
