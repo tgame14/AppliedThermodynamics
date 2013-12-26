@@ -26,7 +26,7 @@ configFile.withReader {
     ext.config = new ConfigSlurper().parse prop
 }
 
-version = config.mod_version + "- dev"
+version = config.mod_version + "." + BUILD_NUMBER
 group= "com.tgame.apptherm" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "apptherm"
 
@@ -62,17 +62,19 @@ artifacts {
         archives deobfJar
 }
 
-task incrementBuildNumber() {
-	dependsOn "reobf"
-    doLast {
+// Used in my Private Build of Actual releases, increments the build number on build.properties, Unneeded in jenkins.
+
+// task incrementBuildNumber() {
+//	dependsOn "reobf"
+//    doLast {
         // increment
-        config.build_number = (config.build_number.toString().toInteger()) + 1
+//        config.build_number = (config.build_number.toString().toInteger()) + 1
 
         // write back to the file
-        configFile.withWriter {
-            config.toProperties().store(it, "")
-        }
-    }
-}
+//        configFile.withWriter {
+//            config.toProperties().store(it, "")
+//        }
+//    }
+//}
 
-tasks.build.dependsOn "incrementBuildNumber"
+// tasks.build.dependsOn "incrementBuildNumber"
