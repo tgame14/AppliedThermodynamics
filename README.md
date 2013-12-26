@@ -10,7 +10,7 @@ Downloads!
 https://github.com/tgame14/AppliedThermodynamics/releases
 
 For the Latest Dev Builds (thanks themattabase!) :
-(click the button below)
+(click the button)
 [![Build Status](http://themattabase.com:9090/buildStatus/icon?job=Applied Thermodynamics)](http://themattabase.com:9090/job/Applied%20Thermodynamics/)
 
 USE WITH CARE. I AM NOT RESPONSIBLE FOR ANY KIND OF DAMAGE DONE.
