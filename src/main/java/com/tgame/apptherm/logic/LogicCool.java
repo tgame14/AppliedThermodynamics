@@ -2,8 +2,8 @@ package com.tgame.apptherm.logic;
 
 import appeng.api.me.util.IGridInterface;
 
-import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
 import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
+import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
 
 /**
  * The Class LogicCool, Does all the logic regarding different coolants.

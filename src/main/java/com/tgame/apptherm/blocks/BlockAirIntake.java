@@ -26,8 +26,7 @@ public class BlockAirIntake extends BlockContainer {
 		setCreativeTab(AppTherm.AppThermTab);
 		setHardness(2F);
 		setStepSound(Block.soundMetalFootstep);
-		setUnlocalizedName(BlockInfo.BOMB_UNLOCALIZED_NAME);
-		
+		setUnlocalizedName(BlockInfo.INTAKE_UNLOCALIZED_NAME);
 		
 	}
 	

@@ -7,7 +7,6 @@ import net.minecraftforge.common.Configuration;
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.items.ItemInfo;
-import com.tgame.apptherm.util.Refference;
 
 public class ConfigHandler {
 
@@ -17,11 +16,11 @@ public class ConfigHandler {
 		if (file.canRead()) {
 			AppTherm.log
 					.info("Config Already Exists in Config directory, Reading...");
-			
+
 		} else {
 			AppTherm.log
 					.info("Config Hasnt been found in Config Directry, Generating Defaults...");
-			
+
 		}
 
 		config.load();
@@ -43,6 +42,8 @@ public class ConfigHandler {
 				BlockInfo.EAS_DEFAULT).getInt();
 		BlockInfo.EATER_ID = config.getBlock(BlockInfo.EATER_KEY,
 				BlockInfo.EATER_DEFAULT).getInt();
+		BlockInfo.FANBOX_ID = config.getBlock(BlockInfo.FANBOX_KEY,
+				BlockInfo.FANBOX_DEFAULT).getInt();
 
 		// Config Registry for Disabling and Enabling Feature (booleans).
 

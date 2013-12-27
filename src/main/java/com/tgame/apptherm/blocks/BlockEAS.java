@@ -17,17 +17,19 @@ public class BlockEAS extends BlockContainer {
 
 	public BlockEAS(int id) {
 		super(id, Material.iron);
-		
+
 		setHardness(2.0F);
 		setCreativeTab(AppTherm.AppThermTab);
-		
+		setUnlocalizedName(BlockInfo.EAS_UNLOCALIZED_NAME);
+
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
-		blockIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.EAS_TEXTURE);
-		
+		blockIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":"
+				+ BlockInfo.EAS_TEXTURE);
+
 	}
 
 	@Override

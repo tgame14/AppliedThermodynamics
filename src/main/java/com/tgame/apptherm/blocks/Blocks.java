@@ -17,6 +17,7 @@ public class Blocks {
 	public static Block airIntake;
 	public static Block EAS;
 	public static Block Eater;
+	public static Block fanBox;
 
 	public static void init() {
 		
@@ -45,6 +46,9 @@ public class Blocks {
 		
 		Eater = new BlockEnergyEater(BlockInfo.EATER_ID);
 		GameRegistry.registerBlock(Eater, BlockInfo.EATER_KEY);
+		
+		fanBox = new BlockFanBoxCasing(BlockInfo.FANBOX_ID);
+		GameRegistry.registerBlock(fanBox, BlockInfo.FANBOX_KEY);
 
 	}
 
@@ -60,6 +64,7 @@ public class Blocks {
 		LanguageRegistry.addName(airIntake, BlockInfo.INTAKE_NAME);
 		LanguageRegistry.addName(EAS, BlockInfo.EAS_NAME);
 		LanguageRegistry.addName(Eater, BlockInfo.EATER_NAME);
+		LanguageRegistry.addName(fanBox, BlockInfo.FANBOX_NAME);
 	}
 
 }

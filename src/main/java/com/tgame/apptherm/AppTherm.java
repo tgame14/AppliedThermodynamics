@@ -17,10 +17,10 @@ import com.tgame.apptherm.network.PacketHandler;
 import com.tgame.apptherm.proxies.CommonProxy;
 import com.tgame.apptherm.tileentities.TileEntities;
 import com.tgame.apptherm.util.AppThermTab;
+import com.tgame.apptherm.util.Recipes;
 import com.tgame.apptherm.util.Refference;
 
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -28,6 +28,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerAboutToStartEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = Refference.ID, name = Refference.NAME, version = Refference.VERSION, dependencies = "required-after:"
@@ -43,23 +44,22 @@ public class AppTherm {
 
 	public static final CreativeTabs AppThermTab = new AppThermTab(
 			CreativeTabs.getNextID(), Refference.NAME);
-	
-	// the FML Logger field, Used for debug / Console output to mimic the fml and minecraft one
+
+	// the FML Logger field, Used for debug / Console output to mimic the fml
+	// and minecraft one
 	public static final Logger log = Logger.getLogger(Refference.NAME);
-	
-	
-	//Instantiates a new mod Singleton, Registers the Logger to inherit fml logger props
+
+	// Instantiates a new mod Singleton, Registers the Logger to inherit fml
+	// logger props
 	public AppTherm() {
 		log.setParent(FMLCommonHandler.instance().getFMLLogger());
-		
+
 	}
-	
+
 	public AppTherm instance() {
 		return this.instance;
 	}
-	
-	
-	
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
@@ -80,9 +80,8 @@ public class AppTherm {
 
 		Items.addNames();
 		Blocks.addNames();
-
-		// Items.registerRecipes();
-		// Blocks.registerRecipes();
+		
+		Recipes.init();
 
 		Entities.init();
 		new GuiHandler();
@@ -90,6 +89,11 @@ public class AppTherm {
 		Refference.heatCacheID = Util.getAppEngApi().getGridCacheRegistry()
 				.registerGridCache(LogicBase.class);
 
+	}
+
+	@EventHandler
+	public void serverAboutToStartEvent(FMLServerAboutToStartEvent event) {
+		
 	}
 
 	@EventHandler
