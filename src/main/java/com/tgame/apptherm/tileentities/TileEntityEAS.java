@@ -2,7 +2,7 @@ package com.tgame.apptherm.tileentities;
 
 import net.minecraftforge.event.ForgeSubscribe;
 
-import com.tgame.apptherm.events.ATOverHeatEvent;
+import com.tgame.apptherm.api.events.ATOverHeatEvent;
 
 public class TileEntityEAS extends AEBaseMachine {
 	public TileEntityEAS() {

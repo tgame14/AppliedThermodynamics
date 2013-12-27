@@ -2,7 +2,7 @@ package com.tgame.apptherm.logic;
 
 import appeng.api.me.util.IGridInterface;
 
-import com.tgame.apptherm.tileentities.TileEntityAirIntake;
+import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
 import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
 
 /**
@@ -35,7 +35,7 @@ public class LogicCool {
 
 	private TileEntityLiquidCooler TileLiquidCooler;
 
-	private TileEntityAirIntake TileAirIntake;
+	private TileEntitySimpleFan TileAirIntake;
 
 	/**
 	 * Instantiates a new logic cool.
@@ -51,7 +51,7 @@ public class LogicCool {
 		calc = logicCalc;
 
 		TileLiquidCooler = new TileEntityLiquidCooler();
-		TileAirIntake = new TileEntityAirIntake();
+		TileAirIntake = new TileEntitySimpleFan();
 
 	}
 

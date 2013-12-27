@@ -29,6 +29,7 @@ public class Refference {
         public static final String MYSTCRAFT = "Mystcraft";
         public static final String PROJECTRED_TRANSMISSION = "ProjRed|Transmission";
         public static final String TCONSTRUCT = "TConstruct";
+        public static final String NATURA = "Natura";
 	
 	
 	

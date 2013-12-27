@@ -1,5 +1,5 @@
 [{
-    "modid": "AppTherm",
+    "modid": "AppliedThermodynamics",
     "name": "Applied Thermodynamics",
     "description": "An Addon to AE that Adds a new Mechanic to ME Networks, HEAT!, also melts Yo S***",
     "version": "${version}",

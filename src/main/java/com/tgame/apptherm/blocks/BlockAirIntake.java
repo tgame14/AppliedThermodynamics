@@ -13,7 +13,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.tileentities.TileEntityAirIntake;
+import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
 import com.tgame.apptherm.util.Refference;
 
 import cpw.mods.fml.relauncher.Side;
@@ -102,7 +102,7 @@ public class BlockAirIntake extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityAirIntake();
+		return new TileEntitySimpleFan();
 	}
 
 }

@@ -12,8 +12,8 @@ import appeng.api.TileRef;
 import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.util.IGridInterface;
 
+import com.tgame.apptherm.api.events.ATOverHeatEvent;
 import com.tgame.apptherm.blocks.BlockInfo;
-import com.tgame.apptherm.events.ATOverHeatEvent;
 import com.tgame.apptherm.network.PacketDistributer;
 
 import cpw.mods.fml.relauncher.Side;

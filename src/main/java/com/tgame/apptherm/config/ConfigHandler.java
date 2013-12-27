@@ -4,6 +4,7 @@ import java.io.File;
 
 import net.minecraftforge.common.Configuration;
 
+import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.items.ItemInfo;
 import com.tgame.apptherm.util.Refference;
@@ -13,18 +14,19 @@ public class ConfigHandler {
 	public static void init(File file) {
 		Configuration config = new Configuration(file);
 
-		// debug for Development, will be removed for release.
 		if (file.canRead()) {
-			System.out.println("[" + Refference.NAME
-					+ "] Config Already Exists, Reading");
+			AppTherm.log
+					.info("Config Already Exists in Config directory, Reading...");
+			
 		} else {
-			System.out.println("[" + Refference.NAME
-					+ "] Config doesn't exist. generating...");
+			AppTherm.log
+					.info("Config Hasnt been found in Config Directry, Generating Defaults...");
+			
 		}
 
 		config.load();
 
-		// Config Registry of Blocks for Applied Thermodynamics
+		// Config Registry of Blocks
 		BlockInfo.LIQUID_ME_ID = config.getBlock(BlockInfo.LIQUID_ME_KEY,
 				BlockInfo.LIQUID_ME_DEFAULT).getInt();
 		BlockInfo.JELLO_ID = config.getBlock(BlockInfo.JELLO_KEY,
@@ -42,20 +44,21 @@ public class ConfigHandler {
 		BlockInfo.EATER_ID = config.getBlock(BlockInfo.EATER_KEY,
 				BlockInfo.EATER_DEFAULT).getInt();
 
-		// Config Registry for Disabling and Enabling Feature.
+		// Config Registry for Disabling and Enabling Feature (booleans).
 
 		ConfigInfo.LIQUID_CONSUME = config.get(ConfigInfo.FEATURE_KEY,
 				ConfigInfo.LIQUID_CONSUME_KEY,
 				ConfigInfo.LIQUID_CONSUME_DEFAULT).getBoolean(
 				ConfigInfo.LIQUID_CONSUME_DEFAULT);
 
-		// AT registration
+		// Item Registration
 		ItemInfo.GOO_ID = config
 				.getItem(ItemInfo.GOO_KEY, ItemInfo.GOO_DEFAULT).getInt() - 256;
 		ItemInfo.RECORDER_ID = config.getItem(ItemInfo.RECORDER_KEY,
 				ItemInfo.RECORDER_DEFAULT).getInt() - 256;
 
 		config.save();
-		System.out.println("[" + Refference.NAME + "] Config Loaded");
+		AppTherm.log.info("Config Loaded and saved");
+
 	}
 }

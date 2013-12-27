@@ -11,16 +11,16 @@ import appeng.api.me.util.IGridInterface;
  */
 public class LogicBase implements IGridCache {
 
-	/** The ticked. */
+	/** The ticked boolean, used to do stuff in the first tick of creation. */
 	private boolean ticked;
 
-	/** The effects. */
+	/** The effects Object. */
 	private HeatEffects effects;
 
-	/** The calculation logic. */
+	/** The calculation logic Object. */
 	protected LogicCalc calc;
 
-	/** The cool logic. */
+	/** The cool logic Object. */
 	protected LogicCool coolLogic;
 
 	private double totalCoolant;
@@ -29,7 +29,7 @@ public class LogicBase implements IGridCache {
 	private double finalHeat;
 
 	/**
-	 * Instantiates a new logic base.
+	 * Instantiates a new logic base instance (an new Logic Grid).
 	 */
 	public LogicBase() {
 		ticked = false;
@@ -42,20 +42,11 @@ public class LogicBase implements IGridCache {
 	public double getFinalHeat() {
 		return finalHeat;
 	}
-	
+
 	public double getTotalCoolingValue() {
 		return totalCoolant;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * appeng.api.me.util.IGridCache#onUpdateTick(appeng.api.me.util.IGridInterface
-	 * )
-	 * 
-	 * Runs all Actions that need to be done every tick on the network
-	 */
 	@Override
 	public void onUpdateTick(IGridInterface grid) {
 		// KEEP NOTICE, THIS WILL BE MOVED TO CONSTRUCTOR IN AE2
@@ -76,72 +67,44 @@ public class LogicBase implements IGridCache {
 
 			effects.OnOverHeat(finalHeat);
 		}
-
-		// System.out.println(finalHeat);
-
+		
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * appeng.api.me.util.IGridCache#reset(appeng.api.me.util.IGridInterface)
-	 * 
+	/**
 	 * Every time the network is reset this is called. Maintaining of counts and
 	 * lists and grids are done here.
+	 * 
 	 */
 	@Override
 	public void reset(IGridInterface grid) {
 		if (calc != null)
 			calc.refreshProperties(grid);
-		
+
 		if (coolLogic != null) {
 			coolLogic.refreshCoolants();
 			totalCoolant = coolLogic.calcTotalCoolant();
 		}
-		
+
 		if (effects != null)
 			effects.refreshHeatEffects(grid, calc);
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see appeng.api.me.util.IGridCache#getCacheName()
-	 * 
-	 * an identifier for the instance of IGridCache
-	 */
 	@Override
 	public String getCacheName() {
 		return "MadHeatPoweredBandit";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see appeng.api.me.util.IGridCache#savetoNBTData()
-	 * 
-	 * where data is saved to nbt.
-	 */
 	@Override
 	public NBTTagCompound savetoNBTData() {
 		NBTTagCompound tag = new NBTTagCompound();
 
 		tag.setDouble("heatFinalPercent", finalHeat);
 		tag.setDouble("totalCoolant", totalCoolant);
-		
+
 		return tag;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see appeng.api.me.util.IGridCache#loadfromNBTData(net.minecraft.nbt.
-	 * NBTTagCompound)
-	 * 
-	 * Where data is loaded from nbt.
-	 */
 	@Override
 	public void loadfromNBTData(NBTTagCompound data) {
 		finalHeat = data.getDouble("heatFinalPercent");

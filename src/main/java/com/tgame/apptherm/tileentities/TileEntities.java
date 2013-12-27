@@ -14,7 +14,7 @@ public class TileEntities {
 
 		GameRegistry.registerTileEntity(TileEntityMEExhaust.class, BlockInfo.EXHAUST_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityLiquidCooler.class, BlockInfo.LIQUICOOL_TE_KEY);
-		GameRegistry.registerTileEntity(TileEntityAirIntake.class, BlockInfo.INTAKE_TE_KEY);
+		GameRegistry.registerTileEntity(TileEntitySimpleFan.class, BlockInfo.INTAKE_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityHeatMonitor.class, BlockInfo.MONITOR_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityEAS.class, BlockInfo.EAS_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityEater.class, BlockInfo.EATER_TE_KEY);

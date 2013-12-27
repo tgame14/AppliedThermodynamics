@@ -115,10 +115,10 @@ public class BlockInfo {
 
 	public static int INTAKE_ID;
 	public static final int INTAKE_DEFAULT = config++;
-	public static final String INTAKE_KEY = "AirIntake";
-	public static final String INTAKE_NAME = "ME Air Intake";
-	public static final String INTAKE_UNLOCALIZED_NAME = "airIntake";
-	public static final String INTAKE_TE_KEY = "TileEntityAirIntake";
+	public static final String INTAKE_KEY = "SimpleFan";
+	public static final String INTAKE_NAME = "ME Simple Fan";
+	public static final String INTAKE_UNLOCALIZED_NAME = "MESimpleFan";
+	public static final String INTAKE_TE_KEY = "TileEntitySimpleFan";
 	public static final String INTAKE_TEXTURE = "airIntake";
 	
 	public static int EAS_ID;

@@ -55,6 +55,7 @@ public class PacketDistributer {
 		}
 	}
 
+	@Deprecated
 	public static void sendHeatDataToGui(float heatValue, int x, int y, int z, int dimId) {
 		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
 		DataOutputStream dataStream = new DataOutputStream(byteStream);

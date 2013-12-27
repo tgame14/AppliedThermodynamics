@@ -19,6 +19,7 @@ import com.tgame.apptherm.tileentities.TileEntities;
 import com.tgame.apptherm.util.AppThermTab;
 import com.tgame.apptherm.util.Refference;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -42,8 +43,20 @@ public class AppTherm {
 
 	public static final CreativeTabs AppThermTab = new AppThermTab(
 			CreativeTabs.getNextID(), Refference.NAME);
+	
+	// the FML Logger field, Used for debug / Console output to mimic the fml and minecraft one
+	public static final Logger log = Logger.getLogger(Refference.NAME);
+	
+	
+	//Instantiates a new mod Singleton, Registers the Logger to inherit fml logger props
+	public AppTherm() {
+		log.setParent(FMLCommonHandler.instance().getFMLLogger());
 		
-	public static Logger logger = Logger.getLogger(Refference.NAME);
+	}
+	
+	public AppTherm instance() {
+		return this.instance;
+	}
 	
 	
 	
@@ -81,7 +94,7 @@ public class AppTherm {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		FMLLog.info("Applied Thermodynamics loaded");
+		log.info(Refference.NAME + " Has Loaded Without Crashing!");
 
 	}
 
