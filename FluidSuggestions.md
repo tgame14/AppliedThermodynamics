@@ -1,2 +1,3 @@
-# Write here All Fluids you want supported for cooling with how much they should drain per second
+# Fluid Registry
 
+### Write here all fluids you want supported in AT with how much they should drain every second
