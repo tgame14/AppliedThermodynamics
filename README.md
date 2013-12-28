@@ -89,12 +89,19 @@ Look for the big Downloads line above.
 Yet if you are still interested in building manually..
 
 1) Clone this github page to a directory.
+
 2) open a cmd line at the folder and run 'gradlew.bat setupCIWorkspace'.
+
 3) now open up build.gradle, and Remove line 13 (env = System.getenv()).
+
 4) also, in build.gradle uncomment lines 68-83 (All of the increment task and the last lines).
+
 5) replace line 32 with:
+
 'version = config.mod_version + "." + config.build_number'.
+
 6) now return to the cmd line and run 'gradlew.bat build'.
+
 7) Done, Look inside the build/libs for it (The version in both the source and mcmod.info will be the same).
 
 NOTE:
@@ -104,7 +111,9 @@ Also a deobf version will also be built and put in build/libs Which ofcourse can
 Keep in mind, Setting this up this way will not Allow you to edit the code, for that:
 
 1) when you first clone the project, open a cmd line there and run 'gradlew.bat setupDecompWorkspace eclipse'.
+
 2) Point your setup as Usual. and you should have it all done.
+
 3) dont forget to Edit the build script if you want to still export the mod correctly.
 
 DONE! this is Everything you need to know with compiling, Its done this way since the buildscript
