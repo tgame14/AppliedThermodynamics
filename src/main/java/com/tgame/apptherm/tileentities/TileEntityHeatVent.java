@@ -1,7 +1,10 @@
 package com.tgame.apptherm.tileentities;
 
+import net.minecraft.world.World;
+import appeng.api.WorldCoord;
 import appeng.api.me.tiles.IGridTileEntity;
 import appeng.api.me.tiles.ITileCable;
+import appeng.api.me.util.IGridInterface;
 
 import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockTileEntityBase;
@@ -73,6 +76,48 @@ public class TileEntityHeatVent extends MultiblockTileEntityBase implements IGri
 	@Override
 	public MultiblockControllerBase createNewMultiblock() {
 		return new FanBoxController(this.worldObj);
+	}
+
+	@Override
+	public WorldCoord getLocation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setPowerStatus(boolean hasPower) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isPowered() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public IGridInterface getGrid() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setGrid(IGridInterface gi) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public World getWorld() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

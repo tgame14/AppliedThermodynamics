@@ -2,9 +2,9 @@ package com.tgame.apptherm.fluids;
 
 public enum CoolingFluids {
 
-	WATER(500, "water"), SEEDOIL(2, "seedoil"), HONEY(2, "honey"), ICE(3, "ice"), SHORTMEAD(
-			1, "short.mead"), FUEL(3, "fuel"), CRYOTHEUM(1, "cryotheum"), SEWAGE(
-			600, "sewage"), FLUIDMEAT(1, "meat");
+	WATER(10000, "water"), SEEDOIL(70, "seedoil"), HONEY(80, "honey"), ICE(150, "ice"), SHORTMEAD(
+			60, "short.mead"), FUEL(200, "fuel"), CRYOTHEUM(60, "cryotheum"), SEWAGE(
+			6000, "sewage"), FLUIDMEAT(100, "meat");
 
 	public final int consumePerTick;
 	public final String fluidName;
