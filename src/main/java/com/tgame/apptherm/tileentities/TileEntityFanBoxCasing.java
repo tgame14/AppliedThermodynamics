@@ -1,7 +1,7 @@
 package com.tgame.apptherm.tileentities;
 
-import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockControllerBase;
-import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockTileEntityBase;
+import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
+import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockTileEntityBase;
 import com.tgame.apptherm.multiblocks.FanBoxController;
 
 public class TileEntityFanBoxCasing extends MultiblockTileEntityBase {
@@ -39,32 +39,30 @@ public class TileEntityFanBoxCasing extends MultiblockTileEntityBase {
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
-		
-		
+
 	}
 
 	@Override
 	public void onMachineBroken() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onMachineActivated() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onMachineDeactivated() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public MultiblockControllerBase createNewMultiblock() {
-		// TODO Auto-generated method stub
-		return null;
+		return new FanBoxController(this.worldObj);
 	}
 
 }

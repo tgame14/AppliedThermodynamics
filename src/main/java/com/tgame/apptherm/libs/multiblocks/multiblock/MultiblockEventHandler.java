@@ -1,4 +1,4 @@
-package com.tgame.apptherm.lib.multiblocks.multiblock;
+package com.tgame.apptherm.libs.multiblocks.multiblock;
 
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;

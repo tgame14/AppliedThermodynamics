@@ -1,4 +1,4 @@
-package com.tgame.apptherm.lib.multiblocks.multiblock;
+package com.tgame.apptherm.libs.multiblocks.multiblock;
 
 /**
  * An exception thrown when trying to validate a multiblock. Requires a string describing why the multiblock

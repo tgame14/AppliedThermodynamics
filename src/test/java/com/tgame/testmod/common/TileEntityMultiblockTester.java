@@ -2,8 +2,8 @@ package com.tgame.testmod.common;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockControllerBase;
-import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockTileEntityBase;
+import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
+import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockTileEntityBase;
 
 public class TileEntityMultiblockTester extends MultiblockTileEntityBase {
 	public static final int RED = 0xff0000;

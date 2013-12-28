@@ -1,4 +1,4 @@
-package com.tgame.apptherm.lib.multiblocks.multiblock;
+package com.tgame.apptherm.libs.multiblocks.multiblock;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 
-import com.tgame.apptherm.lib.multiblocks.common.CoordTriplet;
+import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 
 import cpw.mods.fml.common.FMLLog;
 

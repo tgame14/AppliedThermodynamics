@@ -1,6 +1,6 @@
 package com.tgame.testmod;
 
-import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockClientTickHandler;
+import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockClientTickHandler;
 import com.tgame.testmod.client.RendererMultiblockTester;
 import com.tgame.testmod.common.TileEntityMultiblockTester;
 

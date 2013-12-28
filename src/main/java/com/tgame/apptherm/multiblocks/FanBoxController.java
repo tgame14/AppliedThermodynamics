@@ -3,13 +3,15 @@ package com.tgame.apptherm.multiblocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import com.tgame.apptherm.lib.multiblocks.multiblock.IMultiblockPart;
-import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockControllerBase;
+import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
+import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 
 public class FanBoxController extends MultiblockControllerBase {
 
 	public FanBoxController(World world) {
 		super(world);
+		
 		
 	}
 
@@ -91,7 +93,7 @@ public class FanBoxController extends MultiblockControllerBase {
 
 	@Override
 	protected boolean updateServer() {
-		// TODO Auto-generated method stub
+		AppTherm.log.info("fan Box exists");
 		return false;
 	}
 

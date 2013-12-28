@@ -1,6 +1,6 @@
 package com.tgame.testmod;
 
-import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockServerTickHandler;
+import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockServerTickHandler;
 
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;

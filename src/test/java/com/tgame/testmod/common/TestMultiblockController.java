@@ -3,8 +3,8 @@ package com.tgame.testmod.common;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import com.tgame.apptherm.lib.multiblocks.multiblock.IMultiblockPart;
-import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockControllerBase;
+import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
+import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 
 import cpw.mods.fml.common.FMLLog;
 

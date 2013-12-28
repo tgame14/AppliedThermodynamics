@@ -7,7 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 
 import org.lwjgl.opengl.GL11;
 
-import com.tgame.apptherm.lib.multiblocks.multiblock.IMultiblockPart;
+import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
 import com.tgame.testmod.common.TestMultiblockController;
 import com.tgame.testmod.common.TileEntityMultiblockTester;
 
