@@ -74,22 +74,23 @@ public class HeatEffects {
 	protected void OnOverHeat(double heatValue) {
 		if (heatValue >= 0.9) {
 			StageThree();
-			MinecraftForge.EVENT_BUS.post(new ATOverHeatEvent(this.grid
-					.getController().getWorldObj(), heatValue, 3));
+			this.grid.postEvent(new ATOverHeatEvent(this.grid.getController(),
+					heatValue, 3));
 		}
 
 		if (heatValue >= 0.6) {
 			StageTwo();
-			MinecraftForge.EVENT_BUS.post(new ATOverHeatEvent(this.grid
-					.getController().getWorldObj(), heatValue, 2));
+			this.grid.postEvent(new ATOverHeatEvent(this.grid.getController(),
+					heatValue, 2));
 		}
 
 		if (heatValue >= 0.15) {
 			StageOne();
-			MinecraftForge.EVENT_BUS.post(new ATOverHeatEvent(this.grid.getController().getWorldObj(), heatValue, 1));
+			this.grid.postEvent(new ATOverHeatEvent(this.grid.getController(),
+					heatValue, 1));
 		}
 
-		grid.useMEEnergy(calc.calcHeatIntake(heatValue), "HeatEffects");
+		this.grid.useMEEnergy(calc.calcHeatIntake(heatValue), "HeatEffects");
 	}
 
 	/**
@@ -149,8 +150,7 @@ public class HeatEffects {
 		}
 		decrParticleTicker();
 	}
-	
-	
+
 	protected void refreshHeatEffects(IGridInterface grid, LogicCalc calc) {
 		this.grid = grid;
 		this.calc = calc;
@@ -221,8 +221,8 @@ public class HeatEffects {
 		List<TileRef<IGridMachine>> list = grid.getMachines();
 		int lengthOfList = list.size();
 		int indexOfList;
-		
-		if(lengthOfList < 1) {
+
+		if (lengthOfList < 1) {
 			return null;
 		}
 

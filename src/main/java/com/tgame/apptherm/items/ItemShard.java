@@ -9,7 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
-import com.tgame.apptherm.util.Reference;
+import com.tgame.apptherm.util.ModInfo;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -54,9 +54,9 @@ public class ItemShard extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
-		itemIcon = register.registerIcon(Reference.RESOURCE_LOCATION + ":"
+		itemIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 				+ ItemInfo.SHARD_ICON);
-		chargedIcon = register.registerIcon(Reference.RESOURCE_LOCATION + ":"
+		chargedIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 				+ ItemInfo.SHARD_ICON2);
 	}
 

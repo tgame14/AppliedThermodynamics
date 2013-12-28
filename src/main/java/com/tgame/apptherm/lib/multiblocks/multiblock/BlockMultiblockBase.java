@@ -1,4 +1,4 @@
-package com.tgame.apptherm.multiblocklib.multiblock;
+package com.tgame.apptherm.lib.multiblocks.multiblock;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;

@@ -8,13 +8,13 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.util.Reference;
+import com.tgame.apptherm.util.ModInfo;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFanBoxCasing extends BlockContainer {
-	public BlockFanBoxCasing(int id) {
+	protected BlockFanBoxCasing(int id) {
 		super(id, Material.iron);
 
 		this.setHardness(2.0F);
@@ -30,10 +30,10 @@ public class BlockFanBoxCasing extends BlockContainer {
 
 	@Override
 	public void registerIcons(IconRegister register) {
-		this.blockIcon = register.registerIcon(Reference.RESOURCE_LOCATION + ":"
+		this.blockIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 				+ BlockInfo.FANBOX_TEXTURES[0]);
 		this.blockBorderlessIcon = register
-				.registerIcon(Reference.RESOURCE_LOCATION + ":"
+				.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 						+ BlockInfo.FANBOX_TEXTURES[1]);
 	}
 	

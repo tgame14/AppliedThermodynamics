@@ -9,7 +9,7 @@ import net.minecraftforge.common.ForgeDirection;
 import com.tgame.apptherm.blocks.BlockMonitorME;
 import com.tgame.apptherm.logic.LogicBase;
 import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
-import com.tgame.apptherm.util.Reference;
+import com.tgame.apptherm.util.ModInfo;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -69,7 +69,7 @@ public class ATBlockRendererHelper implements ISimpleBlockRenderingHandler {
 		
 		te = (TileEntityHeatMonitor) world.getBlockTileEntity(x, y, z);
 		if (te.getGrid() != null) {
-			logic = (LogicBase) te.getGrid().getCacheByID(Reference.heatCacheID);
+			logic = (LogicBase) te.getGrid().getCacheByID(ModInfo.heatCacheID);
 			heatValue = logic.getFinalHeat();
 		}
 

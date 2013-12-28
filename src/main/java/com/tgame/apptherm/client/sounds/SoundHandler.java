@@ -5,7 +5,7 @@ import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 
-import com.tgame.apptherm.util.Reference;
+import com.tgame.apptherm.util.ModInfo;
 
 public class SoundHandler {
 
@@ -22,13 +22,13 @@ public class SoundHandler {
 	}
 
 	private void addSound(SoundLoadEvent event, Sounds sound) {
-		event.manager.soundPoolSounds.addSound(Reference.RESOURCE_LOCATION + ":"
+		event.manager.soundPoolSounds.addSound(ModInfo.RESOURCE_LOCATION + ":"
 				+ sound.name);
 	}
 
 	public void playAnySoundAtCoords(String name, double x, double y, double z,
 			float volume, float pitch) {
-		Minecraft.getMinecraft().sndManager.playSound(Reference.RESOURCE_LOCATION
+		Minecraft.getMinecraft().sndManager.playSound(ModInfo.RESOURCE_LOCATION
 				+ ":" + name, (float) x, (float) y, (float) z, volume, pitch);
 
 	}

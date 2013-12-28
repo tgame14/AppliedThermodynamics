@@ -1,4 +1,4 @@
-package com.tgame.apptherm.multiblocklib.multiblock;
+package com.tgame.apptherm.lib.multiblocks.multiblock;
 
 import java.util.HashMap;
 

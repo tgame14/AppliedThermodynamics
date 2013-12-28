@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-import com.tgame.apptherm.util.Reference;
+import com.tgame.apptherm.util.ModInfo;
 
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
@@ -26,7 +26,7 @@ public class PacketDistributer {
 			dataStream.writeInt(z);
 
 			PacketDispatcher.sendPacketToAllAround(x, y, z, 100, dimID,
-					PacketDispatcher.getPacket(Reference.CHANNEL, byteStream.toByteArray()));
+					PacketDispatcher.getPacket(ModInfo.CHANNEL, byteStream.toByteArray()));
 
 		}
 		catch (IOException ex) {
@@ -45,7 +45,7 @@ public class PacketDistributer {
 			dataStream.writeFloat((float) heatValue);
 			dataStream.writeFloat((float) poweruptake);
 
-			PacketDispatcher.sendPacketToPlayer(PacketDispatcher.getPacket(Reference.CHANNEL, byteStream.toByteArray()),
+			PacketDispatcher.sendPacketToPlayer(PacketDispatcher.getPacket(ModInfo.CHANNEL, byteStream.toByteArray()),
 					(Player) player);
 
 		}
@@ -65,7 +65,7 @@ public class PacketDistributer {
 			dataStream.writeFloat(heatValue);
 
 			PacketDispatcher.sendPacketToAllAround(x, y, z, 10, dimId,
-					PacketDispatcher.getPacket(Reference.CHANNEL, byteStream.toByteArray()));
+					PacketDispatcher.getPacket(ModInfo.CHANNEL, byteStream.toByteArray()));
 		}
 		catch (IOException ex) {
 			System.err.append("Failed to Send Heat Data to Monitor Gui");

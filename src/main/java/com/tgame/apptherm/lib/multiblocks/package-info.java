@@ -5,4 +5,4 @@
  * multiblock, Lots of thanks to EB!
  *
  */
-package com.tgame.apptherm.multiblocklib;
+package com.tgame.apptherm.lib.multiblocks;

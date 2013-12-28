@@ -3,22 +3,18 @@ package com.tgame.apptherm.api.events;
 import net.minecraft.world.World;
 import net.minecraftforge.event.Cancelable;
 import appeng.api.events.AEWorldEvent;
+import appeng.api.me.tiles.IGridTileEntity;
+import appeng.api.networkevents.MENetworkEvent;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class ATEvent.
+ * the Base Event i use. do not subscribe to this.
  */
 @Cancelable
-public class ATEvent extends AEWorldEvent{
-
-	/**
-	 * Instantiates a new aT event.
-	 *
-	 * @param world the world
-	 */
-	public ATEvent(World world) {
-		super(world);
-	
+public class ATEvent extends MENetworkEvent {
+	public ATEvent(IGridTileEntity tile) {
+		super(tile);
+		
 	}
+	
 
 }

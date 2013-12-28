@@ -20,7 +20,7 @@ public final class AppThermTab extends CreativeTabs {
 	}
 
 	public String getTranslatedTabLabel() {
-		return Reference.NAME;
+		return ModInfo.NAME;
 	}
 
 }

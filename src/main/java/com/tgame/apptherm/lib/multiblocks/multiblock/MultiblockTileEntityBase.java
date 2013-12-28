@@ -1,4 +1,4 @@
-package com.tgame.apptherm.multiblocklib.multiblock;
+package com.tgame.apptherm.lib.multiblocks.multiblock;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,7 +12,7 @@ import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.chunk.IChunkProvider;
 
-import com.tgame.apptherm.multiblocklib.common.CoordTriplet;
+import com.tgame.apptherm.lib.multiblocks.common.CoordTriplet;
 
 import cpw.mods.fml.common.FMLLog;
 

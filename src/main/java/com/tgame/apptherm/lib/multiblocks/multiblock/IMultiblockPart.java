@@ -1,11 +1,11 @@
-package com.tgame.apptherm.multiblocklib.multiblock;
+package com.tgame.apptherm.lib.multiblocks.multiblock;
 
 import java.util.Set;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import com.tgame.apptherm.multiblocklib.common.CoordTriplet;
+import com.tgame.apptherm.lib.multiblocks.common.CoordTriplet;
 
 /**
  * Basic interface for a multiblock machine part. This should generally be 

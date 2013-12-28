@@ -6,7 +6,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-import com.tgame.apptherm.multiblocklib.multiblock.BlockMultiblockBase;
+import com.tgame.apptherm.lib.multiblocks.multiblock.BlockMultiblockBase;
 import com.tgame.testmod.TestMod;
 
 public class BlockMultiblockTester extends BlockMultiblockBase {

@@ -1,4 +1,4 @@
-package com.tgame.apptherm.multiblocklib.common;
+package com.tgame.apptherm.lib.multiblocks.common;
 
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraftforge.common.ForgeDirection;

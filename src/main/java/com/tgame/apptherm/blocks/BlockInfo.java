@@ -5,7 +5,7 @@ public class BlockInfo {
 	// simple way to just have it increment for every new block. saves on
 	// messing up.
 	private static int config = 2074;
-	
+
 	public static String[] DEFAULT_TEXTURES = { "exhaustBot", "exhaustSide" };
 
 	public static int LIQUID_ME_ID;
@@ -59,7 +59,7 @@ public class BlockInfo {
 	public static final String INTAKE_UNLOCALIZED_NAME = "MESimpleFan";
 	public static final String INTAKE_TE_KEY = "TileEntitySimpleFan";
 	public static final String INTAKE_TEXTURE = "airIntake";
-	
+
 	public static int EAS_ID;
 	public static final int EAS_DEFAULT = config++;
 	public static final String EAS_KEY = "EASBlock";
@@ -67,20 +67,30 @@ public class BlockInfo {
 	public static final String EAS_UNLOCALIZED_NAME = "EAS";
 	public static final String EAS_TE_KEY = "TileEntityEAS";
 	public static final String EAS_TEXTURE = "EASFace";
-	
+
 	public static int EATER_ID;
 	public static final int EATER_DEFAULT = config++;
 	public static final String EATER_KEY = "Eater";
 	public static final String EATER_NAME = "ME Eater";
 	public static final String EATER_UNLOCALIZED_NAME = "meEater";
 	public static final String EATER_TE_KEY = "TileEntityEater";
-	
+
 	public static int FANBOX_ID;
 	public static final int FANBOX_DEFAULT = config++;
 	public static final String FANBOX_KEY = "MEFanBox";
 	public static final String FANBOX_NAME = "ME Advanced Fan Box Casing";
 	public static final String FANBOX_UNLOCALIZED_NAME = "fanboxcasing";
 	public static final String FANBOX_TE_KEY = "TileEntityFanCasing";
-	public static final String[] FANBOX_TEXTURES = { "multiBlockCasing", "activeMultiCasing" };
+	public static final String[] FANBOX_TEXTURES = { "multiBlockCasing",
+			"activeMultiCasing" };
+
+	public static int VENT_ID;
+	public static final int VENT_DEFAULT = config++;
+	public static final String VENT_KEY = "METhermicHeatVent";
+	public static final String VENT_NAME = "ME Thermic Heat Vent";
+	public static final String VENT_UNLOCALIZED_NAME = "methermicheatvent";
+	public static final String VENT_TE_KEY = "TileEntityThermicVent";
+	public static final String[] VENT_TEXTURES = { "METhermicHeatVent_0",
+			"METhermicHeatVent_5" };
 
 }

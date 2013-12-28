@@ -44,6 +44,8 @@ public class ConfigHandler {
 				BlockInfo.EATER_DEFAULT).getInt();
 		BlockInfo.FANBOX_ID = config.getBlock(BlockInfo.FANBOX_KEY,
 				BlockInfo.FANBOX_DEFAULT).getInt();
+		BlockInfo.VENT_ID = config.getBlock(BlockInfo.VENT_KEY,
+				BlockInfo.VENT_DEFAULT).getInt();
 
 		// Config Registry for Disabling and Enabling Feature (booleans).
 
@@ -59,7 +61,7 @@ public class ConfigHandler {
 				ItemInfo.RECORDER_DEFAULT).getInt() - 256;
 
 		config.save();
-		AppTherm.log.info("Config Loaded and saved");
+		AppTherm.log.info("Config Loaded and Saved");
 
 	}
 }

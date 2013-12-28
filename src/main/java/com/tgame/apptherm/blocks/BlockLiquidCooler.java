@@ -17,14 +17,14 @@ import net.minecraftforge.fluids.FluidStack;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
-import com.tgame.apptherm.util.Reference;
+import com.tgame.apptherm.util.ModInfo;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockLiquidCooler extends BlockContainer {
 
-	public BlockLiquidCooler(int id) {
+	protected BlockLiquidCooler(int id) {
 		super(id, Material.rock);
 
 		setHardness(2.0F);
@@ -46,10 +46,10 @@ public class BlockLiquidCooler extends BlockContainer {
 	@Override
 	public void registerIcons(IconRegister iconregister) {
 
-		frontIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.LIQUICOOL_TEXUTRES[0]);
-		sideIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[1]);
-		bottomIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
-		topIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
+		frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.LIQUICOOL_TEXUTRES[0]);
+		sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[1]);
+		bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
+		topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
 	}
 
 	@SideOnly(Side.CLIENT)

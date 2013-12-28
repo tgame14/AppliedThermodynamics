@@ -16,7 +16,7 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.fluids.Fluids;
 import com.tgame.apptherm.tileentities.TileEntityLiquidME;
-import com.tgame.apptherm.util.Reference;
+import com.tgame.apptherm.util.ModInfo;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,7 +29,7 @@ public class BlockFluidME extends BlockFluidClassic implements
 	@SideOnly(Side.CLIENT)
 	protected Icon flowingIcon;
 
-	public BlockFluidME(int id) {
+	protected BlockFluidME(int id) {
 		super(id, Fluids.fluidME, new MaterialLiquid(MapColor.waterColor));
 
 		setCreativeTab(AppTherm.AppThermTab);
@@ -44,9 +44,9 @@ public class BlockFluidME extends BlockFluidClassic implements
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		stillIcon = iconRegister.registerIcon(Reference.RESOURCE_LOCATION + ":"
+		stillIcon = iconRegister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 				+ BlockInfo.LIQUID_STILL_TEXTURE);
-		flowingIcon = iconRegister.registerIcon(Reference.RESOURCE_LOCATION + ":"
+		flowingIcon = iconRegister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 				+ BlockInfo.LIQUID_FLOW_TEXTURE);
 
 	}

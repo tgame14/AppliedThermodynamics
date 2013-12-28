@@ -8,14 +8,14 @@ import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.tileentities.TileEntityEAS;
-import com.tgame.apptherm.util.Reference;
+import com.tgame.apptherm.util.ModInfo;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockEAS extends BlockContainer {
 
-	public BlockEAS(int id) {
+	protected BlockEAS(int id) {
 		super(id, Material.iron);
 
 		setHardness(2.0F);
@@ -27,7 +27,7 @@ public class BlockEAS extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
-		blockIcon = register.registerIcon(Reference.RESOURCE_LOCATION + ":"
+		blockIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 				+ BlockInfo.EAS_TEXTURE);
 
 	}

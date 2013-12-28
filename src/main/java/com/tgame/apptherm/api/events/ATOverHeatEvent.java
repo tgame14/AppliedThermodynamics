@@ -1,5 +1,7 @@
 package com.tgame.apptherm.api.events;
 
+import appeng.api.me.tiles.IGridTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 // TODO: Auto-generated Javadoc
@@ -27,15 +29,15 @@ public class ATOverHeatEvent extends ATEvent {
 	/**
 	 * Instantiates a new aT over heat event.
 	 * 
-	 * @param world
-	 *            the world
+	 * @param  tileEntity is Irellivent, a weird addition to AE that will be removed in AE2
+	 * 
 	 * @param heatValue
 	 *            the heat value
 	 * @param stageID
 	 *            the stage id
 	 */
-	public ATOverHeatEvent(World world, double heatValue, int stageID) {
-		super(world);
+	public ATOverHeatEvent(TileEntity tileEntity, double heatValue, int stageID) {
+		super((IGridTileEntity) tileEntity);
 
 		this.heatValue = heatValue;
 		this.stageID = stageID;

@@ -5,7 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
-import com.tgame.apptherm.multiblocklib.multiblock.MultiblockEventHandler;
+import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockEventHandler;
 import com.tgame.testmod.common.BlockMultiblockTester;
 import com.tgame.testmod.common.ItemBlockMultiblockTester;
 import com.tgame.testmod.common.TileEntityMultiblockTester;
