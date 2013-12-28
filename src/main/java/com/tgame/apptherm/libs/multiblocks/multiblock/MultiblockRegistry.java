@@ -9,6 +9,8 @@ import cpw.mods.fml.common.FMLLog;
  * This is a very static singleton registry class which directs incoming events to sub-objects, which
  * actually manage each individual world's multiblocks.
  * @author Erogenous Beef
+ * 
+ * 
  */
 public class MultiblockRegistry {
 	public static boolean debugMode = false;

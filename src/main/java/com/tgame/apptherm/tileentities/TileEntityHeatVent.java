@@ -25,7 +25,7 @@ public class TileEntityHeatVent extends MultiblockTileEntityBase {
 	@Override
 	public boolean isGoodForFrame() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -35,23 +35,23 @@ public class TileEntityHeatVent extends MultiblockTileEntityBase {
 
 	@Override
 	public boolean isGoodForTop() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isGoodForBottom() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isGoodForInterior() {	
-		return false;
+		return true;
 	}
 
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

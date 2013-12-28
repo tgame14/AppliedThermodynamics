@@ -3,6 +3,7 @@ package com.tgame.apptherm;
 import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.MinecraftForge;
 import appeng.api.Util;
 
 import com.tgame.apptherm.blocks.Blocks;
@@ -12,6 +13,7 @@ import com.tgame.apptherm.entities.Entities;
 import com.tgame.apptherm.events.EventBusListener;
 import com.tgame.apptherm.fluids.Fluids;
 import com.tgame.apptherm.items.Items;
+import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockEventHandler;
 import com.tgame.apptherm.logic.LogicBase;
 import com.tgame.apptherm.network.PacketHandler;
 import com.tgame.apptherm.proxies.CommonProxy;
@@ -63,9 +65,13 @@ public class AppTherm {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		
-		this.log.fine("Starting to Load Configs");
+		this.log.info("Starting to Load Configs");
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
+		
+		this.log.fine("Loading Tick Handlers");
+		proxy.initTickHandlers();
 
+		
 		this.log.fine("Loading Fluids");
 		Fluids.init();
 		this.log.fine("Loading Items");
@@ -75,11 +81,14 @@ public class AppTherm {
 
 		this.log.fine("Loading Sounds");
 		proxy.initSounds();
+		
+		
 		this.log.fine("Loading Renderers");
 		proxy.initRenderers();
 
 		this.log.fine("Registering Event Bus");
 		EventBusListener.init();
+		
 		
 		this.log.finest("preinit for AT Over");
 	}
@@ -110,10 +119,10 @@ public class AppTherm {
 	}
 
 	@EventHandler
-	public void serverAboutToStartEvent(FMLServerAboutToStartEvent event) {
+	public void serverAboutToStart(FMLServerAboutToStartEvent event) {
 		this.log.fine("Server About to start, Registering server side handlers");
 		
-		
+		MinecraftForge.EVENT_BUS.register(new MultiblockEventHandler());
 	}
 
 	@EventHandler

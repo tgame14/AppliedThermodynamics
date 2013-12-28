@@ -6,13 +6,14 @@ import net.minecraft.world.World;
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
+import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockValidationException;
 
 public class FanBoxController extends MultiblockControllerBase {
 
 	public FanBoxController(World world) {
 		super(world);
 		
-		
+		System.out.println("new Controller");
 	}
 
 	@Override
@@ -24,44 +25,49 @@ public class FanBoxController extends MultiblockControllerBase {
 
 	@Override
 	protected void onBlockAdded(IMultiblockPart newPart) {
-		// TODO Auto-generated method stub
+		System.out.println("block Added");
 		
 	}
 
 	@Override
 	protected void onBlockRemoved(IMultiblockPart oldPart) {
-		// TODO Auto-generated method stub
+		System.out.println("Block Removed");
+		
+	}
+	
+	@Override
+	protected boolean isMachineWhole() throws MultiblockValidationException {
+		return super.isMachineWhole();
 		
 	}
 
 	@Override
 	protected void onMachineAssembled() {
-		// TODO Auto-generated method stub
+		System.out.println("Assembled");
 		
 	}
 
 	@Override
 	protected void onMachineRestored() {
-		// TODO Auto-generated method stub
+		System.out.println("Restored");
 		
 	}
 
 	@Override
 	protected void onMachinePaused() {
-		// TODO Auto-generated method stub
+		System.out.println("Paused");
 		
 	}
 
 	@Override
 	protected void onMachineDisassembled() {
-		// TODO Auto-generated method stub
+		System.out.println("Disassembled");
 		
 	}
 
 	@Override
 	protected int getMinimumNumberOfBlocksForAssembledMachine() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 27;
 	}
 
 	@Override
@@ -93,13 +99,11 @@ public class FanBoxController extends MultiblockControllerBase {
 
 	@Override
 	protected boolean updateServer() {
-		AppTherm.log.info("fan Box exists");
 		return false;
 	}
 
 	@Override
 	protected void updateClient() {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -2,6 +2,8 @@ package com.tgame.apptherm.libs.multiblocks.multiblock;
 
 import java.util.EnumSet;
 
+import com.tgame.apptherm.util.ModInfo;
+
 import net.minecraft.client.Minecraft;
 import cpw.mods.fml.common.IScheduledTickHandler;
 import cpw.mods.fml.common.TickType;
@@ -29,7 +31,7 @@ public class MultiblockClientTickHandler implements IScheduledTickHandler {
 
 	@Override
 	public String getLabel() {
-		return "BigReactors:MultiblockClientTickHandler";
+		return ModInfo.ID + ":MultiblockClientTickHandler";
 	}
 
 	@Override
