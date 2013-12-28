@@ -26,25 +26,18 @@ USE WITH CARE. I AM NOT RESPONSIBLE FOR ANY KIND OF DAMAGE DONE.
 
 Explanation
 ==================
-AT (Applied Thermodynamics) is a Mod that Adds a new Balancing point to AE (Applied Energistics).
-This new balancing point Is meant to Be challanging to the player. it is how I think Hardcore AE should be like.
-If you dont like the idea and the implementation, I understand you completely. But Do not show disrespect of 
-the way i feel and want this mod to be. Dont like it - Dont Play it.
-
 AT (Applied Thermodynamics) is a mod that adds Heat to ME Networks, the bigger and more power hungry the network is, the faster it heats up,
 the hotter the network gets, more and more bad effects happen, from particles and sounds to the Melting of your network into Liquid ME.
 
-there are also ways to cool your system, right now non are fully implemented, but planned:
+there is LOTS more Coming, Not only Heat! Check out the [wiki](https://github.com/tgame14/AppliedThermodynamics/wiki) for more information
 
-Wind Crank ( manually operated cooling machine)
-Liquid Cooler (cools the network based on the liquid it is supplied)
-Fan (it blows wind)
 More and More. (I am Taking Suggestions freely, as far as its a Solid suggestion and logical i may add it)
 
 As for suggestions and comments about my code and more ideas, visit #AppliedEnergistics @ irc.esper.net which is where
 i usually am when i work on AT.
 
 My hope for release is 1.7 for AE2. no promises at all (non Dev Release - Right now its open beta, See downloads above).
+
 
 License
 =========
