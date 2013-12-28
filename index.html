@@ -38,6 +38,15 @@
 
 <p>Currently the mod is IN OPEN BETA!</p>
 
+<p>Quick notice, Issue reports either go on the issue tracker here on github, Or Directly to me by
+talking to me on #AppliedEnergistics @ irc.esper.net</p>
+
+<p>Modpacks: Read the license. But in short, you need my written permission for any kind of modpacks
+other than private ones (Where they are only distributed between a closed and small Community) that ofcourse it ok.</p>
+
+<p>The one Exception for private modpacks is if you use AsieLauncher. Anyone using that on your server. You need to ask
+For my permission. Doing otherwise will mean you are breaking the license.</p>
+
 <h1>
 <a name="downloads" class="anchor" href="#downloads"><span class="octicon octicon-link"></span></a>Downloads!</h1>
 
@@ -47,21 +56,66 @@
 (click the button)
 <a href="http://themattabase.com:9090/job/Applied%20Thermodynamics/"><img src="http://themattabase.com:9090/buildStatus/icon?job=Applied%20Thermodynamics" alt="Build Status"></a></p>
 
-<p><a href="http://themattabase.com:9090/job/Applied%20Thermodynamics/">http://themattabase.com:9090/job/Applied%20Thermodynamics/</a></p>
-
 <p>USE WITH CARE. I AM NOT RESPONSIBLE FOR ANY KIND OF DAMAGE DONE.</p>
+
+<h1>
+<a name="explanation" class="anchor" href="#explanation"><span class="octicon octicon-link"></span></a>Explanation</h1>
 
 <p>AT (Applied Thermodynamics) is a mod that adds Heat to ME Networks, the bigger and more power hungry the network is, the faster it heats up,
 the hotter the network gets, more and more bad effects happen, from particles and sounds to the Melting of your network into Liquid ME.</p>
 
 <p>there are also ways to cool your system, right now non are fully implemented, but planned:</p>
 
-<p>Wind Crank ( manually operated cooling machine)
-Liquid Cooler (cools the network based on the liquid it is supplied)
-Fan (it blows wind)
-More and More. (I am Taking Suggestions freely, as far as its a Solid suggestion and logical i may add it)</p>
+<p>Wind Crank ( manually operated cooling machine, not just done yet :)</p>
 
-<p>As for suggestions and comments about my code and more ideas, visit #AppliedEnergistics @ irc.esper.net which is where i usually am when i work on AT.</p>
+<p>Liquid Cooler (cools the network based on the liquid it is supplied, Exists)</p>
+
+<p>Fan (it blows wind, Exists as ME Simple Fan)</p>
+
+<p>Advanced Fan Box (Already in the works):
+The Advanced Fan Box will Accept a fluid called 'hot Air' And will process it as a new Fluid that
+can be used in the liquid cooler.</p>
+
+<p>A bit of explanation On Calculations of Heat:
+Heat is calculated at a rate of 1% for every 2 ae/t of power usage, For Exaple:</p>
+
+<p>a network of 20 ae/t Will generate 10% heat.</p>
+
+<p>Heat Also increases the power intake, Which in return increases Heat, it might seem like an infinite
+loop, But it only is if you Really overheat your network.</p>
+
+<p>The Formula For the additional power heat takes up is:
+power usage / heat precentage</p>
+
+<p>For example:
+A network with 20 ae/t will generate 10% heat, And in return also generate an Additional
+2 ae/t, So in total you would have
+22ae/t, with 11% heat.
+Now dont forget, here the heat is calculated again.
+So we go back to our 'clean' power usage,
+20 / 11 = which is 1.818...</p>
+
+<p>So we end up with
+23.8 ae/t and 11.9% heat</p>
+
+<p>Now we can do the same calculation again. But we will end up with a change to power that will not
+Really affect the network.</p>
+
+<p>Here is when the heat calculations become not effective on power usage. It will still increase it.
+but a very small amount you will not notice.</p>
+
+<p>Explanation of How coolants Work:
+This gets a bit complex. So i will try and simplify it as much as i can.</p>
+
+<p>There are two types of Machines. Active and Passive.</p>
+
+<p>Active machines will only cool the network if a certain fuel, Or a certain case needs to happen.
+for example, The Liquid Cooler. it will only cool if it is given a fluid to cool with.</p>
+
+<p>More and More. (I am Taking Suggestions freely, as far as its a Solid suggestion and logical i may add it)</p>
+
+<p>As for suggestions and comments about my code and more ideas, visit #AppliedEnergistics @ irc.esper.net which is where
+i usually am when i work on AT.</p>
 
 <p>My hope for release is 1.7 for AE2. no promises at all (non Dev Release - Right now its open beta, See downloads above).</p>
 
@@ -83,6 +137,66 @@ RECEIVING PERMISSION THROUGH ASKING TGAME14 DIRECTLY on irc.esper.net #AppliedEn
 
 <p>IN THE CASE OF AQUIRING PERMISSION, YOU MUST CREDIT WITH A LINK TO THIS WEBPAGE.</p>
 
+<p>a few words about the license:</p>
+
+<p>I can not enforce anyone to follow this license. i do not have any sort of legal power Over you in that regard.
+if you do not follow the license, i will not come down to hunt you. i will though in the case of public modpacks,
+Expect for atleast that. the license is here because I expect the user of this mod to respect my mod and
+follow my rules, which simply imply i have rights over my own work and i may do with it as i wish.</p>
+
+<h1>
+<a name="notice" class="anchor" href="#notice"><span class="octicon octicon-link"></span></a>Notice</h1>
+
+<p>I Seem to be Flamed a lot about this mod, so i want to clarify something.</p>
+
+<p>AT (Applied Thermodynamics) is a Mod that Adds a new Balancing point to AE (Applied Energistics).
+This new balancing point Is meant to Be challanging to the player. it is how I think Hardcore AE should be like.
+If you dont like the idea and the implementation, I understand you completely. But Do not show disrespect of 
+the way i feel and want this mod to be. Dont like it - Dont Play it. But Never just go off Judging it with no
+real facts to back you up. Also dont judge the mod until i announce a version where it is out of Dev. the mod is
+incomplete and Thus not even nearing a fully game Experience, if you dont understand that. Do not Expect me to
+show much respect to you and whatever you are Flaming about. Otherwise if you Feel like some things could Be Added
+Or changed for a better Experience i urge you to tell me, Another thing is that EVERYTHING is Configurable.
+EVEN HEAT ITSELF! you can turn off heat and only enjoy the non heat related features i supply. That ofcourse
+will mean you miss the point of the mod, But if you want that possibility, its there.
+If i missed Something to be configurable. Let me know.</p>
+
+<p>I try to Be as understanding and Explanatory as possible. Show me the respect of being the same way.</p>
+
+<h1>
+<a name="compiling" class="anchor" href="#compiling"><span class="octicon octicon-link"></span></a>Compiling</h1>
+
+<p>First of all, you dont need to compile it yourself, the jenkins link above is always synced to latest Github Commit!
+Look for the big Downloads line above.</p>
+
+<p>Yet if you are still interested in building manually..</p>
+
+<p>1) Clone this github page to a directory.
+2) open a cmd line at the folder and run 'gradlew.bat setupCIWorkspace'.
+3) now open up build.gradle, and Remove line 13 (env = System.getenv()).
+4) also, in build.gradle uncomment lines 68-83 (All of the increment task and the last lines).
+5) replace line 32 with:
+'version = config.mod_version + "." + config.build_number'.
+6) now return to the cmd line and run 'gradlew.bat build'.
+7) Done, Look inside the build/libs for it (The version in both the source and mcmod.info will be the same).</p>
+
+<p>NOTE:
+Every time you build the build number will increment, So keep that in mind.
+Also a deobf version will also be built and put in build/libs Which ofcourse can be used for Dev environments.</p>
+
+<p>Keep in mind, Setting this up this way will not Allow you to edit the code, for that:</p>
+
+<p>1) when you first clone the project, open a cmd line there and run 'gradlew.bat setupDecompWorkspace eclipse'.
+2) Point your setup as Usual. and you should have it all done.
+3) dont forget to Edit the build script if you want to still export the mod correctly.</p>
+
+<p>DONE! this is Everything you need to know with compiling, Its done this way since the buildscript
+in github is meant for a jenkins Server and not personal use. for personal use i do the edits i stated
+above.</p>
+
+<p>I DO NOT SUPPORT SELF COMPILED BUILDS OR UNOFFICIAL BUILDS. if you want my support, Use the builds i supply
+either through jenkins or through the releases supplied Above.</p>
+
 <h1>
 <a name="thank-you" class="anchor" href="#thank-you"><span class="octicon octicon-link"></span></a>Thank You!</h1>
 
@@ -95,11 +209,13 @@ thatsIch
 M3gaFr3ak
 Blarghedy</p>
 
+<p>theMattaBase For Setting up a jenkins for me, Thanks a lot!.</p>
+
 <p>AbrarSyed for Helping me a whole Lot with configuring forge gradle.</p>
 
-<p>Pahimar for making his build script open source for me to Copy parts :)</p>
+<p>Pahimar for making his build script open source for me to learn parts :)</p>
 
-<p>Vswe For his tutorials</p>
+<p>Vswe For his tutorials about Modding, The best ones i have seen so far.</p>
 
 <p>And Mostly, Thanks to you, the player, i hope you enjoy this as much as i did Making it.</p>
       </section>
