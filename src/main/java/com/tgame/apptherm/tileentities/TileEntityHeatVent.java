@@ -51,13 +51,14 @@ public class TileEntityHeatVent extends MultiblockTileEntityBase {
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 1, 3);
 		
 		
 	}
 
 	@Override
 	public void onMachineBroken() {
-		// TODO Auto-generated method stub
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 3);
 		
 	}
 

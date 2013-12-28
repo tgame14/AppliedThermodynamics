@@ -86,9 +86,9 @@ public class BlockInfo {
 
 	public static int VENT_ID;
 	public static final int VENT_DEFAULT = config++;
-	public static final String VENT_KEY = "METhermicHeatVent";
-	public static final String VENT_NAME = "ME Thermic Heat Vent";
-	public static final String VENT_UNLOCALIZED_NAME = "methermicheatvent";
+	public static final String VENT_KEY = "ThermicHeatVent";
+	public static final String VENT_NAME = "Thermic Heat Vent";
+	public static final String VENT_UNLOCALIZED_NAME = "thermicheatvent";
 	public static final String VENT_TE_KEY = "TileEntityThermicVent";
 	public static final String[] VENT_TEXTURES = { "METhermicHeatVent_0",
 			"METhermicHeatVent_5" };

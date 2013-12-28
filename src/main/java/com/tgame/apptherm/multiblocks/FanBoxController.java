@@ -4,6 +4,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockValidationException;
@@ -13,7 +14,7 @@ public class FanBoxController extends MultiblockControllerBase {
 	public FanBoxController(World world) {
 		super(world);
 		
-		System.out.println("new Controller");
+		//System.out.println("new Controller");
 	}
 
 	@Override
@@ -25,43 +26,49 @@ public class FanBoxController extends MultiblockControllerBase {
 
 	@Override
 	protected void onBlockAdded(IMultiblockPart newPart) {
-		System.out.println("block Added");
+		//System.out.println("block Added");
 		
 	}
 
 	@Override
 	protected void onBlockRemoved(IMultiblockPart oldPart) {
-		System.out.println("Block Removed");
+		//System.out.println("Block Removed");
 		
 	}
 	
 	@Override
 	protected boolean isMachineWhole() throws MultiblockValidationException {
+		CoordTriplet min = this.getMinimumCoord();
+		CoordTriplet max = this.getMaximumCoord();
+		
+		if(Math.abs(max.y - min.y) < 2)
+			return false;
+		
 		return super.isMachineWhole();
 		
 	}
 
 	@Override
 	protected void onMachineAssembled() {
-		System.out.println("Assembled");
+		//System.out.println("Assembled");
 		
 	}
 
 	@Override
 	protected void onMachineRestored() {
-		System.out.println("Restored");
+		//System.out.println("Restored");
 		
 	}
 
 	@Override
 	protected void onMachinePaused() {
-		System.out.println("Paused");
+		//System.out.println("Paused");
 		
 	}
 
 	@Override
 	protected void onMachineDisassembled() {
-		System.out.println("Disassembled");
+		//System.out.println("Disassembled");
 		
 	}
 
