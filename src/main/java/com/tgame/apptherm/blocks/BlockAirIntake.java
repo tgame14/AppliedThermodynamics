@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
-import com.tgame.apptherm.util.Refference;
+import com.tgame.apptherm.util.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -42,13 +42,13 @@ public class BlockAirIntake extends BlockContainer {
 	@Override
 	public void registerIcons(IconRegister iconregister) {
 
-		frontIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":"
+		frontIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":"
 				+ BlockInfo.INTAKE_TEXTURE);
-		sideIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":"
+		sideIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":"
 				+ BlockInfo.DEFAULT_TEXTURES[1]);
-		bottomIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":"
+		bottomIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":"
 				+ BlockInfo.DEFAULT_TEXTURES[0]);
-		topIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":"
+		topIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":"
 				+ BlockInfo.DEFAULT_TEXTURES[0]);
 	}
 

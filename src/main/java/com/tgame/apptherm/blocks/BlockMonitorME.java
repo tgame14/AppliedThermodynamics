@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
-import com.tgame.apptherm.util.Refference;
+import com.tgame.apptherm.util.Reference;
 
 import cpw.mods.fml.common.network.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -51,14 +51,14 @@ public class BlockMonitorME extends BlockContainer {
 	@Override
 	public void registerIcons(IconRegister register) {
 
-		frontIconFull = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[1]);
-		frontIconNearFull = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[2]);
-		frontIconNearEmpty = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[3]);
-		frontIconEmpty = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[4]);
+		frontIconFull = register.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[1]);
+		frontIconNearFull = register.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[2]);
+		frontIconNearEmpty = register.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[3]);
+		frontIconEmpty = register.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[4]);
 
-		sideIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURES[1]);
-		bottomIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
-		topIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
+		sideIcon = register.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURES[1]);
+		bottomIcon = register.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
+		topIcon = register.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
 	}
 
 	@SideOnly(Side.CLIENT)

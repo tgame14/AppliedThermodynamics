@@ -60,7 +60,7 @@ public abstract class MultiblockControllerBase {
 	
 	protected MultiblockControllerBase(World world) {
 		// Multiblock stuff
-		worldObj = world;
+		worldObj = world; 
 		connectedBlocks = new HashSet<CoordTriplet>();
 		referenceCoord = null;
 		assemblyState = AssemblyState.Disassembled;

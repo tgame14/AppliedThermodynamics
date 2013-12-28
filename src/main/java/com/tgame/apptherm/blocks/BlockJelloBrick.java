@@ -5,7 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 
 import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.util.Refference;
+import com.tgame.apptherm.util.Reference;
 
 public class BlockJelloBrick extends Block {
 
@@ -21,7 +21,7 @@ public class BlockJelloBrick extends Block {
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
 
-		blockIcon = iconRegister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.JELLO_TEXTURE);
+		blockIcon = iconRegister.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.JELLO_TEXTURE);
 	}
 
 }

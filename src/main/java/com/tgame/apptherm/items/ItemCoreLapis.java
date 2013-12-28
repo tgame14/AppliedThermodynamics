@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
-import com.tgame.apptherm.util.Refference;
+import com.tgame.apptherm.util.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,7 +33,7 @@ public class ItemCoreLapis extends Item {
 	public void registerIcons(IconRegister register) {
 		icons = new Icon[ItemInfo.CORE_ICONS.length];
 		for (int i = 0; i < icons.length; i++) {
-			icons[i] = register.registerIcon(Refference.RESOURCE_LOCATION + ":"
+			icons[i] = register.registerIcon(Reference.RESOURCE_LOCATION + ":"
 					+ ItemInfo.CORE_ICONS[i]);
 		}
 	}

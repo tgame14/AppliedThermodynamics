@@ -12,7 +12,7 @@ import appeng.api.me.tiles.IGridTileEntity;
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.logic.LogicBase;
 import com.tgame.apptherm.network.PacketDistributer;
-import com.tgame.apptherm.util.Refference;
+import com.tgame.apptherm.util.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,7 +30,7 @@ public class ItemHeatRecorder extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
-		this.itemIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":"
+		this.itemIcon = register.registerIcon(Reference.RESOURCE_LOCATION + ":"
 				+ ItemInfo.RECORDER_ICON);
 	}
 
@@ -47,7 +47,7 @@ public class ItemHeatRecorder extends Item {
 				IGridTileEntity gridTile = (IGridTileEntity) te;
 				if (gridTile.getGrid() != null) {
 					LogicBase logic = (LogicBase) gridTile.getGrid()
-							.getCacheByID(Refference.heatCacheID);
+							.getCacheByID(Reference.heatCacheID);
 					heatValue = logic.getFinalHeat();
 					PacketDistributer.sendHeatItemData((byte) 2, heatValue,
 							player, gridTile.getGrid().getPowerUsageAvg());

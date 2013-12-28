@@ -18,7 +18,7 @@ import com.tgame.apptherm.proxies.CommonProxy;
 import com.tgame.apptherm.tileentities.TileEntities;
 import com.tgame.apptherm.util.AppThermTab;
 import com.tgame.apptherm.util.Recipes;
-import com.tgame.apptherm.util.Refference;
+import com.tgame.apptherm.util.Reference;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -31,28 +31,28 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerAboutToStartEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = Refference.ID, name = Refference.NAME, version = Refference.VERSION, dependencies = "required-after:"
-		+ Refference.APPLIED_ENERGISTICS)
-@NetworkMod(channels = { Refference.CHANNEL }, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = false)
+@Mod(modid = Reference.ID, name = Reference.NAME, version = Reference.VERSION, dependencies = "required-after:"
+		+ Reference.APPLIED_ENERGISTICS)
+@NetworkMod(channels = { Reference.CHANNEL }, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = false)
 public class AppTherm {
 
-	@Instance(Refference.ID)
+	@Instance(Reference.ID)
 	public static AppTherm instance;
 
 	@SidedProxy(clientSide = "com.tgame.apptherm.proxies.ProxyClient", serverSide = "com.tgame.apptherm.proxies.CommonProxy")
 	public static CommonProxy proxy;
 
 	public static final CreativeTabs AppThermTab = new AppThermTab(
-			CreativeTabs.getNextID(), Refference.NAME);
+			CreativeTabs.getNextID(), Reference.NAME);
 
 	// the FML Logger field, Used for debug / Console output to mimic the fml
 	// and minecraft one
-	public static final Logger log = Logger.getLogger(Refference.NAME);
+	public static final Logger log = Logger.getLogger(Reference.NAME);
 
 	// Instantiates a new mod Singleton, Registers the Logger to inherit fml
 	// logger props
 	public AppTherm() {
-		log.setParent(FMLCommonHandler.instance().getFMLLogger());
+		this.log.setParent(FMLCommonHandler.instance().getFMLLogger());
 
 	}
 
@@ -62,32 +62,49 @@ public class AppTherm {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		this.log.fine("Starting to Load Configs");
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 
+		this.log.fine("Loading Fluids");
 		Fluids.init();
+		this.log.fine("Loading Items");
 		Items.init();
+		this.log.fine("Loading Blocks");
 		Blocks.init();
-		TileEntities.init();
 
+		this.log.fine("Loading Sounds");
 		proxy.initSounds();
+		this.log.fine("Loading Renderers");
 		proxy.initRenderers();
 
+		this.log.fine("Registering Event Bus");
 		EventBusListener.init();
+		
+		this.log.fine("preinit for AT Over");
 	}
 
 	@EventHandler
-	public void load(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event) {
 
+		this.log.fine("Adding localized Names for Items And Blocks");
 		Items.addNames();
 		Blocks.addNames();
 		
+		this.log.fine("Initializing TileEntities");
+		TileEntities.init();
+		this.log.fine("Initializing Recipes");
 		Recipes.init();
 
+		this.log.fine("Initializing Enties");
 		Entities.init();
+		this.log.fine("Initializing");
 		new GuiHandler();
-
-		Refference.heatCacheID = Util.getAppEngApi().getGridCacheRegistry()
+		
+		this.log.fine("Registering IGridCache For ae, (the handler of heat)");
+		Reference.heatCacheID = Util.getAppEngApi().getGridCacheRegistry()
 				.registerGridCache(LogicBase.class);
+		
+		this.log.fine("Finished Loading init");
 
 	}
 
@@ -98,7 +115,7 @@ public class AppTherm {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		log.info(Refference.NAME + " Has Loaded Without Crashing!");
+		this.log.info(Reference.NAME + " Has Loaded Without Crashing!");
 
 	}
 

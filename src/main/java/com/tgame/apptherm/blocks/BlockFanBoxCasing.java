@@ -8,7 +8,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.util.Refference;
+import com.tgame.apptherm.util.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,10 +30,10 @@ public class BlockFanBoxCasing extends BlockContainer {
 
 	@Override
 	public void registerIcons(IconRegister register) {
-		this.blockIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":"
+		this.blockIcon = register.registerIcon(Reference.RESOURCE_LOCATION + ":"
 				+ BlockInfo.FANBOX_TEXTURES[0]);
 		this.blockBorderlessIcon = register
-				.registerIcon(Refference.RESOURCE_LOCATION + ":"
+				.registerIcon(Reference.RESOURCE_LOCATION + ":"
 						+ BlockInfo.FANBOX_TEXTURES[1]);
 	}
 	

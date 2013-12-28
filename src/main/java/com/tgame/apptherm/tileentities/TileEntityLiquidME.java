@@ -132,22 +132,22 @@ public class TileEntityLiquidME extends TileEntity implements IGridTileEntity {
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
+	public void writeToNBT(NBTTagCompound tag) {
+		super.writeToNBT(tag);
 
-		compound.setShort("spreadTimer", (short) spreadTimer);
-		compound.setInteger("solidTimer", solidTimer);
-		compound.setBoolean("isTicked", ticked);
+		tag.setShort("spreadTimer", (short) spreadTimer);
+		tag.setInteger("solidTimer", solidTimer);
+		tag.setBoolean("isTicked", ticked);
 
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
+	public void readFromNBT(NBTTagCompound tag) {
+		super.readFromNBT(tag);
 
-		spreadTimer = compound.getShort("spreadTimer");
-		solidTimer = compound.getInteger("solidTimer");
-		ticked = compound.getBoolean("isTicked");
+		spreadTimer = tag.getShort("spreadTimer");
+		solidTimer = tag.getInteger("solidTimer");
+		ticked = tag.getBoolean("isTicked");
 
 	}
 

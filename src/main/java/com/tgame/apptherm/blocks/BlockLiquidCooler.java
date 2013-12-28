@@ -17,7 +17,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
-import com.tgame.apptherm.util.Refference;
+import com.tgame.apptherm.util.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -46,10 +46,10 @@ public class BlockLiquidCooler extends BlockContainer {
 	@Override
 	public void registerIcons(IconRegister iconregister) {
 
-		frontIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.LIQUICOOL_TEXUTRES[0]);
-		sideIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[1]);
-		bottomIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
-		topIcon = iconregister.registerIcon(Refference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
+		frontIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.LIQUICOOL_TEXUTRES[0]);
+		sideIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[1]);
+		bottomIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
+		topIcon = iconregister.registerIcon(Reference.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
 	}
 
 	@SideOnly(Side.CLIENT)

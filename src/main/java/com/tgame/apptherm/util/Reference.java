@@ -1,6 +1,6 @@
 package com.tgame.apptherm.util;
 
-public class Refference {
+public class Reference {
 
 	public static final String ID = "AppliedThermodynamics";
 	public static final String NAME = "Applied Thermodynamics";

@@ -57,14 +57,8 @@ public class TestMod {
 	@EventHandler
 	public void load(FMLInitializationEvent evt) {
 		proxy.init();
-		register();
-	}
-	
-	private void register() {
-		if(!INITIALIZED) {
-			// Register other stuff here
-		}
-		INITIALIZED = true;
+		
+		
 	}
 
 	@EventHandler

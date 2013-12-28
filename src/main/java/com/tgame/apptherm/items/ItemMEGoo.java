@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 
 import com.tgame.apptherm.AppTherm;
-import com.tgame.apptherm.util.Refference;
+import com.tgame.apptherm.util.Reference;
 
 public class ItemMEGoo extends Item {
 
@@ -17,7 +17,7 @@ public class ItemMEGoo extends Item {
 	
 	@Override
 	public void registerIcons(IconRegister register) {
-		itemIcon = register.registerIcon(Refference.RESOURCE_LOCATION + ":" + ItemInfo.GOO_ICON);
+		itemIcon = register.registerIcon(Reference.RESOURCE_LOCATION + ":" + ItemInfo.GOO_ICON);
 		
 	}
 	
