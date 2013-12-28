@@ -8,6 +8,7 @@ import appeng.api.me.tiles.ICellContainer;
 import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.util.IGridInterface;
 
+import com.tgame.apptherm.tileentities.AEActiveCoolants;
 import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
 
 /**
@@ -75,11 +76,11 @@ public class LogicCalc {
 
 	}
 	
-	protected int calcAmountOfLiquiCoolants() {
+	protected int calcAmountOfActiveCoolants(Class clazz) {
 		int count = 0;
 		
 		Object tile = null;
-		TileEntityLiquidCooler telc;
+		AEActiveCoolants telc;
 		
 		for(int i = 0; i < machineList.size(); i++) {
 			try {
@@ -89,8 +90,8 @@ public class LogicCalc {
 				e.printStackTrace();
 			}
 			
-			if(tile instanceof TileEntityLiquidCooler) {
-				telc = (TileEntityLiquidCooler) tile;
+			if(clazz.isInstance(tile)) {
+				telc = (AEActiveCoolants) tile;
 				
 				if(telc.getIsActive())
 					count++;

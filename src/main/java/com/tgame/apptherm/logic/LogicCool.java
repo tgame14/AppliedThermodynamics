@@ -33,10 +33,6 @@ public class LogicCool {
 	/** The instance of LogicCalc from LogicBase. */
 	private LogicCalc calc;
 
-	private TileEntityLiquidCooler TileLiquidCooler;
-
-	private TileEntitySimpleFan TileAirIntake;
-
 	/**
 	 * Instantiates a new logic cool.
 	 * 
@@ -47,11 +43,12 @@ public class LogicCool {
 	 *            calculation methods.
 	 */
 	protected LogicCool(IGridInterface gi, LogicCalc logicCalc) {
-		grid = gi;
-		calc = logicCalc;
-
-		TileLiquidCooler = new TileEntityLiquidCooler();
-		TileAirIntake = new TileEntitySimpleFan();
+		this.grid = gi;
+		this.calc = logicCalc;
+		
+		this.coolingValue = 0;
+		this.intakeCount = 0;
+		this.liquiCount = 0;
 
 	}
 
@@ -61,11 +58,11 @@ public class LogicCool {
 	 */
 	protected void refreshCoolants() {
 		refreshLiquiCount();
-		intakeCount = calc.calcAmountOfTiles(TileAirIntake.getClass());
+		intakeCount = calc.calcAmountOfTiles(TileEntitySimpleFan.class);
 	}
 	
 	public void refreshLiquiCount() {
-		liquiCount = calc.calcAmountOfLiquiCoolants();
+		liquiCount = calc.calcAmountOfActiveCoolants(TileEntityLiquidCooler.class);
 	}
 
 	/**
@@ -84,19 +81,19 @@ public class LogicCool {
 		if (activeCoolants < 1) {
 			return 0;
 		}
-		float firstValue = calc.calcRawHeat() * firstDeminish;
+		float firstValue = firstDeminish;
 
-		double totalCoolant = (firstValue * (1 - Math.pow(decrPercent, activeCoolants))) / (1 - decrPercent);
+		double totalCoolant = (firstValue * (1 - Math.pow(decrPercent, activeCoolants + 1))) / (1 - decrPercent);
 
 		return totalCoolant;
 
 	}
 
 	protected double calcTotalCoolant() {
-		double intakeCoolant = calcCoolantValue(intakeCount, 0.6F, 0.05F);
+		double intakeCoolant = calcCoolantValue(intakeCount, 0.5F, 0.05F);
 		double liquidCoolant = calcCoolantValue(liquiCount, 0.9F, 0.1F);
 
-		coolingValue = intakeCoolant + liquidCoolant;
+		this.coolingValue = intakeCoolant + liquidCoolant;
 		return coolingValue;
 
 	}

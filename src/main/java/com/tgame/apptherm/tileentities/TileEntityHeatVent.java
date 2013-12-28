@@ -1,10 +1,13 @@
 package com.tgame.apptherm.tileentities;
 
+import appeng.api.me.tiles.IGridTileEntity;
+import appeng.api.me.tiles.ITileCable;
+
 import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.lib.multiblocks.multiblock.MultiblockTileEntityBase;
 import com.tgame.apptherm.multiblocks.FanBoxController;
 
-public class TileEntityHeatVent extends MultiblockTileEntityBase {
+public class TileEntityHeatVent extends MultiblockTileEntityBase implements IGridTileEntity {
 	
 	public TileEntityHeatVent() {
 		
