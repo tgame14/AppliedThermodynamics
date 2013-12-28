@@ -3,6 +3,7 @@ package com.tgame.apptherm.tileentities;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
@@ -28,6 +29,7 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 			this.drain(ForgeDirection.UNKNOWN, this.drainValue, true);
 			this.timer = 21;
 			
+			
 		}
 		this.timer--;
 		
@@ -36,6 +38,9 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
 		String attemptFluidName = resource.getFluid().getName();
+		
+		if(resource.isFluidEqual(this.tank.getFluid()))
+			return this.tank.fill(resource, doFill);
 
 		for (CoolingFluids dir : CoolingFluids.VALID_FLUIDS)
 			if (dir.fluidName.equalsIgnoreCase(attemptFluidName)) {
@@ -59,7 +64,7 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
-		if (this.tank.getFluidAmount() == maxDrain)
+		if (this.tank.getFluidAmount() <= maxDrain)
 			this.setIsActive(false);
 
 		return this.tank.drain(maxDrain, doDrain);

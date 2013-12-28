@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockExhaustME extends BlockContainer {
 
 	protected BlockExhaustME(int id) {
-		super(id, Material.piston);
+		super(id, Material.iron);
 
 		setHardness(2.0F);
 		setCreativeTab(AppTherm.AppThermTab);

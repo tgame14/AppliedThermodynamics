@@ -11,7 +11,7 @@ import com.tgame.apptherm.tileentities.TileEntityEater;
 public class BlockEnergyEater extends BlockContainer {
 	
 	protected BlockEnergyEater(int id) {
-		super(id, Material.rock);
+		super(id, Material.iron);
 		
 		this.setCreativeTab(AppTherm.AppThermTab);
 		this.setHardness(2.0F);

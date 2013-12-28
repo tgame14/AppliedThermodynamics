@@ -25,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockLiquidCooler extends BlockContainer {
 
 	protected BlockLiquidCooler(int id) {
-		super(id, Material.rock);
+		super(id, Material.iron);
 
 		setHardness(2.0F);
 		setCreativeTab(AppTherm.AppThermTab);
