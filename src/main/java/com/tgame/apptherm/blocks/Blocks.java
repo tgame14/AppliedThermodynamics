@@ -3,6 +3,7 @@ package com.tgame.apptherm.blocks;
 import net.minecraft.block.Block;
 
 import com.tgame.apptherm.blocks.fanbox.BlockFanBoxCasing;
+import com.tgame.apptherm.blocks.fanbox.BlockFluidPort;
 import com.tgame.apptherm.blocks.fanbox.BlockHeatVent;
 import com.tgame.apptherm.blocks.fanbox.BlockMEPort;
 import com.tgame.apptherm.blocks.networked.BlockAirIntake;
@@ -30,6 +31,7 @@ public class Blocks {
 	public static Block fanBox;
 	public static Block vent;
 	public static Block mePort;
+	public static Block fluidPort;
 
 	public static void init() {
 		
@@ -67,6 +69,9 @@ public class Blocks {
 		
 		mePort = new BlockMEPort(BlockInfo.MEPORT_ID);
 		GameRegistry.registerBlock(mePort, BlockInfo.MEPORT_KEY);
+		
+		fluidPort = new BlockFluidPort(BlockInfo.FLUIDPORT_ID);
+		GameRegistry.registerBlock(fluidPort, BlockInfo.FLUIDPORT_KEY);
 
 	}
 
@@ -85,6 +90,7 @@ public class Blocks {
 		LanguageRegistry.addName(fanBox, BlockInfo.FANBOX_NAME);
 		LanguageRegistry.addName(vent, BlockInfo.VENT_NAME);
 		LanguageRegistry.addName(mePort, BlockInfo.MEPORT_NAME);
+		LanguageRegistry.addName(fluidPort, BlockInfo.FLUIDPORT_NAME);
 		
 	}
 

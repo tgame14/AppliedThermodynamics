@@ -100,5 +100,13 @@ public class BlockInfo {
 	public static final String MEPORT_UNLOCALIZED_NAME = "meport";
 	public static final String MEPORT_TE_KEY = "TileEntityMEPort";
 	public static final String MEPORT_TEXTURE = "MEPort";
+	
+	public static int FLUIDPORT_ID;
+	public static final int FLUIDPORT_DEFAULT = config++;
+	public static final String FLUIDPORT_KEY = "fluidport";
+	public static final String FLUIDPORT_NAME = "Fan Box Fluid Port";
+	public static final String FLUIDPORT_UNLOCALIZED_NAME = "fanboxfluidport";
+	public static final String FLUIDPORT_TE_KEY = "TileEntityFluidPort";
+	public static final String FLUIDPORT_TEXTURE = "FluidPort";
 
 }

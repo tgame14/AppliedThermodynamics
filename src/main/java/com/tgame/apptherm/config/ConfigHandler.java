@@ -48,6 +48,8 @@ public class ConfigHandler {
 				BlockInfo.VENT_DEFAULT).getInt();
 		BlockInfo.MEPORT_ID = config.getBlock(BlockInfo.MEPORT_KEY,
 				BlockInfo.MEPORT_DEFAULT).getInt();
+		BlockInfo.FLUIDPORT_ID = config.getBlock(BlockInfo.FLUIDPORT_KEY,
+				BlockInfo.FLUIDPORT_DEFAULT).getInt();
 
 		// Config Registry for Disabling and Enabling Feature (booleans).
 
