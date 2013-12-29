@@ -1,4 +1,4 @@
-package com.tgame.apptherm.blocks;
+package com.tgame.apptherm.blocks.networked;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -15,6 +15,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
 import com.tgame.apptherm.util.ModInfo;
 
@@ -24,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMonitorME extends BlockContainer {
 
-	protected BlockMonitorME(int id) {
+	public BlockMonitorME(int id) {
 		super(id, Material.rock);
 
 		setHardness(2F);

@@ -6,7 +6,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.ForgeDirection;
 
-import com.tgame.apptherm.blocks.BlockMonitorME;
+import com.tgame.apptherm.blocks.networked.BlockMonitorME;
 import com.tgame.apptherm.logic.LogicBase;
 import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
 import com.tgame.apptherm.util.ModInfo;

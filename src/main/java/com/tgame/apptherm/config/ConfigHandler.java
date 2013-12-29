@@ -46,6 +46,8 @@ public class ConfigHandler {
 				BlockInfo.FANBOX_DEFAULT).getInt();
 		BlockInfo.VENT_ID = config.getBlock(BlockInfo.VENT_KEY,
 				BlockInfo.VENT_DEFAULT).getInt();
+		BlockInfo.MEPORT_ID = config.getBlock(BlockInfo.MEPORT_KEY,
+				BlockInfo.MEPORT_DEFAULT).getInt();
 
 		// Config Registry for Disabling and Enabling Feature (booleans).
 

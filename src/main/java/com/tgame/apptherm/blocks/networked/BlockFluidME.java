@@ -1,4 +1,4 @@
-package com.tgame.apptherm.blocks;
+package com.tgame.apptherm.blocks.networked;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.MapColor;
@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.fluids.Fluids;
 import com.tgame.apptherm.tileentities.TileEntityLiquidME;
 import com.tgame.apptherm.util.ModInfo;
@@ -29,7 +30,7 @@ public class BlockFluidME extends BlockFluidClassic implements
 	@SideOnly(Side.CLIENT)
 	protected Icon flowingIcon;
 
-	protected BlockFluidME(int id) {
+	public BlockFluidME(int id) {
 		super(id, Fluids.fluidME, new MaterialLiquid(MapColor.waterColor));
 
 		setCreativeTab(AppTherm.AppThermTab);

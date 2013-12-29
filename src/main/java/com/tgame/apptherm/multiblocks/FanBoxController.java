@@ -1,20 +1,41 @@
 package com.tgame.apptherm.multiblocks;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockValidationException;
+import com.tgame.apptherm.tileentities.TileEntityHeatVent;
+import com.tgame.apptherm.tileentities.TileEntityMEPort;
 
 public class FanBoxController extends MultiblockControllerBase {
+	
+	public Set<Class> requiredTiles;
 
 	public FanBoxController(World world) {
 		super(world);
 		
-		//System.out.println("new Controller");
+		requiredTiles = fillSet();
+	}
+	/** Over here Add all tile Classes that are REQUIRED for your multiblock to work
+	 * 
+	 * 
+	 * @return a HashSet<Class> with all required tiles.
+	 * 
+	 * @author tgame14
+	 */
+	private HashSet<Class> fillSet() {
+		HashSet<Class> hashSet = new HashSet<Class>();
+		
+		hashSet.add(TileEntityMEPort.class);		
+		
+		return hashSet;
 	}
 
 	@Override
@@ -44,8 +65,34 @@ public class FanBoxController extends MultiblockControllerBase {
 		if(Math.abs(max.y - min.y) < 2)
 			return false;
 		
-		return super.isMachineWhole();
+		for(Class clazz : this.requiredTiles) {
+			boolean flag = false;
+			
+			for(CoordTriplet coord : connectedBlocks) {
+				TileEntity tile = worldObj.getBlockTileEntity(coord.x, coord.y, coord.z);
+				
+				if(clazz.isInstance(tile))
+					flag = true;
+			}
+			if(!flag)
+				return false;
+		}
+			
 		
+		
+		return super.isMachineWhole();	
+	}
+	
+	private boolean containsTile(Class clazz) {
+		for(CoordTriplet coord : connectedBlocks) {
+			TileEntity tile = worldObj.getBlockTileEntity(coord.x, coord.y, coord.z);
+			if (clazz.isInstance(tile))
+				return true;
+		}
+		
+		
+		
+		return false;
 	}
 
 	@Override

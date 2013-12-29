@@ -1,4 +1,4 @@
-package com.tgame.apptherm.blocks;
+package com.tgame.apptherm.blocks.networked;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -10,7 +10,7 @@ import com.tgame.apptherm.tileentities.TileEntityEater;
 
 public class BlockEnergyEater extends BlockContainer {
 	
-	protected BlockEnergyEater(int id) {
+	public BlockEnergyEater(int id) {
 		super(id, Material.iron);
 		
 		this.setCreativeTab(AppTherm.AppThermTab);

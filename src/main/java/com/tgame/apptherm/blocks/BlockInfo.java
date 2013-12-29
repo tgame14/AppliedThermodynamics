@@ -92,5 +92,13 @@ public class BlockInfo {
 	public static final String VENT_TE_KEY = "TileEntityThermicVent";
 	public static final String[] VENT_TEXTURES = { "METhermicHeatVent_0",
 			"METhermicHeatVent_5" };
+	
+	public static int MEPORT_ID;
+	public static final int MEPORT_DEFAULT = config++;
+	public static final String MEPORT_KEY = "MEPort";
+	public static final String MEPORT_NAME = "ME Fan Box Port";
+	public static final String MEPORT_UNLOCALIZED_NAME = "meport";
+	public static final String MEPORT_TE_KEY = "TileEntityMEPort";
+	public static final String MEPORT_TEXTURE = "MEPort";
 
 }

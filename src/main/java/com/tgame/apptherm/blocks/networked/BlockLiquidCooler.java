@@ -1,4 +1,4 @@
-package com.tgame.apptherm.blocks;
+package com.tgame.apptherm.blocks.networked;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -16,6 +16,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
 import com.tgame.apptherm.util.ModInfo;
 
@@ -24,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockLiquidCooler extends BlockContainer {
 
-	protected BlockLiquidCooler(int id) {
+	public BlockLiquidCooler(int id) {
 		super(id, Material.iron);
 
 		setHardness(2.0F);

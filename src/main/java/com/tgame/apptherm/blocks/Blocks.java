@@ -2,6 +2,16 @@ package com.tgame.apptherm.blocks;
 
 import net.minecraft.block.Block;
 
+import com.tgame.apptherm.blocks.fanbox.BlockFanBoxCasing;
+import com.tgame.apptherm.blocks.fanbox.BlockHeatVent;
+import com.tgame.apptherm.blocks.fanbox.BlockMEPort;
+import com.tgame.apptherm.blocks.networked.BlockAirIntake;
+import com.tgame.apptherm.blocks.networked.BlockEAS;
+import com.tgame.apptherm.blocks.networked.BlockEnergyEater;
+import com.tgame.apptherm.blocks.networked.BlockExhaustME;
+import com.tgame.apptherm.blocks.networked.BlockFluidME;
+import com.tgame.apptherm.blocks.networked.BlockLiquidCooler;
+import com.tgame.apptherm.blocks.networked.BlockMonitorME;
 import com.tgame.apptherm.config.ConfigInfo;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -19,6 +29,7 @@ public class Blocks {
 	public static Block Eater;
 	public static Block fanBox;
 	public static Block vent;
+	public static Block mePort;
 
 	public static void init() {
 		
@@ -53,6 +64,9 @@ public class Blocks {
 		
 		vent = new BlockHeatVent(BlockInfo.VENT_ID);
 		GameRegistry.registerBlock(vent, BlockInfo.VENT_KEY);
+		
+		mePort = new BlockMEPort(BlockInfo.MEPORT_ID);
+		GameRegistry.registerBlock(mePort, BlockInfo.MEPORT_KEY);
 
 	}
 
@@ -70,6 +84,7 @@ public class Blocks {
 		LanguageRegistry.addName(Eater, BlockInfo.EATER_NAME);
 		LanguageRegistry.addName(fanBox, BlockInfo.FANBOX_NAME);
 		LanguageRegistry.addName(vent, BlockInfo.VENT_NAME);
+		LanguageRegistry.addName(mePort, BlockInfo.MEPORT_NAME);
 		
 	}
 

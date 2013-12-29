@@ -1,4 +1,4 @@
-package com.tgame.apptherm.blocks;
+package com.tgame.apptherm.blocks.fanbox;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -8,6 +8,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.TileEntityFanBoxCasing;
 import com.tgame.apptherm.util.ModInfo;
 
@@ -15,7 +16,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFanBoxCasing extends BlockContainer {
-	protected BlockFanBoxCasing(int id) {
+	public BlockFanBoxCasing(int id) {
 		super(id, Material.iron);
 
 		this.setHardness(2.0F);
@@ -47,11 +48,6 @@ public class BlockFanBoxCasing extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return null;
-	}
-	
-	@Override
-	public TileEntity createTileEntity(World world, int metadata) {
 		return new TileEntityFanBoxCasing();
 	}
 

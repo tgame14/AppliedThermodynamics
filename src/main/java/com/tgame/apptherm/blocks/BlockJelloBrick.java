@@ -9,7 +9,7 @@ import com.tgame.apptherm.util.ModInfo;
 
 public class BlockJelloBrick extends Block {
 
-	protected BlockJelloBrick(int id) {
+	public BlockJelloBrick(int id) {
 		super(id, Material.rock);
 		setHardness(2F);
 		setCreativeTab(AppTherm.AppThermTab);
