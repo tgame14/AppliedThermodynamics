@@ -26,13 +26,13 @@ public class FanBoxController extends MultiblockControllerBase {
 
 	@Override
 	protected void onBlockAdded(IMultiblockPart newPart) {
-		//System.out.println("block Added");
+		System.out.println("block Added");
 		
 	}
 
 	@Override
 	protected void onBlockRemoved(IMultiblockPart oldPart) {
-		//System.out.println("Block Removed");
+		System.out.println("Block Removed");
 		
 	}
 	
@@ -50,25 +50,25 @@ public class FanBoxController extends MultiblockControllerBase {
 
 	@Override
 	protected void onMachineAssembled() {
-		//System.out.println("Assembled");
+		System.out.println("Assembled");
 		
 	}
 
 	@Override
 	protected void onMachineRestored() {
-		//System.out.println("Restored");
+		System.out.println("Restored");
 		
 	}
 
 	@Override
 	protected void onMachinePaused() {
-		//System.out.println("Paused");
+		System.out.println("Paused");
 		
 	}
 
 	@Override
 	protected void onMachineDisassembled() {
-		//System.out.println("Disassembled");
+		System.out.println("Disassembled");
 		
 	}
 

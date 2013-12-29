@@ -18,22 +18,24 @@ public class BlockHeatVent extends BlockContainer {
 
 	protected BlockHeatVent(int id) {
 		super(id, Material.iron);
-		
+
 		this.setHardness(2.2F);
 		this.setUnlocalizedName(BlockInfo.VENT_UNLOCALIZED_NAME);
 		this.setCreativeTab(AppTherm.AppThermTab);
-		
+
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	private Icon multiblockIcon;
-	
+
 	@Override
 	public void registerIcons(IconRegister register) {
-		this.blockIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.VENT_TEXTURES[0]);
-		this.multiblockIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.VENT_TEXTURES[1]);
+		this.blockIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+				+ BlockInfo.VENT_TEXTURES[0]);
+		this.multiblockIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION
+				+ ":" + BlockInfo.VENT_TEXTURES[1]);
 	}
-	
+
 	@Override
 	public Icon getIcon(int side, int meta) {
 		if (meta != 0)
@@ -46,13 +48,11 @@ public class BlockHeatVent extends BlockContainer {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public TileEntity createTileEntity(World world, int metadata) {
 		return new TileEntityHeatVent();
-		
+
 	}
-	
-	
 
 }

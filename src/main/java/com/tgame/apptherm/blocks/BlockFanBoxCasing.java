@@ -8,6 +8,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.tileentities.TileEntityFanBoxCasing;
 import com.tgame.apptherm.util.ModInfo;
 
 import cpw.mods.fml.relauncher.Side;
@@ -22,7 +23,7 @@ public class BlockFanBoxCasing extends BlockContainer {
 		this.setStepSound(soundMetalFootstep);
 		this.setUnlocalizedName(BlockInfo.FANBOX_UNLOCALIZED_NAME);
 		this.setCreativeTab(AppTherm.AppThermTab);
-		
+
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -36,16 +37,22 @@ public class BlockFanBoxCasing extends BlockContainer {
 				.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 						+ BlockInfo.FANBOX_TEXTURES[1]);
 	}
-	
+
 	@Override
 	public Icon getIcon(int side, int meta) {
-		return super.getIcon(side, meta);
-		
+		if (meta != 0)
+			return this.blockBorderlessIcon;
+		return this.blockIcon;
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return null;
+	}
+	
+	@Override
+	public TileEntity createTileEntity(World world, int metadata) {
+		return new TileEntityFanBoxCasing();
 	}
 
 }

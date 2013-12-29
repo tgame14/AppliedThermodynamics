@@ -5,10 +5,15 @@ import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockTileEntityBase;
 import com.tgame.apptherm.multiblocks.FanBoxController;
 
 public class TileEntityFanBoxCasing extends MultiblockTileEntityBase {
+	
+	public TileEntityFanBoxCasing() {
+		super();
+	}
 
 	@Override
 	public Class<? extends MultiblockControllerBase> getMultiblockControllerType() {
 		return FanBoxController.class;
+		
 	}
 
 	@Override
@@ -32,37 +37,38 @@ public class TileEntityFanBoxCasing extends MultiblockTileEntityBase {
 	}
 
 	@Override
-	public boolean isGoodForInterior() {
+	public boolean isGoodForInterior() {	
 		return false;
 	}
 
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
-
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 1, 3);
+		
+		
 	}
 
 	@Override
 	public void onMachineBroken() {
-		// TODO Auto-generated method stub
-
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 3);
+		
 	}
 
 	@Override
 	public void onMachineActivated() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void onMachineDeactivated() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public MultiblockControllerBase createNewMultiblock() {
 		return new FanBoxController(this.worldObj);
 	}
-
 }

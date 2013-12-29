@@ -13,7 +13,7 @@ import com.tgame.apptherm.multiblocks.FanBoxController;
 public class TileEntityHeatVent extends MultiblockTileEntityBase {
 	
 	public TileEntityHeatVent() {
-		
+		super();
 	}
 
 	@Override
@@ -24,8 +24,7 @@ public class TileEntityHeatVent extends MultiblockTileEntityBase {
 
 	@Override
 	public boolean isGoodForFrame() {
-		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
