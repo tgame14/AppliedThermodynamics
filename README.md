@@ -2,7 +2,9 @@ Applied Thermodynamics
 ==================
 This is the Current Website (and github) for the Upcoming mod, Applied Thermodynamics.
 
-Currently the mod is IN OPEN BETA!
+Currently the mod is IN OPEN ALPHA!
+
+That means it is availdable for download, But is not feature complete nor is it fully Stable.
 
 Quick notice, Issue reports either go on the issue tracker here on github, Or Directly to me by
 talking to me on #AppliedEnergistics @ irc.esper.net
