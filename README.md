@@ -130,11 +130,17 @@ Thank You!
 This mod would have been far harder without the help of a few Notable resources,
 
 The Channel #AppliedEnergistics @ irc.esper.net For Great Ideas and help with technical issues Especially :
+
 raydeejay
+
 AlgorithmX2
+
 thatsIch
+
 M3gaFr3ak
+
 Blarghedy
+
 
 theMattaBase For Setting up a jenkins for me, Thanks a lot!.
 
@@ -143,5 +149,7 @@ AbrarSyed for Helping me a whole Lot with configuring forge gradle.
 Pahimar for making his build script open source for me to learn parts :)
 
 Vswe For his tutorials about Modding, The best ones i have seen so far.
+
+Eregonous Beef for his multiblock library i have used.
 
 And Mostly, Thanks to you, the player, i hope you enjoy this as much as i did Making it.
