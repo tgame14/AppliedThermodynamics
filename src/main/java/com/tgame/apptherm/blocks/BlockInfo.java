@@ -8,6 +8,12 @@ public class BlockInfo {
 
 	public static String[] DEFAULT_TEXTURES = { "exhaustBot", "exhaustSide" };
 
+	private static String[] liquidMeTextures = { "LiquidMEStill",
+			"LiquidMEFlowing" };
+	public static BlockInfoObj LiquidMe = new BlockInfoObj(config++,
+			"LiquidME", "Liquid ME", "liquidme", "TileEntityLiquidME",
+			liquidMeTextures);
+
 	public static int LIQUID_ME_ID;
 	public static final int LIQUID_ME_DEFAULT = config++;
 	public static final String LIQUID_ME_KEY = "LiquidME";
@@ -92,7 +98,7 @@ public class BlockInfo {
 	public static final String VENT_TE_KEY = "TileEntityThermicVent";
 	public static final String[] VENT_TEXTURES = { "METhermicHeatVent_0",
 			"METhermicHeatVent_5" };
-	
+
 	public static int MEPORT_ID;
 	public static final int MEPORT_DEFAULT = config++;
 	public static final String MEPORT_KEY = "MEPort";
@@ -100,7 +106,7 @@ public class BlockInfo {
 	public static final String MEPORT_UNLOCALIZED_NAME = "meport";
 	public static final String MEPORT_TE_KEY = "TileEntityMEPort";
 	public static final String MEPORT_TEXTURE = "MEPort";
-	
+
 	public static int FLUIDPORT_ID;
 	public static final int FLUIDPORT_DEFAULT = config++;
 	public static final String FLUIDPORT_KEY = "fluidport";
