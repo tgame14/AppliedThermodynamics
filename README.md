@@ -7,21 +7,30 @@ Currently the mod is IN OPEN ALPHA!
 That means it is availdable for download, But is not feature complete nor is it fully Stable.
 
 Quick notice, Issue reports either go on the issue tracker here on github, Or Directly to me by
-talking to me on #AppliedEnergistics @ irc.esper.net
+talking to me on #AppliedThermodynamics @ irc.esper.net
+
+If i am not connected, Write this:
+
+/memoserv SEND tgame14 blabalbalblala
 
 Modpacks: Read the license. But in short, you need my written permission for any kind of modpacks
-other than private ones (Where they are only distributed between a closed and small Community) that ofcourse it ok.
+other than private ones (Where they are only distributed between a closed and small Community) that ofcourse is ok.
 
 The one Exception for private modpacks is if you use AsieLauncher. Anyone using that on your server. You need to ask
-For my permission. Doing otherwise will mean you are breaking the license.
+For my permission. Doing otherwise will mean you are breaking the license!
 
 
 Downloads!
 ==================
+For More Official Releases:
+
+Using the official Releases right now is outdated, I recommend if you do want to try it out, use the jenkins build
+
 https://github.com/tgame14/AppliedThermodynamics/releases
 
 For the Latest Dev Builds (thanks themattabase!) :
 (click the button)
+
 [![Build Status](http://themattabase.com:9090/buildStatus/icon?job=Applied Thermodynamics)](http://themattabase.com:9090/job/Applied%20Thermodynamics/)
 
 USE WITH CARE. I AM NOT RESPONSIBLE FOR ANY KIND OF DAMAGE DONE.
@@ -142,6 +151,8 @@ thatsIch
 M3gaFr3ak
 
 Blarghedy
+
+EVERYONE Who Tests My mod!
 
 
 theMattaBase For Setting up a jenkins for me, Thanks a lot!.
