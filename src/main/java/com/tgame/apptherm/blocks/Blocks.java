@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import com.tgame.apptherm.blocks.fanbox.BlockFanBoxCasing;
 import com.tgame.apptherm.blocks.fanbox.BlockFluidPort;
 import com.tgame.apptherm.blocks.fanbox.BlockHeatVent;
+import com.tgame.apptherm.blocks.fanbox.BlockInternalTank;
 import com.tgame.apptherm.blocks.fanbox.BlockMEPort;
 import com.tgame.apptherm.blocks.networked.BlockAirIntake;
 import com.tgame.apptherm.blocks.networked.BlockEAS;
@@ -32,6 +33,7 @@ public class Blocks {
 	public static Block vent;
 	public static Block mePort;
 	public static Block fluidPort;
+	public static Block internalTank;
 
 	public static void init() {
 		
@@ -72,6 +74,9 @@ public class Blocks {
 		
 		fluidPort = new BlockFluidPort(BlockInfo.FLUIDPORT_ID);
 		GameRegistry.registerBlock(fluidPort, BlockInfo.FLUIDPORT_KEY);
+		
+		internalTank = new BlockInternalTank(BlockInfo.INTTANK_ID);
+		GameRegistry.registerBlock(internalTank, BlockInfo.INTTANK_KEY);
 
 	}
 
@@ -91,6 +96,7 @@ public class Blocks {
 		LanguageRegistry.addName(vent, BlockInfo.VENT_NAME);
 		LanguageRegistry.addName(mePort, BlockInfo.MEPORT_NAME);
 		LanguageRegistry.addName(fluidPort, BlockInfo.FLUIDPORT_NAME);
+		LanguageRegistry.addName(internalTank, BlockInfo.INTTANK_NAME);
 		
 	}
 

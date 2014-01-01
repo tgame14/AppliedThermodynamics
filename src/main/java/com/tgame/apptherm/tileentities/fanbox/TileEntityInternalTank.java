@@ -1,24 +1,19 @@
-package com.tgame.apptherm.tileentities;
+package com.tgame.apptherm.tileentities.fanbox;
 
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockTileEntityBase;
-import com.tgame.apptherm.multiblocks.FanBoxController;
+import com.tgame.apptherm.multiblocks.FanBoxControllerBase;
 
-public class TileEntityFanBoxCasing extends MultiblockTileEntityBase {
-	
-	public TileEntityFanBoxCasing() {
-		super();
-	}
+public class TileEntityInternalTank extends MultiblockTileEntityBase {
 
 	@Override
 	public Class<? extends MultiblockControllerBase> getMultiblockControllerType() {
-		return FanBoxController.class;
-		
+		return FanBoxControllerBase.class;
 	}
 
 	@Override
 	public boolean isGoodForFrame() {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -37,21 +32,20 @@ public class TileEntityFanBoxCasing extends MultiblockTileEntityBase {
 	}
 
 	@Override
-	public boolean isGoodForInterior() {	
-		return false;
+	public boolean isGoodForInterior() {
+		return true;
 	}
 
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
-		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 1, 3);
-		
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onMachineBroken() {
-		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 3);
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -69,6 +63,7 @@ public class TileEntityFanBoxCasing extends MultiblockTileEntityBase {
 
 	@Override
 	public MultiblockControllerBase createNewMultiblock() {
-		return new FanBoxController(this.worldObj);
+		return new FanBoxControllerBase(worldObj);
 	}
+
 }

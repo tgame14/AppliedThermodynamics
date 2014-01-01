@@ -29,10 +29,10 @@ public class TileEntityMEExhaust extends AEBaseMachine {
 			double x = 0.5, y = 0.5F, z = 0.5;
 			if (gooTimer <= 0 && powerStatus) {
 				switch (worldObj.getBlockMetadata(xCoord, yCoord, zCoord)) {
-				
+
 				case 2:
 					z = -0.5;
-					
+
 				case 3:
 					z = 1.5;
 				case 4:
@@ -42,7 +42,8 @@ public class TileEntityMEExhaust extends AEBaseMachine {
 
 					break;
 				}
-				worldObj.spawnEntityInWorld(new EntityItem(worldObj, xCoord + x, yCoord + y, zCoord + z, gooStack));
+				worldObj.spawnEntityInWorld(new EntityItem(worldObj,
+						xCoord + x, yCoord + y, zCoord + z, gooStack));
 
 				gooTimer = gen.nextInt(1000);
 			}

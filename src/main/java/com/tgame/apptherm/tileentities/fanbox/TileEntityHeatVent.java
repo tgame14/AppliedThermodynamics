@@ -1,4 +1,4 @@
-package com.tgame.apptherm.tileentities;
+package com.tgame.apptherm.tileentities.fanbox;
 
 import net.minecraft.world.World;
 import appeng.api.WorldCoord;
@@ -8,7 +8,7 @@ import appeng.api.me.util.IGridInterface;
 
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockTileEntityBase;
-import com.tgame.apptherm.multiblocks.FanBoxController;
+import com.tgame.apptherm.multiblocks.FanBoxControllerBase;
 
 public class TileEntityHeatVent extends MultiblockTileEntityBase {
 	
@@ -18,7 +18,7 @@ public class TileEntityHeatVent extends MultiblockTileEntityBase {
 
 	@Override
 	public Class<? extends MultiblockControllerBase> getMultiblockControllerType() {
-		return FanBoxController.class;
+		return FanBoxControllerBase.class;
 		
 	}
 
@@ -44,7 +44,7 @@ public class TileEntityHeatVent extends MultiblockTileEntityBase {
 
 	@Override
 	public boolean isGoodForInterior() {	
-		return true;
+		return false;
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class TileEntityHeatVent extends MultiblockTileEntityBase {
 
 	@Override
 	public MultiblockControllerBase createNewMultiblock() {
-		return new FanBoxController(this.worldObj);
+		return new FanBoxControllerBase(this.worldObj);
 	}
 	
 }

@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.blocks.BlockInfo;
-import com.tgame.apptherm.tileentities.TileEntityFanBoxCasing;
+import com.tgame.apptherm.tileentities.fanbox.TileEntityFanBoxCasing;
 import com.tgame.apptherm.util.ModInfo;
 
 import cpw.mods.fml.relauncher.Side;

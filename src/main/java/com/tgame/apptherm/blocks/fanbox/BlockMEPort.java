@@ -2,7 +2,7 @@ package com.tgame.apptherm.blocks.fanbox;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.blocks.BlockInfo;
-import com.tgame.apptherm.tileentities.TileEntityMEPort;
+import com.tgame.apptherm.tileentities.fanbox.TileEntityMEPort;
 import com.tgame.apptherm.util.ModInfo;
 
 import net.minecraft.block.BlockContainer;
