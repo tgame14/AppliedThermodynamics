@@ -21,6 +21,7 @@ public class TileEntities {
 		GameRegistry.registerTileEntity(TileEntityFanBoxCasing.class, BlockInfo.FANBOX_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityHeatVent.class, BlockInfo.VENT_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityMEPort.class, BlockInfo.MEPORT_TE_KEY);
+		GameRegistry.registerTileEntity(TileEntityFluidPort.class, BlockInfo.FLUIDPORT_TE_KEY);
 		
 	}
 
