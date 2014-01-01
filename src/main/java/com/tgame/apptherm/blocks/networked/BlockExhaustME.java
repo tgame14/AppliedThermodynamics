@@ -40,11 +40,11 @@ public class BlockExhaustME extends BlockContainer {
 
 	@Override
 	public void registerIcons(IconRegister iconregister) {
-
-		frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURES[0]);
-        sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURES[1]);
-        bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
-        topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.MONITOR_TEXTURES[0]);
+		/** @author pocketpc */
+		frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.EXHAUST_TEXTURE);
+        bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
+        topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[1]);
+        sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[2]);
 	}
 	
 	@Override
