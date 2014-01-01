@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.blocks.BlockInfo;
+import com.tgame.apptherm.tileentities.AEBaseMachine;
 import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
 import com.tgame.apptherm.util.ModInfo;
 
@@ -33,6 +34,9 @@ public class BlockAirIntake extends BlockContainer {
 	
 	@SideOnly(Side.CLIENT)
 	public Icon frontIcon;
+	/** @author pocketpc */
+	@SideOnly(Side.CLIENT)
+	public Icon activeIcon;
 	@SideOnly(Side.CLIENT)
 	Icon sideIcon;
 	@SideOnly(Side.CLIENT)
@@ -42,15 +46,17 @@ public class BlockAirIntake extends BlockContainer {
 
 	@Override
 	public void registerIcons(IconRegister iconregister) {
-
+		/** @author pocketpc */
 		frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
-				+ BlockInfo.INTAKE_TEXTURE);
-		sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
-				+ BlockInfo.DEFAULT_TEXTURES[1]);
+				+ BlockInfo.INTAKE_TEXTURES[0]);
+		activeIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+				+ BlockInfo.INTAKE_TEXTURES[1]);
 		bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 				+ BlockInfo.DEFAULT_TEXTURES[0]);
 		topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
-				+ BlockInfo.DEFAULT_TEXTURES[0]);
+				+ BlockInfo.DEFAULT_TEXTURES[1]);
+		sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+				+ BlockInfo.DEFAULT_TEXTURES[2]);
 	}
 
 
@@ -62,13 +68,14 @@ public class BlockAirIntake extends BlockContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
+	/** @author pocketpc */
 	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z,
 			int side) {
-		TileEntity tileentity = blockAccess.getBlockTileEntity(x, y, z);
+		AEBaseMachine tileentity = (AEBaseMachine) blockAccess.getBlockTileEntity(x, y, z);
 		int metadata = blockAccess.getBlockMetadata(x, y, z);
 
 		if (tileentity != null) {
-			return side == metadata ? frontIcon : side == 0 ? bottomIcon
+			return side == metadata && tileentity.isPowered() == true ? activeIcon : side == metadata && tileentity.isPowered() == false ? frontIcon : side == 0 ? bottomIcon
 					: side == 1 ? topIcon : sideIcon;
 		}
 		return null;
