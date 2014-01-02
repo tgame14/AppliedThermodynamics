@@ -4,7 +4,7 @@ public enum CoolingFluids {
 
 	WATER(10000, "water"), SEEDOIL(70, "seedoil"), HONEY(80, "honey"), ICE(150, "ice"), SHORTMEAD(
 			60, "short.mead"), FUEL(200, "fuel"), CRYOTHEUM(60, "cryotheum"), SEWAGE(
-			6000, "sewage"), FLUIDMEAT(100, "meat");
+			6000, "sewage"), FLUIDMEAT(100, "meat"), MECoolant(30, "MECoolant");
 
 	public final int consumePerTick;
 	public final String fluidName;
