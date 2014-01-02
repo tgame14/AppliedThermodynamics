@@ -5,10 +5,6 @@ import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockTileEntityBase;
 import com.tgame.apptherm.multiblocks.FanBoxControllerBase;
 
 public class TileEntityFanBoxCasing extends MultiblockTileEntityBase {
-	
-	public TileEntityFanBoxCasing() {
-		super();
-	}
 
 	@Override
 	public Class<? extends MultiblockControllerBase> getMultiblockControllerType() {

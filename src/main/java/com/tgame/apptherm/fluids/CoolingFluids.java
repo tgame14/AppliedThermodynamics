@@ -13,7 +13,7 @@ public enum CoolingFluids {
 			ICE, SHORTMEAD, FUEL, CRYOTHEUM, SEWAGE };
 
 	/**
-	 * Instantiates a new cooling fluids.
+	 * Instantiates a new cooling fluids enum.
 	 * 
 	 * @param consume: the consume per tick of the fluid
 	 * @param fluid: the fluid name to access registry
