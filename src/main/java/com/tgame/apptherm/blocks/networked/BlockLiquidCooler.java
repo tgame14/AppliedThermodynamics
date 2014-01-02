@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -33,7 +34,6 @@ public class BlockLiquidCooler extends BlockContainer {
 		setUnlocalizedName(BlockInfo.LIQUICOOL_UNLOCALIZED_NAME);
 
 	}
-	
 
 	@SideOnly(Side.CLIENT)
 	public Icon frontIcon;
@@ -47,33 +47,42 @@ public class BlockLiquidCooler extends BlockContainer {
 	@Override
 	public void registerIcons(IconRegister iconregister) {
 
-		frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.LIQUICOOL_TEXUTRES[0]);
-		sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[1]);
-		bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
-		topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.DEFAULT_TEXTURES[0]);
+		frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+				+ BlockInfo.LIQUICOOL_TEXUTRES[0]);
+		sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+				+ BlockInfo.DEFAULT_TEXTURES[1]);
+		bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+				+ BlockInfo.DEFAULT_TEXTURES[0]);
+		topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+				+ BlockInfo.DEFAULT_TEXTURES[0]);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata) {
-		return side == 3 ? frontIcon : side == 0 ? bottomIcon : side == 1 ? topIcon : sideIcon;
+		return side == 3 ? frontIcon : side == 0 ? bottomIcon
+				: side == 1 ? topIcon : sideIcon;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side) {
+	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z,
+			int side) {
 		TileEntity tileentity = blockAccess.getBlockTileEntity(x, y, z);
 		int metadata = blockAccess.getBlockMetadata(x, y, z);
 
 		if (tileentity != null) {
-			return side == metadata ? frontIcon : side == 0 ? bottomIcon : side == 1 ? topIcon : sideIcon;
+			return side == metadata ? frontIcon : side == 0 ? bottomIcon
+					: side == 1 ? topIcon : sideIcon;
 		}
 		return null;
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack itemstack) {
+	public void onBlockPlacedBy(World world, int x, int y, int z,
+			EntityLivingBase player, ItemStack itemstack) {
 		super.onBlockPlacedBy(world, x, y, z, player, itemstack);
-		int l = MathHelper.floor_double((double) (player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+		int l = MathHelper
+				.floor_double((double) (player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
 		if (l == 0) {
 			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
@@ -93,19 +102,28 @@ public class BlockLiquidCooler extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
-			float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, int x, int y, int z,
+			EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.inventory.getCurrentItem();
 
 		if (stack != null) {
-			FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(stack);
-			TileEntityLiquidCooler tile = (TileEntityLiquidCooler) world.getBlockTileEntity(x, y, z);
+			FluidStack liquid = FluidContainerRegistry
+					.getFluidForFilledItem(stack);
+			TileEntityLiquidCooler tile = (TileEntityLiquidCooler) world
+					.getBlockTileEntity(x, y, z);
 
 			if (liquid != null) {
 				int value = tile.fill(ForgeDirection.UNKNOWN, liquid, true);
 
 				if (value != 0 && !player.capabilities.isCreativeMode) {
-					player.inventory.setInventorySlotContents(player.inventory.currentItem,
+					if (stack.getItem() instanceof ItemBucket) {
+						player.inventory.setInventorySlotContents(
+								player.inventory.currentItem,
+								FluidContainerRegistry.EMPTY_BUCKET);
+						return true;
+					}
+					player.inventory.setInventorySlotContents(
+							player.inventory.currentItem,
 							new ItemStack(stack.getItem(), stack.stackSize--));
 				}
 			}

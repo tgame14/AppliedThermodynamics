@@ -8,13 +8,13 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import com.tgame.apptherm.fluids.ATTank;
+import com.tgame.apptherm.fluids.FluidTileTank;
 import com.tgame.apptherm.fluids.CoolingFluids;
 
 public class TileEntityLiquidCooler extends AEActiveCoolants implements
 		IFluidHandler {
 
-	protected ATTank tank = new ATTank(16000);
+	protected FluidTileTank tank = new FluidTileTank(16000);
 	private int drainValue;
 	private byte timer;
 

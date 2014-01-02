@@ -9,29 +9,28 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import com.tgame.apptherm.fluids.ATTank;
+import com.tgame.apptherm.fluids.FluidTileTank;
 import com.tgame.apptherm.fluids.CoolingFluids;
 import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 
-public class FanBoxFluidsBase implements IFluidHandler {
-	
-	private ATTank tank;
-	
+public class FanBoxFluidsBase {
+
+	private FluidTileTank tank;
+
 	public FanBoxFluidsBase(Set<CoordTriplet> setOfInternalTanks) {
-		this.tank = new ATTank(setOfInternalTanks.size() * 8000);
-		
+		this.tank = new FluidTileTank(setOfInternalTanks.size() * 8000);
+
 	}
 
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
 		String attemptFluidName = resource.getFluid().getName();
-		
-		if(resource.isFluidEqual(this.tank.getFluid()))
+
+		if (resource.isFluidEqual(this.tank.getFluid()))
 			return this.tank.fill(resource, doFill);
 
 		return this.tank.fill(resource, doFill);
 	}
 
-	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource,
 			boolean doDrain) {
 		if (resource == null || !resource.isFluidEqual(tank.getFluid()))
@@ -40,25 +39,29 @@ public class FanBoxFluidsBase implements IFluidHandler {
 		return this.drain(from, resource.amount, doDrain);
 	}
 
-	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
 		return this.tank.drain(maxDrain, doDrain);
 	}
 
-	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid) {
 		return true;
 	}
 
-	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid) {
 		return true;
 	}
-	
 
-	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
 		return new FluidTankInfo[] { tank.getInfo() };
+	}
+
+	public void writeToNBT(NBTTagCompound tag) {
+		this.tank.readFromNBT(tag);
+
+	}
+
+	public void readFromNBT(NBTTagCompound tag) {
+		this.tank.writeToNBT(tag);
 	}
 
 }

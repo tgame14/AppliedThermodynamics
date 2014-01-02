@@ -78,7 +78,6 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	@Override
 	public void onAttachedPartWithMultiblockData(IMultiblockPart part,
 			NBTTagCompound data) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -199,6 +198,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	@Override
 	protected boolean updateServer() {
+
 		return false;
 	}
 
@@ -208,38 +208,38 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound data) {
-		// TODO Auto-generated method stub
+	public void writeToNBT(NBTTagCompound tag) {
+		this.fluidHandler.readFromNBT(tag);
 
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound data) {
-		// TODO Auto-generated method stub
+	public void readFromNBT(NBTTagCompound tag) {
+		this.fluidHandler.writeToNBT(tag);
 
 	}
 
 	@Override
 	public void formatDescriptionPacket(NBTTagCompound data) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void decodeDescriptionPacket(NBTTagCompound data) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void getOrphanData(IMultiblockPart newOrphan, int oldSize,
 			int newSize, NBTTagCompound dataContainer) {
-		// TODO Auto-generated method stub
 
 	}
 
-	/** Fluid Handler part */
-
+	/**
+	 * Channels methods called on Tiles to the FluidHandler in FanBoxFluidsBase;
+	 * 
+	 * 
+	 */
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
 		return this.fluidHandler.fill(from, resource, doFill);
 	}
@@ -248,19 +248,19 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 			boolean doDrain) {
 		return this.fluidHandler.drain(from, resource, doDrain);
 	}
-	
+
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
 		return this.fluidHandler.drain(from, maxDrain, doDrain);
 	}
-	
+
 	public boolean canFill(ForgeDirection from, Fluid fluid) {
 		return this.fluidHandler.canFill(from, fluid);
 	}
-	
+
 	public boolean canDrain(ForgeDirection from, Fluid fluid) {
 		return this.fluidHandler.canDrain(from, fluid);
 	}
-	
+
 	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
 		return this.fluidHandler.getTankInfo(from);
 	}

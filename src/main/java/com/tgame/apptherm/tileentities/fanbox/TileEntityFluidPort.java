@@ -1,12 +1,13 @@
 package com.tgame.apptherm.tileentities.fanbox;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import com.tgame.apptherm.fluids.ATTank;
+import com.tgame.apptherm.fluids.FluidTileTank;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockTileEntityBase;
 import com.tgame.apptherm.multiblocks.FanBoxControllerBase;
@@ -44,22 +45,22 @@ public class TileEntityFluidPort extends MultiblockTileEntityBase implements
 
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid) {
-		if(this.controller != null)
-		return this.controller.canFill(from, fluid);
+		if (this.controller != null)
+			return this.controller.canFill(from, fluid);
 		return true;
 	}
 
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid) {
-		if(this.controller != null)
-		return this.controller.canDrain(from, fluid);
+		if (this.controller != null)
+			return this.controller.canDrain(from, fluid);
 		return true;
 	}
 
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
-		if(this.controller != null)
-		return this.controller.getTankInfo(from);
+		if (this.controller != null)
+			return this.controller.getTankInfo(from);
 		return null;
 	}
 
@@ -121,6 +122,16 @@ public class TileEntityFluidPort extends MultiblockTileEntityBase implements
 	@Override
 	public MultiblockControllerBase createNewMultiblock() {
 		return new FanBoxControllerBase(worldObj);
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound tag) {
+		super.writeToNBT(tag);
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound tag) {
+		super.readFromNBT(tag);
 	}
 
 }
