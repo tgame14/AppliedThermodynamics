@@ -16,6 +16,7 @@ public class TileEntityMEPort extends MultiblockTileEntityBase implements IGridM
 
 	private boolean powerStatus, networkReady;
 	private IGridInterface grid;
+	private FanBoxControllerBase controller;
 	
 	public TileEntityMEPort() {
 		super();
@@ -60,6 +61,7 @@ public class TileEntityMEPort extends MultiblockTileEntityBase implements IGridM
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
+		this.controller = (FanBoxControllerBase) multiblockControllerBase;
 
 	}
 
@@ -131,6 +133,9 @@ public class TileEntityMEPort extends MultiblockTileEntityBase implements IGridM
 	@Override
 	public void setNetworkReady(boolean isReady) {
 		this.networkReady = isReady;
+		
+		if(this.controller != null)
+			controller.setPoweredStatus(isReady);
 		
 	}
 

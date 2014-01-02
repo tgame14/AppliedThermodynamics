@@ -44,6 +44,10 @@ public class FanBoxTank implements IFluidTank {
 	public void setFluid(FluidStack fluid) {
 		this.fluid = fluid;
 	}
+	
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
 
 	public boolean isEmpty() {
 		if (this.fluid == null || this.fluid.amount == 0)

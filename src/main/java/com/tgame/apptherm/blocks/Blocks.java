@@ -34,6 +34,7 @@ public class Blocks {
 	public static Block mePort;
 	public static Block fluidPort;
 	public static Block internalTank;
+	public static Block meCoolant;
 
 	public static void init() {
 		
@@ -77,6 +78,9 @@ public class Blocks {
 		
 		internalTank = new BlockInternalTank(BlockInfo.INTTANK_ID);
 		GameRegistry.registerBlock(internalTank, BlockInfo.INTTANK_KEY);
+		
+		meCoolant = new BlockMECoolant(BlockInfo.COOLANT_ID);
+		GameRegistry.registerBlock(meCoolant, BlockInfo.COOLANT_KEY);
 
 	}
 
@@ -97,6 +101,7 @@ public class Blocks {
 		LanguageRegistry.addName(mePort, BlockInfo.MEPORT_NAME);
 		LanguageRegistry.addName(fluidPort, BlockInfo.FLUIDPORT_NAME);
 		LanguageRegistry.addName(internalTank, BlockInfo.INTTANK_NAME);
+		LanguageRegistry.addName(meCoolant, BlockInfo.COOLANT_NAME);
 		
 	}
 

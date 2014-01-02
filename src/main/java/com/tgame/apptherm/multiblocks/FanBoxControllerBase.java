@@ -23,6 +23,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	protected Set<Class> requiredTiles;
 	protected Set<CoordTriplet> setOfInternalTanks;
+	protected boolean isPowered;
 
 	private FanBoxFluidBase fluidHandler;
 
@@ -30,6 +31,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 		super(world);
 
 		this.requiredTiles = fillSet();
+		this.isPowered = false;
 
 	}
 
@@ -38,8 +40,10 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	 * A Separate constructor used for the spatial transfer from Applied
 	 * Energistics, DO NOT USE.
 	 * 
-	 * @param world
-	 * @param tag
+	 * @param World
+	 *            world
+	 * @param nbttagCompound
+	 *            tag
 	 * 
 	 * @author tgame14
 	 */
@@ -50,6 +54,10 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 		this.requiredTiles = fillSet();
 
 		writeToNBT(tag);
+	}
+
+	public void setPoweredStatus(boolean powerstatus) {
+		this.isPowered = powerstatus;
 	}
 
 	public Set<CoordTriplet> getCountOfInternalTanks() {
@@ -127,9 +135,10 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	}
 
 	/**
-	 * grabs all internal tanks, Wraps them in a HashSet<CoordTriplet> and returns that.
-	 *
-	 * @return the hash set
+	 * grabs all internal tanks, Wraps them in a HashSet<CoordTriplet> and
+	 * returns that.
+	 * 
+	 * @return the hash set Containing the CoordTriplet of all internal Tanks
 	 */
 	private HashSet<CoordTriplet> calcInternalTanks() {
 		HashSet<CoordTriplet> hashSet = new HashSet<CoordTriplet>();
@@ -178,17 +187,17 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	@Override
 	protected int getMaximumXSize() {
-		return 9;
+		return 256;
 	}
 
 	@Override
 	protected int getMaximumZSize() {
-		return 9;
+		return 256;
 	}
 
 	@Override
 	protected int getMaximumYSize() {
-		return 9;
+		return 256;
 	}
 
 	@Override
@@ -203,6 +212,8 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	@Override
 	protected boolean updateServer() {
+		if (this.isPowered)
+			this.fluidHandler.onUpdateServer();
 
 		return false;
 	}
@@ -240,9 +251,8 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	}
 
-	
-	 /* Links to FanBoxFluidBase to handle fluids. */
-	 
+	/* Links to FanBoxFluidBase to handle fluids. Merely a connection. */
+
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
 		return this.fluidHandler.fill(from, resource, doFill);
 	}
