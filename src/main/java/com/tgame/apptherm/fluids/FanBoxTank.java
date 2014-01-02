@@ -1,7 +1,9 @@
 package com.tgame.apptherm.fluids;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
@@ -10,11 +12,46 @@ public class FanBoxTank implements IFluidTank {
 	protected FluidStack fluid;
 	protected int capacity;
 
+	public FanBoxTank(FluidStack fluid, int capacity) {
+		this.fluid = fluid;
+		this.capacity = capacity;
+	}
+
+	public FanBoxTank(int capacity) {
+		this(null, capacity);
+	}
+
+	public FanBoxTank readFromNBT(NBTTagCompound tag) {
+		if (!tag.hasKey("Empty")) {
+			FluidStack fluid = FluidStack.loadFluidStackFromNBT(tag);
+
+			if (fluid != null) {
+				setFluid(fluid);
+			}
+		}
+		return this;
+	}
+
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
+		if (fluid != null) {
+			fluid.writeToNBT(tag);
+		} else {
+			tag.setString("Empty", "");
+		}
+		return tag;
+	}
+
+	public void setFluid(FluidStack fluid) {
+		this.fluid = fluid;
+	}
+
 	public boolean isEmpty() {
 		if (this.fluid == null || this.fluid.amount == 0)
 			return true;
 		return false;
 	}
+
+	/* Here Starts IFluidTank */
 
 	@Override
 	public FluidStack getFluid() {

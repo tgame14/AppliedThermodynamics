@@ -9,16 +9,25 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
+import com.tgame.apptherm.fluids.FanBoxTank;
 import com.tgame.apptherm.fluids.FluidTileTank;
 import com.tgame.apptherm.fluids.CoolingFluids;
 import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 
-public class FanBoxFluidsBase {
+/**
+ * This class handles all fluids going into and out of the Fan Box.
+ * It should be considered as a meta-tile for all blocks in the Multiblock Structure.
+ * Any new tile that handles fluids Should refer to this class for Handling.
+ * 
+ * @author tgame14
+ *
+ */
+public class FanBoxFluidBase {
 
-	private FluidTileTank tank;
+	private FanBoxTank tank;
 
-	public FanBoxFluidsBase(Set<CoordTriplet> setOfInternalTanks) {
-		this.tank = new FluidTileTank(setOfInternalTanks.size() * 8000);
+	public FanBoxFluidBase(Set<CoordTriplet> setOfInternalTanks) {
+		this.tank = new FanBoxTank(setOfInternalTanks.size() * 8000);
 
 	}
 

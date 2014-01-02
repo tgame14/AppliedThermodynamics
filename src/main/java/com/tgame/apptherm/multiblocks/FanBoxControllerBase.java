@@ -24,7 +24,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	protected Set<Class> requiredTiles;
 	protected Set<CoordTriplet> setOfInternalTanks;
 
-	private FanBoxFluidsBase fluidHandler;
+	private FanBoxFluidBase fluidHandler;
 
 	public FanBoxControllerBase(World world) {
 		super(world);
@@ -126,6 +126,11 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 		return true;
 	}
 
+	/**
+	 * grabs all internal tanks, Wraps them in a HashSet<CoordTriplet> and returns that.
+	 *
+	 * @return the hash set
+	 */
 	private HashSet<CoordTriplet> calcInternalTanks() {
 		HashSet<CoordTriplet> hashSet = new HashSet<CoordTriplet>();
 		Class clazz = TileEntityInternalTank.class;
@@ -144,7 +149,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	protected void onMachineAssembled() {
 		// System.out.println("Assembled");
 
-		this.fluidHandler = new FanBoxFluidsBase(this.setOfInternalTanks);
+		this.fluidHandler = new FanBoxFluidBase(this.setOfInternalTanks);
 
 	}
 
@@ -209,13 +214,13 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag) {
-		this.fluidHandler.readFromNBT(tag);
+		this.fluidHandler.writeToNBT(tag);
 
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		this.fluidHandler.writeToNBT(tag);
+		this.fluidHandler.readFromNBT(tag);
 
 	}
 
@@ -235,11 +240,9 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	}
 
-	/**
-	 * Channels methods called on Tiles to the FluidHandler in FanBoxFluidsBase;
-	 * 
-	 * 
-	 */
+	
+	 /* Links to FanBoxFluidBase to handle fluids. */
+	 
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
 		return this.fluidHandler.fill(from, resource, doFill);
 	}

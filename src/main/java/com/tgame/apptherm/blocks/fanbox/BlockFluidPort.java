@@ -48,7 +48,7 @@ public class BlockFluidPort extends BlockContainer {
 
 			if (liquid != null) {
 				int value = tile.fill(ForgeDirection.UNKNOWN, liquid, true);
-
+				// handler for buckets
 				if (value != 0 && !player.capabilities.isCreativeMode) {
 					if (stack.getItem() instanceof ItemBucket) {
 						player.inventory.setInventorySlotContents(
@@ -56,7 +56,7 @@ public class BlockFluidPort extends BlockContainer {
 								FluidContainerRegistry.EMPTY_BUCKET);
 						return true;
 					}
-
+					// handler for any other of item fluid storage (mostly cells and cans)
 					player.inventory.setInventorySlotContents(
 							player.inventory.currentItem,
 							new ItemStack(stack.getItem(), stack.stackSize--));
@@ -64,7 +64,7 @@ public class BlockFluidPort extends BlockContainer {
 			}
 		}
 
-		return true;
+		return false;
 
 	}
 
