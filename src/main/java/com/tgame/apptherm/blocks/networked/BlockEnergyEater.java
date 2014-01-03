@@ -6,6 +6,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.TileEntityEater;
 
 public class BlockEnergyEater extends BlockContainer {
@@ -15,6 +16,7 @@ public class BlockEnergyEater extends BlockContainer {
 		
 		this.setCreativeTab(AppTherm.AppThermTab);
 		this.setHardness(2.0F);
+		this.setUnlocalizedName(BlockInfo.EATER_UNLOCALIZED_NAME);
 	}
 
 	@Override

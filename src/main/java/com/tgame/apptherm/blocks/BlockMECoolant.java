@@ -17,6 +17,7 @@ public class BlockMECoolant extends BlockFluidClassic {
 		setCreativeTab(AppTherm.AppThermTab);
 		setUnlocalizedName(BlockInfo.COOLANT_UNLOCALIZED_NAME);
 		setQuantaPerBlock(8);
+		
 	}
 
 }

@@ -36,7 +36,7 @@ public class FanBoxFluidBase {
 		this.meCoolant = new FluidStack(Fluids.meCoolant, 1);
 	}
 	
-	public boolean onUpdateServer() {		
+	public boolean onUpdateFluidHandler() {		
 		if (!tank.isEmpty()) {
 			this.tank.drain(4, true);
 			this.extTank.fill(this.meCoolant, true);
@@ -77,7 +77,7 @@ public class FanBoxFluidBase {
 	}
 
 	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
-		return new FluidTankInfo[] { tank.getInfo() };
+		return new FluidTankInfo[] { tank.getInfo(), extTank.getInfo() };
 	}
 
 	public void writeToNBT(NBTTagCompound tag) {

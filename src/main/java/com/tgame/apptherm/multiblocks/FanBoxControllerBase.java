@@ -213,25 +213,31 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	@Override
 	protected boolean updateServer() {
 		if (this.isPowered)
-			this.fluidHandler.onUpdateServer();
+			this.fluidHandler.onUpdateFluidHandler();
 
 		return false;
 	}
 
 	@Override
 	protected void updateClient() {
-
+		if (this.isPowered) {
+			this.fluidHandler.onUpdateFluidHandler();
+		}
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag) {
+		if (tag == null)
+			tag = new NBTTagCompound();
+
 		this.fluidHandler.writeToNBT(tag);
 
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		this.fluidHandler.readFromNBT(tag);
+		if (tag != null)
+			this.fluidHandler.readFromNBT(tag);
 
 	}
 

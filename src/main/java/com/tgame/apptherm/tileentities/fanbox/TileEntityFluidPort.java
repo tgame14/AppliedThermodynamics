@@ -18,7 +18,7 @@ public class TileEntityFluidPort extends MultiblockTileEntityBase implements
 	private FanBoxControllerBase controller;
 
 	public TileEntityFluidPort() {
-
+		super();
 	}
 
 	@Override
