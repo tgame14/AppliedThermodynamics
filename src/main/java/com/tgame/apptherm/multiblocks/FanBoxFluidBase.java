@@ -3,47 +3,44 @@ package com.tgame.apptherm.multiblocks;
 import java.util.Set;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidHandler;
 
 import com.tgame.apptherm.fluids.FanBoxTank;
-import com.tgame.apptherm.fluids.FluidTileTank;
-import com.tgame.apptherm.fluids.CoolingFluids;
 import com.tgame.apptherm.fluids.Fluids;
 import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 
 /**
- * This class handles all fluids going into and out of the Fan Box.
- * It should be considered as a meta-tile for all blocks in the Multiblock Structure.
- * Any new tile that handles fluids Should refer to this class for Handling.
+ * This class handles all fluids going into and out of the Fan Box. It should be
+ * considered as a meta-tile Fluid Handler for all blocks in the Multiblock Structure. Any new
+ * tile that handles fluids Should refer to this class for Handling through the Controller.
  * 
  * @author tgame14
- *
+ * 
  */
 public class FanBoxFluidBase {
 
-	private FanBoxTank tank;
-	private FanBoxTank extTank;
-	private FluidStack meCoolant;
+	protected FanBoxTank tank;
+	protected FanBoxTank extTank;
+	protected FluidStack meCoolant;
 
 	public FanBoxFluidBase(Set<CoordTriplet> setOfInternalTanks) {
 		this.tank = new FanBoxTank(setOfInternalTanks.size() * 6000);
 		this.extTank = new FanBoxTank(setOfInternalTanks.size() * 2000);
-		
+
 		this.meCoolant = new FluidStack(Fluids.meCoolant, 1);
 	}
-	
-	public boolean onUpdateFluidHandler() {		
+
+	public boolean onUpdateServerTick() {
 		if (!tank.isEmpty()) {
 			this.tank.drain(4, true);
 			this.extTank.fill(this.meCoolant, true);
+			return true;
 		}
-			
-		
-		
+
 		return false;
 	}
 
@@ -80,15 +77,26 @@ public class FanBoxFluidBase {
 		return new FluidTankInfo[] { tank.getInfo(), extTank.getInfo() };
 	}
 
-	public void writeToNBT(NBTTagCompound tag) {
-		this.tank.readFromNBT(tag);
-		this.extTank.readFromNBT(tag);
-
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {		
+		
+		NBTTagCompound mainTank = new NBTTagCompound("fluidHandlerMain");
+		NBTTagCompound extTank = new NBTTagCompound("fluidHandlerExt");
+		
+		this.tank.writeToNBT(mainTank);
+		this.extTank.writeToNBT(extTank);
+		
+		tag.setCompoundTag(mainTank.getName(), mainTank);
+		tag.setCompoundTag(extTank.getName(), extTank);
+		
+		return tag;
 	}
-
+	
 	public void readFromNBT(NBTTagCompound tag) {
-		this.tank.writeToNBT(tag);
-		this.extTank.writeToNBT(tag);
+		NBTTagCompound mainTank = tag.getCompoundTag("fluidHandlerMain");
+		NBTTagCompound extTank = tag.getCompoundTag("fluidHandlerExt");
+		
+		this.tank.readFromNBT(mainTank);
+		this.extTank.readFromNBT(extTank);
 	}
 
 }

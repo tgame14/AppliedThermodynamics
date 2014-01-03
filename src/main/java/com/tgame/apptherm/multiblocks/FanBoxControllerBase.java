@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
@@ -212,33 +213,33 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	@Override
 	protected boolean updateServer() {
+		if(this.fluidHandler == null) {
+			System.out.println("handler is null, WTF?");
+			this.fluidHandler = new FanBoxFluidBase(setOfInternalTanks);
+			return false;
+		}
+		
 		if (this.isPowered)
-			this.fluidHandler.onUpdateFluidHandler();
-
+			return this.fluidHandler.onUpdateServerTick();
+		
 		return false;
 	}
 
 	@Override
 	protected void updateClient() {
-		if (this.isPowered) {
-			this.fluidHandler.onUpdateFluidHandler();
-		}
+		
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag) {
-		if (tag == null)
-			tag = new NBTTagCompound();
-
+		if(this.fluidHandler != null)
 		this.fluidHandler.writeToNBT(tag);
-
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		if (tag != null)
-			this.fluidHandler.readFromNBT(tag);
-
+		if(this.fluidHandler != null)
+		this.fluidHandler.readFromNBT(tag);
 	}
 
 	@Override

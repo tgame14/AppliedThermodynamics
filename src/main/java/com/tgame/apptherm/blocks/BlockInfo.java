@@ -108,18 +108,20 @@ public class BlockInfo {
 	public static final String FLUIDPORT_UNLOCALIZED_NAME = "fanboxfluidport";
 	public static final String FLUIDPORT_TE_KEY = "TileEntityFluidPort";
 	public static final String FLUIDPORT_TEXTURE = "FluidPort";
-	
+
 	public static int INTTANK_ID;
 	public static final int INTTANK_DEFAULT = config++;
 	public static final String INTTANK_KEY = "internalTank";
 	public static final String INTTANK_NAME = "Fan Box Internal Tank";
 	public static final String INTTANK_UNLOCAZLIZED_NAME = "fanboxinternaltank";
 	public static final String INTTANK_TE_KEY = "TileEntityInternalTank";
-	
+
 	public static int COOLANT_ID;
 	public static final int COOLANT_DEFAULT = config++;
 	public static final String COOLANT_KEY = "mecoolant";
 	public static final String COOLANT_NAME = "ME Coolant";
-	public static final String COOLANT_UNLOCALIZED_NAME = "mecoolant";	
+	public static final String COOLANT_UNLOCALIZED_NAME = "mecoolant";
+	public static final String[] COOLANT_TEXTURES = { "meCoolantStill",
+			"meCoolantFlowing" };
 
 }
