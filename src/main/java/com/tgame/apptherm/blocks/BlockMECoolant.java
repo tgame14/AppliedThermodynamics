@@ -55,16 +55,14 @@ public class BlockMECoolant extends BlockFluidClassic {
 	public boolean canDisplace(IBlockAccess world, int x, int y, int z) {
 		if (world.getBlockMaterial(x, y, z).isLiquid())
 			return false;
-		return false;
-		// return super.canDisplace(world, x, y, z);
+		return super.canDisplace(world, x, y, z);
 	}
 
 	@Override
 	public boolean displaceIfPossible(World world, int x, int y, int z) {
 		if (world.getBlockMaterial(x, y, z).isLiquid())
 			return false;
-		return false;
-		// return super.displaceIfPossible(world, x, y, z);
+		return super.displaceIfPossible(world, x, y, z);
 	}
 
 }

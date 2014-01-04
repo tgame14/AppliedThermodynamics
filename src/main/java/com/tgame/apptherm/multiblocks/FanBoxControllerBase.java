@@ -24,6 +24,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	protected Set<Class> requiredTiles;
 	protected Set<CoordTriplet> setOfInternalTanks;
+	protected Set<CoordTriplet> setOfBlades;
 	protected boolean isPowered;
 
 	private FanBoxFluidBase fluidHandler;
@@ -104,11 +105,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	@Override
 	protected boolean isMachineWhole() throws MultiblockValidationException {
-		CoordTriplet min = this.getMinimumCoord();
-		CoordTriplet max = this.getMaximumCoord();
-
-		if (Math.abs(max.y - min.y) < 2)
-			return false;
+		if (!getMinimumHeight(3))
 
 		if (!checkForRequiredTiles())
 			return false;
@@ -116,6 +113,24 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 		this.setOfInternalTanks = calcInternalTanks();
 
 		return super.isMachineWhole();
+	}
+
+	/**
+	 * a method that checks the height of the multiblock and returns whether or
+	 * not its valid for the minimal parameter given to it
+	 * 
+	 * @param int the minimum height of the controller
+	 * @return whether or not it is valid
+	 * 
+	 * @author tgame14
+	 */
+	protected boolean getMinimumHeight(int minimalHeight) {
+		CoordTriplet min = this.getMinimumCoord();
+		CoordTriplet max = this.getMaximumCoord();
+
+		if (Math.abs(max.y - min.y) < (minimalHeight - 1))
+			return false;
+		return true;
 	}
 
 	private boolean checkForRequiredTiles() {
@@ -140,6 +155,8 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	 * returns that.
 	 * 
 	 * @return the hash set Containing the CoordTriplet of all internal Tanks
+	 * 
+	 * @author tgame14
 	 */
 	private HashSet<CoordTriplet> calcInternalTanks() {
 		HashSet<CoordTriplet> hashSet = new HashSet<CoordTriplet>();
@@ -231,19 +248,19 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound tag) {		
-		if(this.fluidHandler != null)
-		this.fluidHandler.writeToNBT(tag);
-		
+	public void writeToNBT(NBTTagCompound tag) {
+		if (this.fluidHandler != null)
+			this.fluidHandler.writeToNBT(tag);
+
 		tag.setInteger("intTankSize", calcInternalTanks().size());
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		if(this.fluidHandler == null)
-			this.fluidHandler = new FanBoxFluidBase(tag.getInteger("intTankSize"));
-		
-		
+		if (this.fluidHandler == null)
+			this.fluidHandler = new FanBoxFluidBase(
+					tag.getInteger("intTankSize"));
+
 		this.fluidHandler.readFromNBT(tag);
 	}
 

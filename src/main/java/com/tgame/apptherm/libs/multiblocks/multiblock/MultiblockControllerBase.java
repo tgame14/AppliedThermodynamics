@@ -58,9 +58,14 @@ public abstract class MultiblockControllerBase {
 	 */
 	private boolean shouldCheckForDisconnections;
 	
+	/**
+	 * Set whenever we validate the multiblock
+	 */
+	private MultiblockValidationException lastValidationException;
+	
 	protected MultiblockControllerBase(World world) {
 		// Multiblock stuff
-		worldObj = world; 
+		worldObj = world;
 		connectedBlocks = new HashSet<CoordTriplet>();
 		referenceCoord = null;
 		assemblyState = AssemblyState.Disassembled;
@@ -69,6 +74,7 @@ public abstract class MultiblockControllerBase {
 		maximumCoord = new CoordTriplet(0,0,0);
 
 		shouldCheckForDisconnections = true;
+		lastValidationException = null;
 	}
 
 	/**
@@ -109,9 +115,6 @@ public abstract class MultiblockControllerBase {
 			onAttachedPartWithMultiblockData(part, savedData);
 			part.onMultiblockDataAssimilated();
 		}
-		
-		// TODO: Necessary?
-		this.worldObj.markBlockForUpdate(coord.x, coord.y, coord.z);
 		
 		if(this.referenceCoord == null) {
 			referenceCoord = coord;
@@ -251,6 +254,30 @@ public abstract class MultiblockControllerBase {
 	 */
 	protected abstract int getMaximumYSize();
 	
+	/**
+	 * Returns the minimum X dimension size of the machine. Must be at least 1, because nothing else makes sense.
+	 * @return The minimum X dimension size of the machine
+	 */
+	protected int getMinimumXSize() { return 1; }
+
+	/**
+	 * Returns the minimum Y dimension size of the machine. Must be at least 1, because nothing else makes sense.
+	 * @return The minimum Y dimension size of the machine
+	 */
+	protected int getMinimumYSize() { return 1; }
+
+	/**
+	 * Returns the minimum Z dimension size of the machine. Must be at least 1, because nothing else makes sense.
+	 * @return The minimum Z dimension size of the machine
+	 */
+	protected int getMinimumZSize() { return 1; }
+	
+	
+	/**
+	 * @return An exception representing the last error encountered when trying to assemble this
+	 * multiblock, or null if there is no error.
+	 */
+	public MultiblockValidationException getLastValidationException() { return lastValidationException; }
 	
 	/**
 	 * @return True if the machine is "whole" and should be assembled. False otherwise.
@@ -268,11 +295,17 @@ public abstract class MultiblockControllerBase {
 		int maxX = getMaximumXSize();
 		int maxY = getMaximumYSize();
 		int maxZ = getMaximumZSize();
+		int minX = getMinimumXSize();
+		int minY = getMinimumYSize();
+		int minZ = getMinimumZSize();
 		
-		if(maxX > 0 && deltaX > maxX) { return false; }
-		if(maxY > 0 && deltaY > maxY) { return false; }
-		if(maxZ > 0 && deltaZ > maxZ) { return false; }
-		
+		if(maxX > 0 && deltaX > maxX) { throw new MultiblockValidationException(String.format("Machine is too large, it may be at most %d blocks in the X dimension", maxX)); }
+		if(maxY > 0 && deltaY > maxY) { throw new MultiblockValidationException(String.format("Machine is too large, it may be at most %d blocks in the Y dimension", maxY)); }
+		if(maxZ > 0 && deltaZ > maxZ) { throw new MultiblockValidationException(String.format("Machine is too large, it may be at most %d blocks in the Z dimension", maxZ)); }
+		if(deltaX < minX) { throw new MultiblockValidationException(String.format("Machine is too small, it must be at least %d blocks in the X dimension", minX)); }
+		if(deltaY < minY) { throw new MultiblockValidationException(String.format("Machine is too small, it must be at least %d blocks in the Y dimension", minY)); }
+		if(deltaZ < minZ) { throw new MultiblockValidationException(String.format("Machine is too small, it must be at least %d blocks in the Z dimension", minZ)); }
+
 		// Now we run a simple check on each block within that volume.
 		// Any block deviating = NO DEAL SIR
 		TileEntity te;
@@ -360,11 +393,11 @@ public abstract class MultiblockControllerBase {
 	public void checkIfMachineIsWhole() {
 		AssemblyState oldState = this.assemblyState;
 		boolean isWhole;
+		lastValidationException = null;
 		try {
 			isWhole = isMachineWhole();
 		} catch (MultiblockValidationException e) {
-			// TODO: Send message back to client
-			//FMLLog.info("[%s] Reactor %d is disassembled. Reason: %s",  (worldObj.isRemote?"CLIENT":"SERVER"), hashCode(), e.getMessage());
+			lastValidationException = e;
 			isWhole = false;
 		}
 		
@@ -450,11 +483,13 @@ public abstract class MultiblockControllerBase {
 		IMultiblockPart acquiredPart;
 		for(CoordTriplet coord : blocksToAcquire) {
 			// By definition, none of these can be the minimum block.
-			this.connectedBlocks.add(coord);
 			te = this.worldObj.getBlockTileEntity(coord.x, coord.y, coord.z);
-			acquiredPart = (IMultiblockPart)te;
-			acquiredPart.onAssimilated(this);
-			this.onBlockAdded(acquiredPart);
+			if(te instanceof IMultiblockPart) {
+				acquiredPart = (IMultiblockPart)te;
+				this.connectedBlocks.add(coord);
+				acquiredPart.onAssimilated(this);
+				this.onBlockAdded(acquiredPart);
+			}
 		}
 
 		this.onAssimilate(other);
@@ -812,6 +847,7 @@ public abstract class MultiblockControllerBase {
 				deadCoords.add(c);
 				orphanCandidate.onOrphaned(this, originalSize, visitedParts);
 				orphanCandidate.onDetached(this); // Force the part to disconnect
+				this.onBlockRemoved(orphanCandidate);
 				removedParts.add(orphanCandidate);
 			}
 		}
@@ -844,6 +880,7 @@ public abstract class MultiblockControllerBase {
 				if(te instanceof IMultiblockPart) {
 					part = (IMultiblockPart)te;
 					part.onDetached(this);
+					this.onBlockRemoved(part);
 					detachedParts.add(part);
 				}
 			}
@@ -862,5 +899,12 @@ public abstract class MultiblockControllerBase {
 	 * @param dataContainer An NBT Compound Tag into which to write data.
 	 */
 	public abstract void getOrphanData(IMultiblockPart newOrphan, int oldSize, int newSize, NBTTagCompound dataContainer);
+
+	/**
+	 * @return True if this multiblock machine is considered assembled and ready to go.
+	 */
+	public boolean isAssembled() {
+		return this.assemblyState == AssemblyState.Assembled;
+	}
 
 }
