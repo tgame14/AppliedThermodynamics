@@ -16,6 +16,7 @@ import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockValidationException;
+import com.tgame.apptherm.multiblocks.handlers.FanBoxFluidHandler;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityFluidPort;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityInternalTank;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityMEPort;
@@ -27,7 +28,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	protected Set<CoordTriplet> setOfBlades;
 	protected boolean isPowered;
 
-	private FanBoxFluidBase fluidHandler;
+	private FanBoxFluidHandler fluidHandler;
 
 	public FanBoxControllerBase(World world) {
 		super(world);
@@ -174,7 +175,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	protected void onMachineAssembled() {
 		// System.out.println("Assembled");
 
-		this.fluidHandler = new FanBoxFluidBase(this.setOfInternalTanks);
+		this.fluidHandler = new FanBoxFluidHandler(this.setOfInternalTanks);
 
 	}
 
@@ -247,7 +248,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	protected boolean updateServer() {
 		if (this.fluidHandler == null) {
 			System.out.println("handler is null, WTF?");
-			this.fluidHandler = new FanBoxFluidBase(setOfInternalTanks);
+			this.fluidHandler = new FanBoxFluidHandler(setOfInternalTanks);
 			return false;
 		}
 
@@ -273,7 +274,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		if (this.fluidHandler == null)
-			this.fluidHandler = new FanBoxFluidBase(
+			this.fluidHandler = new FanBoxFluidHandler(
 					tag.getInteger("intTankSize"));
 
 		this.fluidHandler.readFromNBT(tag);
@@ -295,7 +296,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	}
 
-	/* Links to FanBoxFluidBase to handle fluids. Merely a connection. */
+	/* Links to FanBoxFluidHandler to handle fluids. Merely a connection. */
 
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
 		return this.fluidHandler.fill(from, resource, doFill);

@@ -1,16 +1,35 @@
 package com.tgame.apptherm.multiblocks;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
+import com.tgame.apptherm.multiblocks.handlers.LiquidCoolerFluidHandler;
 
 public class LiquidCoolerControllerBase extends MultiblockControllerBase {
-
+	
+	protected LiquidCoolerFluidHandler fluidHandler;
+	protected Set<CoordTriplet> requiredTiles;
+	
 	protected LiquidCoolerControllerBase(World world) {
 		super(world);
 		
+		this.requiredTiles = fillSet();
+		
+	}
+	
+	protected HashSet<CoordTriplet> fillSet() {
+		HashSet<CoordTriplet> hashSet = new HashSet<CoordTriplet>();
+		
+		
+		
+		
+		return hashSet;
 	}
 
 	@Override
@@ -59,25 +78,43 @@ public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 	@Override
 	protected int getMinimumNumberOfBlocksForAssembledMachine() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 27;
 	}
 
 	@Override
 	protected int getMaximumXSize() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 256;
 	}
 
 	@Override
 	protected int getMaximumZSize() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 256;
 	}
 
 	@Override
 	protected int getMaximumYSize() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 256;
+	}
+	
+	@Override
+	protected int getMinimumXSize() {
+		// TODO Auto-generated method stub
+		return super.getMinimumXSize();
+	}
+	
+	@Override
+	protected int getMinimumYSize() {
+		// TODO Auto-generated method stub
+		return super.getMinimumYSize();
+	}
+	
+	@Override
+	protected int getMinimumZSize() {
+		// TODO Auto-generated method stub
+		return super.getMinimumZSize();
 	}
 
 	@Override

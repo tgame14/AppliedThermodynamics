@@ -17,15 +17,16 @@ public class EventBusListener {
 		MinecraftForge.EVENT_BUS.register(new EventBusListener());
 		MinecraftForge.EVENT_BUS.register(new TileEntityLiquidCooler());
 	}
-	
+
 	@ForgeSubscribe
 	@SideOnly(Side.CLIENT)
 	public void postStitch(TextureStitchEvent.Post event) {
 		Fluids.fluidME.setIcons(Blocks.fluidME.getBlockTextureFromSide(0),
 				Blocks.fluidME.getBlockTextureFromSide(1));
 
+		Fluids.meCoolant.setIcons(Blocks.meCoolant.getBlockTextureFromSide(0),
+				Blocks.meCoolant.getBlockTextureFromSide(1));
+
 	}
-	
-	
-	
+
 }

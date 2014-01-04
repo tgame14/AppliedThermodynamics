@@ -8,8 +8,8 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import com.tgame.apptherm.fluids.FluidTileTank;
 import com.tgame.apptherm.fluids.CoolingFluids;
+import com.tgame.apptherm.fluids.tanks.FluidTileTank;
 
 public class TileEntityLiquidCooler extends AEActiveCoolants implements
 		IFluidHandler {

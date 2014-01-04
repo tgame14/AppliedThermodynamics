@@ -7,7 +7,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import com.tgame.apptherm.fluids.FluidTileTank;
+import com.tgame.apptherm.fluids.tanks.FluidTileTank;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockTileEntityBase;
 import com.tgame.apptherm.multiblocks.FanBoxControllerBase;

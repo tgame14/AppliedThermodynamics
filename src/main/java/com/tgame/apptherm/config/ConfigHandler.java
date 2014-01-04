@@ -4,9 +4,11 @@ import java.io.File;
 
 import net.minecraftforge.common.Configuration;
 
+import com.sun.org.apache.xpath.internal.operations.Mult;
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.items.ItemInfo;
+import com.tgame.apptherm.multiblocks.MultiblockInfo;
 
 public class ConfigHandler {
 
@@ -62,11 +64,46 @@ public class ConfigHandler {
 				ConfigInfo.LIQUID_CONSUME_DEFAULT).getBoolean(
 				ConfigInfo.LIQUID_CONSUME_DEFAULT);
 
+		ConfigInfo.ENABLE_HEAT = config.get(ConfigInfo.FEATURE_KEY,
+				ConfigInfo.ENABLE_HEAT_KEY, ConfigInfo.ENABLE_HEAT_DEFAULT)
+				.getBoolean(ConfigInfo.ENABLE_HEAT_DEFAULT);
+
 		// Item Registration
 		ItemInfo.GOO_ID = config
 				.getItem(ItemInfo.GOO_KEY, ItemInfo.GOO_DEFAULT).getInt() - 256;
 		ItemInfo.RECORDER_ID = config.getItem(ItemInfo.RECORDER_KEY,
 				ItemInfo.RECORDER_DEFAULT).getInt() - 256;
+
+		/* Multiblock Feature registry */
+		MultiblockInfo.FanBoxXSize = config.get(
+				MultiblockInfo.MULTIBLOCK_FEATURE_KEY,
+				MultiblockInfo.FanBoxXSizeKey,
+				MultiblockInfo.FanBoxXSizeDefault).getInt();
+
+		MultiblockInfo.FanBoxYSize = config.get(
+				MultiblockInfo.MULTIBLOCK_FEATURE_KEY,
+				MultiblockInfo.FanBoxYSizeKey,
+				MultiblockInfo.FanBoxYSizeDefault).getInt();
+
+		MultiblockInfo.FanBoxZSize = config.get(
+				MultiblockInfo.MULTIBLOCK_FEATURE_KEY,
+				MultiblockInfo.FanBoxZSizeKey,
+				MultiblockInfo.FanBoxZSizeDefault).getInt();
+
+		MultiblockInfo.LiquidCoolerXSize = config.get(
+				MultiblockInfo.MULTIBLOCK_FEATURE_KEY,
+				MultiblockInfo.LiquidCoolerXKey,
+				MultiblockInfo.LiquidCoolerXSizeDefault).getInt();
+
+		MultiblockInfo.LiquidCoolerYSize = config.get(
+				MultiblockInfo.MULTIBLOCK_FEATURE_KEY,
+				MultiblockInfo.LiquidCoolerYKey,
+				MultiblockInfo.LiquidCoolerYSizeDefault).getInt();
+		
+		MultiblockInfo.LiquidCoolerZSize = config.get(
+				MultiblockInfo.MULTIBLOCK_FEATURE_KEY,
+				MultiblockInfo.LiquidCoolerZKey,
+				MultiblockInfo.LiquidCoolerZSizeDefault).getInt();
 
 		config.save();
 		AppTherm.log.info("Config Loaded and Saved");

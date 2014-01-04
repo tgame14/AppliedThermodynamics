@@ -1,4 +1,4 @@
-package com.tgame.apptherm.multiblocks;
+package com.tgame.apptherm.multiblocks.handlers;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,8 +9,8 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 
-import com.tgame.apptherm.fluids.FanBoxTank;
 import com.tgame.apptherm.fluids.Fluids;
+import com.tgame.apptherm.fluids.tanks.MultiblockTank;
 import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 
 /**
@@ -21,32 +21,32 @@ import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
  * @author tgame14
  * 
  */
-public class FanBoxFluidBase {
+public class FanBoxFluidHandler {
 
-	protected FanBoxTank mainTank;
-	protected FanBoxTank extTank;
+	protected MultiblockTank mainTank;
+	protected MultiblockTank extTank;
 	protected FluidStack meCoolant;
 	protected int countOfInternals;
 
-	public FanBoxFluidBase(Set<CoordTriplet> setOfInternalTanks) {
+	public FanBoxFluidHandler(Set<CoordTriplet> setOfInternalTanks) {
 		this.countOfInternals = setOfInternalTanks.size();
 		
-		this.mainTank = new FanBoxTank(countOfInternals * 6000);
-		this.extTank = new FanBoxTank(countOfInternals * 2000);
+		this.mainTank = new MultiblockTank(countOfInternals * 6000);
+		this.extTank = new MultiblockTank(countOfInternals * 2000);
 
 		this.meCoolant = new FluidStack(Fluids.meCoolant, 1);
 	}
 	
-	public FanBoxFluidBase(FanBoxTank mainTank, FanBoxTank extTank) {
+	public FanBoxFluidHandler(MultiblockTank mainTank, MultiblockTank extTank) {
 		this.mainTank = mainTank;
 		this.extTank = extTank;
 		
 		this.meCoolant = new FluidStack(Fluids.meCoolant, 1);
 	}
 	
-	public FanBoxFluidBase(int countOfInternalTanks) {
-		this.mainTank = new FanBoxTank(countOfInternalTanks * 6000);
-		this.extTank = new FanBoxTank(countOfInternalTanks * 2000);
+	public FanBoxFluidHandler(int countOfInternalTanks) {
+		this.mainTank = new MultiblockTank(countOfInternalTanks * 6000);
+		this.extTank = new MultiblockTank(countOfInternalTanks * 2000);
 		
 		this.meCoolant = new FluidStack(Fluids.meCoolant, 1);
 	}
@@ -112,12 +112,8 @@ public class FanBoxFluidBase {
 		NBTTagCompound mainTank = tag.getCompoundTag("fluidHandlerMain");
 		NBTTagCompound extTank = tag.getCompoundTag("fluidHandlerExt");
 		
-		this.mainTank.readFromNBT(mainTank);
-		this.extTank.readFromNBT(extTank);
+		this.mainTank = this.mainTank.readFromNBT(mainTank);
+		this.extTank = this.extTank.readFromNBT(extTank);
 	}
 	
-	public static void refreshHandler(HashSet<CoordTriplet> hashSet) {
-		
-	}
-
 }

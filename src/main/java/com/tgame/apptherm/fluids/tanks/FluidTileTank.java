@@ -1,4 +1,4 @@
-package com.tgame.apptherm.fluids;
+package com.tgame.apptherm.fluids.tanks;
 
 import com.tgame.apptherm.tileentities.fanbox.TileEntityFluidPort;
 

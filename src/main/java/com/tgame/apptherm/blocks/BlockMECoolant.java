@@ -35,6 +35,14 @@ public class BlockMECoolant extends BlockFluidClassic {
 	protected Icon flowingIcon;
 	@SideOnly(Side.CLIENT)
 	protected Icon stillIcon;
+	
+	public Icon getFlowingIcon() {
+		return this.flowingIcon;
+	}
+	
+	public Icon getStillIcon() {
+		return this.stillIcon;
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
