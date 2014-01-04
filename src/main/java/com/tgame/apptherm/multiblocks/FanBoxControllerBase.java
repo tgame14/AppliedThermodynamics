@@ -105,8 +105,6 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	@Override
 	protected boolean isMachineWhole() throws MultiblockValidationException {
-		if (!getMinimumHeight(3))
-
 		if (!checkForRequiredTiles())
 			return false;
 
@@ -133,7 +131,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 		return true;
 	}
 
-	private boolean checkForRequiredTiles() {
+	protected boolean checkForRequiredTiles() {
 		for (Class clazz : requiredTiles) {
 			boolean flag = false;
 
@@ -216,6 +214,23 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	@Override
 	protected int getMaximumYSize() {
 		return 256;
+	}
+	
+	/* Allows to set minimal Sizes now. removes getMinimalHeight() from a need. */
+	
+	@Override
+	protected int getMinimumXSize() {
+		return 3;
+	}
+	
+	@Override
+	protected int getMinimumYSize() {
+		return 3;
+	}
+	
+	@Override
+	protected int getMinimumZSize() {
+		return 3;
 	}
 
 	@Override

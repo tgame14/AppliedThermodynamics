@@ -26,10 +26,13 @@ public class FanBoxFluidBase {
 	protected FanBoxTank mainTank;
 	protected FanBoxTank extTank;
 	protected FluidStack meCoolant;
+	protected int countOfInternals;
 
 	public FanBoxFluidBase(Set<CoordTriplet> setOfInternalTanks) {
-		this.mainTank = new FanBoxTank(setOfInternalTanks.size() * 6000);
-		this.extTank = new FanBoxTank(setOfInternalTanks.size() * 2000);
+		this.countOfInternals = setOfInternalTanks.size();
+		
+		this.mainTank = new FanBoxTank(countOfInternals * 6000);
+		this.extTank = new FanBoxTank(countOfInternals * 2000);
 
 		this.meCoolant = new FluidStack(Fluids.meCoolant, 1);
 	}
@@ -37,11 +40,15 @@ public class FanBoxFluidBase {
 	public FanBoxFluidBase(FanBoxTank mainTank, FanBoxTank extTank) {
 		this.mainTank = mainTank;
 		this.extTank = extTank;
+		
+		this.meCoolant = new FluidStack(Fluids.meCoolant, 1);
 	}
 	
 	public FanBoxFluidBase(int countOfInternalTanks) {
 		this.mainTank = new FanBoxTank(countOfInternalTanks * 6000);
 		this.extTank = new FanBoxTank(countOfInternalTanks * 2000);
+		
+		this.meCoolant = new FluidStack(Fluids.meCoolant, 1);
 	}
 
 	public boolean onUpdateServerTick() {
