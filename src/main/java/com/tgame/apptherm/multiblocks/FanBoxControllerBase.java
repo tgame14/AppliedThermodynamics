@@ -213,32 +213,37 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	@Override
 	protected boolean updateServer() {
-		if(this.fluidHandler == null) {
+		if (this.fluidHandler == null) {
 			System.out.println("handler is null, WTF?");
 			this.fluidHandler = new FanBoxFluidBase(setOfInternalTanks);
 			return false;
 		}
-		
+
 		if (this.isPowered)
 			return this.fluidHandler.onUpdateServerTick();
-		
+
 		return false;
 	}
 
 	@Override
 	protected void updateClient() {
-		
+
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound tag) {
+	public void writeToNBT(NBTTagCompound tag) {		
 		if(this.fluidHandler != null)
 		this.fluidHandler.writeToNBT(tag);
+		
+		tag.setInteger("intTankSize", calcInternalTanks().size());
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		if(this.fluidHandler != null)
+		if(this.fluidHandler == null)
+			this.fluidHandler = new FanBoxFluidBase(tag.getInteger("intTankSize"));
+		
+		
 		this.fluidHandler.readFromNBT(tag);
 	}
 

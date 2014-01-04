@@ -16,13 +16,13 @@ public class Fluids {
 		fluidME = new FluidLiquidME("fluidME");
 		FluidRegistry.registerFluid(fluidME);
 		
-		meCoolant = new FluidMECoolant();
+		meCoolant = new FluidMECoolant("MECoolant");
 		FluidRegistry.registerFluid(meCoolant);
 
 	}
 
 	public static void addNames() {
-		LanguageRegistry.addName(fluidME, "Liquid ME");
+		LanguageRegistry.addName(fluidME, BlockInfo.LIQUID_ME_NAME);
 		LanguageRegistry.addName(meCoolant, BlockInfo.COOLANT_NAME);
 
 	}

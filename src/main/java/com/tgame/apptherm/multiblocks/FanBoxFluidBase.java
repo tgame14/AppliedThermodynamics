@@ -1,9 +1,9 @@
 package com.tgame.apptherm.multiblocks;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -23,20 +23,30 @@ import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
  */
 public class FanBoxFluidBase {
 
-	protected FanBoxTank tank;
+	protected FanBoxTank mainTank;
 	protected FanBoxTank extTank;
 	protected FluidStack meCoolant;
 
 	public FanBoxFluidBase(Set<CoordTriplet> setOfInternalTanks) {
-		this.tank = new FanBoxTank(setOfInternalTanks.size() * 6000);
+		this.mainTank = new FanBoxTank(setOfInternalTanks.size() * 6000);
 		this.extTank = new FanBoxTank(setOfInternalTanks.size() * 2000);
 
 		this.meCoolant = new FluidStack(Fluids.meCoolant, 1);
 	}
+	
+	public FanBoxFluidBase(FanBoxTank mainTank, FanBoxTank extTank) {
+		this.mainTank = mainTank;
+		this.extTank = extTank;
+	}
+	
+	public FanBoxFluidBase(int countOfInternalTanks) {
+		this.mainTank = new FanBoxTank(countOfInternalTanks * 6000);
+		this.extTank = new FanBoxTank(countOfInternalTanks * 2000);
+	}
 
 	public boolean onUpdateServerTick() {
-		if (!tank.isEmpty()) {
-			this.tank.drain(4, true);
+		if (!mainTank.isEmpty()) {
+			this.mainTank.drain(4, true);
 			this.extTank.fill(this.meCoolant, true);
 			return true;
 		}
@@ -47,10 +57,10 @@ public class FanBoxFluidBase {
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
 		String attemptFluidName = resource.getFluid().getName();
 
-		if (resource.isFluidEqual(this.tank.getFluid()))
-			return this.tank.fill(resource, doFill);
+		if (resource.isFluidEqual(this.mainTank.getFluid()))
+			return this.mainTank.fill(resource, doFill);
 
-		return this.tank.fill(resource, doFill);
+		return this.mainTank.fill(resource, doFill);
 	}
 
 	public FluidStack drain(ForgeDirection from, FluidStack resource,
@@ -74,7 +84,7 @@ public class FanBoxFluidBase {
 	}
 
 	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
-		return new FluidTankInfo[] { tank.getInfo(), extTank.getInfo() };
+		return new FluidTankInfo[] { mainTank.getInfo(), extTank.getInfo() };
 	}
 
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {		
@@ -82,7 +92,7 @@ public class FanBoxFluidBase {
 		NBTTagCompound mainTank = new NBTTagCompound("fluidHandlerMain");
 		NBTTagCompound extTank = new NBTTagCompound("fluidHandlerExt");
 		
-		this.tank.writeToNBT(mainTank);
+		this.mainTank.writeToNBT(mainTank);
 		this.extTank.writeToNBT(extTank);
 		
 		tag.setCompoundTag(mainTank.getName(), mainTank);
@@ -95,8 +105,12 @@ public class FanBoxFluidBase {
 		NBTTagCompound mainTank = tag.getCompoundTag("fluidHandlerMain");
 		NBTTagCompound extTank = tag.getCompoundTag("fluidHandlerExt");
 		
-		this.tank.readFromNBT(mainTank);
+		this.mainTank.readFromNBT(mainTank);
 		this.extTank.readFromNBT(extTank);
+	}
+	
+	public static void refreshHandler(HashSet<CoordTriplet> hashSet) {
+		
 	}
 
 }
