@@ -15,7 +15,6 @@ public class EventBusListener {
 
 	public static void init() {
 		MinecraftForge.EVENT_BUS.register(new EventBusListener());
-		MinecraftForge.EVENT_BUS.register(new TileEntityLiquidCooler());
 	}
 
 	@ForgeSubscribe
