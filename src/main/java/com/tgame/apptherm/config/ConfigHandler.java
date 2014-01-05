@@ -56,6 +56,8 @@ public class ConfigHandler {
 				BlockInfo.INTTANK_DEFAULT).getInt();
 		BlockInfo.COOLANT_ID = config.getBlock(BlockInfo.COOLANT_KEY,
 				BlockInfo.COOLANT_DEFAULT).getInt();
+		BlockInfo.REACT_ID = config.getBlock(BlockInfo.REACT_KEY,
+				BlockInfo.REACT_DEFAULT).getInt();
 
 		// Config Registry for Disabling and Enabling Feature (booleans).
 
@@ -99,7 +101,7 @@ public class ConfigHandler {
 				MultiblockInfo.MULTIBLOCK_FEATURE_KEY,
 				MultiblockInfo.LiquidCoolerYKey,
 				MultiblockInfo.LiquidCoolerYSizeDefault).getInt();
-		
+
 		MultiblockInfo.LiquidCoolerZSize = config.get(
 				MultiblockInfo.MULTIBLOCK_FEATURE_KEY,
 				MultiblockInfo.LiquidCoolerZKey,

@@ -7,6 +7,7 @@ import com.tgame.apptherm.blocks.fanbox.BlockFluidPort;
 import com.tgame.apptherm.blocks.fanbox.BlockHeatVent;
 import com.tgame.apptherm.blocks.fanbox.BlockInternalTank;
 import com.tgame.apptherm.blocks.fanbox.BlockMEPort;
+import com.tgame.apptherm.blocks.fanbox.BlockReactionChamber;
 import com.tgame.apptherm.blocks.networked.BlockAirIntake;
 import com.tgame.apptherm.blocks.networked.BlockEAS;
 import com.tgame.apptherm.blocks.networked.BlockEnergyEater;
@@ -35,6 +36,7 @@ public class Blocks {
 	public static Block fluidPort;
 	public static Block internalTank;
 	public static Block meCoolant;
+	public static Block reactChamber;
 
 	public static void init() {
 		
@@ -81,6 +83,9 @@ public class Blocks {
 		
 		meCoolant = new BlockMECoolant(BlockInfo.COOLANT_ID);
 		GameRegistry.registerBlock(meCoolant, BlockInfo.COOLANT_KEY);
+		
+		reactChamber = new BlockReactionChamber(BlockInfo.REACT_ID);
+		GameRegistry.registerBlock(reactChamber, BlockInfo.REACT_KEY);
 
 	}
 
@@ -102,6 +107,7 @@ public class Blocks {
 		LanguageRegistry.addName(fluidPort, BlockInfo.FLUIDPORT_NAME);
 		LanguageRegistry.addName(internalTank, BlockInfo.INTTANK_NAME);
 		LanguageRegistry.addName(meCoolant, BlockInfo.COOLANT_NAME);
+		LanguageRegistry.addName(reactChamber, BlockInfo.REACT_NAME);
 		
 	}
 

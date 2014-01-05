@@ -12,6 +12,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 
+import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
@@ -20,12 +21,13 @@ import com.tgame.apptherm.multiblocks.handlers.FanBoxFluidHandler;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityFluidPort;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityInternalTank;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityMEPort;
+import com.tgame.apptherm.tileentities.fanbox.TileEntityReactionChamber;
 
 public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	protected Set<Class> requiredTiles;
 	protected Set<CoordTriplet> setOfInternalTanks;
-	protected Set<CoordTriplet> setOfBlades;
+	protected Set<CoordTriplet> setOfReactionChamber;
 	protected boolean isPowered;
 
 	private FanBoxFluidHandler fluidHandler;
@@ -63,8 +65,12 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 		this.isPowered = powerstatus;
 	}
 
-	public Set<CoordTriplet> getCountOfInternalTanks() {
+	public Set<CoordTriplet> getSetOfInternalTanks() {
 		return this.setOfInternalTanks;
+	}
+
+	public Set<CoordTriplet> getSetOfReactionChambers() {
+		return this.setOfReactionChamber;
 	}
 
 	/**
@@ -109,7 +115,8 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 		if (!checkForRequiredTiles())
 			return false;
 
-		this.setOfInternalTanks = calcInternalTanks();
+		this.setOfInternalTanks = calcAmountOfClass(TileEntityInternalTank.class);
+		this.setOfReactionChamber = calcAmountOfClass(TileEntityReactionChamber.class);
 
 		return super.isMachineWhole();
 	}
@@ -150,16 +157,18 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	}
 
 	/**
-	 * grabs all internal tanks, Wraps them in a HashSet<CoordTriplet> and
-	 * returns that.
+	 * grabs all Instances of @param Class clazz, Wraps them in a
+	 * HashSet<CoordTriplet> and returns that.
 	 * 
+	 * @param Class
+	 *            clazz of the instance of the tile in multiblock
 	 * @return the hash set Containing the CoordTriplet of all internal Tanks
 	 * 
 	 * @author tgame14
 	 */
-	private HashSet<CoordTriplet> calcInternalTanks() {
+
+	private HashSet<CoordTriplet> calcAmountOfClass(Class clazz) {
 		HashSet<CoordTriplet> hashSet = new HashSet<CoordTriplet>();
-		Class clazz = TileEntityInternalTank.class;
 
 		for (CoordTriplet coord : connectedBlocks) {
 			TileEntity tile = worldObj.getBlockTileEntity(coord.x, coord.y,
@@ -168,6 +177,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 			if (clazz.isInstance(tile))
 				hashSet.add(new CoordTriplet(coord.x, coord.y, coord.z));
 		}
+
 		return hashSet;
 	}
 
@@ -175,7 +185,8 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	protected void onMachineAssembled() {
 		// System.out.println("Assembled");
 
-		this.fluidHandler = new FanBoxFluidHandler(this.setOfInternalTanks);
+		this.fluidHandler = new FanBoxFluidHandler(this.setOfInternalTanks,
+				this.setOfReactionChamber);
 
 	}
 
@@ -216,19 +227,19 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	protected int getMaximumYSize() {
 		return 256;
 	}
-	
-	/* Allows to set minimal Sizes now. removes getMinimalHeight() from a need. */
-	
+
+	/* Allows to set minimal Sizes now. removes getMinimalHeight(). */
+
 	@Override
 	protected int getMinimumXSize() {
 		return 3;
 	}
-	
+
 	@Override
 	protected int getMinimumYSize() {
 		return 3;
 	}
-	
+
 	@Override
 	protected int getMinimumZSize() {
 		return 3;
@@ -247,8 +258,11 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 	@Override
 	protected boolean updateServer() {
 		if (this.fluidHandler == null) {
-			System.out.println("handler is null, WTF?");
-			this.fluidHandler = new FanBoxFluidHandler(setOfInternalTanks);
+			AppTherm.log
+					.warning("Fluid Handler is null For Controller at %d, %d, %d"
+							+ referenceCoord);
+			this.fluidHandler = new FanBoxFluidHandler(setOfInternalTanks,
+					setOfReactionChamber);
 			return false;
 		}
 
@@ -268,14 +282,17 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 		if (this.fluidHandler != null)
 			this.fluidHandler.writeToNBT(tag);
 
-		tag.setInteger("intTankSize", calcInternalTanks().size());
+		if (this.setOfInternalTanks != null)
+			tag.setInteger("intTankSize", this.setOfInternalTanks.size());
+		if (this.setOfReactionChamber != null)
+			tag.setInteger("reactSize", this.setOfReactionChamber.size());
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		if (this.fluidHandler == null)
 			this.fluidHandler = new FanBoxFluidHandler(
-					tag.getInteger("intTankSize"));
+					tag.getInteger("intTankSize"), tag.getInteger("reactSize"));
 
 		this.fluidHandler.readFromNBT(tag);
 	}

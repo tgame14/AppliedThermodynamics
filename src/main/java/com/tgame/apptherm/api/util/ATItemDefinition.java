@@ -28,7 +28,7 @@ public interface ATItemDefinition {
     ItemStack stack(int stackSize);
 
     /**
-     * Compare {@link ItemStack} with this {@link AEItemDefinition}
+     * Compare {@link ItemStack} with this {@link ATItemDefinition}
      * 
      * @param comparableItem
      * @return true if the item stack is a matching item.

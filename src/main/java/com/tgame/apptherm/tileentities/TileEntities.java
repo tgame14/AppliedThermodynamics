@@ -7,6 +7,7 @@ import com.tgame.apptherm.tileentities.fanbox.TileEntityFluidPort;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityHeatVent;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityInternalTank;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityMEPort;
+import com.tgame.apptherm.tileentities.fanbox.TileEntityReactionChamber;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -28,6 +29,7 @@ public class TileEntities {
 		GameRegistry.registerTileEntity(TileEntityMEPort.class, BlockInfo.MEPORT_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityFluidPort.class, BlockInfo.FLUIDPORT_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityInternalTank.class, BlockInfo.INTTANK_TE_KEY);
+		GameRegistry.registerTileEntity(TileEntityReactionChamber.class, BlockInfo.REACT_TE_KEY);
 		
 	}
 

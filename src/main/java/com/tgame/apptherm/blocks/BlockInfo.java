@@ -123,5 +123,13 @@ public class BlockInfo {
 	public static final String COOLANT_UNLOCALIZED_NAME = "mecoolant";
 	public static final String[] COOLANT_TEXTURES = { "meCoolantStill",
 			"meCoolantFlowing" };
+	
+	public static int REACT_ID;
+	public static final int REACT_DEFAULT = config++;
+	public static final String REACT_KEY = "reactionchamber";
+	public static final String REACT_NAME = "Reaction Chamber";
+	public static final String REACT_UNLOCALIZED_NAME = "reactionchamber";
+	public static final String REACT_TE_KEY = "tileentityreactionchamber";
+	public static final String[] REACT_TEXTURES = { "reactionChamber" };
 
 }
