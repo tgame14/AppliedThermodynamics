@@ -79,6 +79,9 @@ public class FanBoxFluidHandler {
 	 * @return boolean based on whether there is a need to Save changes or not
 	 */
 	public boolean onUpdateServerTick() {
+		System.out.println("Internals : " + countOfInternals);
+		System.out.println("CPU : " + countOfReactions);
+		
 		if (!mainTank.isEmpty()) {
 			this.mainTank.drain(4 + this.countOfReactions, true);
 			this.extTank.fill(this.meCoolant, true);
