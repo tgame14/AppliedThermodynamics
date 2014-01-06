@@ -1,6 +1,7 @@
 package com.tgame.apptherm.blocks.fanbox;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityReactionChamber;
 
 import net.minecraft.block.BlockContainer;
@@ -13,7 +14,7 @@ public class BlockReactionChamber extends BlockContainer {
 		super(id, Material.iron);
 		
 		this.setHardness(2.0F);
-		this.setUnlocalizedName("tile." + "" + "name");
+		this.setUnlocalizedName(BlockInfo.REACT_UNLOCALIZED_NAME);
 		this.setCreativeTab(AppTherm.AppThermTab);
 	}
 	

@@ -64,6 +64,7 @@ public class AppTherm {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		this.log.info("Preinit Loading up");
 		
 		this.log.info("Starting to Load Configs");
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
@@ -95,10 +96,11 @@ public class AppTherm {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		this.log.info("Init Loading Up");
 
-		this.log.fine("Adding localized Names for Items And Blocks");
+		/*this.log.fine("Adding localized Names for Items And Blocks");
 		Items.addNames();
-		Blocks.addNames();
+		Blocks.addNames();*/
 		
 		this.log.fine("Initializing TileEntities");
 		TileEntities.init();
@@ -114,7 +116,7 @@ public class AppTherm {
 		ModInfo.heatCacheID = Util.getAppEngApi().getGridCacheRegistry()
 				.registerGridCache(LogicBase.class);
 		
-		this.log.finest("Finished Loading init");
+		this.log.info("Finished Loading init");
 
 	}
 
