@@ -1,5 +1,7 @@
 package com.tgame.apptherm.items;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -32,6 +34,15 @@ public class ItemHeatRecorder extends Item {
 	public void registerIcons(IconRegister register) {
 		this.itemIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 				+ ItemInfo.RECORDER_ICON);
+	}
+	
+	@Override
+	public void addInformation(ItemStack itemstack,
+			EntityPlayer player, List list, boolean par4) {
+		list.add("This item will Show you the");
+		list.add("Current heat levels in the network");
+		list.add("Right click any Block connected to the network");
+		list.add("to see the Heat and Power");
 	}
 
 	@Override

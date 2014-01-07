@@ -1,0 +1,22 @@
+#Blocks
+
+tile.liquidme.name=Liquid ME
+tile.jellobrick.name=Jello Brick
+tile.exhaustme.name=ME Heat Exhaust
+tile.meheatmonitor.name=ME Heat Monitor
+tile.liquidcoolerme.name=ME Simple Liquid Cooler
+tile.simplefanme.name=ME Simple Fan
+tile.eas.name=ME Emergency Alarm System
+tile.meeater.name=ME Eater <debugTool>
+tile.fanboxcasing.name=Advanced Fanbox Casing
+tile.thermicheatvent.name=Thermic Heat Vent
+tile.meport.name=ME Advanced Fanbox Port
+tile.fanboxfluidport.name= Advanced Fanbox Fluid Port
+tile.fanboxinternaltank.name=Internal Fanbox Tank
+tile.mecoolant.name=ME Coolant
+tile.reactionchamber.name=Advanced Fanbox Reaction Chamber
+
+#Items
+
+item.megoo.name=ME Goo
+item.heatrecorder.name=Heat Regulator

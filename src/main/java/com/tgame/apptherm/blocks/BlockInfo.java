@@ -11,7 +11,6 @@ public class BlockInfo {
 	public static int LIQUID_ME_ID;
 	public static final int LIQUID_ME_DEFAULT = config++;
 	public static final String LIQUID_ME_KEY = "LiquidME";
-	public static final String LIQUID_ME_NAME = "Liquid ME";
 	public static final String LIQUID_ME_UNLOCALIZED_NAME = "liquidme";
 	public static final String LIQUID_STILL_TEXTURE = "LiquidMEStill";
 	public static final String LIQUID_FLOW_TEXTURE = "LiquidMEFlowing";
@@ -20,14 +19,12 @@ public class BlockInfo {
 	public static int JELLO_ID;
 	public static final int JELLO_DEFAULT = config++;
 	public static final String JELLO_KEY = "JelloBrick";
-	public static final String JELLO_NAME = "Jello Brick";
 	public static final String JELLO_UNLOCALIZED_NAME = "jellobrick";
 	public static final String JELLO_TEXTURE = "jelloBrick";
 
 	public static int EXHAUST_ID;
 	public static final int EXHAUST_DEFAULT = config++;
 	public static final String EXHAUST_KEY = "MEExhaust";
-	public static final String EXHAUST_NAME = "ME Heat Exhaust";
 	public static final String EXHAUST_UNLOCALIZED_NAME = "exhaustme";
 	public static final String EXHAUST_TE_KEY = "TileEntityMEExhaust";
 	public static final String[] EXHAUST_TEXTURES = { "exhaustTop",
@@ -36,7 +33,6 @@ public class BlockInfo {
 	public static int MONITOR_ID;
 	public static final int MONITOR_DEFAULT = config++;
 	public static final String MONITOR_KEY = "MEMonitor";
-	public static final String MONITOR_NAME = "ME Heat Monitor";
 	public static final String MONITOR_UNLOCALIZED_NAME = "meheatmonitor";
 	public static final String MONITOR_TE_KEY = "TileEntityMEMonitor";
 	public static final String[] MONITOR_TEXTURES = { "exhaustBot",
@@ -46,7 +42,6 @@ public class BlockInfo {
 	public static int LIQUICOOL_ID;
 	public static final int LIQUICOOL_DEFAULT = config++;
 	public static final String LIQUICOOL_KEY = "MELiqCooler";
-	public static final String LIQUICOOL_NAME = "ME Liquid Cooler";
 	public static final String LIQUICOOL_UNLOCALIZED_NAME = "liquidcoolerme";
 	public static final String LIQUICOOL_TE_KEY = "TileEntityMELiquidCooler";
 	public static final String[] LIQUICOOL_TEXUTRES = { "liquiFace",
@@ -55,7 +50,6 @@ public class BlockInfo {
 	public static int INTAKE_ID;
 	public static final int INTAKE_DEFAULT = config++;
 	public static final String INTAKE_KEY = "SimpleFan";
-	public static final String INTAKE_NAME = "ME Simple Fan";
 	public static final String INTAKE_UNLOCALIZED_NAME = "simplefanme";
 	public static final String INTAKE_TE_KEY = "TileEntitySimpleFan";
 	public static final String INTAKE_TEXTURE = "airIntake";
@@ -63,7 +57,6 @@ public class BlockInfo {
 	public static int EAS_ID;
 	public static final int EAS_DEFAULT = config++;
 	public static final String EAS_KEY = "EASBlock";
-	public static final String EAS_NAME = "Emergency Alarm System";
 	public static final String EAS_UNLOCALIZED_NAME = "eas";
 	public static final String EAS_TE_KEY = "TileEntityEAS";
 	public static final String EAS_TEXTURE = "EASFace";
@@ -71,14 +64,12 @@ public class BlockInfo {
 	public static int EATER_ID;
 	public static final int EATER_DEFAULT = config++;
 	public static final String EATER_KEY = "Eater";
-	public static final String EATER_NAME = "ME Eater";
 	public static final String EATER_UNLOCALIZED_NAME = "meeater";
 	public static final String EATER_TE_KEY = "TileEntityEater";
 
 	public static int FANBOX_ID;
 	public static final int FANBOX_DEFAULT = config++;
 	public static final String FANBOX_KEY = "MEFanBox";
-	public static final String FANBOX_NAME = "ME Advanced Fan Box Casing";
 	public static final String FANBOX_UNLOCALIZED_NAME = "fanboxcasing";
 	public static final String FANBOX_TE_KEY = "TileEntityFanCasing";
 	public static final String[] FANBOX_TEXTURES = { "multiBlockCasing",
@@ -87,7 +78,6 @@ public class BlockInfo {
 	public static int VENT_ID;
 	public static final int VENT_DEFAULT = config++;
 	public static final String VENT_KEY = "ThermicHeatVent";
-	public static final String VENT_NAME = "Thermic Heat Vent";
 	public static final String VENT_UNLOCALIZED_NAME = "thermicheatvent";
 	public static final String VENT_TE_KEY = "TileEntityThermicVent";
 	public static final String[] VENT_TEXTURES = { "METhermicHeatVent_0",
@@ -96,7 +86,6 @@ public class BlockInfo {
 	public static int MEPORT_ID;
 	public static final int MEPORT_DEFAULT = config++;
 	public static final String MEPORT_KEY = "MEPort";
-	public static final String MEPORT_NAME = "ME Fan Box Port";
 	public static final String MEPORT_UNLOCALIZED_NAME = "meport";
 	public static final String MEPORT_TE_KEY = "TileEntityMEPort";
 	public static final String MEPORT_TEXTURE = "MEPort";
@@ -104,7 +93,6 @@ public class BlockInfo {
 	public static int FLUIDPORT_ID;
 	public static final int FLUIDPORT_DEFAULT = config++;
 	public static final String FLUIDPORT_KEY = "fluidport";
-	public static final String FLUIDPORT_NAME = "Fan Box Fluid Port";
 	public static final String FLUIDPORT_UNLOCALIZED_NAME = "fanboxfluidport";
 	public static final String FLUIDPORT_TE_KEY = "TileEntityFluidPort";
 	public static final String FLUIDPORT_TEXTURE = "FluidPort";
@@ -112,14 +100,12 @@ public class BlockInfo {
 	public static int INTTANK_ID;
 	public static final int INTTANK_DEFAULT = config++;
 	public static final String INTTANK_KEY = "internalTank";
-	public static final String INTTANK_NAME = "Fan Box Internal Tank";
 	public static final String INTTANK_UNLOCAZLIZED_NAME = "fanboxinternaltank";
 	public static final String INTTANK_TE_KEY = "TileEntityInternalTank";
 
 	public static int COOLANT_ID;
 	public static final int COOLANT_DEFAULT = config++;
 	public static final String COOLANT_KEY = "mecoolant";
-	public static final String COOLANT_NAME = "ME Coolant";
 	public static final String COOLANT_UNLOCALIZED_NAME = "mecoolant";
 	public static final String[] COOLANT_TEXTURES = { "meCoolantStill",
 			"meCoolantFlowing" };
@@ -127,7 +113,6 @@ public class BlockInfo {
 	public static int REACT_ID;
 	public static final int REACT_DEFAULT = config++;
 	public static final String REACT_KEY = "reactionchamber";
-	public static final String REACT_NAME = "Reaction Chamber";
 	public static final String REACT_UNLOCALIZED_NAME = "reactionchamber";
 	public static final String REACT_TE_KEY = "tileentityreactionchamber";
 	public static final String[] REACT_TEXTURES = { "reactionChamber" };
