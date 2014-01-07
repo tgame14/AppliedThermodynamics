@@ -21,10 +21,10 @@ public class Fluids {
 
 	}
 
-	public static void addNames() {
+	/*public static void addNames() {
 		LanguageRegistry.addName(fluidME, BlockInfo.LIQUID_ME_NAME);
 		LanguageRegistry.addName(meCoolant, BlockInfo.COOLANT_NAME);
 
-	}
+	}*/
 
 }

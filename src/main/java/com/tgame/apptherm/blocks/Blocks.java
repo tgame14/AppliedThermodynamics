@@ -89,7 +89,7 @@ public class Blocks {
 
 	}
 
-	public static void addNames() {
+	/*public static void addNames() {
 		
 		if (ConfigInfo.LIQUID_CONSUME)
 			LanguageRegistry.addName(fluidME, BlockInfo.LIQUID_ME_NAME);
@@ -109,6 +109,6 @@ public class Blocks {
 		LanguageRegistry.addName(meCoolant, BlockInfo.COOLANT_NAME);
 		LanguageRegistry.addName(reactChamber, BlockInfo.REACT_NAME);
 		
-	}
+	}*/
 
 }
