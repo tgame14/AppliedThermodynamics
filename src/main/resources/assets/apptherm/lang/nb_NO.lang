@@ -1,0 +1,22 @@
+#Blocks
+
+tile.liquidme.name=Flytende ME
+tile.jellobrick.name=Gele Brikke
+tile.exhaustme.name=ME Varmeutgang
+tile.meheatmonitor.name=ME VarmeOvervåkningsSkjerm
+tile.liquidcoolerme.name=Enkel ME væskekjøler
+tile.simplefanme.name=Enkel ME vifte
+tile.eas.name=ME Nød alarm system
+tile.meeater.name=Glupsk ME <debug verktøy>
+tile.fanboxcasing.name=Avansert vifteboks skall
+tile.thermicheatvent.name=Temperaturbasert ventil
+tile.meport.name=Avansert  ME vifteboks port
+tile.fanboxfluidport.name=Avansert vifteboks port for væske
+tile.fanboxinternaltank.name=Innebygd viftebokstank
+tile.mecoolant.name=ME Kjølevæske
+tile.reactionchamber.name=Avansert vifteboks reaksjonskammer.
+
+#Items
+
+item.megoo.name=ME Slim
+item.heatrecorder.name=Varme Regulator
