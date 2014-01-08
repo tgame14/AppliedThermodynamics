@@ -1,0 +1,22 @@
+#Blocks
+
+tile.liquidme.name=Flytande ME
+tile.jellobrick.name=Gel Tegel
+tile.exhaustme.name=ME Termisk ventilator
+tile.meheatmonitor.name=ME Termisk Skärm
+tile.liquidcoolerme.name=Enkel ME fluidkylare
+tile.simplefanme.name=Enkel ME fläkt
+tile.eas.name=ME akuta larmsystem
+tile.meeater.name=Vildsinta ME <debug verktøy>
+tile.fanboxcasing.name=Avancerad fläkt låda skal
+tile.thermicheatvent.name=Temperatur Baserat ventil
+tile.meport.name=Avancerad ME fläkt låda port
+tile.fanboxfluidport.name=Avancerad fläkt låda port för vätska
+tile.fanboxinternaltank.name=Inbyggd fläkt låda tank
+tile.mecoolant.name=ME Kylvätska
+tile.reactionchamber.name=Avancerad låda-fan reaktionskammare.
+
+#Items
+
+item.megoo.name=ME-Slim
+item.heatrecorder.name=Värmeregulator
