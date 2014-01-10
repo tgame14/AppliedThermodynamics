@@ -31,7 +31,7 @@ public class BlockLiquidCooler extends BlockContainer {
 
 		setHardness(2.0F);
 		setCreativeTab(AppTherm.AppThermTab);
-		setUnlocalizedName(BlockInfo.LIQUICOOL_UNLOCALIZED_NAME);
+		setUnlocalizedName("appliedthermodynamics." + BlockInfo.LIQUICOOL_UNLOCALIZED_NAME);
 
 	}
 

@@ -30,7 +30,7 @@ public class BlockMonitorME extends BlockContainer {
 
 		setHardness(2F);
 		setCreativeTab(AppTherm.AppThermTab);
-		setUnlocalizedName(BlockInfo.MONITOR_UNLOCALIZED_NAME);
+		setUnlocalizedName("appliedthermodynamics." + BlockInfo.MONITOR_UNLOCALIZED_NAME);
 
 	}
 

@@ -24,7 +24,7 @@ public class BlockMECoolant extends BlockFluidClassic {
 		super(id, Fluids.meCoolant, new MaterialLiquid(MapColor.waterColor));
 
 		this.setCreativeTab(AppTherm.AppThermTab);
-		this.setUnlocalizedName(BlockInfo.COOLANT_UNLOCALIZED_NAME);
+		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.COOLANT_UNLOCALIZED_NAME);
 		this.setQuantaPerBlock(8);
 		this.setHardness(1000F);
 		this.setResistance(1000F);

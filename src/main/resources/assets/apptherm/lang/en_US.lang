@@ -1,22 +1,22 @@
 #Blocks
 
-tile.liquidme.name=Liquid ME
-tile.jellobrick.name=Jello Brick
-tile.exhaustme.name=ME Heat Exhaust
-tile.meheatmonitor.name=ME Heat Monitor
-tile.liquidcoolerme.name=ME Simple Liquid Cooler
-tile.simplefanme.name=ME Simple Fan
-tile.eas.name=ME Emergency Alarm System
-tile.meeater.name=ME Eater <debugTool>
-tile.fanboxcasing.name=Advanced Fanbox Casing
-tile.thermicheatvent.name=Thermic Heat Vent
-tile.meport.name=ME Advanced Fanbox Port
-tile.fanboxfluidport.name= Advanced Fanbox Fluid Port
-tile.fanboxinternaltank.name=Internal Fanbox Tank
-tile.mecoolant.name=ME Coolant
-tile.reactionchamber.name=Advanced Fanbox Reaction Chamber
+tile.appliedthermodynamics.liquidme.name=Liquid ME
+tile.appliedthermodynamics.jellobrick.name=Jello Brick
+tile.appliedthermodynamics.exhaustme.name=ME Heat Exhaust
+tile.appliedthermodynamics.meheatmonitor.name=ME Heat Monitor
+tile.appliedthermodynamics.liquidcoolerme.name=ME Simple Liquid Cooler
+tile.appliedthermodynamics.simplefanme.name=ME Simple Fan
+tile.appliedthermodynamics.eas.name=ME Emergency Alarm System
+tile.appliedthermodynamics.meeater.name=ME Eater <debugTool>
+tile.appliedthermodynamics.fanboxcasing.name=Advanced Fanbox Casing
+tile.appliedthermodynamics.thermicheatvent.name=Thermic Heat Vent
+tile.appliedthermodynamics.meport.name=ME Advanced Fanbox Port
+tile.appliedthermodynamics.fanboxfluidport.name= Advanced Fanbox Fluid Port
+tile.appliedthermodynamics.fanboxinternaltank.name=Internal Fanbox Tank
+tile.appliedthermodynamics.mecoolant.name=ME Coolant
+tile.appliedthermodynamics.reactionchamber.name=Advanced Fanbox Reaction Chamber
 
 #Items
 
-item.megoo.name=ME Goo
-item.heatrecorder.name=Heat Regulator
+item.appliedthermodynamics.megoo.name=ME Goo
+item.appliedthermodynamics.heatrecorder.name=Heat Regulator

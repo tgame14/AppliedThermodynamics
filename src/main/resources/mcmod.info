@@ -7,6 +7,6 @@
     "url": "http://tgame14.github.io/AppliedThermodynamics/",
     "updateUrl": "https://github.com/tgame14/AppliedThermodynamics/releases",
     "authors": [ "tgame14" ],
-    "credits": "Made possible with #AppliedEnergistics.",
+    "credits": "#AppliedEnergistics, and E.Beef multiblock library.",
     "requiredMods": [ "Forge", "AE1" ]
 }]

@@ -34,7 +34,7 @@ public class BlockFluidME extends BlockFluidClassic implements
 		super(id, Fluids.fluidME, new MaterialLiquid(MapColor.waterColor));
 
 		setCreativeTab(AppTherm.AppThermTab);
-		setUnlocalizedName(BlockInfo.LIQUID_ME_UNLOCALIZED_NAME);
+		setUnlocalizedName("appliedthermodynamics." + BlockInfo.LIQUID_ME_UNLOCALIZED_NAME);
 		setHardness(1000F);
 		setResistance(1000F);
 		setLightValue(0.8F);

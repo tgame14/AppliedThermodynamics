@@ -25,7 +25,7 @@ public class ItemHeatRecorder extends Item {
 		super(id);
 
 		this.setCreativeTab(AppTherm.AppThermTab);
-		this.setUnlocalizedName(ItemInfo.RECORDER_UNLOCALIZED_NAME);
+		this.setUnlocalizedName("appliedthermodynamics." + ItemInfo.RECORDER_UNLOCALIZED_NAME);
 
 	}
 

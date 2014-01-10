@@ -21,7 +21,7 @@ public class BlockHeatVent extends BlockContainer {
 		super(id, Material.iron);
 
 		this.setHardness(2.2F);
-		this.setUnlocalizedName(BlockInfo.VENT_UNLOCALIZED_NAME);
+		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.VENT_UNLOCALIZED_NAME);
 		this.setCreativeTab(AppTherm.AppThermTab);
 
 	}

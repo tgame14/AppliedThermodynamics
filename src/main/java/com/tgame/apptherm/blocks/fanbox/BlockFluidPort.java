@@ -24,7 +24,7 @@ public class BlockFluidPort extends BlockContainer {
 		super(id, Material.iron);
 
 		this.setHardness(2.0F);
-		this.setUnlocalizedName(BlockInfo.FLUIDPORT_UNLOCALIZED_NAME);
+		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.FLUIDPORT_UNLOCALIZED_NAME);
 		this.setCreativeTab(AppTherm.AppThermTab);
 	}
 

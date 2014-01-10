@@ -5,6 +5,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
+/**
+ * 
+ * @author tgame14, Initial Concept by AlgorithmX2
+ *
+ */
 public interface ATItemDefinition {
 
 	 /**

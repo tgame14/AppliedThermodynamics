@@ -15,7 +15,7 @@ public class BlockMEPort extends BlockContainer {
 	public BlockMEPort(int id) {
 		super(id, Material.iron);
 
-		this.setUnlocalizedName(BlockInfo.MEPORT_UNLOCALIZED_NAME);
+		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.MEPORT_UNLOCALIZED_NAME);
 		this.setHardness(2.0F);
 		this.setCreativeTab(AppTherm.AppThermTab);
 	}

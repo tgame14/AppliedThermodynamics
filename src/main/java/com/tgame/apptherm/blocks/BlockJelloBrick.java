@@ -14,14 +14,15 @@ public class BlockJelloBrick extends Block {
 		setHardness(2F);
 		setCreativeTab(AppTherm.AppThermTab);
 		setLightOpacity(8);
-		setUnlocalizedName(BlockInfo.JELLO_UNLOCALIZED_NAME);
+		setUnlocalizedName("appliedthermodynamics." + BlockInfo.JELLO_UNLOCALIZED_NAME);
 
 	}
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
 
-		blockIcon = iconRegister.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + BlockInfo.JELLO_TEXTURE);
+		blockIcon = iconRegister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
+				+ BlockInfo.JELLO_TEXTURE);
 	}
 
 }

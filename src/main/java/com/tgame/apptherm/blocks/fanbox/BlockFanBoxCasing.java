@@ -22,7 +22,7 @@ public class BlockFanBoxCasing extends BlockContainer {
 		this.setHardness(2.0F);
 		this.setResistance(4.5F);
 		this.setStepSound(soundMetalFootstep);
-		this.setUnlocalizedName(BlockInfo.FANBOX_UNLOCALIZED_NAME);
+		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.FANBOX_UNLOCALIZED_NAME);
 		this.setCreativeTab(AppTherm.AppThermTab);
 
 	}

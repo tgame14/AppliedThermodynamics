@@ -21,7 +21,7 @@ public class BlockEAS extends BlockContainer {
 
 		setHardness(2.0F);
 		setCreativeTab(AppTherm.AppThermTab);
-		setUnlocalizedName(BlockInfo.EAS_UNLOCALIZED_NAME);
+		setUnlocalizedName("appliedthermodynamics." + BlockInfo.EAS_UNLOCALIZED_NAME);
 
 	}
 

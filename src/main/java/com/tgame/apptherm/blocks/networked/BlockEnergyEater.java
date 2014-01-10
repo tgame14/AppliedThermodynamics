@@ -16,7 +16,7 @@ public class BlockEnergyEater extends BlockContainer {
 		
 		this.setCreativeTab(AppTherm.AppThermTab);
 		this.setHardness(2.0F);
-		this.setUnlocalizedName(BlockInfo.EATER_UNLOCALIZED_NAME);
+		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.EATER_UNLOCALIZED_NAME);
 	}
 
 	@Override

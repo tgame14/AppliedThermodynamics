@@ -26,7 +26,7 @@ public class BlockExhaustME extends BlockContainer {
 
 		setHardness(2.0F);
 		setCreativeTab(AppTherm.AppThermTab);
-		setUnlocalizedName(BlockInfo.EXHAUST_UNLOCALIZED_NAME);
+		setUnlocalizedName("appliedthermodynamics." + BlockInfo.EXHAUST_UNLOCALIZED_NAME);
 	}
 
 	 @SideOnly(Side.CLIENT)

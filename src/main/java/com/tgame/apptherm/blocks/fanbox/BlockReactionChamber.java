@@ -14,7 +14,7 @@ public class BlockReactionChamber extends BlockContainer {
 		super(id, Material.iron);
 		
 		this.setHardness(2.0F);
-		this.setUnlocalizedName(BlockInfo.REACT_UNLOCALIZED_NAME);
+		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.REACT_UNLOCALIZED_NAME);
 		this.setCreativeTab(AppTherm.AppThermTab);
 	}
 	

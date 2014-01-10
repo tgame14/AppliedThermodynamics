@@ -27,7 +27,7 @@ public class BlockAirIntake extends BlockContainer {
 		setCreativeTab(AppTherm.AppThermTab);
 		setHardness(2F);
 		setStepSound(Block.soundMetalFootstep);
-		setUnlocalizedName(BlockInfo.INTAKE_UNLOCALIZED_NAME);
+		setUnlocalizedName("appliedthermodynamics." + BlockInfo.INTAKE_UNLOCALIZED_NAME);
 		
 	}
 	

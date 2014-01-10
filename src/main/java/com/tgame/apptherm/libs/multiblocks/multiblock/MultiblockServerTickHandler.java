@@ -40,7 +40,7 @@ public class MultiblockServerTickHandler implements IScheduledTickHandler {
 
 	@Override
 	public String getLabel() {
-		return "BigReactors:MultiblockServerTickHandler";
+		return "AppliedThermodynamics:MultiblockServerTickHandler";
 	}
 
 	@Override
