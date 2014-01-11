@@ -12,10 +12,10 @@ buildscript {
 }
 ENV = System.getenv()
 
-if(ENV.DRONE_BUILD_NUMBER != null)
+if(!ENV.DRONE_BUILD_NUMBER.isEmpty())
 buildNum = ENV.DRONE_BUILD_NUMBER
 
-else if (ENV.BUILD_NUMBER != null)
+else if (!ENV.BUILD_NUMBER.isEmpty())
 buildNum = ENV.BUILD_NUMBER
 
 else
