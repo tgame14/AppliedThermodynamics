@@ -28,7 +28,7 @@ public class Registry {
 	 * @return whether or not the registry was successful
 	 * 
 	 */
-	public boolean addBlockFeature(Class clazz, Object... Args) {
+	public boolean addBlockFeature(Class<? extends Block> clazz, Object... Args) {
 		
 		Block ATBlock = null;
 		try {
