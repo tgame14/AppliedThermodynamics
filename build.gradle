@@ -12,6 +12,15 @@ buildscript {
 }
 ENV = System.getenv()
 
+if(ENV.DRONE_BUILD_NUMBER != null)
+buildNum = ENV.DRONE_BUILD_NUMBER
+
+else if (ENV.BUILD_NUMBER != null)
+buildNum = ENV.BUILD_NUMBER
+
+else
+buildNum = "err"
+
 apply plugin: 'java'
 apply plugin: 'forge'
 
@@ -28,7 +37,7 @@ configFile.withReader {
     ext.config = new ConfigSlurper().parse prop
 }
 
-version = config.mod_version + "." + ENV.DRONE_BUILD_NUMBER
+version = config.mod_version + "." + buildNum
 group= "com.tgame" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "apptherm"
 
