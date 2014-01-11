@@ -16,9 +16,9 @@ import com.tgame.apptherm.blocks.networked.BlockFluidME;
 import com.tgame.apptherm.blocks.networked.BlockLiquidCooler;
 import com.tgame.apptherm.blocks.networked.BlockMonitorME;
 import com.tgame.apptherm.config.ConfigInfo;
+import com.tgame.apptherm.util.registry.Registry;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class Blocks {
 
@@ -92,8 +92,10 @@ public class Blocks {
 		meCoolant = new BlockMECoolant(BlockInfo.COOLANT_ID);
 		GameRegistry.registerBlock(meCoolant, BlockInfo.COOLANT_KEY);
 
-		reactChamber = new BlockReactionChamber(BlockInfo.REACT_ID);
-		GameRegistry.registerBlock(reactChamber, BlockInfo.REACT_KEY);
+		/*reactChamber = new BlockReactionChamber(BlockInfo.REACT_ID);
+		GameRegistry.registerBlock(reactChamber, BlockInfo.REACT_KEY);*/
+		
+		System.out.println(Registry.addBlockFeature(BlockReactionChamber.class, BlockInfo.REACT_ID));
 
 	}
 

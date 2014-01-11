@@ -12,16 +12,23 @@ import com.tgame.apptherm.AppTherm;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
+/**
+ * this class holds methods to register a feature into Anything.
+ * 
+ * for example, call this in preinit:
+ * 
+ * Registry.addBlockFeature(myBlock.class, new Object[] { Args in block constructor });
+ * 
+ * 
+ * @author tgame14, original concept by AlgorithmX2
+ *
+ */
 public class Registry {
-
-	public Registry() {
-
-	}
 
 	/**
 	 * the new way to register blocks, Lets see how its done? :)
 	 * 
-	 * INTENDED FOR 1.7
+	 * INTENDED FOR 1.7 !!!
 	 * 
 	 * @author tgame14
 	 * @param Class
@@ -29,7 +36,7 @@ public class Registry {
 	 * @return whether or not the registry was successful
 	 * 
 	 */
-	public boolean addBlockFeature(Class<? extends Block> clazz, Object... Args) {
+	public static boolean addBlockFeature(Class<? extends Block> clazz, Object... Args) {
 
 		Block ATBlock = null;
 		try {
@@ -54,7 +61,7 @@ public class Registry {
 
 	}
 
-	public boolean addItemFeature(Class<? extends Item> clazz, Object... Args) {
+	public static boolean addItemFeature(Class<? extends Item> clazz, Object... Args) {
 		Item ATItem = null;
 
 		try {
@@ -76,4 +83,5 @@ public class Registry {
 				ATItem.getUnlocalizedName().replace("item.", ""));
 		return true;
 	}
+
 }
