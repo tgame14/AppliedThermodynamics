@@ -12,6 +12,7 @@ buildscript {
 }
 //env = System.getenv()
 
+apply plugin: 'forge'
 apply plugin: 'java'
 
 
