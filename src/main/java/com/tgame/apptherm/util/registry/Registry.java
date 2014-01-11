@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 
 import com.tgame.apptherm.AppTherm;
 
@@ -24,12 +25,12 @@ public class Registry {
 	 * 
 	 * @author tgame14
 	 * @param Class
-	 *            class instance of the block (MUST BE A BLOCK)
+	 *            class instance of the block
 	 * @return whether or not the registry was successful
 	 * 
 	 */
 	public boolean addBlockFeature(Class<? extends Block> clazz, Object... Args) {
-		
+
 		Block ATBlock = null;
 		try {
 
@@ -42,17 +43,37 @@ public class Registry {
 		} catch (Exception ex) {
 			System.err
 					.append("Block Registry Messed Up. Contact tgame14 With a bug report");
+			ex.printStackTrace();
 			return false;
 		}
 
-		GameRegistry.registerBlock(ATBlock, ATBlock.getUnlocalizedName().replace("tile.", ""));
-		
+		GameRegistry.registerBlock(ATBlock, ATBlock.getUnlocalizedName()
+				.replace("tile.", ""));
+
 		return true;
 
 	}
 
-	public void init() {
+	public boolean addItemFeature(Class<? extends Item> clazz, Object... Args) {
+		Item ATItem = null;
 
+		try {
+			Constructor[] con = clazz.getConstructors();
+
+			for (Constructor conItem : con) {
+				if (conItem.getParameterTypes().length == Args.length)
+					ATItem = (Item) conItem.newInstance(Args);
+			}
+		} catch (Exception ex) {
+			System.err
+					.append("Item Registry Messed Up. Contact tgame14 with a bug report");
+			ex.printStackTrace();
+
+			return false;
+		}
+
+		GameRegistry.registerItem(ATItem,
+				ATItem.getUnlocalizedName().replace("item.", ""));
+		return true;
 	}
-
 }
