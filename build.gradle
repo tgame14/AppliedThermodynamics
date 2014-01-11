@@ -12,11 +12,11 @@ buildscript {
 }
 ENV = System.getenv()
 
-if(!ENV.DRONE_BUILD_NUMBER.isEmpty())
-buildNum = ENV.DRONE_BUILD_NUMBER
+if(ENV.DRONE_BUILD_NUMBER)
+buildNum = ENV.DRONE_BUILD_NUMBER + " - drone"
 
-else if (!ENV.BUILD_NUMBER.isEmpty())
-buildNum = ENV.BUILD_NUMBER
+else if (ENV.BUILD_NUMBER)
+buildNum = ENV.BUILD_NUMBER + "- jenkins"
 
 else
 buildNum = "err"
