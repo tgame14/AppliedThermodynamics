@@ -29,7 +29,7 @@ configFile.withReader {
 }
 
 version = config.mod_version + "." + env.BUILD_NUMBER
-group= "com.tgame.apptherm" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group= "com.tgame" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "apptherm"
 
 minecraft {
