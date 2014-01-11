@@ -10,7 +10,7 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
     }
 }
-env = System.getenv("HOME")
+env = System.getenv()
 
 apply plugin: 'java'
 
@@ -28,7 +28,7 @@ configFile.withReader {
     ext.config = new ConfigSlurper().parse prop
 }
 
-version = config.mod_version + "." + env.BUID_ID
+version = config.mod_version + "." + BUID_ID
 group= "com.tgame" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "apptherm"
 
