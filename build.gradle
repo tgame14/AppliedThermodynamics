@@ -10,7 +10,7 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
     }
 }
-//env = System.getenv()
+ENV = System.getenv()
 
 apply plugin: 'java'
 apply plugin: 'forge'
@@ -28,7 +28,7 @@ configFile.withReader {
     ext.config = new ConfigSlurper().parse prop
 }
 
-version = config.mod_version + "." + "DRONE.IO"
+version = config.mod_version + "." + ENV.DRONE_BUILD_NUMBER
 group= "com.tgame" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "apptherm"
 
