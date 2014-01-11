@@ -16,7 +16,7 @@ public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 	protected LiquidCoolerFluidHandler fluidHandler;
 	protected Set<CoordTriplet> requiredTiles;
 	
-	protected LiquidCoolerControllerBase(World world) {
+	public LiquidCoolerControllerBase(World world) {
 		super(world);
 		
 		this.requiredTiles = fillSet();
@@ -84,37 +84,33 @@ public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 	@Override
 	protected int getMaximumXSize() {
 		// TODO Auto-generated method stub
-		return 256;
+		return MultiblockInfo.LiquidCoolerXSize;
 	}
 
 	@Override
 	protected int getMaximumZSize() {
 		// TODO Auto-generated method stub
-		return 256;
+		return MultiblockInfo.LiquidCoolerZSize;
 	}
 
 	@Override
 	protected int getMaximumYSize() {
-		// TODO Auto-generated method stub
-		return 256;
+		return MultiblockInfo.LiquidCoolerYSize;
 	}
 	
 	@Override
 	protected int getMinimumXSize() {
-		// TODO Auto-generated method stub
-		return super.getMinimumXSize();
+		return 3;
 	}
 	
 	@Override
 	protected int getMinimumYSize() {
-		// TODO Auto-generated method stub
-		return super.getMinimumYSize();
+		return 3;
 	}
 	
 	@Override
 	protected int getMinimumZSize() {
-		// TODO Auto-generated method stub
-		return super.getMinimumZSize();
+		return 3;
 	}
 
 	@Override

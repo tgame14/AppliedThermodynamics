@@ -9,6 +9,8 @@ import net.minecraft.block.Block;
 
 import com.tgame.apptherm.AppTherm;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class Registry {
 
 	public Registry() {
@@ -27,10 +29,11 @@ public class Registry {
 	 * 
 	 */
 	public boolean addBlockFeature(Class clazz, Object... Args) {
+		
+		Block ATBlock = null;
 		try {
 
 			Constructor[] con = clazz.getConstructors();
-			Block ATBlock = null;
 
 			for (Constructor conBlock : con)
 				if (conBlock.getParameterTypes().length == Args.length)
@@ -42,6 +45,8 @@ public class Registry {
 			return false;
 		}
 
+		GameRegistry.registerBlock(ATBlock, ATBlock.getUnlocalizedName().replace("tile.", ""));
+		
 		return true;
 
 	}
