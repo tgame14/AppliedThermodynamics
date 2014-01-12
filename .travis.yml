@@ -1,5 +1,8 @@
 language: java
 
+before_script:
+  - sudo apt-get install astyle expect
+
 script: 
 "chmod +x gradlew
 ./gradlew clean
