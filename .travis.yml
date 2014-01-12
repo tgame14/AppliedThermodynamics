@@ -10,5 +10,5 @@ before_install:
   - TERM=dumb ./gradlew setupCIWorkspace
 
 script:
-  - TERM=dumb ./gradlew build
+  ./gradlew build
   
