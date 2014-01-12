@@ -1,4 +1,4 @@
-@API(apiVersion = "0.0.1", owner = com.tgame.apptherm.util.ModInfo.ID, provides = "AppliedThermodynamics|API")
+@API(apiVersion = com.tgame.apptherm.util.ModInfo.VERSION, owner = com.tgame.apptherm.util.ModInfo.ID, provides = "AppliedThermodynamics|API")
 /**
  * @author tgame14
  *

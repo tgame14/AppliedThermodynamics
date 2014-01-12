@@ -49,7 +49,7 @@ public class AppTherm {
 
 	// the FML Logger field, Used for debug / Console output to mimic the fml
 	// and minecraft one
-	public static final Logger log = Logger.getLogger(ModInfo.NAME);
+	public static final Logger log = Logger.getLogger(ModInfo.ID);
 
 	// Instantiates a new mod Singleton, Registers the Logger to inherit fml
 	// logger props
@@ -123,7 +123,6 @@ public class AppTherm {
 	@EventHandler
 	public void serverAboutToStart(FMLServerAboutToStartEvent event) {
 		this.log.fine("Server About to start, Registering server side handlers");
-		
 		MinecraftForge.EVENT_BUS.register(new MultiblockEventHandler());
 	}
 
