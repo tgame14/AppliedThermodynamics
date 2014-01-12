@@ -1,11 +1,9 @@
 language: java
 
-before_script:
-  - sudo apt-get install astyle expect
-
 script: 
 "
 ./gradlew -v
 ./gradlew clean
 ./gradlew setupCIWorkspace
-./gradlew build --stacktrace"
+./gradlew build --stacktrace
+"
