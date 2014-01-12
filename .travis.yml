@@ -6,7 +6,9 @@ jdk:
 before_install:
  - chmod +x gradlew
 
+ install:
+  - TERM=dumb ./gradlew setupCIWorkspace
+
 script:
-"./gradlew clean
-./gradlew setupCIWorkspace
-./gradlew build"
+  - TERM=dumb ./gradlew build
+  
