@@ -1,5 +1,7 @@
 Applied Thermodynamics
 ==================
+First of all, this build is: [![Build Status](https://drone.io/github.com/tgame14/AppliedThermodynamics/status.png)](https://drone.io/github.com/tgame14/AppliedThermodynamics/latest)
+
 This is the Current Website (and github) for the Upcoming mod, Applied Thermodynamics.
 
 Currently the mod is IN OPEN ALPHA!

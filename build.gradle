@@ -18,8 +18,11 @@ buildNum = ENV.DRONE_BUILD_NUMBER + " - drone"
 else if (ENV.BUILD_NUMBER)
 buildNum = ENV.BUILD_NUMBER + "- jenkins"
 
+else if (ENV.TRAVIS_BUILD_NUMBER)
+buildNum = ENV.TRAVIS_BUILD_NUMBER + "- travis"
+
 else
-buildNum = "err"
+buildNum = config.build_number + "- manual"
 
 apply plugin: 'java'
 apply plugin: 'forge'
