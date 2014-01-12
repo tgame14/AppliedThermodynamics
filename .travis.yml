@@ -4,7 +4,6 @@ before_script:
   - sudo apt-get install astyle expect
 
 script: 
-"chmod +x gradlew
-./gradlew clean
+"./gradlew clean
 ./gradlew setupCIWorkspace
 ./gradlew build --stacktrace"
