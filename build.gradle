@@ -45,6 +45,7 @@ minecraft {
 	version = config.minecraft_version + "-" + config.forge_version
 	
 	replace "@VERSION@", project.version
+	replace "@AUTHOR@", config.author_name
 }
 
 processResources
