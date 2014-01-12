@@ -1,3 +1,7 @@
 language: java
 
-script: "./gradlew clean setupCIWorkspace build --stacktrace"
+script: 
+"chmod +x gradlew
+./gradlew clean
+./gradlew setupCIWorkspace
+./gradlew build --stacktrace"
