@@ -1,3 +1,6 @@
 language: java
 
-script: "./gradlew clean setupCIWorkspace build"
+script:
+"./gradlew clean
+./gradlew setupCIWorkspace
+./gradlew build"
