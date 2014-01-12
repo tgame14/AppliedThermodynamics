@@ -1,7 +1,12 @@
 language: java
+jdk:
+  - oraclejdk7
+  - openjdk7
+ 
+before_install:
+ - chmod +x gradlew
 
 script:
-"chmod +x gradlew
-./gradlew clean
+"./gradlew clean
 ./gradlew setupCIWorkspace
 ./gradlew build"
