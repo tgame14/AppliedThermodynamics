@@ -20,11 +20,28 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * 
  */
 public class RegisterBlock implements ATItemDefinition {
+	
 	protected Block block;
+	protected Class clazz;
+	protected Object[] Args;
+	
+	public RegisterBlock(Class<? extends Block> clazz, Object... Args) {
+		this.block = null;
+		this.clazz = clazz;
+		this.Args = Args;
+	}
+	
+	public ATItemDefinition registerBlockFeature(Class<? extends Block> clazz, Object... Args) {
+		
+		
+		
+		
+		
+		return this;
+	}
 
-	public boolean createBlockInstance(Class<? extends Block> clazz,
+	protected boolean createBlockInstance(Class<? extends Block> clazz,
 			Object... Args) {
-		Block block = null;
 
 		try {
 			Constructor[] constructor = clazz.getConstructors();
@@ -55,14 +72,14 @@ public class RegisterBlock implements ATItemDefinition {
 		return true;
 	}
 
-	public void registerBlockInstance(Block block) {
+	protected void registerBlockInstance(Block block) {
 		GameRegistry.registerBlock(
 				block,
 				block.getUnlocalizedName().replace("tile.", "")
 						.replace(".name", ""));
 	}
 
-	public void registerBlockInstance(Block block,
+	protected void registerBlockInstance(Block block,
 			Class<? extends ItemBlock> itemBlock) {
 		GameRegistry.registerBlock(block, itemBlock, block.getUnlocalizedName()
 				.replace("tile.", "").replace(".name", ""));
