@@ -1,6 +1,11 @@
 Applied Thermodynamics
 ==================
 First of all, this build is: [![Build Status](https://drone.io/github.com/tgame14/AppliedThermodynamics/status.png)](https://drone.io/github.com/tgame14/AppliedThermodynamics/latest)
+[![Build Status](https://travis-ci.org/tgame14/AppliedThermodynamics.png?branch=master)](https://travis-ci.org/tgame14/AppliedThermodynamics)
+[![Build Status](http://themattabase.com:9090/buildStatus/icon?job=Applied Thermodynamics)](http://themattabase.com:9090/job/Applied%20Thermodynamics/)
+[ ![Codeship Status for tgame14/AppliedThermodynamics](https://www.codeship.io/projects/84f85650-5e93-0131-d405-029dacdb91b7/status?branch=master)](https://www.codeship.io/projects/12042)
+
+
 
 This is the Current Website (and github) for the Upcoming mod, Applied Thermodynamics.
 
