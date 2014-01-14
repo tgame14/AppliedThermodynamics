@@ -58,5 +58,11 @@ public class Recipes {
 				'X', ironIngot, 'Y', (Block.fenceIron), 'Z', new ItemStack(
 						Block.gravel));
 
+		/* Item Recipes */
+
+		GameRegistry.addRecipe(new ItemStack(Items.Recorder), "XYX", "YXY",
+				"XXX", 'X', new ItemStack(Block.glass), 'Y',
+				Materials.matSilicon.copy());
+
 	}
 }
