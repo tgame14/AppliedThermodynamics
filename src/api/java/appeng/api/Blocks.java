@@ -3,7 +3,7 @@ package appeng.api;
 import net.minecraft.item.ItemStack;
 
 /**
- * BlockHandler, all of the BlockHandler in AE.
+ * Block, all of the Block in AE.
  * DO NOT USE THESE WITHOUT COPYING THEM : ItemStack.copy() - is your friend.
  */
 
