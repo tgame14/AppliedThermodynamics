@@ -92,10 +92,9 @@ public class Blocks {
 		meCoolant = new BlockMECoolant(BlockInfo.COOLANT_ID);
 		GameRegistry.registerBlock(meCoolant, BlockInfo.COOLANT_KEY);
 
-		/*reactChamber = new BlockReactionChamber(BlockInfo.REACT_ID);
-		GameRegistry.registerBlock(reactChamber, BlockInfo.REACT_KEY);*/
+		reactChamber = new BlockReactionChamber(BlockInfo.REACT_ID);
+		GameRegistry.registerBlock(reactChamber, BlockInfo.REACT_KEY);
 		
-		System.out.println(Registry.addBlockFeature(BlockReactionChamber.class, BlockInfo.REACT_ID));
 
 	}
 
