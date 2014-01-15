@@ -15,7 +15,8 @@ public class ItemMEGoo extends Item {
 	public ItemMEGoo(int id) {
 		super(id);
 		setCreativeTab(AppTherm.AppThermTab);
-		setUnlocalizedName(ItemInfo.GOO_UNLOCALIZED_NAME);
+		setUnlocalizedName("appliedthermodynamics."
+				+ ItemInfo.GOO_UNLOCALIZED_NAME);
 
 	}
 
@@ -31,10 +32,10 @@ public class ItemMEGoo extends Item {
 			boolean par4) {
 		list.add("By observing this object you");
 		list.add("Realize its a dirty piece of purple ash");
-			list.add("");
-			list.add(player.username + ", we know where you live.");
-			list.add("Prepare.");
-		
+		list.add("");
+		list.add(player.username + ", we know where you live.");
+		list.add("Prepare.");
+
 	}
 
 }
