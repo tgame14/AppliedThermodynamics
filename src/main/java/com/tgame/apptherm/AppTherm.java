@@ -7,7 +7,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.MinecraftForge;
 import appeng.api.Util;
 
-import com.tgame.apptherm.blocks.Blocks;
+import com.tgame.apptherm.blocks.BlockHandler;
 import com.tgame.apptherm.client.interfaces.GuiHandler;
 import com.tgame.apptherm.config.ConfigHandler;
 import com.tgame.apptherm.config.ConfigInfo;
@@ -50,8 +50,9 @@ public class AppTherm {
 	public static final CreativeTabs AppThermTab = new AppThermTab(
 			CreativeTabs.getNextID(), ModInfo.NAME);
 
-	// the FML Logger field, Used for debug / Console output to mimic the fml
-	// and minecraft one
+	/**
+	 * the Logger instance for my mod.
+	 */
 	public static final Logger log = Logger.getLogger(ModInfo.ID);
 
 	/**
@@ -86,8 +87,8 @@ public class AppTherm {
 		Fluids.init();
 		this.log.fine("Loading Items");
 		Items.init();
-		this.log.fine("Loading Blocks");
-		Blocks.init();
+		this.log.fine("Loading BlockHandler");
+		BlockHandler.init();
 
 		this.log.fine("Loading Sounds");
 		proxy.initSounds();

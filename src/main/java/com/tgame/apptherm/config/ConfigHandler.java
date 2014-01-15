@@ -27,7 +27,7 @@ public class ConfigHandler {
 
 		config.load();
 
-		// Config Registry of Blocks
+		// Config Registry of BlockHandler
 		BlockInfo.LIQUID_ME_ID = config.getBlock(BlockInfo.LIQUID_ME_KEY,
 				BlockInfo.LIQUID_ME_DEFAULT).getInt();
 		BlockInfo.JELLO_ID = config.getBlock(BlockInfo.JELLO_KEY,

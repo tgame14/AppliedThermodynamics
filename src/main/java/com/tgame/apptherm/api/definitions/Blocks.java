@@ -11,15 +11,25 @@ import com.tgame.apptherm.api.util.ATItemDefinition;
  */
 public class Blocks {
 	
-	/**
-	 * Access to the Fluid Blocks
+	private static Blocks instance;
+	
+	public Blocks() {
+		
+	}
+	
+	public static Blocks instance() {
+		return instance;
+	}
+	
+	/*
+	 * Access to the Fluid BlockHandler
 	 */
 	
 	public ATItemDefinition fluidME;
 	public ATItemDefinition meCoolant;
 	
-	/**
-	 * Networked Blocks
+	/*
+	 * Networked BlockHandler
 	 */
 	
 	public ATItemDefinition exhaustME;
@@ -29,12 +39,20 @@ public class Blocks {
 	public ATItemDefinition EAS;
 	public ATItemDefinition Eater;
 		
-	/**
-	 * Fan Box Multiblock Blocks
+	/*
+	 * Fan Box Multiblock BlockHandler
 	 */
 	
 	public ATItemDefinition fanBoxCasing;
 	public ATItemDefinition heatVent;
 	public ATItemDefinition internalTank;
 	public ATItemDefinition reactorChamber;
+	public ATItemDefinition mePort;
+	public ATItemDefinition fluidPort;
+	
+	/*
+	 * Regular blocks
+	 */
+	
+	public ATItemDefinition jelloBrick;
 }

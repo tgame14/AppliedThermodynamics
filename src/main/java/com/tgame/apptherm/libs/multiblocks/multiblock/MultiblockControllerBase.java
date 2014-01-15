@@ -42,13 +42,13 @@ public abstract class MultiblockControllerBase {
 	protected CoordTriplet referenceCoord;
 
 	/**
-	 * Minimum bounding box coordinate. Blocks do not necessarily exist at this coord if your machine
+	 * Minimum bounding box coordinate. BlockHandler do not necessarily exist at this coord if your machine
 	 * is not a cube/rectangular prism.
 	 */
 	private CoordTriplet minimumCoord;
 
 	/**
-	 * Maximum bounding box coordinate. Blocks do not necessarily exist at this coord if your machine
+	 * Maximum bounding box coordinate. BlockHandler do not necessarily exist at this coord if your machine
 	 * is not a cube/rectangular prism.
 	 */
 	private CoordTriplet maximumCoord;
