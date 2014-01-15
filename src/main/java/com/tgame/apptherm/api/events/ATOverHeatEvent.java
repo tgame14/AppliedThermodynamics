@@ -3,6 +3,7 @@ package com.tgame.apptherm.api.events;
 import appeng.api.me.tiles.IGridTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.event.Cancelable;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -18,6 +19,8 @@ import net.minecraft.world.World;
  * understanding of us, Anything more than the number 3, like, 4, 5, 6... and so on.
  * 
  */
+
+@Cancelable
 public class ATOverHeatEvent extends ATEvent {
 
 	/** The heat value. */

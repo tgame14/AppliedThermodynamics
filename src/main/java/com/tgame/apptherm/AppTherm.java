@@ -12,12 +12,12 @@ import com.tgame.apptherm.client.interfaces.GuiHandler;
 import com.tgame.apptherm.config.ConfigHandler;
 import com.tgame.apptherm.config.ConfigInfo;
 import com.tgame.apptherm.entities.Entities;
-import com.tgame.apptherm.events.ATConnectionHandler;
 import com.tgame.apptherm.events.EventBusListener;
 import com.tgame.apptherm.fluids.Fluids;
-import com.tgame.apptherm.items.Items;
+import com.tgame.apptherm.items.ItemHandler;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockEventHandler;
 import com.tgame.apptherm.logic.LogicBase;
+import com.tgame.apptherm.network.ATConnectionHandler;
 import com.tgame.apptherm.network.PacketHandler;
 import com.tgame.apptherm.proxies.CommonProxy;
 import com.tgame.apptherm.tileentities.TileEntities;
@@ -39,6 +39,14 @@ import cpw.mods.fml.common.network.NetworkMod;
 @Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = "@VERSION@", dependencies = "required-after:"
 		+ ModInfo.APPLIED_ENERGISTICS)
 @NetworkMod(channels = { ModInfo.CHANNEL }, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = false, connectionHandler = ATConnectionHandler.class)
+/**
+ * the base Class for AT (appliedthermodynamics).
+ * here I Launch, register and do everything required in Startup.
+ * 
+ * 
+ * @author tgame14
+ *
+ */
 public class AppTherm {
 
 	@Instance(ModInfo.ID)
@@ -85,8 +93,8 @@ public class AppTherm {
 
 		this.log.fine("Loading Fluids");
 		Fluids.init();
-		this.log.fine("Loading Items");
-		Items.init();
+		this.log.fine("Loading ItemHandler");
+		ItemHandler.init();
 		this.log.fine("Loading BlockHandler");
 		BlockHandler.init();
 
@@ -122,7 +130,7 @@ public class AppTherm {
 					.registerGridCache(LogicBase.class);
 		}
 		else
-			this.log.warning("HEAT IS NOT LOADED. MOD WILL NOT WORK AS INTENDED");
+			this.log.warning("HEAT IS NOT LOADED. MOD WILL NOT WORK AS INTENDED THIS IS CONFIGURABLE");
 
 		this.log.info("Finished Loading init");
 	}

@@ -126,14 +126,14 @@ public class TileEntityHeatMonitor extends AEBaseMachine implements IInventory {
 			}
 		}
 
-		compound.setTag("Items", items);
+		compound.setTag("ItemHandler", items);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 
-		NBTTagList items = compound.getTagList("Items");
+		NBTTagList items = compound.getTagList("ItemHandler");
 
 		for (int i = 0; i < items.tagCount(); i++) {
 			NBTTagCompound item = (NBTTagCompound) items.tagAt(i);

@@ -21,15 +21,12 @@ public class RegisterItem implements ATItemDefinition {
 
 	public RegisterItem(Class<? extends Item> clazz, Object... Args) {
 		this.item = null;
+		this.clazz = clazz;
+		this.Args = Args;
 		
+		createItemInstance(this.clazz, this.Args);
 	}
 
-	public ATItemDefinition registerItemFeature(Class<? extends Item> clazz,
-			Object... Args) {
-		createItemInstance(clazz, Args);
-		
-		return this;
-	}
 
 	protected boolean createItemInstance(Class<? extends Item> clazz,
 			Object... Args) {
@@ -61,7 +58,7 @@ public class RegisterItem implements ATItemDefinition {
 		return true;
 	}
 
-	protected void registerItemInstance(Item item) {
+	private void registerItemInstance(Item item) {
 
 		GameRegistry.registerItem(
 				this.item,

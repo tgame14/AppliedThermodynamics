@@ -1,6 +1,7 @@
-package com.tgame.apptherm.events;
+package com.tgame.apptherm.network;
 
 import com.sun.org.apache.bcel.internal.generic.InstructionConstants.Clinit;
+import com.tgame.apptherm.config.ConfigInfo;
 
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.NetLoginHandler;
@@ -55,7 +56,19 @@ public class ATConnectionHandler implements IConnectionHandler {
 				.getPlayer()
 				.sendChatToPlayer(
 						new ChatMessageComponent()
-								.createFromText(EnumChatFormatting.GRAY + "" + EnumChatFormatting.BOLD + "Currently using version @VERSION@ of Applied Thermodynamics"));
+								.createFromText(EnumChatFormatting.DARK_GRAY
+										+ ""
+										+ EnumChatFormatting.BOLD
+										+ "Currently using version @VERSION@ of Applied Thermodynamics"));
+		if (!ConfigInfo.ENABLE_HEAT)
+			clientHandler
+					.getPlayer()
+					.sendChatToPlayer(
+							new ChatMessageComponent()
+									.createFromText(EnumChatFormatting.DARK_RED
+											+ ""
+											+ EnumChatFormatting.BOLD
+											+ "Heat is disabled. the mod will not operate as intended, To fix this go into the Configuration file and change enable_heat"));
 
 	}
 

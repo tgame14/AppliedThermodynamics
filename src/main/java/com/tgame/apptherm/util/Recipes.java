@@ -6,8 +6,9 @@ import net.minecraft.item.ItemStack;
 import appeng.api.Materials;
 
 import com.tgame.apptherm.api.definitions.Blocks;
+import com.tgame.apptherm.api.definitions.Items;
 import com.tgame.apptherm.blocks.BlockHandler;
-import com.tgame.apptherm.items.Items;
+import com.tgame.apptherm.items.ItemHandler;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -19,7 +20,7 @@ public class Recipes {
 		
 		/* Block recipes */
 		GameRegistry.addShapelessRecipe(Blocks.jelloBrick.stack(1),
-				new ItemStack(Items.Goo, 1), new ItemStack(Block.brick));
+				Items.goo.stack(1), new ItemStack(Block.brick));
 
 		GameRegistry.addRecipe(Blocks.airIntake.stack(1), "X X", "ZYZ", "XXX",
 				'X', Materials.matSilicon, 'Y', Materials.matFluxDust.copy(),
@@ -59,7 +60,7 @@ public class Recipes {
 
 		/* Item Recipes */
 
-		GameRegistry.addRecipe(new ItemStack(Items.Recorder), "XYX", "YXY",
+		GameRegistry.addRecipe(Items.heatRecorder.stack(1), "XYX", "YXY",
 				"XXX", 'X', new ItemStack(Block.glass), 'Y',
 				Materials.matSilicon.copy());
 

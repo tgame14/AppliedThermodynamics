@@ -6,7 +6,8 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import appeng.api.me.util.IGridInterface;
 
-import com.tgame.apptherm.items.Items;
+import com.tgame.apptherm.api.definitions.Items;
+import com.tgame.apptherm.items.ItemHandler;
 
 public class TileEntityMEExhaust extends AEBaseMachine {
 
@@ -18,7 +19,7 @@ public class TileEntityMEExhaust extends AEBaseMachine {
 
 	public TileEntityMEExhaust() {
 		gooTimer = 0;
-		gooStack = new ItemStack(Items.Goo, 1);
+		gooStack = Items.goo.stack(1);
 
 	}
 
