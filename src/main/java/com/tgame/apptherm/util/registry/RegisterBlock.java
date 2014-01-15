@@ -87,8 +87,7 @@ public class RegisterBlock implements ATItemDefinition {
 
 	@Override
 	public Block block() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.block;
 	}
 
 	@Override
@@ -98,25 +97,19 @@ public class RegisterBlock implements ATItemDefinition {
 
 	@Override
 	public Class<? extends TileEntity> entity() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ItemStack stack(int stackSize) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ItemStack(this.block, stackSize);
 	}
 
 	@Override
 	public boolean sameAs(ItemStack comparableItem) {
-		// TODO Auto-generated method stub
+		if(comparableItem.itemID == this.block.blockID)
+			return true;
 		return false;
 	}
 
-	@Override
-	public boolean equals(ItemStack comparableItem) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

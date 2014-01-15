@@ -3,13 +3,16 @@ package com.tgame.apptherm;
 import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.MinecraftForge;
 import appeng.api.Util;
 
 import com.tgame.apptherm.blocks.Blocks;
 import com.tgame.apptherm.client.interfaces.GuiHandler;
 import com.tgame.apptherm.config.ConfigHandler;
+import com.tgame.apptherm.config.ConfigInfo;
 import com.tgame.apptherm.entities.Entities;
+import com.tgame.apptherm.events.ATConnectionHandler;
 import com.tgame.apptherm.events.EventBusListener;
 import com.tgame.apptherm.fluids.Fluids;
 import com.tgame.apptherm.items.Items;
@@ -33,9 +36,9 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerAboutToStartEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = "required-after:"
+@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = "@VERSION@", dependencies = "required-after:"
 		+ ModInfo.APPLIED_ENERGISTICS)
-@NetworkMod(channels = { ModInfo.CHANNEL }, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = false)
+@NetworkMod(channels = { ModInfo.CHANNEL }, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = false, connectionHandler = ATConnectionHandler.class)
 public class AppTherm {
 
 	@Instance(ModInfo.ID)
@@ -51,13 +54,20 @@ public class AppTherm {
 	// and minecraft one
 	public static final Logger log = Logger.getLogger(ModInfo.ID);
 
-	// Instantiates a new mod Singleton, Registers the Logger to inherit fml
-	// logger props
+	/**
+	 * Instantiates a new Mod singleton. aswell as sets the parent for the
+	 * Logger
+	 */
 	public AppTherm() {
 		this.log.setParent(FMLCommonHandler.instance().getFMLLogger());
 
 	}
 
+	/**
+	 * 
+	 * @return returns the instance of the mod for non static access to fields
+	 *         and methods.
+	 */
 	public AppTherm instance() {
 		return this.instance;
 	}
@@ -65,14 +75,13 @@ public class AppTherm {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		this.log.info("Preinit Loading up");
-		
+
 		this.log.info("Starting to Load Configs");
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
-		
+
 		this.log.fine("Loading Tick Handlers");
 		proxy.initTickHandlers();
 
-		
 		this.log.fine("Loading Fluids");
 		Fluids.init();
 		this.log.fine("Loading Items");
@@ -82,15 +91,13 @@ public class AppTherm {
 
 		this.log.fine("Loading Sounds");
 		proxy.initSounds();
-		
-		
+
 		this.log.fine("Loading Renderers");
 		proxy.initRenderers();
 
 		this.log.fine("Registering Event Bus");
 		EventBusListener.init();
-		
-		
+
 		this.log.finest("preinit for AT Over");
 	}
 
@@ -98,10 +105,6 @@ public class AppTherm {
 	public void init(FMLInitializationEvent event) {
 		this.log.info("Init Loading Up");
 
-		/*this.log.fine("Adding localized Names for Items And Blocks");
-		Items.addNames();
-		Blocks.addNames();*/
-		
 		this.log.fine("Initializing TileEntities");
 		TileEntities.init();
 		this.log.fine("Initializing Recipes");
@@ -111,13 +114,16 @@ public class AppTherm {
 		Entities.init();
 		this.log.fine("Initializing Gui Handler");
 		new GuiHandler();
-		
-		this.log.finer("Registering IGridCache For ae, (the handler of heat)");
-		ModInfo.heatCacheID = Util.getAppEngApi().getGridCacheRegistry()
-				.registerGridCache(LogicBase.class);
-		
-		this.log.info("Finished Loading init");
 
+		if (ConfigInfo.ENABLE_HEAT) {
+			this.log.finer("Registering IGridCache For AE, (the handler of heat)");
+			ModInfo.heatCacheID = Util.getAppEngApi().getGridCacheRegistry()
+					.registerGridCache(LogicBase.class);
+		}
+		else
+			this.log.warning("HEAT IS NOT LOADED. MOD WILL NOT WORK AS INTENDED");
+
+		this.log.info("Finished Loading init");
 	}
 
 	@EventHandler
@@ -128,8 +134,13 @@ public class AppTherm {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		this.log.info(ModInfo.NAME + " Has Loaded Without Crashing! (yet)");
 		this.log.finest("End Of AT Loading entirely.");
+		this.log.info(ModInfo.NAME
+				+ " Has Loaded Without Crashing! (yet) \n \n");
+
+		this.log.info(ModInfo.NAME + " @VERSION@ is a mod by @AUTHOR@.");
+		this.log.info("For official releases: https://github.com/tgame14/AppliedThermodynamics/releases");
+		this.log.info("For Dev builds: http://themattabase.com:9090/job/Applied%20Thermodynamics/ \n \n");
 
 	}
 

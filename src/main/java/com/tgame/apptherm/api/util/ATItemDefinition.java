@@ -40,10 +40,4 @@ public interface ATItemDefinition {
      */
     boolean sameAs(ItemStack comparableItem);
     
-    /**
-     * 
-     * @param comparableItem
-     * @return true if the item stack is identical with both item and
-     */
-    boolean equals(ItemStack comparableItem);
 }
