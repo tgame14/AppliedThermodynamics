@@ -25,7 +25,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class BlockHandler {
 
 	private static Blocks blocks = Blocks.instance();
-	private static RegisterBlock blockRegistry;
+	private static RegisterBlock blockRegistry = RegisterBlock.instance();
 
 	public static void init() {
 		if (ConfigInfo.LIQUID_CONSUME)

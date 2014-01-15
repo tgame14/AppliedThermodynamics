@@ -21,6 +21,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class RegisterBlock implements ATItemDefinition {
 	
+	private static RegisterBlock instance;
+	
 	protected Block block;
 	protected Class clazz;
 	protected Object[] Args;
@@ -29,6 +31,10 @@ public class RegisterBlock implements ATItemDefinition {
 		this.block = null;
 		this.clazz = clazz;
 		this.Args = Args;
+	}
+	
+	public static RegisterBlock instance() {
+		return instance;
 	}
 	
 	public ATItemDefinition registerBlockFeature(Class<? extends Block> clazz, Object... Args) {
