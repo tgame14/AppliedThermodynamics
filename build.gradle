@@ -79,9 +79,26 @@ task deobfJar(type: Jar) {
         from sourceSets.main.output
         appendix = 'deobf'
 }
+
+// add a javadoc jar
+task javadocJar(type: Jar, dependsOn: javadoc) {
+        appendix = 'javadoc'
+        from 'build/docs/javadoc'
+}
+ 
+// creates an API jar
+task apiJar(type: Jar) {
+    from(sourceSets.main.java)
+    {
+        include "com/tgame/apptherm/api/*"
+    }
+    appendix = 'api'
+}
  
 artifacts {
         archives deobfJar
+		archives javadocJar
+		archives apiJar
 }
 
 // Used in my Private Build of Actual releases, increments the build number on build.properties, Unneeded in jenkins.
