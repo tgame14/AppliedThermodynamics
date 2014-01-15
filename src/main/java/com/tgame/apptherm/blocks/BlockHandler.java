@@ -1,7 +1,5 @@
 package com.tgame.apptherm.blocks;
 
-import net.minecraft.block.Block;
-
 import com.tgame.apptherm.api.definitions.Blocks;
 import com.tgame.apptherm.blocks.fanbox.BlockFanBoxCasing;
 import com.tgame.apptherm.blocks.fanbox.BlockFluidPort;
@@ -18,60 +16,55 @@ import com.tgame.apptherm.blocks.networked.BlockLiquidCooler;
 import com.tgame.apptherm.blocks.networked.BlockMonitorME;
 import com.tgame.apptherm.config.ConfigInfo;
 import com.tgame.apptherm.util.registry.RegisterBlock;
-import com.tgame.apptherm.util.registry.Registry;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockHandler {
 
-	private static Blocks blocks = Blocks.instance();
-	private static RegisterBlock blockRegistry = RegisterBlock.instance();
 
 	public static void init() {
 		if (ConfigInfo.LIQUID_CONSUME)
-			blocks.fluidME = blockRegistry.registerBlockFeature(
+			Blocks.fluidME = new RegisterBlock(
 					BlockFluidME.class, BlockInfo.LIQUID_ME_ID);
 
-		blocks.airIntake = blockRegistry.registerBlockFeature(
+		Blocks.airIntake = new RegisterBlock(
 				BlockAirIntake.class, BlockInfo.INTAKE_ID);
 
-		blocks.jelloBrick = blockRegistry.registerBlockFeature(
+		Blocks.jelloBrick = new RegisterBlock(
 				BlockJelloBrick.class, BlockInfo.JELLO_ID);
 
-		blocks.exhaustME = blockRegistry.registerBlockFeature(
+		Blocks.exhaustME = new RegisterBlock(
 				BlockExhaustME.class, BlockInfo.EXHAUST_ID);
 
-		blocks.monitorME = blockRegistry.registerBlockFeature(
+		Blocks.monitorME = new RegisterBlock(
 				BlockMonitorME.class, BlockInfo.MONITOR_ID);
 
-		blocks.liquidCooler = blockRegistry.registerBlockFeature(
+		Blocks.liquidCooler = new RegisterBlock(
 				BlockLiquidCooler.class, BlockInfo.LIQUICOOL_ID);
 
-		blocks.EAS = blockRegistry.registerBlockFeature(BlockEAS.class,
+		Blocks.EAS = new RegisterBlock(BlockEAS.class,
 				BlockInfo.EAS_ID);
 
-		blocks.Eater = blockRegistry.registerBlockFeature(
+		Blocks.Eater = new RegisterBlock(
 				BlockEnergyEater.class, BlockInfo.EATER_ID);
 
-		blocks.fanBoxCasing = blockRegistry.registerBlockFeature(
+		Blocks.fanBoxCasing = new RegisterBlock(
 				BlockFanBoxCasing.class, BlockInfo.FANBOX_ID);
 
-		blocks.heatVent = blockRegistry.registerBlockFeature(
+		Blocks.heatVent = new RegisterBlock(
 				BlockHeatVent.class, BlockInfo.VENT_ID);
 
-		blocks.mePort = blockRegistry.registerBlockFeature(BlockMEPort.class,
+		Blocks.mePort = new RegisterBlock(BlockMEPort.class,
 				BlockInfo.MEPORT_ID);
 
-		blocks.fluidPort = blockRegistry.registerBlockFeature(
+		Blocks.fluidPort = new RegisterBlock(
 				BlockFluidPort.class, BlockInfo.FLUIDPORT_ID);
 
-		blocks.internalTank = blockRegistry.registerBlockFeature(
+		Blocks.internalTank = new RegisterBlock(
 				BlockInternalTank.class, BlockInfo.INTTANK_ID);
 
-		blocks.meCoolant = blockRegistry.registerBlockFeature(
+		Blocks.meCoolant = new RegisterBlock(
 				BlockMECoolant.class, BlockInfo.COOLANT_ID);
 
-		blocks.reactorChamber = blockRegistry.registerBlockFeature(
+		Blocks.reactorChamber = new RegisterBlock(
 				BlockReactionChamber.class, BlockInfo.REACT_ID);
 
 		

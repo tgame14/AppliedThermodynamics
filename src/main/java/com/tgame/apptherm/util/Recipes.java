@@ -14,49 +14,48 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Recipes {
 
 	public static void init() {
-		Blocks blocks = Blocks.instance();
 
 		ItemStack ironIngot = new ItemStack(Item.ingotIron);
 
-		GameRegistry.addShapelessRecipe(blocks.jelloBrick.stack(1),
+		GameRegistry.addShapelessRecipe(Blocks.jelloBrick.stack(1),
 				new ItemStack(Items.Goo, 1), new ItemStack(Block.brick));
 
 		/* Block recipes */
-		GameRegistry.addRecipe(blocks.jelloBrick.stack(1), "X X", "ZYZ",
+		GameRegistry.addRecipe(Blocks.jelloBrick.stack(1), "X X", "ZYZ",
 				"XXX", 'X', Materials.matSilicon, 'Y',
 				Materials.matFluxDust.copy(), 'Z', ironIngot);
 
-		GameRegistry.addRecipe(blocks.reactorChamber.stack(1), "XYX",
+		GameRegistry.addRecipe(Blocks.reactorChamber.stack(1), "XYX",
 				"ZXZ", "XWX", 'X', ironIngot, 'Y', new ItemStack(
 						Block.fenceIron), 'Z', new ItemStack(Item.bucketWater),
 				'W', Materials.matConversionMatrix.copy());
 
-		GameRegistry.addRecipe(blocks.exhaustME.stack(1), "X X", "XZX",
+		GameRegistry.addRecipe(Blocks.exhaustME.stack(1), "X X", "XZX",
 				"YXY", 'X', ironIngot, 'Z', Materials.matProcessorBasic.copy());
 
-		GameRegistry.addRecipe(blocks.fanBoxCasing.stack(1), "XYX",
+		GameRegistry.addRecipe(Blocks.fanBoxCasing.stack(1), "XYX",
 				"YZY", "XYX", 'X', Materials.matFluxCrystal.copy(), 'Y',
 				Item.ingotGold, 'Z', ironIngot);
 
-		GameRegistry.addRecipe(blocks.fluidPort.stack(1), "XYX", "YZY",
+		GameRegistry.addRecipe(Blocks.fluidPort.stack(1), "XYX", "YZY",
 				"XYX", 'X', ironIngot, 'Y', Materials.matFluxDust.copy(), 'Z',
 				new ItemStack(Item.bucketWater));
 
-		GameRegistry.addRecipe(blocks.internalTank.stack(1), "XYX",
+		GameRegistry.addRecipe(Blocks.internalTank.stack(1), "XYX",
 				"YZY", "XYX", 'X', ironIngot, 'Y', new ItemStack(Block.glass),
 				'Z', new ItemStack(Item.bucketWater));
 
-		GameRegistry.addRecipe(blocks.liquidCooler.stack(1), "ZXZ",
+		GameRegistry.addRecipe(Blocks.liquidCooler.stack(1), "ZXZ",
 				"XYX", "ZXZ", 'Z', Materials.matSilicon.copy(), 'X', ironIngot,
 				'Y', Materials.matProcessorAdvanced.copy());
 
 		GameRegistry
-				.addRecipe(blocks.mePort.stack(1), "XYX", "YZY", "XYX",
+				.addRecipe(Blocks.mePort.stack(1), "XYX", "YZY", "XYX",
 						'X', ironIngot, 'Y', Materials.matFluxCrystal.copy(),
 						'X', ironIngot, 'Z',
 						appeng.api.Blocks.blkColorlessCable.copy());
 
-		GameRegistry.addRecipe(blocks.heatVent.stack(1), "XYX", "YZY", "XYX",
+		GameRegistry.addRecipe(Blocks.heatVent.stack(1), "XYX", "YZY", "XYX",
 				'X', ironIngot, 'Y', (Block.fenceIron), 'Z', new ItemStack(
 						Block.gravel));
 

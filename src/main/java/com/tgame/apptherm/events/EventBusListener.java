@@ -21,15 +21,14 @@ public class EventBusListener {
 	@ForgeSubscribe
 	@SideOnly(Side.CLIENT)
 	public void postStitch(TextureStitchEvent.Post event) {
-		Blocks blocks = Blocks.instance();
 
 		Fluids.fluidME.setIcons(
-				blocks.fluidME.block().getBlockTextureFromSide(0),
-				blocks.fluidME.block().getBlockTextureFromSide(1));
+				Blocks.fluidME.block().getBlockTextureFromSide(0),
+				Blocks.fluidME.block().getBlockTextureFromSide(1));
 
 
-		Fluids.meCoolant.setIcons(blocks.meCoolant.block()
-				.getBlockTextureFromSide(0), blocks.meCoolant.block()
+		Fluids.meCoolant.setIcons(Blocks.meCoolant.block()
+				.getBlockTextureFromSide(0), Blocks.meCoolant.block()
 				.getBlockTextureFromSide(1));
 
 	}

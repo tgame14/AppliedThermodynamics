@@ -17,7 +17,7 @@ public final class AppThermTab extends CreativeTabs {
 
 	@SideOnly(Side.CLIENT)
 	public int getTabIconItemIndex() {
-		return Blocks.instance().jelloBrick.block().blockID;
+		return Blocks.jelloBrick.block().blockID;
 	}
 
 	public String getTranslatedTabLabel() {

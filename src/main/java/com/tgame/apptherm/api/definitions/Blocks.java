@@ -11,48 +11,38 @@ import com.tgame.apptherm.api.util.ATItemDefinition;
  */
 public class Blocks {
 	
-	private static Blocks instance;
-	
-	public Blocks() {
-		
-	}
-	
-	public static Blocks instance() {
-		return instance;
-	}
-	
 	/*
 	 * Access to the Fluid BlockHandler
 	 */
 	
-	public ATItemDefinition fluidME;
-	public ATItemDefinition meCoolant;
+	public static ATItemDefinition fluidME;
+	public static ATItemDefinition meCoolant;
 	
 	/*
 	 * Networked BlockHandler
 	 */
 	
-	public ATItemDefinition exhaustME;
-	public ATItemDefinition monitorME;
-	public ATItemDefinition liquidCooler;
-	public ATItemDefinition airIntake;
-	public ATItemDefinition EAS;
-	public ATItemDefinition Eater;
+	public static ATItemDefinition exhaustME;
+	public static ATItemDefinition monitorME;
+	public static ATItemDefinition liquidCooler;
+	public static ATItemDefinition airIntake;
+	public static ATItemDefinition EAS;
+	public static ATItemDefinition Eater;
 		
 	/*
 	 * Fan Box Multiblock BlockHandler
 	 */
 	
-	public ATItemDefinition fanBoxCasing;
-	public ATItemDefinition heatVent;
-	public ATItemDefinition internalTank;
-	public ATItemDefinition reactorChamber;
-	public ATItemDefinition mePort;
-	public ATItemDefinition fluidPort;
+	public static ATItemDefinition fanBoxCasing;
+	public static ATItemDefinition heatVent;
+	public static ATItemDefinition internalTank;
+	public static ATItemDefinition reactorChamber;
+	public static ATItemDefinition mePort;
+	public static ATItemDefinition fluidPort;
 	
 	/*
 	 * Regular blocks
 	 */
 	
-	public ATItemDefinition jelloBrick;
+	public static ATItemDefinition jelloBrick;
 }

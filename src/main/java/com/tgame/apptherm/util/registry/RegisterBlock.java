@@ -21,8 +21,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class RegisterBlock implements ATItemDefinition {
 	
-	private static RegisterBlock instance;
-	
 	protected Block block;
 	protected Class clazz;
 	protected Object[] Args;
@@ -31,14 +29,12 @@ public class RegisterBlock implements ATItemDefinition {
 		this.block = null;
 		this.clazz = clazz;
 		this.Args = Args;
-	}
-	
-	public static RegisterBlock instance() {
-		return instance;
-	}
-	
-	public ATItemDefinition registerBlockFeature(Class<? extends Block> clazz, Object... Args) {
 		
+		registerBlockFeature(clazz, Args);
+	}
+	
+	protected ATItemDefinition registerBlockFeature(Class<? extends Block> clazz, Object... Args) {
+		createBlockInstance(clazz, Args);
 		
 		
 		
@@ -78,14 +74,14 @@ public class RegisterBlock implements ATItemDefinition {
 		return true;
 	}
 
-	protected void registerBlockInstance(Block block) {
+	private void registerBlockInstance(Block block) {
 		GameRegistry.registerBlock(
 				block,
 				block.getUnlocalizedName().replace("tile.", "")
 						.replace(".name", ""));
 	}
 
-	protected void registerBlockInstance(Block block,
+	private void registerBlockInstance(Block block,
 			Class<? extends ItemBlock> itemBlock) {
 		GameRegistry.registerBlock(block, itemBlock, block.getUnlocalizedName()
 				.replace("tile.", "").replace(".name", ""));
