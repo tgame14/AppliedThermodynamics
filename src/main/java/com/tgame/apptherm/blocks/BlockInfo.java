@@ -6,7 +6,8 @@ public class BlockInfo {
 	// messing up.
 	private static int config = 2074;
 
-	public static String[] DEFAULT_TEXTURES = { "exhaustBot", "exhaustSide" };
+	public static String[] DEFAULT_TEXTURES = { "machineBottom", "machineSide",
+			"machineTop" };
 
 	public static int LIQUID_ME_ID;
 	public static final int LIQUID_ME_DEFAULT = config++;
@@ -27,8 +28,8 @@ public class BlockInfo {
 	public static final String EXHAUST_KEY = "MEExhaust";
 	public static final String EXHAUST_UNLOCALIZED_NAME = "exhaustme";
 	public static final String EXHAUST_TE_KEY = "TileEntityMEExhaust";
-	public static final String[] EXHAUST_TEXTURES = { "exhaustTop",
-			"exhaustSide", "exhaustBot" };
+	public static final String[] EXHAUST_TEXTURES = { "exhaustFace",
+			"machineSide", "machineBot" };
 
 	public static int MONITOR_ID;
 	public static final int MONITOR_DEFAULT = config++;
@@ -44,7 +45,7 @@ public class BlockInfo {
 	public static final String LIQUICOOL_KEY = "MELiqCooler";
 	public static final String LIQUICOOL_UNLOCALIZED_NAME = "liquidcoolerme";
 	public static final String LIQUICOOL_TE_KEY = "TileEntityMELiquidCooler";
-	public static final String[] LIQUICOOL_TEXUTRES = { "liquiFace",
+	public static final String[] LIQUICOOL_TEXUTRES = { "liquidFace",
 			"liquiSides", "liquiTop", "liquiBot" };
 
 	public static int INTAKE_ID;
@@ -52,7 +53,7 @@ public class BlockInfo {
 	public static final String INTAKE_KEY = "SimpleFan";
 	public static final String INTAKE_UNLOCALIZED_NAME = "simplefanme";
 	public static final String INTAKE_TE_KEY = "TileEntitySimpleFan";
-	public static final String INTAKE_TEXTURE = "airIntake";
+	public static final String[] INTAKE_TEXTURES = { "airFace", "airFaceActive" };
 
 	public static int EAS_ID;
 	public static final int EAS_DEFAULT = config++;

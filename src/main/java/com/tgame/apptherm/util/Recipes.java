@@ -16,9 +16,11 @@ public class Recipes {
 
 	public static void init() {
 
+		/* Itemstacks I use commonly in my recipes */
 		ItemStack ironIngot = new ItemStack(Item.ingotIron);
-		
+
 		/* Block recipes */
+		
 		GameRegistry.addShapelessRecipe(Blocks.jelloBrick.stack(1),
 				Items.goo.stack(1), new ItemStack(Block.brick));
 
@@ -60,9 +62,10 @@ public class Recipes {
 
 		/* Item Recipes */
 
-		GameRegistry.addRecipe(Items.heatRecorder.stack(1), "XYX", "YXY",
+		GameRegistry.addRecipe(Items.heatRecorder.stack(1), "XYX", "YZY",
 				"XXX", 'X', new ItemStack(Block.glass), 'Y',
-				Materials.matSilicon.copy());
+				Materials.matSilicon.copy(), 'Z',
+				Materials.matProcessorBasic.copy());
 
 	}
 }

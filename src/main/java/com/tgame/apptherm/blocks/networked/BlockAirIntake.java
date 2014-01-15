@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.blocks.BlockInfo;
+import com.tgame.apptherm.tileentities.AEBaseMachine;
 import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
 import com.tgame.apptherm.util.ModInfo;
 
@@ -22,41 +23,60 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAirIntake extends BlockContainer {
 
+	protected boolean isPowered;
+
 	public BlockAirIntake(int id) {
 		super(id, Material.iron);
-		setCreativeTab(AppTherm.AppThermTab);
-		setHardness(2F);
-		setStepSound(Block.soundMetalFootstep);
-		setUnlocalizedName("appliedthermodynamics." + BlockInfo.INTAKE_UNLOCALIZED_NAME);
-		
+
+		this.setCreativeTab(AppTherm.AppThermTab);
+		this.setHardness(2F);
+		this.setStepSound(Block.soundMetalFootstep);
+		this.setUnlocalizedName("appliedthermodynamics."
+				+ BlockInfo.INTAKE_UNLOCALIZED_NAME);
+		this.isPowered = false;
+
 	}
-	
+
 	@SideOnly(Side.CLIENT)
-	public Icon frontIcon;
+	Icon frontIcon;
 	@SideOnly(Side.CLIENT)
 	Icon sideIcon;
 	@SideOnly(Side.CLIENT)
 	Icon bottomIcon;
 	@SideOnly(Side.CLIENT)
 	Icon topIcon;
+	@SideOnly(Side.CLIENT)
+	Icon activeIcon;
 
 	@Override
 	public void registerIcons(IconRegister iconregister) {
 
-		frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
-				+ BlockInfo.INTAKE_TEXTURE);
-		sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
-				+ BlockInfo.DEFAULT_TEXTURES[1]);
-		bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
-				+ BlockInfo.DEFAULT_TEXTURES[0]);
-		topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
-				+ BlockInfo.DEFAULT_TEXTURES[0]);
+		this.frontIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION
+				+ ":" + BlockInfo.INTAKE_TEXTURES[0]);
+		this.sideIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION
+				+ ":" + BlockInfo.DEFAULT_TEXTURES[1]);
+		this.bottomIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION
+				+ ":" + BlockInfo.DEFAULT_TEXTURES[0]);
+		this.topIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION
+				+ ":" + BlockInfo.DEFAULT_TEXTURES[0]);
+		this.activeIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION
+				+ ":" + BlockInfo.INTAKE_TEXTURES[1]);
 	}
 
+	private Icon getFaceStatus() {
+		if (this.isPowered) {
+			System.out.println("activeIcon");
+			System.out.println(this.isPowered);
+			return this.activeIcon;
+		}
+		System.out.println(this.isPowered);
+		System.out.println("frontIcon");
+		return this.frontIcon;
+	}
 
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata) {
-		return side == 3 ? frontIcon : side == 0 ? bottomIcon
+		return side == 3 ? getFaceStatus() : side == 0 ? bottomIcon
 				: side == 1 ? topIcon : sideIcon;
 	}
 
@@ -64,7 +84,17 @@ public class BlockAirIntake extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z,
 			int side) {
+		System.out.println("getBlockTexture called");
+
 		TileEntity tileentity = blockAccess.getBlockTileEntity(x, y, z);
+		AEBaseMachine tile = null;
+
+		if (tileentity != null && tileentity instanceof AEBaseMachine)
+			tile = (AEBaseMachine) tileentity;
+		System.out.println("ispowered is called");
+		this.isPowered = tile.isPowered();
+		System.out.println("ispowered:" + this.isPowered);
+
 		int metadata = blockAccess.getBlockMetadata(x, y, z);
 
 		if (tileentity != null) {
@@ -97,8 +127,6 @@ public class BlockAirIntake extends BlockContainer {
 			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
 		}
 	}
-	
-	
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
