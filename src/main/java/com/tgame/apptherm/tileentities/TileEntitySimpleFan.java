@@ -1,5 +1,9 @@
 package com.tgame.apptherm.tileentities;
 
+import com.tgame.apptherm.blocks.networked.BlockAirIntake;
+import com.tgame.apptherm.util.ModInfo;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -56,7 +60,7 @@ public class TileEntitySimpleFan extends TileEntity implements IGridMachine {
 	}
 
 	@Override
-	public boolean isPowered() {
+	public boolean isPowered() {		
 		return this.powerstatus;
 	}
 

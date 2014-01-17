@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAirIntake extends BlockContainer {
 
-	protected boolean isPowered;
+	public boolean isPowered;
 
 	public BlockAirIntake(int id) {
 		super(id, Material.iron);
@@ -32,7 +32,7 @@ public class BlockAirIntake extends BlockContainer {
 		this.setStepSound(Block.soundMetalFootstep);
 		this.setUnlocalizedName("appliedthermodynamics."
 				+ BlockInfo.INTAKE_UNLOCALIZED_NAME);
-		
+
 		this.isPowered = false;
 
 	}
@@ -62,17 +62,15 @@ public class BlockAirIntake extends BlockContainer {
 		this.activeIcon = iconregister.registerIcon(ModInfo.RESOURCE_LOCATION
 				+ ":" + BlockInfo.INTAKE_TEXTURES[1]);
 	}
-
-	private Icon getFaceStatus() {
-		if (this.isPowered) {
-			return this.activeIcon;
-		}
-		return this.frontIcon;
+	
+	private Icon getFrontFaceState() {
+		return this.isPowered ? activeIcon : frontIcon;
 	}
 
-	@SideOnly(Side.CLIENT)
+
+	@Override
 	public Icon getIcon(int side, int metadata) {
-		return side == 3 ? getFaceStatus() : side == 0 ? bottomIcon
+		return side == 3 ? getFrontFaceState() : side == 0 ? bottomIcon
 				: side == 1 ? topIcon : sideIcon;
 	}
 
@@ -80,11 +78,6 @@ public class BlockAirIntake extends BlockContainer {
 	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z,
 			int side) {
 		TileEntity tileentity = blockAccess.getBlockTileEntity(x, y, z);
-		TileEntitySimpleFan tile = null;
-
-		if (tileentity != null && tileentity instanceof TileEntitySimpleFan)
-			tile = (TileEntitySimpleFan) tileentity;
-		this.isPowered = tile.isPowered();
 
 		int metadata = blockAccess.getBlockMetadata(x, y, z);
 
@@ -123,5 +116,5 @@ public class BlockAirIntake extends BlockContainer {
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntitySimpleFan();
 	}
-
+	
 }

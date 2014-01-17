@@ -28,7 +28,7 @@ public class BlockInfo {
 	public static final String EXHAUST_KEY = "MEExhaust";
 	public static final String EXHAUST_UNLOCALIZED_NAME = "exhaustme";
 	public static final String EXHAUST_TE_KEY = "TileEntityMEExhaust";
-	public static final String[] EXHAUST_TEXTURES = { "exhaustFace",
+	public static final String[] EXHAUST_TEXTURES = { "exhaustTop",
 			"machineSide", "machineBot" };
 
 	public static int MONITOR_ID;
@@ -53,7 +53,7 @@ public class BlockInfo {
 	public static final String INTAKE_KEY = "SimpleFan";
 	public static final String INTAKE_UNLOCALIZED_NAME = "simplefanme";
 	public static final String INTAKE_TE_KEY = "TileEntitySimpleFan";
-	public static final String[] INTAKE_TEXTURES = { "airFace", "airFaceActive" };
+	public static final String[] INTAKE_TEXTURES = { "airFaceActive", "airFaceActive" };
 
 	public static int EAS_ID;
 	public static final int EAS_DEFAULT = config++;

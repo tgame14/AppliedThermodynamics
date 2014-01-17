@@ -1,6 +1,7 @@
 package com.tgame.apptherm.client.renderers;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.IconFlipped;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
@@ -17,12 +18,16 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 public class ATBlockRendererHelper implements ISimpleBlockRenderingHandler {
 
 	public static int myRenderID = RenderingRegistry.getNextAvailableRenderId();
+	
+	protected Icon faceIcon, botIcon, topIcon, sideIcon;
 
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z,
 			Block block, int modelId, RenderBlocks renderer) {
 
 		ForgeDirection dir = ForgeDirection.SOUTH;
+		
+		
 
 		switch (world.getBlockMetadata(x, y, z)) {
 		case 2:
@@ -38,7 +43,11 @@ public class ATBlockRendererHelper implements ISimpleBlockRenderingHandler {
 			dir = ForgeDirection.EAST;
 			break;
 		}
-		return false;
+		
+		renderFace(dir, block, x, y, z, faceIcon, renderer);
+		renderRestOfSides(dir, block, x, y, z, sideIcon, renderer);
+		
+		return true;
 	}
 
 	// renders the rest of the sides of the Block other than the face.
