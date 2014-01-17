@@ -145,5 +145,19 @@ public class TileEntityMEPort extends MultiblockTileEntityBase implements IGridM
 			return true;
 		return false;
 	}
+	
+	@Override
+	public void validate() {
+		super.validate();
+		MinecraftForge.EVENT_BUS.post(new GridTileLoadEvent(this, this.worldObj,
+				getLocation()));
+	}
+
+	@Override
+	public void invalidate() {
+		super.invalidate();
+		MinecraftForge.EVENT_BUS.post(new GridTileUnloadEvent(this, this.worldObj,
+				getLocation()));
+	}
 
 }

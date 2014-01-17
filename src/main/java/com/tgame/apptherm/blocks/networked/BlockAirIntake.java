@@ -23,6 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockAirIntake extends BlockContainer {
 
 	public boolean isPowered;
+	
 
 	public BlockAirIntake(int id) {
 		super(id, Material.iron);
