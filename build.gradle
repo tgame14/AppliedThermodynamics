@@ -101,7 +101,7 @@ artifacts {
 		archives apiJar
 }
 
-// Used in my Private Build of Actual releases, increments the build number on build.properties, Unneeded in jenkins.
+// Used in my Private Build of Actual releases, increments the build number on build.properties, Unneeded in jenkins or any other CI.
 
 // task incrementBuildNumber() {
 //	dependsOn "reobf"

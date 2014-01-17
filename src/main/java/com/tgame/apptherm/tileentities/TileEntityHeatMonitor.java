@@ -5,10 +5,20 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import appeng.api.WorldCoord;
+import appeng.api.events.GridTileLoadEvent;
+import appeng.api.events.GridTileUnloadEvent;
+import appeng.api.me.tiles.IGridMachine;
+import appeng.api.me.util.IGridInterface;
 
-public class TileEntityHeatMonitor extends AEBaseMachine implements IInventory {
+public class TileEntityHeatMonitor extends TileEntity implements IInventory,
+		IGridMachine {
 
-	private boolean ticked;
+	private boolean ticked, powerStatus, networkReady;
+	private IGridInterface grid;
 	private int ObservingGuiCount;
 
 	private int tickTimer;
@@ -22,7 +32,6 @@ public class TileEntityHeatMonitor extends AEBaseMachine implements IInventory {
 		items = new ItemStack[9];
 
 	}
-
 
 	@Override
 	public void updateEntity() {
@@ -88,7 +97,8 @@ public class TileEntityHeatMonitor extends AEBaseMachine implements IInventory {
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		return entityplayer.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) <= 64;
+		return entityplayer.getDistanceSq(xCoord + 0.5, yCoord + 0.5,
+				zCoord + 0.5) <= 64;
 	}
 
 	@Override
@@ -140,9 +150,84 @@ public class TileEntityHeatMonitor extends AEBaseMachine implements IInventory {
 			int slot = item.getByte("Slot");
 
 			if (slot >= 0 && slot < getSizeInventory()) {
-				setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item));
+				setInventorySlotContents(slot,
+						ItemStack.loadItemStackFromNBT(item));
 			}
 		}
+	}
+
+	@Override
+	public void validate() {
+		super.validate();
+		MinecraftForge.EVENT_BUS.post(new GridTileLoadEvent(this,
+				this.worldObj, getLocation()));
+	}
+
+	@Override
+	public void invalidate() {
+		super.invalidate();
+		MinecraftForge.EVENT_BUS.post(new GridTileUnloadEvent(this,
+				this.worldObj, getLocation()));
+	}
+
+	@Override
+	public WorldCoord getLocation() {
+		return new WorldCoord(xCoord, yCoord, zCoord);
+
+	}
+
+	@Override
+	public boolean isValid() {
+		return true;
+	}
+
+	@Override
+	public void setPowerStatus(boolean hasPower) {
+		this.powerStatus = hasPower;
+
+	}
+
+	@Override
+	public boolean isPowered() {
+		return this.powerStatus;
+
+	}
+
+	@Override
+	public IGridInterface getGrid() {
+		return this.grid;
+
+	}
+
+	@Override
+	public void setGrid(IGridInterface gi) {
+		this.grid = gi;
+
+	}
+
+	@Override
+	public World getWorld() {
+		return this.worldObj;
+
+	}
+
+	@Override
+	public float getPowerDrainPerTick() {
+		return 0;
+	}
+
+	@Override
+	public void setNetworkReady(boolean isReady) {
+		this.networkReady = isReady;
+
+	}
+
+	@Override
+	public boolean isMachineActive() {
+		if (this.networkReady && this.powerStatus)
+			return true;
+		return false;
+
 	}
 
 }

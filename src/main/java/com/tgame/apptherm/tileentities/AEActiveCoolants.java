@@ -1,8 +1,9 @@
 package com.tgame.apptherm.tileentities;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 
-public abstract class AEActiveCoolants extends AEBaseMachine {
+public abstract class AEActiveCoolants extends TileEntity {
 
 	protected boolean isActive;
 	

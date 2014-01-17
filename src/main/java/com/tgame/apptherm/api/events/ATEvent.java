@@ -9,7 +9,7 @@ import appeng.api.networkevents.MENetworkEvent;
 /**
  * the Base Event I use. do not subscribe to this.
  */
-public class ATEvent extends MENetworkEvent {
+public abstract class ATEvent extends MENetworkEvent {
 	public ATEvent(IGridTileEntity tile) {
 		super(tile);
 		

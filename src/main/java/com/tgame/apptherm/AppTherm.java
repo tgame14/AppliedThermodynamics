@@ -3,7 +3,6 @@ package com.tgame.apptherm;
 import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.MinecraftForge;
 import appeng.api.Util;
 
@@ -22,8 +21,8 @@ import com.tgame.apptherm.network.PacketHandler;
 import com.tgame.apptherm.proxies.CommonProxy;
 import com.tgame.apptherm.tileentities.TileEntities;
 import com.tgame.apptherm.util.AppThermTab;
-import com.tgame.apptherm.util.Recipes;
 import com.tgame.apptherm.util.ModInfo;
+import com.tgame.apptherm.util.Recipes;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;

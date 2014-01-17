@@ -5,7 +5,11 @@ import appeng.api.me.tiles.IGridMachine;
 /**
  * The Interface IATCoolantMachine.
  */
-public interface IATCoolantMachine extends IGridMachine{
+public interface IATCoolantMachine extends IGridMachine {
+	
+	public boolean isSimpleCooler();
+	
+	public int coolPerTick();
 	
 
 }

@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.blocks.BlockInfo;
-import com.tgame.apptherm.tileentities.AEBaseMachine;
 import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
 import com.tgame.apptherm.util.ModInfo;
 
@@ -33,6 +32,7 @@ public class BlockAirIntake extends BlockContainer {
 		this.setStepSound(Block.soundMetalFootstep);
 		this.setUnlocalizedName("appliedthermodynamics."
 				+ BlockInfo.INTAKE_UNLOCALIZED_NAME);
+		
 		this.isPowered = false;
 
 	}
@@ -65,12 +65,8 @@ public class BlockAirIntake extends BlockContainer {
 
 	private Icon getFaceStatus() {
 		if (this.isPowered) {
-			System.out.println("activeIcon");
-			System.out.println(this.isPowered);
 			return this.activeIcon;
 		}
-		System.out.println(this.isPowered);
-		System.out.println("frontIcon");
 		return this.frontIcon;
 	}
 
@@ -81,19 +77,14 @@ public class BlockAirIntake extends BlockContainer {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z,
 			int side) {
-		System.out.println("getBlockTexture called");
-
 		TileEntity tileentity = blockAccess.getBlockTileEntity(x, y, z);
-		AEBaseMachine tile = null;
+		TileEntitySimpleFan tile = null;
 
-		if (tileentity != null && tileentity instanceof AEBaseMachine)
-			tile = (AEBaseMachine) tileentity;
-		System.out.println("ispowered is called");
+		if (tileentity != null && tileentity instanceof TileEntitySimpleFan)
+			tile = (TileEntitySimpleFan) tileentity;
 		this.isPowered = tile.isPowered();
-		System.out.println("ispowered:" + this.isPowered);
 
 		int metadata = blockAccess.getBlockMetadata(x, y, z);
 

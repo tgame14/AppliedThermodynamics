@@ -33,13 +33,13 @@ public class RegisterBlock implements ATItemDefinition {
 		registerBlockFeature(clazz, Args);
 	}
 	
-	protected ATItemDefinition registerBlockFeature(Class<? extends Block> clazz, Object... Args) {
-		createBlockInstance(clazz, Args);
+	protected boolean registerBlockFeature(Class<? extends Block> clazz, Object... Args) {
+		return createBlockInstance(clazz, Args);
 		
 		
 		
 		
-		return this;
+		
 	}
 
 	protected boolean createBlockInstance(Class<? extends Block> clazz,
