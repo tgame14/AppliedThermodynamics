@@ -48,7 +48,7 @@ public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 
 	@Override
 	protected void onBlockAdded(IMultiblockPart newPart) {
-
+		System.out.println("blockAdded: ");
 	}
 
 	@Override

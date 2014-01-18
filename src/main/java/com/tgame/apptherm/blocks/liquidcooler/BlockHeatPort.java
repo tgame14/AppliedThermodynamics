@@ -1,6 +1,7 @@
 package com.tgame.apptherm.blocks.liquidcooler;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.tileentities.liquidcooler.TileEntityHeatPort;
 import com.tgame.apptherm.util.ModInfo;
 
 import cpw.mods.fml.relauncher.Side;
@@ -28,8 +29,7 @@ public class BlockHeatPort extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TileEntityHeatPort();
 	}
 
 }

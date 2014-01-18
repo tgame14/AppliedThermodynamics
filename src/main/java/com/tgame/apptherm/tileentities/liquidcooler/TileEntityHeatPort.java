@@ -17,7 +17,7 @@ public class TileEntityHeatPort extends MultiblockTileEntityBase implements IGri
 
 	private boolean powerstatus, networkready;
 	private IGridInterface grid;
-	private LiquidCoolerControllerBase controller;
+	
 	
 	public TileEntityHeatPort() {
 		super();
@@ -27,7 +27,7 @@ public class TileEntityHeatPort extends MultiblockTileEntityBase implements IGri
 	}
 	
 	public LiquidCoolerControllerBase getController() {
-		return this.controller;
+		return (LiquidCoolerControllerBase) getMultiblockController();
 	}
 	
 	
@@ -121,12 +121,11 @@ public class TileEntityHeatPort extends MultiblockTileEntityBase implements IGri
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
-		this.controller = (LiquidCoolerControllerBase) multiblockControllerBase;
+		System.out.println("portAssembled");
 	}
 
 	@Override
 	public void onMachineBroken() {
-		this.controller = null;
 		
 	}
 

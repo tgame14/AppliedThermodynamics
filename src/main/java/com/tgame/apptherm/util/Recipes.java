@@ -59,6 +59,20 @@ public class Recipes {
 		GameRegistry.addRecipe(Blocks.heatVent.stack(1), "XYX", "YZY", "XYX",
 				'X', ironIngot, 'Y', (Block.fenceIron), 'Z', new ItemStack(
 						Block.gravel));
+		
+
+		GameRegistry.addRecipe(Blocks.meHeatPort.stack(1), "XYX", "YZY", "XYX",
+				'X', ironIngot, 'Y', Materials.matFluxCrystal.copy(), 'X',
+				ironIngot, 'Z', Blocks.mePort.stack(1));
+
+		GameRegistry.addRecipe(Blocks.heatExchangor.stack(1), "XYX", "YZY", "XYX",
+				'X', ironIngot, 'Y', Blocks.heatVent.stack(1), 'Z', Blocks.liquidCooler.stack(1));
+		
+		GameRegistry.addRecipe(Blocks.coolerCasing.stack(4), "XYX", "YZY",
+				"XYX", 'X', Blocks.fanBoxCasing.stack(1), 'Y',
+				Item.snowball, 'Z', ironIngot);
+		
+		
 
 		/* Item Recipes */
 
@@ -66,6 +80,8 @@ public class Recipes {
 				"XXX", 'X', new ItemStack(Block.glass), 'Y',
 				Materials.matSilicon.copy(), 'Z',
 				Materials.matProcessorBasic.copy());
+		
+		
 
 	}
 }
