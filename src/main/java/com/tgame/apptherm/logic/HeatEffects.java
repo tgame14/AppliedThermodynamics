@@ -14,6 +14,7 @@ import appeng.api.me.util.IGridInterface;
 
 import com.tgame.apptherm.api.events.ATOverHeatEvent;
 import com.tgame.apptherm.blocks.BlockInfo;
+import com.tgame.apptherm.config.ConfigInfo;
 import com.tgame.apptherm.network.PacketDistributer;
 
 import cpw.mods.fml.relauncher.Side;
@@ -73,7 +74,8 @@ public class HeatEffects {
 	 */
 	protected void OnOverHeat(double heatValue) {
 		if (heatValue >= 0.9) {
-			StageThree();
+			if (ConfigInfo.LIQUID_CONSUME)
+				StageThree();
 			this.grid.postEvent(new ATOverHeatEvent(this.grid.getController(),
 					heatValue, 3));
 		}
@@ -105,7 +107,8 @@ public class HeatEffects {
 			TileRef machine;
 			do {
 				machine = getRandomAETile(grid, rand);
-			} while (calc.isSafeFromMelt(machine));
+			}
+			while (calc.isSafeFromMelt(machine));
 
 			World machineWorld = machine.getCoord().getWorld();
 
@@ -228,7 +231,8 @@ public class HeatEffects {
 
 		if (lengthOfList == 1) {
 			indexOfList = 0;
-		} else {
+		}
+		else {
 			indexOfList = rand.nextInt(lengthOfList);
 		}
 

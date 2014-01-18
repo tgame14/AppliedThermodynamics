@@ -215,17 +215,17 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 	@Override
 	protected int getMaximumXSize() {
-		return 256;
+		return MultiblockInfo.FanBoxXSize;
 	}
 
 	@Override
 	protected int getMaximumZSize() {
-		return 256;
+		return MultiblockInfo.FanBoxZSize;
 	}
 
 	@Override
 	protected int getMaximumYSize() {
-		return 256;
+		return MultiblockInfo.FanBoxYSize;
 	}
 
 	/* Allows to set minimal Sizes now. removes getMinimalHeight(). */

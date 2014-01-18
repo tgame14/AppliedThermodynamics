@@ -1,9 +1,17 @@
 package com.tgame.apptherm.logic;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.common.collect.Multimap;
+
+import appeng.api.TileRef;
+import appeng.api.exceptions.AppEngTileMissingException;
 import appeng.api.me.util.IGridInterface;
 
 import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
 import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
+import com.tgame.apptherm.tileentities.liquidcooler.TileEntityHeatPort;
 
 /**
  * The Class LogicCool, Does all the logic regarding different coolants.
@@ -32,6 +40,8 @@ public class LogicCool {
 
 	/** The instance of LogicCalc from LogicBase. */
 	private LogicCalc calc;
+	
+	private AdvancedCoolerHandler advCoolerHandler;
 
 	/**
 	 * Instantiates a new logic cool.
@@ -45,10 +55,12 @@ public class LogicCool {
 	protected LogicCool(IGridInterface gi, LogicCalc logicCalc) {
 		this.grid = gi;
 		this.calc = logicCalc;
-		
+
 		this.coolingValue = 0;
 		this.intakeCount = 0;
 		this.liquiCount = 0;
+		
+		this.advCoolerHandler = new AdvancedCoolerHandler(grid);		
 
 	}
 
@@ -59,10 +71,13 @@ public class LogicCool {
 	protected void refreshCoolants() {
 		refreshLiquiCount();
 		intakeCount = calc.calcAmountOfTiles(TileEntitySimpleFan.class);
+		
+		advCoolerHandler = new AdvancedCoolerHandler(grid);
 	}
-	
+
 	public void refreshLiquiCount() {
-		liquiCount = calc.calcAmountOfActiveCoolants(TileEntityLiquidCooler.class);
+		liquiCount = calc
+				.calcAmountOfActiveCoolants(TileEntityLiquidCooler.class);
 	}
 
 	/**
@@ -77,13 +92,15 @@ public class LogicCool {
 	 * 
 	 * @return float cooling value of coolant
 	 */
-	private double calcCoolantValue(int activeCoolants, float decrPercent, float firstDeminish) {
+	private double calcCoolantValue(int activeCoolants, float decrPercent,
+			float firstDeminish) {
 		if (activeCoolants < 1) {
 			return 0;
 		}
 		float firstValue = firstDeminish;
 
-		double totalCoolant = (firstValue * (1 - Math.pow(decrPercent, activeCoolants + 1))) / (1 - decrPercent);
+		double totalCoolant = (firstValue * (1 - Math.pow(decrPercent,
+				activeCoolants + 1))) / (1 - decrPercent);
 
 		return totalCoolant;
 
@@ -92,8 +109,10 @@ public class LogicCool {
 	protected double calcTotalCoolant() {
 		double intakeCoolant = calcCoolantValue(intakeCount, 0.5F, 0.05F);
 		double liquidCoolant = calcCoolantValue(liquiCount, 0.9F, 0.1F);
+		
+		double advCooler = this.advCoolerHandler.getTotalCooling() * 0.15F;
 
-		this.coolingValue = intakeCoolant + liquidCoolant;
+		this.coolingValue = intakeCoolant + liquidCoolant + advCooler;
 		return coolingValue;
 
 	}
@@ -115,5 +134,6 @@ public class LogicCool {
 	protected int getIntakeCount() {
 		return intakeCount;
 	}
+	
 
 }

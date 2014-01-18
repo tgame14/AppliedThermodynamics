@@ -8,10 +8,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import appeng.api.me.tiles.IGridTileEntity;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.config.ConfigInfo;
 import com.tgame.apptherm.logic.LogicBase;
 import com.tgame.apptherm.network.PacketDistributer;
 import com.tgame.apptherm.util.ModInfo;
@@ -25,7 +27,8 @@ public class ItemHeatRecorder extends Item {
 		super(id);
 
 		this.setCreativeTab(AppTherm.AppThermTab);
-		this.setUnlocalizedName("appliedthermodynamics." + ItemInfo.RECORDER_UNLOCALIZED_NAME);
+		this.setUnlocalizedName("appliedthermodynamics."
+				+ ItemInfo.RECORDER_UNLOCALIZED_NAME);
 
 	}
 
@@ -35,10 +38,10 @@ public class ItemHeatRecorder extends Item {
 		this.itemIcon = register.registerIcon(ModInfo.RESOURCE_LOCATION + ":"
 				+ ItemInfo.RECORDER_ICON);
 	}
-	
+
 	@Override
-	public void addInformation(ItemStack itemstack,
-			EntityPlayer player, List list, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player,
+			List list, boolean par4) {
 		list.add("This item will Show you the");
 		list.add("Current heat levels in the network");
 		list.add("Right click any Block connected to the network");
@@ -54,6 +57,11 @@ public class ItemHeatRecorder extends Item {
 
 			double heatValue;
 
+			if (!ConfigInfo.ENABLE_HEAT) {
+				PacketDistributer.sendHeatItemData((byte) 3, 0, player, 0);
+				return false;
+			}
+
 			if (te instanceof IGridTileEntity) {
 				IGridTileEntity gridTile = (IGridTileEntity) te;
 				if (gridTile.getGrid() != null) {
@@ -63,12 +71,14 @@ public class ItemHeatRecorder extends Item {
 					PacketDistributer.sendHeatItemData((byte) 2, heatValue,
 							player, gridTile.getGrid().getPowerUsageAvg());
 					return true;
-				} else {
+				}
+				else {
 					PacketDistributer.sendHeatItemData((byte) 1, 0, player, 0);
 					return true;
 				}
 
-			} else {
+			}
+			else {
 				PacketDistributer.sendHeatItemData((byte) 0, 0, player, 0);
 				return true;
 			}
@@ -83,6 +93,7 @@ public class ItemHeatRecorder extends Item {
 			double heatValue, int textId, double powerintake) {
 
 		ChatMessageComponent chat = new ChatMessageComponent();
+		chat.setColor(EnumChatFormatting.BLUE).setBold(true);
 
 		switch (textId) {
 
@@ -94,11 +105,14 @@ public class ItemHeatRecorder extends Item {
 			player.sendChatToPlayer(chat
 					.createFromText("Block not Connected to network"));
 			break;
-		case 2:			
+		case 2:
 			player.sendChatToPlayer(chat.createFromText("Heat : "
 					+ ((int) (heatValue * 100)) + "% Power : " + powerintake));
 
 			break;
+		case 3:
+			player.sendChatToPlayer(chat
+					.createFromText("Heat is Disabled and cannot be recorded"));
 
 		}
 	}

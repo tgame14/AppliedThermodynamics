@@ -19,7 +19,8 @@ public class ConfigHandler {
 			AppTherm.log
 					.info("Config Already Exists in Config directory, Reading...");
 
-		} else {
+		}
+		else {
 			AppTherm.log
 					.info("Config Hasnt been found in Config Directry, Generating Defaults...");
 
@@ -58,6 +59,14 @@ public class ConfigHandler {
 				BlockInfo.COOLANT_DEFAULT).getInt();
 		BlockInfo.REACT_ID = config.getBlock(BlockInfo.REACT_KEY,
 				BlockInfo.REACT_DEFAULT).getInt();
+		BlockInfo.COOLER_ID = config.getBlock(BlockInfo.COOLER_KEY,
+				BlockInfo.COOLER_DEFAULT).getInt();
+		BlockInfo.COOLWALL_ID = config.getBlock(BlockInfo.COOLWALL_KEY,
+				BlockInfo.COOLWALL_DEFAULT).getInt();
+		BlockInfo.EXCHANGE_ID = config.getBlock(BlockInfo.EXCHANGE_KEY,
+				BlockInfo.EXHCANGE_DEFAULT).getInt();
+		BlockInfo.HEATPORT_ID = config.getBlock(BlockInfo.HEATPORT_KEY,
+				BlockInfo.HEATPORT_DEFAULT).getInt();
 
 		// Config Registry for Disabling and Enabling Feature (booleans).
 
@@ -71,12 +80,14 @@ public class ConfigHandler {
 				.getBoolean(ConfigInfo.ENABLE_HEAT_DEFAULT);
 
 		// Item Registration
+
 		ItemInfo.GOO_ID = config
 				.getItem(ItemInfo.GOO_KEY, ItemInfo.GOO_DEFAULT).getInt() - 256;
 		ItemInfo.RECORDER_ID = config.getItem(ItemInfo.RECORDER_KEY,
 				ItemInfo.RECORDER_DEFAULT).getInt() - 256;
 
 		/* Multiblock Feature registry */
+
 		MultiblockInfo.FanBoxXSize = config.get(
 				MultiblockInfo.MULTIBLOCK_FEATURE_KEY,
 				MultiblockInfo.FanBoxXSizeKey,
@@ -108,6 +119,7 @@ public class ConfigHandler {
 				MultiblockInfo.LiquidCoolerZSizeDefault).getInt();
 
 		config.save();
+		
 		AppTherm.log.info("Config Loaded and Saved");
 
 	}

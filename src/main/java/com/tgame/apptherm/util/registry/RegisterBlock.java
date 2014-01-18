@@ -81,12 +81,6 @@ public class RegisterBlock implements ATItemDefinition {
 						.replace(".name", ""));
 	}
 
-	private void registerBlockInstance(Block block,
-			Class<? extends ItemBlock> itemBlock) {
-		GameRegistry.registerBlock(block, itemBlock, block.getUnlocalizedName()
-				.replace("tile.", "").replace(".name", ""));
-	}
-
 	@Override
 	public Block block() {
 		return this.block;

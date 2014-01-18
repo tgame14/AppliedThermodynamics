@@ -30,7 +30,7 @@ public class Blocks {
 	public static ATItemDefinition Eater;
 		
 	/*
-	 * Fan Box Multiblock BlockHandler
+	 * Fan Box Multiblock Blocks
 	 */
 	
 	public static ATItemDefinition fanBoxCasing;
@@ -41,7 +41,16 @@ public class Blocks {
 	public static ATItemDefinition fluidPort;
 	
 	/*
-	 * Regular blocks
+	 * Advanced Cooler Blocks
+	 */
+	
+	public static ATItemDefinition coolerCasing;
+	public static ATItemDefinition coolerWall;
+	public static ATItemDefinition heatExchangor;
+	public static ATItemDefinition meHeatPort;
+	
+	/*
+	 * Regular vanity blocks
 	 */
 	
 	public static ATItemDefinition jelloBrick;

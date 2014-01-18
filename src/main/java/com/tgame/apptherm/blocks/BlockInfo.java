@@ -121,8 +121,21 @@ public class BlockInfo {
 	public static int COOLER_ID;
 	public static final int COOLER_DEFAULT = config++;
 	public static final String COOLER_KEY = "liquidcoolercasing";
-	public static final String COOLER_UNLOCALIZED = "liquidcoolercasing";
 	public static final String COOLER_TE_KEY = "tileentitycoolercasing";
-	public static final String[] COOLER_TEXTUES = { "" };
+	
+	public static int COOLWALL_ID;
+	public static final int COOLWALL_DEFAULT = config++;
+	public static final String COOLWALL_KEY = "coolerwall";
+	public static final String COOLWALL_TE_KEY = "tileentitycoolerwall";
+	
+	public static int EXCHANGE_ID;
+	public static final int EXHCANGE_DEFAULT = config++;
+	public static final String EXCHANGE_KEY = "heatexchange";
+	public static final String EXCHANGE_TE_KEY = "tileentityexchange";
+	
+	public static int HEATPORT_ID;
+	public static final int HEATPORT_DEFAULT = config++;
+	public static final String HEATPORT_KEY = "heatPortAT";
+	public static final String HEATPORT_TE_KEY = "tileentityheatport";
 
 }

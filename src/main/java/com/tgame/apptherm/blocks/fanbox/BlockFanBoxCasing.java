@@ -16,6 +16,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFanBoxCasing extends BlockContainer {
+	
+	protected Class tileClazz;
+	
 	public BlockFanBoxCasing(int id) {
 		super(id, Material.iron);
 
@@ -24,6 +27,8 @@ public class BlockFanBoxCasing extends BlockContainer {
 		this.setStepSound(soundMetalFootstep);
 		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.FANBOX_UNLOCALIZED_NAME);
 		this.setCreativeTab(AppTherm.AppThermTab);
+		
+		this.tileClazz = TileEntityFanBoxCasing.class;
 
 	}
 

@@ -71,7 +71,7 @@ public class FanBoxFluidHandler {
 		this.countOfInternals = countOfInternalTanks;
 		this.countOfReactions = countOfReactionChambers;
 		
-		this.meCoolant = new FluidStack(Fluids.meCoolant, 1 + this.countOfReactions);
+		this.meCoolant = new FluidStack(Fluids.meCoolant, 25 + this.countOfReactions);
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class FanBoxFluidHandler {
 		System.out.println("CPU : " + countOfReactions); */
 		
 		if (!mainTank.isEmpty()) {
-			this.mainTank.drain(4 + this.countOfReactions, true);
+			this.mainTank.drain(40 + this.countOfReactions, true);
 			this.extTank.fill(this.meCoolant, true);
 			return true;
 		}
@@ -92,7 +92,6 @@ public class FanBoxFluidHandler {
 	}
 
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
-		String attemptFluidName = resource.getFluid().getName();
 
 		if (resource.isFluidEqual(this.mainTank.getFluid()))
 			return this.mainTank.fill(resource, doFill);
