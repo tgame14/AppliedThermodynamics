@@ -15,6 +15,10 @@ tile.appliedthermodynamics.fanboxfluidport.name= Advanced Fanbox Fluid Port
 tile.appliedthermodynamics.fanboxinternaltank.name=Internal Fanbox Tank
 tile.appliedthermodynamics.mecoolant.name=ME Coolant
 tile.appliedthermodynamics.reactionchamber.name=Advanced Fanbox Reaction Chamber
+tile.appliedthermodynamics.coolercasing.name=Advanced Liquid Cooler Casing
+tile.appliedthermodynamics.coolerwall.name=Advanced Liquid Cooler Cover
+tile.appliedthermodynamics.heatexchange.name=Advanced Liquid Cooler Heat Exchange
+tile.appliedthermodynamics.meheatport.name= Advanced Liquid Cooler Heat Port
 
 #Items
 
