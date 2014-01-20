@@ -72,6 +72,10 @@ public class Recipes {
 				"XYX", 'X', Blocks.fanBoxCasing.stack(1), 'Y',
 				Item.snowball, 'Z', ironIngot);
 		
+		GameRegistry.addRecipe(Blocks.coolerWall.stack(4), "XYX", "YZY",
+				"XYX", 'X', Blocks.mePort.stack(1), 'Y',
+				Materials.matProcessorBasic.copy(), 'Z', ironIngot);
+		
 		
 
 		/* Item Recipes */
