@@ -1,6 +1,7 @@
 package com.tgame.apptherm.blocks.fanbox;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.ATBlock;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityFluidPort;
@@ -18,14 +19,11 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
-public class BlockFluidPort extends BlockContainer {
+public class BlockFluidPort extends ATBlock {
 
 	public BlockFluidPort(int id) {
-		super(id, Material.iron);
+		super(id, BlockInfo.FLUIDPORT_UNLOCALIZED_NAME);
 
-		this.setHardness(2.0F);
-		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.FLUIDPORT_UNLOCALIZED_NAME);
-		this.setCreativeTab(AppTherm.AppThermTab);
 	}
 
 	@Override
@@ -69,8 +67,8 @@ public class BlockFluidPort extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityFluidPort();
+	public Class getTileClass() {
+		return TileEntityFluidPort.class;
 	}
 
 }

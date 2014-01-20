@@ -8,6 +8,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.ATBlock;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.fanbox.TileEntityFanBoxCasing;
 import com.tgame.apptherm.util.ModInfo;
@@ -15,20 +16,15 @@ import com.tgame.apptherm.util.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFanBoxCasing extends BlockContainer {
-	
-	protected Class tileClazz;
+public class BlockFanBoxCasing extends ATBlock {
 	
 	public BlockFanBoxCasing(int id) {
-		super(id, Material.iron);
+		super(id, BlockInfo.FANBOX_UNLOCALIZED_NAME);
 
 		this.setHardness(2.0F);
 		this.setResistance(4.5F);
 		this.setStepSound(soundMetalFootstep);
-		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.FANBOX_UNLOCALIZED_NAME);
 		this.setCreativeTab(AppTherm.AppThermTab);
-		
-		this.tileClazz = TileEntityFanBoxCasing.class;
 
 	}
 
@@ -50,10 +46,10 @@ public class BlockFanBoxCasing extends BlockContainer {
 			return this.blockBorderlessIcon;
 		return this.blockIcon;
 	}
-
+	
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityFanBoxCasing();
+	public Class getTileClass() {
+		return TileEntityFanBoxCasing.class;
 	}
 
 }

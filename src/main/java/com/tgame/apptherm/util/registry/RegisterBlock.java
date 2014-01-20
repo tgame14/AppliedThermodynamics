@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.api.util.ATItemDefinition;
+import com.tgame.apptherm.blocks.ATBlock;
 import com.tgame.apptherm.util.ModInfo;
 
 import net.minecraft.block.Block;
@@ -20,26 +21,23 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * 
  */
 public class RegisterBlock implements ATItemDefinition {
-	
+
 	protected Block block;
 	protected Class clazz;
 	protected Object[] Args;
-	
+
 	public RegisterBlock(Class<? extends Block> clazz, Object... Args) {
 		this.block = null;
 		this.clazz = clazz;
 		this.Args = Args;
-		
+
 		registerBlockFeature(clazz, Args);
 	}
-	
-	protected boolean registerBlockFeature(Class<? extends Block> clazz, Object... Args) {
+
+	protected boolean registerBlockFeature(Class<? extends Block> clazz,
+			Object... Args) {
 		return createBlockInstance(clazz, Args);
-		
-		
-		
-		
-		
+
 	}
 
 	protected boolean createBlockInstance(Class<? extends Block> clazz,
@@ -79,6 +77,12 @@ public class RegisterBlock implements ATItemDefinition {
 				block,
 				block.getUnlocalizedName().replace("tile.", "")
 						.replace(".name", ""));
+		if (block instanceof ATBlock) {
+			ATBlock atblock = (ATBlock) block;
+
+			GameRegistry.registerTileEntity(atblock.getTileClass(),
+					atblock.getUnlocalizedName());
+		}
 	}
 
 	@Override
@@ -103,7 +107,7 @@ public class RegisterBlock implements ATItemDefinition {
 
 	@Override
 	public boolean sameAs(ItemStack comparableItem) {
-		if(comparableItem.itemID == this.block.blockID)
+		if (comparableItem.itemID == this.block.blockID)
 			return true;
 		return false;
 	}

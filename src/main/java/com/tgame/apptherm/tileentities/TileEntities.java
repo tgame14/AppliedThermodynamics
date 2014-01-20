@@ -34,8 +34,7 @@ public class TileEntities {
 				BlockInfo.EAS_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityEater.class,
 				BlockInfo.EATER_TE_KEY);
-		GameRegistry.registerTileEntity(TileEntityFanBoxCasing.class,
-				BlockInfo.FANBOX_TE_KEY);
+		
 		GameRegistry.registerTileEntity(TileEntityHeatVent.class,
 				BlockInfo.VENT_TE_KEY);
 		GameRegistry.registerTileEntity(TileEntityMEPort.class,
