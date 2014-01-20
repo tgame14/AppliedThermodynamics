@@ -1,6 +1,6 @@
 package com.tgame.apptherm.blocks;
 
-import com.tgame.apptherm.api.definitions.Blocks;
+import com.tgame.apptherm.api.definitions.ATBlocks;
 import com.tgame.apptherm.blocks.fanbox.BlockFanBoxCasing;
 import com.tgame.apptherm.blocks.fanbox.BlockFluidPort;
 import com.tgame.apptherm.blocks.fanbox.BlockHeatVent;
@@ -24,60 +24,60 @@ public class BlockHandler {
 
 	public static void init() {
 
-		Blocks.fluidME = new RegisterBlock(BlockFluidME.class,
+		ATBlocks.fluidME = new RegisterBlock(BlockFluidME.class,
 				BlockInfo.LIQUID_ME_ID);
 
-		Blocks.airIntake = new RegisterBlock(BlockAirIntake.class,
+		ATBlocks.airIntake = new RegisterBlock(BlockAirIntake.class,
 				BlockInfo.INTAKE_ID);
 
-		Blocks.jelloBrick = new RegisterBlock(BlockJelloBrick.class,
+		ATBlocks.jelloBrick = new RegisterBlock(BlockJelloBrick.class,
 				BlockInfo.JELLO_ID);
 
-		Blocks.exhaustME = new RegisterBlock(BlockExhaustME.class,
+		ATBlocks.exhaustME = new RegisterBlock(BlockExhaustME.class,
 				BlockInfo.EXHAUST_ID);
 
-		Blocks.monitorME = new RegisterBlock(BlockMonitorME.class,
+		ATBlocks.monitorME = new RegisterBlock(BlockMonitorME.class,
 				BlockInfo.MONITOR_ID);
 
-		Blocks.liquidCooler = new RegisterBlock(BlockLiquidCooler.class,
+		ATBlocks.liquidCooler = new RegisterBlock(BlockLiquidCooler.class,
 				BlockInfo.LIQUICOOL_ID);
 
-		Blocks.EAS = new RegisterBlock(BlockEAS.class, BlockInfo.EAS_ID);
+		ATBlocks.EAS = new RegisterBlock(BlockEAS.class, BlockInfo.EAS_ID);
 
-		Blocks.Eater = new RegisterBlock(BlockEnergyEater.class,
+		ATBlocks.Eater = new RegisterBlock(BlockEnergyEater.class,
 				BlockInfo.EATER_ID);
 
-		Blocks.fanBoxCasing = new RegisterBlock(BlockFanBoxCasing.class,
+		ATBlocks.fanBoxCasing = new RegisterBlock(BlockFanBoxCasing.class,
 				BlockInfo.FANBOX_ID);
 
-		Blocks.heatVent = new RegisterBlock(BlockHeatVent.class,
+		ATBlocks.heatVent = new RegisterBlock(BlockHeatVent.class,
 				BlockInfo.VENT_ID);
 
-		Blocks.mePort = new RegisterBlock(BlockMEPort.class,
+		ATBlocks.mePort = new RegisterBlock(BlockMEPort.class,
 				BlockInfo.MEPORT_ID);
 
-		Blocks.fluidPort = new RegisterBlock(BlockFluidPort.class,
+		ATBlocks.fluidPort = new RegisterBlock(BlockFluidPort.class,
 				BlockInfo.FLUIDPORT_ID);
 
-		Blocks.internalTank = new RegisterBlock(BlockInternalTank.class,
+		ATBlocks.internalTank = new RegisterBlock(BlockInternalTank.class,
 				BlockInfo.INTTANK_ID);
 
-		Blocks.meCoolant = new RegisterBlock(BlockMECoolant.class,
+		ATBlocks.meCoolant = new RegisterBlock(BlockMECoolant.class,
 				BlockInfo.COOLANT_ID);
 
-		Blocks.reactorChamber = new RegisterBlock(BlockReactionChamber.class,
+		ATBlocks.reactorChamber = new RegisterBlock(BlockReactionChamber.class,
 				BlockInfo.REACT_ID);
 
-		Blocks.coolerCasing = new RegisterBlock(BlockCoolerCasing.class,
+		ATBlocks.coolerCasing = new RegisterBlock(BlockCoolerCasing.class,
 				BlockInfo.COOLER_ID);
 
-		Blocks.coolerWall = new RegisterBlock(BlockCoolerWall.class,
+		ATBlocks.coolerWall = new RegisterBlock(BlockCoolerWall.class,
 				BlockInfo.COOLWALL_ID);
 
-		Blocks.heatExchangor = new RegisterBlock(BlockHeatExchange.class,
+		ATBlocks.heatExchangor = new RegisterBlock(BlockHeatExchange.class,
 				BlockInfo.EXCHANGE_ID);
 
-		Blocks.meHeatPort = new RegisterBlock(BlockHeatPort.class,
+		ATBlocks.meHeatPort = new RegisterBlock(BlockHeatPort.class,
 				BlockInfo.HEATPORT_ID);
 
 	}

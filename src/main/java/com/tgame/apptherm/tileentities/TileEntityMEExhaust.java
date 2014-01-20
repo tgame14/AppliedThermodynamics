@@ -13,7 +13,7 @@ import appeng.api.events.GridTileUnloadEvent;
 import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.util.IGridInterface;
 
-import com.tgame.apptherm.api.definitions.Items;
+import com.tgame.apptherm.api.definitions.ATItems;
 
 public class TileEntityMEExhaust extends TileEntity implements IGridMachine {
 
@@ -26,7 +26,7 @@ public class TileEntityMEExhaust extends TileEntity implements IGridMachine {
 
 	public TileEntityMEExhaust() {
 		this.gooTimer = 0;
-		this.gooStack = Items.goo.stack(1);
+		this.gooStack = ATItems.goo.stack(1);
 
 		this.powerStatus = false;
 		this.networkReady = false;

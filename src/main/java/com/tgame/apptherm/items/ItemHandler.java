@@ -1,6 +1,6 @@
 package com.tgame.apptherm.items;
 
-import com.tgame.apptherm.api.definitions.Items;
+import com.tgame.apptherm.api.definitions.ATItems;
 import com.tgame.apptherm.util.registry.RegisterItem;
 
 import net.minecraft.block.Block;
@@ -13,9 +13,9 @@ public class ItemHandler {
 
 	public static void init() {
 		
-		Items.goo = new RegisterItem(ItemMEGoo.class, ItemInfo.GOO_ID);
+		ATItems.goo = new RegisterItem(ItemMEGoo.class, ItemInfo.GOO_ID);
 		
-		Items.heatRecorder = new RegisterItem(ItemHeatRecorder.class, ItemInfo.RECORDER_ID);
+		ATItems.heatRecorder = new RegisterItem(ItemHeatRecorder.class, ItemInfo.RECORDER_ID);
 	}
 
 	// Properly localized this is deprecated

@@ -9,7 +9,7 @@ import com.tgame.apptherm.api.util.ATItemDefinition;
  * @author tgame14, Initial concept from AlgorithmX2
  *
  */
-public class Blocks {
+public class ATBlocks {
 	
 	/*
 	 * Access to the Fluid BlockHandler
@@ -30,7 +30,7 @@ public class Blocks {
 	public static ATItemDefinition Eater;
 		
 	/*
-	 * Fan Box Multiblock Blocks
+	 * Fan Box Multiblock ATBlocks
 	 */
 	
 	public static ATItemDefinition fanBoxCasing;
@@ -41,7 +41,7 @@ public class Blocks {
 	public static ATItemDefinition fluidPort;
 	
 	/*
-	 * Advanced Cooler Blocks
+	 * Advanced Cooler ATBlocks
 	 */
 	
 	public static ATItemDefinition coolerCasing;
