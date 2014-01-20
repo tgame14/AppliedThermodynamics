@@ -13,6 +13,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.ATBlock;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
 import com.tgame.apptherm.util.ModInfo;
@@ -20,19 +21,13 @@ import com.tgame.apptherm.util.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockAirIntake extends BlockContainer {
+public class BlockAirIntake extends ATBlock {
 
 	public boolean isPowered;
 	
 
 	public BlockAirIntake(int id) {
-		super(id, Material.iron);
-
-		this.setCreativeTab(AppTherm.AppThermTab);
-		this.setHardness(2F);
-		this.setStepSound(Block.soundMetalFootstep);
-		this.setUnlocalizedName("appliedthermodynamics."
-				+ BlockInfo.INTAKE_UNLOCALIZED_NAME);
+		super(id, BlockInfo.INTAKE_UNLOCALIZED_NAME);
 
 		this.isPowered = false;
 
@@ -113,9 +108,11 @@ public class BlockAirIntake extends BlockContainer {
 		}
 	}
 
+
+
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileEntitySimpleFan();
+	public Class getTileClass() {
+		return TileEntitySimpleFan.class;
 	}
 	
 }

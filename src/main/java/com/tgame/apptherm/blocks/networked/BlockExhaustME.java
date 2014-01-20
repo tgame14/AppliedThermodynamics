@@ -12,6 +12,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.ATBlock;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.TileEntityMEExhaust;
 import com.tgame.apptherm.util.ModInfo;
@@ -19,14 +20,11 @@ import com.tgame.apptherm.util.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockExhaustME extends BlockContainer {
+public class BlockExhaustME extends ATBlock {
 
 	public BlockExhaustME(int id) {
-		super(id, Material.iron);
-
-		setHardness(2.0F);
-		setCreativeTab(AppTherm.AppThermTab);
-		setUnlocalizedName("appliedthermodynamics." + BlockInfo.EXHAUST_UNLOCALIZED_NAME);
+		super(id, BlockInfo.EXHAUST_UNLOCALIZED_NAME);
+		
 	}
 
 	 @SideOnly(Side.CLIENT)
@@ -100,9 +98,10 @@ public class BlockExhaustME extends BlockContainer {
      }
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityMEExhaust();
-
+	public Class getTileClass() {
+		return TileEntityMEExhaust.class;
 	}
+
+	 
 
 }

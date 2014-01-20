@@ -1,7 +1,5 @@
 package com.tgame.apptherm.blocks.networked;
 
-import net.minecraft.block.BlockContainer;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -15,6 +13,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.ATBlock;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
 import com.tgame.apptherm.util.ModInfo;
@@ -23,14 +22,10 @@ import cpw.mods.fml.common.network.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMonitorME extends BlockContainer {
+public class BlockMonitorME extends ATBlock {
 
 	public BlockMonitorME(int id) {
-		super(id, Material.rock);
-
-		setHardness(2F);
-		setCreativeTab(AppTherm.AppThermTab);
-		setUnlocalizedName("appliedthermodynamics." + BlockInfo.MONITOR_UNLOCALIZED_NAME);
+		super(id, BlockInfo.MONITOR_UNLOCALIZED_NAME);
 
 	}
 
@@ -155,8 +150,8 @@ public class BlockMonitorME extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityHeatMonitor();
-
+	public Class getTileClass() {
+		return TileEntityHeatMonitor.class;
 	}
+
 }

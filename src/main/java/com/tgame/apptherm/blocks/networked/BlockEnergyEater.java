@@ -6,22 +6,21 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.ATBlock;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.TileEntityEater;
 
-public class BlockEnergyEater extends BlockContainer {
+public class BlockEnergyEater extends ATBlock {
 	
 	public BlockEnergyEater(int id) {
-		super(id, Material.iron);
-		
-		this.setCreativeTab(AppTherm.AppThermTab);
-		this.setHardness(2.0F);
-		this.setUnlocalizedName("appliedthermodynamics." + BlockInfo.EATER_UNLOCALIZED_NAME);
+		super(id, BlockInfo.EATER_UNLOCALIZED_NAME);
+
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityEater();
+	public Class getTileClass() {
+		return TileEntityEater.class;
 	}
+
 
 }

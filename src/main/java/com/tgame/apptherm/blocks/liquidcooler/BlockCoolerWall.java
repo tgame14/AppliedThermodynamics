@@ -1,6 +1,7 @@
 package com.tgame.apptherm.blocks.liquidcooler;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.ATBlock;
 import com.tgame.apptherm.tileentities.liquidcooler.TileEntityCoolerWall;
 import com.tgame.apptherm.util.ModInfo;
 
@@ -13,14 +14,10 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCoolerWall extends BlockContainer {
+public class BlockCoolerWall extends ATBlock {
 
 	public BlockCoolerWall(int id) {
-		super(id, Material.iron);
-
-		this.setUnlocalizedName("appliedthermodynamics.coolerwall");
-		this.setCreativeTab(AppTherm.AppThermTab);
-		this.setHardness(2.0F);
+		super(id, "coolerwall");
 
 	}
 
@@ -41,8 +38,8 @@ public class BlockCoolerWall extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityCoolerWall();
+	public Class getTileClass() {
+		return TileEntityCoolerWall.class;
 	}
 
 }

@@ -8,6 +8,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.ATBlock;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.liquidcooler.TileEntityLiquidCoolingCasing;
 import com.tgame.apptherm.util.ModInfo;
@@ -15,19 +16,13 @@ import com.tgame.apptherm.util.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCoolerCasing extends BlockContainer {
+public class BlockCoolerCasing extends ATBlock {
 
 	public BlockCoolerCasing(int id) {
-		super(id, Material.iron);
-
-		this.setUnlocalizedName("appliedthermodynamics.coolercasing");
-		this.setCreativeTab(AppTherm.AppThermTab);
+		super(id, "coolercasing");
+		
 	}
 
-	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityLiquidCoolingCasing();
-	}
 
 	@SideOnly(Side.CLIENT)
 	Icon activeIcon;
@@ -43,6 +38,11 @@ public class BlockCoolerCasing extends BlockContainer {
 	@Override
 	public Icon getIcon(int side, int meta) {
 		return meta == 0 ? blockIcon : activeIcon;
+	}
+
+	@Override
+	public Class getTileClass() {
+		return TileEntityLiquidCoolingCasing.class;
 	}
 
 }

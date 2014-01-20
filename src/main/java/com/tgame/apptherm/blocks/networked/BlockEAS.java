@@ -7,6 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.blocks.ATBlock;
 import com.tgame.apptherm.blocks.BlockInfo;
 import com.tgame.apptherm.tileentities.TileEntityEAS;
 import com.tgame.apptherm.util.ModInfo;
@@ -14,14 +15,10 @@ import com.tgame.apptherm.util.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockEAS extends BlockContainer {
+public class BlockEAS extends ATBlock {
 
 	public BlockEAS(int id) {
-		super(id, Material.iron);
-
-		setHardness(2.0F);
-		setCreativeTab(AppTherm.AppThermTab);
-		setUnlocalizedName("appliedthermodynamics." + BlockInfo.EAS_UNLOCALIZED_NAME);
+		super(id, BlockInfo.EAS_UNLOCALIZED_NAME);
 
 	}
 
@@ -34,8 +31,9 @@ public class BlockEAS extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityEAS();
+	public Class getTileClass() {
+		return TileEntityEAS.class;
 	}
+
 
 }
