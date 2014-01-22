@@ -72,14 +72,6 @@ public class AppTherm {
 
 	}
 
-	/**
-	 * 
-	 * @return returns the instance of the mod for non static access to fields
-	 *         and methods.
-	 */
-	public AppTherm instance() {
-		return this.instance;
-	}
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
