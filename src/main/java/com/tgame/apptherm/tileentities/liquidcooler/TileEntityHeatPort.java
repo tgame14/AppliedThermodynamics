@@ -157,14 +157,14 @@ public class TileEntityHeatPort extends MultiblockTileEntityBase implements
 	@Override
 	public void invalidate() {
 		super.invalidate();
-		if (!getController().getPoweredState())
+		if (!getController().isCooling())
 			deActivateTile();
 	}
 
 	@Override
 	public void validate() {
 		super.validate();
-		if (getController().getPoweredState())
+		if (getController().isCooling())
 			activateTile();
 	}
 

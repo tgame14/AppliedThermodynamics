@@ -14,10 +14,9 @@ import com.tgame.apptherm.multiblocks.handlers.LiquidCoolerFluidHandler;
 import com.tgame.apptherm.tileentities.liquidcooler.TileEntityExchange;
 import com.tgame.apptherm.tileentities.liquidcooler.TileEntityHeatPort;
 
-public class LiquidCoolerControllerBase extends MultiblockControllerBase {
+public class LiquidCoolerControllerBase extends CoolerMultiblockBase {
 
 	protected LiquidCoolerFluidHandler fluidHandler;
-	protected boolean isPowered;
 	private int countOfInternals;
 
 	protected Set<TileEntityHeatPort> mePorts;
@@ -43,13 +42,6 @@ public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 
 		return count;
 
-	}
-
-	private boolean isActive() {
-		if(fluidHandler.isEmpty())
-			return false;
-		
-		return true;
 	}
 	
 
@@ -118,7 +110,7 @@ public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 		for(TileEntityHeatPort tile : mePorts) {
 			tile.onMachineActivated();
 		}
-		this.isPowered = true;
+		this.coolingStatus = true;
 	}
 	
 	protected void onMachineDeactivated() {
@@ -126,13 +118,9 @@ public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 			tile.onMachineDeactivated();
 		}
 		
-		this.isPowered = false;
+		this.coolingStatus = false;
 	}
 	
-	public boolean getPoweredState() {
-		return this.isPowered;
-	}
-
 	@Override
 	protected int getMinimumNumberOfBlocksForAssembledMachine() {
 		return 27;

@@ -26,13 +26,5 @@ public interface IATCoolantMachine extends IGridMachine {
 	 */
 	public boolean isActive();
 	
-	/**
-	 * this is done Internally in the form of a special handler. and with my own multiblocks
-	 * DO NOT IMPLEMENT
-	 *  
-	 * 
-	 * @return whether Multiblock or not.
-	 */
-	public boolean isMultiblock();
 
 }
