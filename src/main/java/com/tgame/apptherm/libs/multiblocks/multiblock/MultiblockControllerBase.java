@@ -63,6 +63,9 @@ public abstract class MultiblockControllerBase {
 	 */
 	private MultiblockValidationException lastValidationException;
 	
+	private static int ordinal = 0;
+	private int hashCode;
+	
 	protected MultiblockControllerBase(World world) {
 		// Multiblock stuff
 		worldObj = world;
@@ -75,6 +78,9 @@ public abstract class MultiblockControllerBase {
 
 		shouldCheckForDisconnections = true;
 		lastValidationException = null;
+		
+		this.hashCode = ordinal++;
+		
 	}
 
 	/**
@@ -905,6 +911,11 @@ public abstract class MultiblockControllerBase {
 	 */
 	public boolean isAssembled() {
 		return this.assemblyState == AssemblyState.Assembled;
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.hashCode;
 	}
 
 }

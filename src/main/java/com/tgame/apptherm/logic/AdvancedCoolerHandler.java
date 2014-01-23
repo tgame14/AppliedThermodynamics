@@ -1,6 +1,7 @@
 package com.tgame.apptherm.logic;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import appeng.api.TileRef;
 import appeng.api.me.util.IGridInterface;
@@ -11,7 +12,7 @@ import com.tgame.apptherm.tileentities.liquidcooler.TileEntityHeatPort;
 public class AdvancedCoolerHandler {
 
 	private IGridInterface grid;
-	private HashMap<TileRef, Integer> advCoolMap;
+	private Map<Integer, Integer> advCoolMap;
 
 	protected AdvancedCoolerHandler(IGridInterface grid) {
 		this.grid = grid;
@@ -19,7 +20,7 @@ public class AdvancedCoolerHandler {
 
 	}
 
-	protected HashMap<TileRef, Integer> getadvCoolMap() {
+	protected Map<Integer, Integer> getadvCoolMap() {
 		return this.advCoolMap;
 	}
 
@@ -33,11 +34,11 @@ public class AdvancedCoolerHandler {
 		return count;
 	}
 
-	protected HashMap<TileRef, Integer> mapAdvCoolers() {
+	protected HashMap<Integer, Integer> mapAdvCoolers() {
 
 		Class clazz = TileEntityHeatPort.class;
 
-		HashMap<TileRef, Integer> map = new HashMap<TileRef, Integer>();
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 
 		for (TileRef tile : grid.getMachines()) {
 			try {
@@ -45,8 +46,11 @@ public class AdvancedCoolerHandler {
 					TileEntityHeatPort telc = (TileEntityHeatPort) tile
 							.getTile();
 					LiquidCoolerControllerBase liq = telc.getController();
-					if (liq != null && liq.isAssembled())
-						map.put(tile, liq.getCountOfInternals());
+
+					if (liq != null && liq.isAssembled()) {
+						if(!map.containsKey(liq.hashCode()))
+						map.put(liq.hashCode(), liq.getCountOfInternals());
+					}
 				}
 
 			}
