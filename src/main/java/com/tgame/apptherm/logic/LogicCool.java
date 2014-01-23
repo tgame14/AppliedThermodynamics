@@ -1,17 +1,9 @@
 package com.tgame.apptherm.logic;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.google.common.collect.Multimap;
-
-import appeng.api.TileRef;
-import appeng.api.exceptions.AppEngTileMissingException;
 import appeng.api.me.util.IGridInterface;
 
 import com.tgame.apptherm.tileentities.TileEntityLiquidCooler;
 import com.tgame.apptherm.tileentities.TileEntitySimpleFan;
-import com.tgame.apptherm.tileentities.liquidcooler.TileEntityHeatPort;
 
 /**
  * The Class LogicCool, Does all the logic regarding different coolants.

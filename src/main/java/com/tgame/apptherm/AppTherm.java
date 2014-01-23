@@ -106,11 +106,6 @@ public class AppTherm {
 	public void init(FMLInitializationEvent event) {
 		this.log.info("Init Loading Up");
 
-		this.log.fine("Initializing TileEntities");
-		TileEntities.init();
-		this.log.fine("Initializing Recipes");
-		Recipes.init();
-
 		this.log.fine("Initializing Entities");
 		Entities.init();
 		this.log.fine("Initializing Gui Handler");
@@ -135,6 +130,9 @@ public class AppTherm {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+		this.log.fine("Initializing Recipes");
+		Recipes.init();
+		
 		this.log.finest("End Of AT Loading entirely.");
 		this.log.info(ModInfo.NAME
 				+ " Has Loaded Without Crashing! (yet) \n \n");
