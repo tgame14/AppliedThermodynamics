@@ -102,9 +102,11 @@ public class LogicCool {
 		double intakeCoolant = calcCoolantValue(intakeCount, 0.5F, 0.05F);
 		double liquidCoolant = calcCoolantValue(liquiCount, 0.9F, 0.1F);
 		
-		double advCooler = this.advCoolerHandler.getTotalCooling() * 0.15F;
+		//double advCooler = this.advCoolerHandler.getTotalCooling() * 0.15F;
+		LogicMap map = (LogicMap) grid.getCacheByID(LogicInfo.mapCacheID);
+		double value = map.sumCooling();
 
-		this.coolingValue = intakeCoolant + liquidCoolant + advCooler;
+		this.coolingValue = intakeCoolant + liquidCoolant + value;
 		return coolingValue;
 
 	}

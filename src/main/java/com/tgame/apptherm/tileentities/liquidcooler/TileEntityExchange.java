@@ -1,7 +1,10 @@
 package com.tgame.apptherm.tileentities.liquidcooler;
 
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import appeng.api.WorldCoord;
+import appeng.api.events.GridTileLoadEvent;
+import appeng.api.events.GridTileUnloadEvent;
 import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.tiles.IGridTileEntity;
 import appeng.api.me.util.IGridInterface;
@@ -11,21 +14,22 @@ import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockTileEntityBase;
 import com.tgame.apptherm.multiblocks.LiquidCoolerControllerBase;
 
-public class TileEntityExchange extends MultiblockTileEntityBase implements IGridMachine, IATCoolantMachine {
+public class TileEntityExchange extends MultiblockTileEntityBase implements
+		IATCoolantMachine {
 
 	private boolean powerstatus, networkReady;
 	private IGridInterface grid;
-	
+
 	public TileEntityExchange() {
 		this.powerstatus = false;
 		this.networkReady = false;
-		
+
 	}
-	
+
 	public LiquidCoolerControllerBase getController() {
 		return (LiquidCoolerControllerBase) getMultiblockController();
 	}
-	
+
 	@Override
 	public Class<? extends MultiblockControllerBase> getMultiblockControllerType() {
 		return LiquidCoolerControllerBase.class;
@@ -64,26 +68,46 @@ public class TileEntityExchange extends MultiblockTileEntityBase implements IGri
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void onMachineBroken() {
-		// TODO Auto-generated method stub
+		connectToGrid(false);
 
 	}
 
 	@Override
 	public void onMachineActivated() {
-		// TODO Auto-generated method stub
+		connectToGrid(true);
 
 	}
 
 	@Override
 	public void onMachineDeactivated() {
-		// TODO Auto-generated method stub
+		connectToGrid(false);
 
+	}
+
+	private void connectToGrid(boolean flag) {
+		if (flag)
+			MinecraftForge.EVENT_BUS.post(new GridTileLoadEvent(this, worldObj,
+					getLocation()));
+		else
+			MinecraftForge.EVENT_BUS.post(new GridTileUnloadEvent(this,
+					worldObj, getLocation()));
+	}
+	
+	@Override
+	public void validate() {
+		super.validate();
+		connectToGrid(true);
+	}
+	
+	@Override
+	public void invalidate() {
+		super.invalidate();
+		connectToGrid(false);
 	}
 
 	@Override
@@ -104,7 +128,7 @@ public class TileEntityExchange extends MultiblockTileEntityBase implements IGri
 	@Override
 	public void setPowerStatus(boolean hasPower) {
 		this.powerstatus = hasPower;
-		
+
 	}
 
 	@Override
@@ -120,7 +144,7 @@ public class TileEntityExchange extends MultiblockTileEntityBase implements IGri
 	@Override
 	public void setGrid(IGridInterface gi) {
 		this.grid = gi;
-		
+
 	}
 
 	@Override
@@ -128,31 +152,26 @@ public class TileEntityExchange extends MultiblockTileEntityBase implements IGri
 		return worldObj;
 	}
 
-
 	@Override
 	public float getPowerDrainPerTick() {
 		return 0;
 	}
 
-
 	@Override
 	public void setNetworkReady(boolean isReady) {
 		this.networkReady = isReady;
-		
-	}
 
+	}
 
 	@Override
 	public boolean isMachineActive() {
 		return networkReady && powerstatus;
 	}
 
-
 	@Override
 	public float coolPerTick() {
 		return 0.1F;
 	}
-
 
 	@Override
 	public boolean isActive() {

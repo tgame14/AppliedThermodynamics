@@ -6,6 +6,10 @@ import java.util.Set;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTankInfo;
 
 import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
 import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
@@ -26,6 +30,7 @@ public class LiquidCoolerControllerBase extends CoolerMultiblockBase {
 
 		this.countOfInternals = 0;
 		this.mePorts = new HashSet<TileEntityHeatPort>();
+		this.fluidHandler = null;
 	}
 
 	public int getCountOfInternals() {
@@ -43,7 +48,6 @@ public class LiquidCoolerControllerBase extends CoolerMultiblockBase {
 		return count;
 
 	}
-	
 
 	@Override
 	public void onAttachedPartWithMultiblockData(IMultiblockPart part,
@@ -105,22 +109,22 @@ public class LiquidCoolerControllerBase extends CoolerMultiblockBase {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	protected void onMachineActivated() {
-		for(TileEntityHeatPort tile : mePorts) {
+		for (TileEntityHeatPort tile : mePorts) {
 			tile.onMachineActivated();
 		}
 		this.coolingStatus = true;
 	}
-	
+
 	protected void onMachineDeactivated() {
-		for(TileEntityHeatPort tile : mePorts) {
+		for (TileEntityHeatPort tile : mePorts) {
 			tile.onMachineDeactivated();
 		}
-		
+
 		this.coolingStatus = false;
 	}
-	
+
 	@Override
 	protected int getMinimumNumberOfBlocksForAssembledMachine() {
 		return 27;
@@ -183,12 +187,14 @@ public class LiquidCoolerControllerBase extends CoolerMultiblockBase {
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag) {
+		super.writeToNBT(tag);
 		if (fluidHandler != null)
 			fluidHandler.writeToNBT(tag);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
+		super.readFromNBT(tag);
 		fluidHandler.readFromNBT(tag);
 
 	}
@@ -210,6 +216,45 @@ public class LiquidCoolerControllerBase extends CoolerMultiblockBase {
 			int newSize, NBTTagCompound dataContainer) {
 		// TODO Auto-generated method stub
 
+	}
+
+	/* Fluid Handler path */
+
+	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
+		if (fluidHandler != null)
+			return this.fluidHandler.fill(from, resource, doFill);
+		return 0;
+	}
+
+	public FluidStack drain(ForgeDirection from, FluidStack resource,
+			boolean doDrain) {
+		if (fluidHandler != null)
+			return this.fluidHandler.drain(from, resource, doDrain);
+		return null;
+	}
+
+	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
+		if (fluidHandler != null)
+			return this.fluidHandler.drain(from, maxDrain, doDrain);
+		return null;
+	}
+
+	public boolean canFill(ForgeDirection from, Fluid fluid) {
+		if (fluidHandler != null)
+			return this.fluidHandler.canFill(from, fluid);
+		return false;
+	}
+
+	public boolean canDrain(ForgeDirection from, Fluid fluid) {
+		if (fluidHandler != null)
+			return this.fluidHandler.canDrain(from, fluid);
+		return false;
+	}
+
+	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
+		if (fluidHandler != null)
+			return this.fluidHandler.getTankInfo(from);
+		return null;
 	}
 
 }

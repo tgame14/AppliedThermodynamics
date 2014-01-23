@@ -24,11 +24,11 @@ import com.tgame.apptherm.api.tiles.IATCoolantMachine;
 public class LogicMap implements IGridCache {
 
 	protected Map<DimentionalCoord, IATCoolantMachine> coordMap;
-	protected Map<Integer, Integer> multiblockMap;
+	private boolean ticked;
 
 	public LogicMap() {
 		this.coordMap = new HashMap<DimentionalCoord, IATCoolantMachine>();
-		this.multiblockMap = new HashMap<Integer, Integer>();
+		this.ticked = false;
 	}
 
 	private void mapGrid(IGridInterface grid) {
@@ -55,13 +55,15 @@ public class LogicMap implements IGridCache {
 
 	@Override
 	public void reset(IGridInterface grid) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void onUpdateTick(IGridInterface grid) {
-		// TODO Auto-generated method stub
+		if (!ticked) {
+			mapGrid(grid);
+			this.ticked = true;
+		}
 
 	}
 
@@ -80,6 +82,16 @@ public class LogicMap implements IGridCache {
 	public void loadfromNBTData(NBTTagCompound data) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public double sumCooling() {
+		int sum = 0;
+		
+		for(IATCoolantMachine mach : coordMap.values()) {
+			sum += mach.coolPerTick();
+		}
+		
+		return sum;
 	}
 	
 }

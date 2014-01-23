@@ -16,6 +16,8 @@ import com.tgame.apptherm.fluids.Fluids;
 import com.tgame.apptherm.items.ItemHandler;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockEventHandler;
 import com.tgame.apptherm.logic.LogicBase;
+import com.tgame.apptherm.logic.LogicInfo;
+import com.tgame.apptherm.logic.LogicMap;
 import com.tgame.apptherm.network.ATConnectionHandler;
 import com.tgame.apptherm.network.PacketHandler;
 import com.tgame.apptherm.proxies.CommonProxy;
@@ -72,7 +74,6 @@ public class AppTherm {
 
 	}
 
-
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		this.log.info("Preinit Loading up");
@@ -113,10 +114,12 @@ public class AppTherm {
 
 		if (ConfigInfo.ENABLE_HEAT) {
 			this.log.finer("Registering IGridCache For AE, (the handler of heat)");
-			ModInfo.heatCacheID = Util.getAppEngApi().getGridCacheRegistry()
+			LogicInfo.heatCacheID = Util.getAppEngApi().getGridCacheRegistry()
 					.registerGridCache(LogicBase.class);
-		}
-		else
+
+			LogicInfo.mapCacheID = Util.getAppEngApi().getGridCacheRegistry()
+					.registerGridCache(LogicMap.class);
+		} else
 			this.log.warning("HEAT IS NOT LOADED. MOD WILL NOT WORK AS INTENDED THIS IS CONFIGURABLE");
 
 		this.log.info("Finished Loading init");
@@ -132,7 +135,7 @@ public class AppTherm {
 	public void postInit(FMLPostInitializationEvent event) {
 		this.log.fine("Initializing Recipes");
 		Recipes.init();
-		
+
 		this.log.finest("End Of AT Loading entirely.");
 		this.log.info(ModInfo.NAME
 				+ " Has Loaded Without Crashing! (yet) \n \n");
