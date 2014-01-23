@@ -120,23 +120,24 @@ public class TileEntityHeatPort extends MultiblockTileEntityBase implements
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
-
+		if (!worldObj.isRemote)
+			connectToGrid(true);
 	}
 
 	@Override
 	public void onMachineBroken() {
-
+		if (!worldObj.isRemote)
+			connectToGrid(false);
 	}
 
 	@Override
 	public void onMachineActivated() {
-		activateTile();
 
 	}
 
 	@Override
 	public void onMachineDeactivated() {
-		deActivateTile();
+
 	}
 
 	@Override
@@ -144,21 +145,25 @@ public class TileEntityHeatPort extends MultiblockTileEntityBase implements
 		return new LiquidCoolerControllerBase(worldObj);
 	}
 
-	private void activateTile() {
-		MinecraftForge.EVENT_BUS.post(new GridTileLoadEvent(this, worldObj,
-				getLocation()));
+	private void connectToGrid(boolean flag) {
+		if (flag)
+			MinecraftForge.EVENT_BUS.post(new GridTileLoadEvent(this, worldObj,
+					getLocation()));
+		else
+			MinecraftForge.EVENT_BUS.post(new GridTileUnloadEvent(this,
+					worldObj, getLocation()));
 	}
 
-	private void deActivateTile() {
-		MinecraftForge.EVENT_BUS.post(new GridTileUnloadEvent(this, worldObj,
-				getLocation()));
+	@Override
+	public void validate() {
+		super.validate();
+		connectToGrid(true);
 	}
 
 	@Override
 	public void invalidate() {
 		super.invalidate();
-		if (getController() != null && !getController().isCooling())
-			deActivateTile();
+		connectToGrid(false);
 	}
 
 }

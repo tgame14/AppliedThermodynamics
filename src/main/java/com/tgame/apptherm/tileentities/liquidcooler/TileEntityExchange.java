@@ -68,24 +68,25 @@ public class TileEntityExchange extends MultiblockTileEntityBase implements
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
-		
+		if(!worldObj.isRemote)
+			connectToGrid(true);
 	}
 
 	@Override
 	public void onMachineBroken() {
+		if(!worldObj.isRemote)
 		connectToGrid(false);
 
 	}
 
 	@Override
 	public void onMachineActivated() {
-		connectToGrid(true);
+		
 
 	}
 
 	@Override
 	public void onMachineDeactivated() {
-		connectToGrid(false);
 
 	}
 

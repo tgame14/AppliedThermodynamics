@@ -87,4 +87,8 @@ public class LiquidCoolerFluidHandler {
 	public boolean isEmpty() {
 		return this.tank.isEmpty();
 	}
+	
+	public int getFluidAmount() {
+		return this.tank.getFluidAmount();
+	}
 }

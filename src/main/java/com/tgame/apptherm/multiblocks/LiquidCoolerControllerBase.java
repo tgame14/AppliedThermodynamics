@@ -221,21 +221,31 @@ public class LiquidCoolerControllerBase extends CoolerMultiblockBase {
 	/* Fluid Handler path */
 
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
-		if (fluidHandler != null)
+		if (fluidHandler != null) {
+			if (fluidHandler.isEmpty() && doFill && resource.amount > 0)
+				onMachineActivated();
+			
 			return this.fluidHandler.fill(from, resource, doFill);
+		}
 		return 0;
 	}
 
 	public FluidStack drain(ForgeDirection from, FluidStack resource,
 			boolean doDrain) {
-		if (fluidHandler != null)
+		if (fluidHandler != null) {
+			if (fluidHandler.getFluidAmount() - resource.amount <= 0 && doDrain)
+				onMachineDeactivated();
 			return this.fluidHandler.drain(from, resource, doDrain);
+		}
 		return null;
 	}
 
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
-		if (fluidHandler != null)
+		if (fluidHandler != null) {
+			if (fluidHandler.getFluidAmount() - maxDrain <= 0 && doDrain)
+				onMachineDeactivated();
 			return this.fluidHandler.drain(from, maxDrain, doDrain);
+		}
 		return null;
 	}
 
