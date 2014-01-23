@@ -1,5 +1,6 @@
 package com.tgame.apptherm.tileentities.liquidcooler;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import appeng.api.WorldCoord;
@@ -13,24 +14,25 @@ import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockTileEntityBase;
 import com.tgame.apptherm.multiblocks.LiquidCoolerControllerBase;
 
-public class TileEntityHeatPort extends MultiblockTileEntityBase implements IGridMachine {
+public class TileEntityHeatPort extends MultiblockTileEntityBase implements
+		IGridMachine {
 
 	private boolean powerstatus, networkready;
 	private IGridInterface grid;
-	
-	
+	protected boolean isActivated;
+
 	public TileEntityHeatPort() {
 		super();
-		
+
 		this.powerstatus = false;
 		this.networkready = false;
+		this.isActivated = false;
 	}
-	
+
 	public LiquidCoolerControllerBase getController() {
 		return (LiquidCoolerControllerBase) getMultiblockController();
 	}
-	
-	
+
 	@Override
 	public WorldCoord getLocation() {
 		return new WorldCoord(xCoord, yCoord, zCoord);
@@ -44,7 +46,7 @@ public class TileEntityHeatPort extends MultiblockTileEntityBase implements IGri
 	@Override
 	public void setPowerStatus(boolean hasPower) {
 		this.powerstatus = hasPower;
-		
+
 	}
 
 	@Override
@@ -61,20 +63,17 @@ public class TileEntityHeatPort extends MultiblockTileEntityBase implements IGri
 	public void setGrid(IGridInterface gi) {
 		this.grid = gi;
 	}
-	
 
 	@Override
 	public float getPowerDrainPerTick() {
 		return 0;
 	}
 
-
 	@Override
 	public void setNetworkReady(boolean isReady) {
 		this.networkready = isReady;
-		
-	}
 
+	}
 
 	@Override
 	public boolean isMachineActive() {
@@ -121,41 +120,52 @@ public class TileEntityHeatPort extends MultiblockTileEntityBase implements IGri
 	@Override
 	public void onMachineAssembled(
 			MultiblockControllerBase multiblockControllerBase) {
-		System.out.println("portAssembled");
+
 	}
 
 	@Override
 	public void onMachineBroken() {
-		
+
 	}
 
 	@Override
 	public void onMachineActivated() {
-		// TODO Auto-generated method stub
-		
+		activateTile();
+
 	}
 
 	@Override
 	public void onMachineDeactivated() {
-		// TODO Auto-generated method stub
-		
+		deActivateTile();
 	}
 
 	@Override
 	public MultiblockControllerBase createNewMultiblock() {
 		return new LiquidCoolerControllerBase(worldObj);
 	}
-	
-	@Override
-	public void validate() {
-		super.validate();
-		MinecraftForge.EVENT_BUS.post(new GridTileLoadEvent(this, worldObj, getLocation()));
+
+	private void activateTile() {
+		MinecraftForge.EVENT_BUS.post(new GridTileLoadEvent(this, worldObj,
+				getLocation()));
 	}
-	
+
+	private void deActivateTile() {
+		MinecraftForge.EVENT_BUS.post(new GridTileUnloadEvent(this, worldObj,
+				getLocation()));
+	}
+
 	@Override
 	public void invalidate() {
 		super.invalidate();
-		MinecraftForge.EVENT_BUS.post(new GridTileUnloadEvent(this, worldObj, getLocation()));
+		if (!getController().getPoweredState())
+			deActivateTile();
+	}
+
+	@Override
+	public void validate() {
+		super.validate();
+		if (getController().getPoweredState())
+			activateTile();
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.tgame.apptherm.libs.multiblocks.common.CoordTriplet;
@@ -11,16 +12,21 @@ import com.tgame.apptherm.libs.multiblocks.multiblock.IMultiblockPart;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockControllerBase;
 import com.tgame.apptherm.multiblocks.handlers.LiquidCoolerFluidHandler;
 import com.tgame.apptherm.tileentities.liquidcooler.TileEntityExchange;
+import com.tgame.apptherm.tileentities.liquidcooler.TileEntityHeatPort;
 
 public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 
 	protected LiquidCoolerFluidHandler fluidHandler;
-	protected boolean isConnected;
+	protected boolean isPowered;
 	private int countOfInternals;
+
+	protected Set<TileEntityHeatPort> mePorts;
 
 	public LiquidCoolerControllerBase(World world) {
 		super(world);
+
 		this.countOfInternals = 0;
+		this.mePorts = new HashSet<TileEntityHeatPort>();
 	}
 
 	public int getCountOfInternals() {
@@ -39,6 +45,14 @@ public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 
 	}
 
+	private boolean isActive() {
+		if(fluidHandler.isEmpty())
+			return false;
+		
+		return true;
+	}
+	
+
 	@Override
 	public void onAttachedPartWithMultiblockData(IMultiblockPart part,
 			NBTTagCompound data) {
@@ -48,12 +62,16 @@ public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 
 	@Override
 	protected void onBlockAdded(IMultiblockPart newPart) {
-		
+		CoordTriplet c = newPart.getWorldLocation().copy();
+		TileEntity tile = worldObj.getBlockTileEntity(c.x, c.y, c.z);
+		if (tile instanceof TileEntityHeatPort)
+			mePorts.add((TileEntityHeatPort) tile);
 	}
 
 	@Override
 	protected void onBlockRemoved(IMultiblockPart oldPart) {
-
+		if (mePorts.contains(oldPart))
+			mePorts.remove(oldPart);
 	}
 
 	@Override
@@ -94,6 +112,25 @@ public class LiquidCoolerControllerBase extends MultiblockControllerBase {
 	protected void onMachineDisassembled() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	protected void onMachineActivated() {
+		for(TileEntityHeatPort tile : mePorts) {
+			tile.onMachineActivated();
+		}
+		this.isPowered = true;
+	}
+	
+	protected void onMachineDeactivated() {
+		for(TileEntityHeatPort tile : mePorts) {
+			tile.onMachineDeactivated();
+		}
+		
+		this.isPowered = false;
+	}
+	
+	public boolean getPoweredState() {
+		return this.isPowered;
 	}
 
 	@Override

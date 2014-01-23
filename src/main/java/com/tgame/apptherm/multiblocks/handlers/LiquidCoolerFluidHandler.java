@@ -83,4 +83,8 @@ public class LiquidCoolerFluidHandler {
 	public void readFromNBT(NBTTagCompound tag) {
 		this.tank = this.tank.readFromNBT(tag);
 	}
+	
+	public boolean isEmpty() {
+		return this.tank.isEmpty();
+	}
 }

@@ -91,6 +91,7 @@ public class FanBoxControllerBase extends MultiblockControllerBase {
 
 		return hashSet;
 	}
+	
 
 	@Override
 	public void onAttachedPartWithMultiblockData(IMultiblockPart part,
