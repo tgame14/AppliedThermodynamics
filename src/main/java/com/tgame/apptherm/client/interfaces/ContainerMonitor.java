@@ -7,6 +7,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 import com.tgame.apptherm.logic.LogicBase;
+import com.tgame.apptherm.logic.LogicInfo;
 import com.tgame.apptherm.network.PacketDistributer;
 import com.tgame.apptherm.tileentities.TileEntityHeatMonitor;
 import com.tgame.apptherm.util.ModInfo;
@@ -20,7 +21,7 @@ public class ContainerMonitor extends Container {
 	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
 		LogicBase logic = (LogicBase) tile.getGrid().getCacheByID(
-				ModInfo.heatCacheID);
+				LogicInfo.heatCacheID);
 		heatvalue = (float) logic.getFinalHeat();
 
 		PacketDistributer.sendHeatDataToGui(heatvalue, tile.xCoord,

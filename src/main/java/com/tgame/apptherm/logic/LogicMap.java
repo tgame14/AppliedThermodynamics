@@ -85,13 +85,17 @@ public class LogicMap implements IGridCache {
 	}
 	
 	public double sumCooling() {
-		int sum = 0;
+		double sum = 0;
 		
 		for(IATCoolantMachine mach : coordMap.values()) {
 			sum += mach.coolPerTick();
 		}
 		
 		return sum;
+	}
+	
+	public Map<DimentionalCoord, IATCoolantMachine> getCoolingMap() {
+		return this.coordMap;
 	}
 	
 }

@@ -170,8 +170,8 @@ public class TileEntityExchange extends MultiblockTileEntityBase implements
 	}
 
 	@Override
-	public float coolPerTick() {
-		return 0.1F;
+	public double coolPerTick() {
+		return 0.1;
 	}
 
 	@Override

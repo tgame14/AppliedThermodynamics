@@ -15,6 +15,7 @@ import appeng.api.me.tiles.IGridTileEntity;
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.config.ConfigInfo;
 import com.tgame.apptherm.logic.LogicBase;
+import com.tgame.apptherm.logic.LogicInfo;
 import com.tgame.apptherm.network.PacketDistributer;
 import com.tgame.apptherm.util.ModInfo;
 
@@ -66,7 +67,7 @@ public class ItemHeatRecorder extends Item {
 				IGridTileEntity gridTile = (IGridTileEntity) te;
 				if (gridTile.getGrid() != null) {
 					LogicBase logic = (LogicBase) gridTile.getGrid()
-							.getCacheByID(ModInfo.heatCacheID);
+							.getCacheByID(LogicInfo.heatCacheID);
 					heatValue = logic.getFinalHeat();
 					PacketDistributer.sendHeatItemData((byte) 2, heatValue,
 							player, gridTile.getGrid().getPowerUsageAvg());

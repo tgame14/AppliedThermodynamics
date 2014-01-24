@@ -13,6 +13,7 @@ import com.tgame.apptherm.config.ConfigInfo;
 import com.tgame.apptherm.entities.Entities;
 import com.tgame.apptherm.events.EventBusListener;
 import com.tgame.apptherm.fluids.Fluids;
+import com.tgame.apptherm.integration.Mods;
 import com.tgame.apptherm.items.ItemHandler;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockEventHandler;
 import com.tgame.apptherm.logic.LogicBase;
@@ -39,7 +40,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = "@VERSION@", dependencies = "required-after:"
-		+ ModInfo.APPLIED_ENERGISTICS)
+		+ Mods.APPLIED_ENERGISTICS)
 @NetworkMod(channels = { ModInfo.CHANNEL }, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = false, connectionHandler = ATConnectionHandler.class)
 /**
  * the base Class for AT (appliedthermodynamics).

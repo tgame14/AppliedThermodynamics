@@ -5,7 +5,7 @@ import appeng.api.me.tiles.IGridMachine;
 /**
  * The Interface IATCoolantMachine.
  * 
- * you must be a IGridMachine in order to cool!
+ * This extends IGridMachine, don't implement both.
  */
 public interface IATCoolantMachine extends IGridMachine {
 	
@@ -15,7 +15,7 @@ public interface IATCoolantMachine extends IGridMachine {
 	 * For Example, return 0.1F to decrease 10% heat per machine
 	 * 
 	 */
-	public float coolPerTick();
+	public double coolPerTick();
 	
 	/**
 	 * you may edit and manage the active state of your machines
