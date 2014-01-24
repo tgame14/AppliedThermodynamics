@@ -1,11 +1,6 @@
 package com.tgame.apptherm.integration.computercraft;
 
-import java.util.Map;
-
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Vec3;
-import openperipheral.api.IIntegrationModule;
+import openperipheral.api.OpenPeripheralAPI;
 
 import com.tgame.apptherm.integration.IPlugin;
 import com.tgame.apptherm.integration.Mods;
@@ -20,7 +15,7 @@ public class OpenPeripherals implements IPlugin {
 
 	@Override
 	public void init() {
-		
+		OpenPeripheralAPI.register(new AdapterNetworked());
 		
 	}
 

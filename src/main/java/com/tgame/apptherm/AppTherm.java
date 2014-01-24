@@ -14,6 +14,7 @@ import com.tgame.apptherm.entities.Entities;
 import com.tgame.apptherm.events.EventBusListener;
 import com.tgame.apptherm.fluids.Fluids;
 import com.tgame.apptherm.integration.Mods;
+import com.tgame.apptherm.integration.PluginRegistry;
 import com.tgame.apptherm.items.ItemHandler;
 import com.tgame.apptherm.libs.multiblocks.multiblock.MultiblockEventHandler;
 import com.tgame.apptherm.logic.LogicBase;
@@ -72,7 +73,8 @@ public class AppTherm {
 	 */
 	public AppTherm() {
 		this.log.setParent(FMLCommonHandler.instance().getFMLLogger());
-
+		
+		PluginRegistry.instance().registerExisting();
 	}
 
 	@EventHandler
@@ -100,6 +102,9 @@ public class AppTherm {
 
 		this.log.fine("Registering Event Bus");
 		EventBusListener.init();
+		
+		this.log.fine("Plugins preInit");
+		PluginRegistry.instance().preInit();
 
 		this.log.finest("preinit for AT Over");
 	}
@@ -123,6 +128,9 @@ public class AppTherm {
 		} else
 			this.log.warning("HEAT IS NOT LOADED. MOD WILL NOT WORK AS INTENDED THIS IS CONFIGURABLE");
 
+		this.log.finer("Plugins init");
+		PluginRegistry.instance().init();
+		
 		this.log.info("Finished Loading init");
 	}
 
@@ -136,6 +144,9 @@ public class AppTherm {
 	public void postInit(FMLPostInitializationEvent event) {
 		this.log.fine("Initializing Recipes");
 		Recipes.init();
+		
+		this.log.finer("Plugins postInit");
+		PluginRegistry.instance().postInit();
 
 		this.log.finest("End Of AT Loading entirely.");
 		this.log.info(ModInfo.NAME

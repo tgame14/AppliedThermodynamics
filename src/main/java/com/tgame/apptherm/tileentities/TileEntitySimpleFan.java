@@ -1,5 +1,6 @@
 package com.tgame.apptherm.tileentities;
 
+import com.tgame.apptherm.api.tiles.IATCoolantMachine;
 import com.tgame.apptherm.blocks.networked.BlockAirIntake;
 import com.tgame.apptherm.util.ModInfo;
 
@@ -13,7 +14,7 @@ import appeng.api.events.GridTileUnloadEvent;
 import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.util.IGridInterface;
 
-public class TileEntitySimpleFan extends TileEntity implements IGridMachine {
+public class TileEntitySimpleFan extends TileEntity implements IATCoolantMachine {
 
 	private boolean powerstatus, networkstatus;
 	private IGridInterface grid;
@@ -89,6 +90,16 @@ public class TileEntitySimpleFan extends TileEntity implements IGridMachine {
 	@Override
 	public boolean isMachineActive() {
 		return powerstatus && networkstatus;
+	}
+
+	@Override
+	public double coolPerTick() {
+		return 0.01;
+	}
+
+	@Override
+	public boolean isActive() {
+		return true;
 	}
 
 }

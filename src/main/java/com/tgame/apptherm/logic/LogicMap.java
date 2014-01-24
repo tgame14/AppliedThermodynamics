@@ -31,16 +31,17 @@ public class LogicMap implements IGridCache {
 		this.ticked = false;
 	}
 
-	private void mapGrid(IGridInterface grid) {
-
+	private Map<DimentionalCoord, IATCoolantMachine> mapGrid(IGridInterface grid) {
+		Map<DimentionalCoord, IATCoolantMachine> map = new HashMap<DimentionalCoord, IATCoolantMachine>();
+		
 		for (TileRef<IGridMachine> mach : grid.getMachines()) {
 			IATCoolantMachine candidate;
 			try {
 				IGridMachine tile = mach.getTile();
 
 				if (tile instanceof IATCoolantMachine) {
-					candidate = (IATCoolantMachine) mach;
-					coordMap.put(mach.getCoord(), candidate);
+					candidate = (IATCoolantMachine) tile;
+					map.put(mach.getCoord(), candidate);
 
 				}
 
@@ -48,20 +49,21 @@ public class LogicMap implements IGridCache {
 
 				e.printStackTrace();
 			}
-
 		}
+		return map;
 
 	}
 
 	@Override
 	public void reset(IGridInterface grid) {
+		coordMap = mapGrid(grid);
 		
 	}
 
 	@Override
 	public void onUpdateTick(IGridInterface grid) {
 		if (!ticked) {
-			mapGrid(grid);
+			coordMap = mapGrid(grid);
 			this.ticked = true;
 		}
 

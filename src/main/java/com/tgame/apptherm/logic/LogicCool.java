@@ -24,8 +24,6 @@ public class LogicCool {
 	/** The liquid Coolers count. */
 	private int liquiCount;
 
-	/** The air intakes count. */
-	private int intakeCount;
 
 	/** The total cooling value of all coolants. */
 	private double coolingValue;
@@ -49,10 +47,7 @@ public class LogicCool {
 		this.calc = logicCalc;
 
 		this.coolingValue = 0;
-		this.intakeCount = 0;
-		this.liquiCount = 0;
-		
-		this.advCoolerHandler = new AdvancedCoolerHandler(grid);		
+		this.liquiCount = 0;	
 
 	}
 
@@ -62,9 +57,6 @@ public class LogicCool {
 	 */
 	protected void refreshCoolants() {
 		refreshLiquiCount();
-		intakeCount = calc.calcAmountOfTiles(TileEntitySimpleFan.class);
-		
-		advCoolerHandler = new AdvancedCoolerHandler(grid);
 	}
 
 	public void refreshLiquiCount() {
@@ -99,14 +91,13 @@ public class LogicCool {
 	}
 
 	protected double calcTotalCoolant() {
-		double intakeCoolant = calcCoolantValue(intakeCount, 0.5F, 0.05F);
 		double liquidCoolant = calcCoolantValue(liquiCount, 0.9F, 0.1F);
 		
 		//double advCooler = this.advCoolerHandler.getTotalCooling() * 0.15F;
 		LogicMap map = (LogicMap) grid.getCacheByID(LogicInfo.mapCacheID);
 		double value = map.sumCooling();
 
-		this.coolingValue = intakeCoolant + liquidCoolant + value;
+		this.coolingValue = liquidCoolant + value;
 		return coolingValue;
 
 	}
@@ -118,15 +109,6 @@ public class LogicCool {
 	 */
 	protected int getLiquiCount() {
 		return liquiCount;
-	}
-
-	/**
-	 * Gets the air intakes count.
-	 * 
-	 * @return the air intakes count
-	 */
-	protected int getIntakeCount() {
-		return intakeCount;
 	}
 	
 

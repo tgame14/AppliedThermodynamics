@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tgame.apptherm.AppTherm;
+import com.tgame.apptherm.integration.computercraft.OpenPeripherals;
 
 import cpw.mods.fml.common.Loader;
 
@@ -81,6 +82,10 @@ public class PluginRegistry {
 		for(IPlugin plugin : plugins)
 			plugin.postinit();
 		state = Phase.DONE;
+	}
+	
+	public void registerExisting() {
+		registerPlugin(new OpenPeripherals());
 	}
 	
 }
