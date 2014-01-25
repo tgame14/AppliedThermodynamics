@@ -62,8 +62,9 @@ public class LogicBase implements IGridCache {
 		}
 
 		if (ticked) {
+			totalCoolant = coolLogic.calcTotalCoolant();
 			finalHeat = calc.calcFinalHeat(calc.calcRawHeat(),
-					coolLogic.calcTotalCoolant());
+					totalCoolant);
 
 			effects.OnOverHeat(finalHeat);
 		}

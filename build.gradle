@@ -12,6 +12,16 @@ buildscript {
 }
 ENV = System.getenv()
 
+// define the properties file
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    // read config.  it shall from now on be referenced as simply config or as project.config
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
 // Drone.io Support
 if(ENV.DRONE_BUILD_NUMBER)
 buildNum = ENV.DRONE_BUILD_NUMBER + " - drone"
@@ -34,18 +44,7 @@ buildNum = config.build_number + "- manual"
 apply plugin: 'java'
 apply plugin: 'forge'
 
-
 targetCompatibility = JavaVersion.VERSION_1_6
-
-// define the properties file
-ext.configFile = file "build.properties"
-
-configFile.withReader {
-    // read config.  it shall from now on be referenced as simply config or as project.config
-    def prop = new Properties()
-    prop.load(it)
-    ext.config = new ConfigSlurper().parse prop
-}
 
 version = config.mod_version + "." + buildNum
 group= "com.tgame" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
