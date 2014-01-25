@@ -39,7 +39,7 @@ import cpw.mods.fml.common.event.FMLServerAboutToStartEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = "@VERSION@", dependencies = "required-after:"
-		+ Mods.APPLIED_ENERGISTICS)
+		+ Mods.APPLIED_ENERGISTICS + ";after" + Mods.OPENPERIPHERAL)
 @NetworkMod(channels = { ModInfo.CHANNEL }, packetHandler = PacketHandler.class, clientSideRequired = true, serverSideRequired = false, connectionHandler = ATConnectionHandler.class)
 /**
  * the base Class for AT (appliedthermodynamics).
