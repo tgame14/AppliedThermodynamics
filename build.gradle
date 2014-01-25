@@ -28,18 +28,18 @@ buildNum = ENV.DRONE_BUILD_NUMBER + " - drone"
 
 // Jenkins Support
 else if (ENV.BUILD_NUMBER)
-buildNum = ENV.BUILD_NUMBER + "- jenkins"
+buildNum = ENV.BUILD_NUMBER + " - jenkins"
 
 // Travis Support
 else if (ENV.TRAVIS_BUILD_NUMBER)
-buildNum = ENV.TRAVIS_BUILD_NUMBER + "- travis"
+buildNum = ENV.TRAVIS_BUILD_NUMBER + " - travis"
 
 // Codeship.io Support
 else if (ENV.CI_BUILD_NUMBER)
-buildNum = ENV.CI_BUILD_NUMBER + "- codeship"
+buildNum = ENV.CI_BUILD_NUMBER + " - codeship"
 
 else
-buildNum = config.build_number + "- manual"
+buildNum = config.build_number
 
 apply plugin: 'java'
 apply plugin: 'forge'

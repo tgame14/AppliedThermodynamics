@@ -26,9 +26,6 @@ public class ATOverHeatEvent extends ATEvent {
 	/** The heat value. */
 	public final double heatValue;
 
-	/** The stage id. */
-	public final int stageID;
-
 	/**
 	 * Instantiates a new over heat event.
 	 * 
@@ -36,14 +33,11 @@ public class ATOverHeatEvent extends ATEvent {
 	 * 
 	 * @param heatValue
 	 *            the heat value
-	 * @param stageID
-	 *            the stage id
 	 */
-	public ATOverHeatEvent(TileEntity tileEntity, double heatValue, int stageID) {
+	public ATOverHeatEvent(TileEntity tileEntity, double heatValue) {
 		super((IGridTileEntity) tileEntity);
 
 		this.heatValue = heatValue;
-		this.stageID = stageID;
 	}
 
 }

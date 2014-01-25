@@ -8,6 +8,7 @@ import appeng.api.me.tiles.IGridTileEntity;
 /**
  * 
  * fire when the Map needs to be recalculated. used internally.
+ * Do not fire.
  * 
  * @author tgame14
  *

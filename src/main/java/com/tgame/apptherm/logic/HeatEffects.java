@@ -74,20 +74,7 @@ public class HeatEffects {
 	 *            the heat value
 	 */
 	protected void OnOverHeat(double heatValue) {
-		if (heatValue >= 0.9) {
-			this.grid.postEvent(new ATOverHeatEvent(this.grid.getController(),
-					heatValue, 3));
-		}
-
-		if (heatValue >= 0.6) {
-			this.grid.postEvent(new ATOverHeatEvent(this.grid.getController(),
-					heatValue, 2));
-		}
-
-		if (heatValue >= 0.15) {
-			this.grid.postEvent(new ATOverHeatEvent(this.grid.getController(),
-					heatValue, 1));
-		}
+		grid.postEvent(new ATOverHeatEvent(this.grid.getController(), heatValue));
 
 	}
 
@@ -96,20 +83,15 @@ public class HeatEffects {
 		if (event.isCanceled())
 			return;
 
-		switch (event.stageID) {
-		case 3:
-			StageThree();
-			break;
-		case 2:
-			StageTwo();
-			break;
-		case 1:
+		if (event.heatValue >= 0.15)
 			StageOne();
-			break;
-
-		default:
-			break;
-		}
+		
+		if(event.heatValue >= 0.60)
+			StageTwo();
+		
+		if(event.heatValue >= 0.90)
+			StageThree();
+		
 
 		this.grid.useMEEnergy(calc.calcHeatIntake(event.heatValue),
 				"HeatEffects");

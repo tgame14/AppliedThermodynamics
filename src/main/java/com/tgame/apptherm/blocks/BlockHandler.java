@@ -12,7 +12,6 @@ import com.tgame.apptherm.blocks.liquidcooler.BlockCoolerWall;
 import com.tgame.apptherm.blocks.liquidcooler.BlockHeatExchange;
 import com.tgame.apptherm.blocks.liquidcooler.BlockHeatPort;
 import com.tgame.apptherm.blocks.networked.BlockAirIntake;
-import com.tgame.apptherm.blocks.networked.BlockEAS;
 import com.tgame.apptherm.blocks.networked.BlockEnergyEater;
 import com.tgame.apptherm.blocks.networked.BlockExhaustME;
 import com.tgame.apptherm.blocks.networked.BlockFluidME;
@@ -41,8 +40,6 @@ public class BlockHandler {
 
 		ATBlocks.liquidCooler = new RegisterBlock(BlockLiquidCooler.class,
 				BlockInfo.LIQUICOOL_ID);
-
-		ATBlocks.EAS = new RegisterBlock(BlockEAS.class, BlockInfo.EAS_ID);
 
 		ATBlocks.Eater = new RegisterBlock(BlockEnergyEater.class,
 				BlockInfo.EATER_ID);
