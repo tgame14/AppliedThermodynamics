@@ -21,18 +21,12 @@ public class LogicCool {
 	/** The grid. */
 	private IGridInterface grid;
 
-	/** The liquid Coolers count. */
-	private int liquiCount;
-
-
 	/** The total cooling value of all coolants. */
 	private double coolingValue;
 
 	/** The instance of LogicCalc from LogicBase. */
 	private LogicCalc calc;
 	
-	private AdvancedCoolerHandler advCoolerHandler;
-
 	/**
 	 * Instantiates a new logic cool.
 	 * 
@@ -47,21 +41,7 @@ public class LogicCool {
 		this.calc = logicCalc;
 
 		this.coolingValue = 0;
-		this.liquiCount = 0;	
 
-	}
-
-	/**
-	 * Refreshes the counts of entire coolants, should be called on whenever one
-	 * of the coolant's state has changed or the network has been reset.
-	 */
-	protected void refreshCoolants() {
-		refreshLiquiCount();
-	}
-
-	public void refreshLiquiCount() {
-		liquiCount = calc
-				.calcAmountOfActiveCoolants(TileEntityLiquidCooler.class);
 	}
 
 	/**
@@ -76,6 +56,7 @@ public class LogicCool {
 	 * 
 	 * @return float cooling value of coolant
 	 */
+	@Deprecated
 	private double calcCoolantValue(int activeCoolants, float decrPercent,
 			float firstDeminish) {
 		if (activeCoolants < 1) {
@@ -90,26 +71,13 @@ public class LogicCool {
 
 	}
 
-	protected double calcTotalCoolant() {
-		double liquidCoolant = calcCoolantValue(liquiCount, 0.9F, 0.1F);
-		
-		//double advCooler = this.advCoolerHandler.getTotalCooling() * 0.15F;
+	protected double calcTotalCoolant() {		
 		LogicMap map = (LogicMap) grid.getCacheByID(LogicInfo.mapCacheID);
 		double value = map.sumCooling();
 
-		this.coolingValue = liquidCoolant + value;
+		this.coolingValue = value;
 		return coolingValue;
 
-	}
-
-	/**
-	 * Gets the liquid coolers count.
-	 * 
-	 * @return the liquid coolers count
-	 */
-	protected int getLiquiCount() {
-		return liquiCount;
-	}
-	
+	}	
 
 }

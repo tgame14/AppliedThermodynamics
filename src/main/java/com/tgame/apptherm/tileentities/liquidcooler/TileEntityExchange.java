@@ -176,7 +176,8 @@ public class TileEntityExchange extends MultiblockTileEntityBase implements
 
 	@Override
 	public boolean isActive() {
-		return getController().isCooling();
+		return getController() != null ? getController().isCooling() : false;
+		
 	}
 
 }

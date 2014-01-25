@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.event.ForgeSubscribe;
 import appeng.api.DimentionalCoord;
 import appeng.api.TileRef;
 import appeng.api.exceptions.AppEngTileMissingException;
@@ -11,6 +12,7 @@ import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.util.IGridCache;
 import appeng.api.me.util.IGridInterface;
 
+import com.tgame.apptherm.api.events.ATRemapEvent;
 import com.tgame.apptherm.api.tiles.IATCoolantMachine;
 
 /**
@@ -90,7 +92,8 @@ public class LogicMap implements IGridCache {
 		double sum = 0;
 		
 		for(IATCoolantMachine mach : coordMap.values()) {
-			sum += mach.coolPerTick();
+			if(mach.isActive())
+				sum += mach.coolPerTick();
 		}
 		
 		return sum;
@@ -98,6 +101,11 @@ public class LogicMap implements IGridCache {
 	
 	public Map<DimentionalCoord, IATCoolantMachine> getCoolingMap() {
 		return this.coordMap;
+	}
+	
+	@ForgeSubscribe
+	public void remapTile(ATRemapEvent event) {
+		coordMap.put(event.dim, (IATCoolantMachine) event.tile);
 	}
 	
 }

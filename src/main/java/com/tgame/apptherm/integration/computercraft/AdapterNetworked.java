@@ -17,13 +17,13 @@ import com.tgame.apptherm.logic.LogicBase;
 import com.tgame.apptherm.logic.LogicInfo;
 import com.tgame.apptherm.logic.LogicMap;
 import com.tgame.apptherm.util.reflection.CallWrapper;
+import com.tgame.apptherm.util.reflection.ReflectionHelper;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import dan200.computer.api.IComputerAccess;
 
 public class AdapterNetworked implements IPeripheralAdapter {
 
-	private static Class clazz = IGridTileEntity.class;
+	private static Class<?> clazz = ReflectionHelper.getClass("appeng.api.me.tiles.IGridTileEntity");
 
 	@Override
 	public Class<?> getTargetClass() {
@@ -77,5 +77,17 @@ public class AdapterNetworked implements IPeripheralAdapter {
 
 		return map;
 
+	}
+
+	@LuaMethod(description = "Returns the total cooling value forced on the network", returnType = LuaType.NUMBER)
+	public double getCoolingValue(IComputerAccess computer, Object te)
+			throws Exception {
+		TileEntity tile = (TileEntity) te;
+		IGridInterface grid = getGrid(te);
+		if (grid == null)
+			throw new Exception("Not connected to Grid");
+		LogicBase logic = (LogicBase) grid.getCacheByID(LogicInfo.heatCacheID);
+
+		return logic.getTotalCoolingValue();
 	}
 }

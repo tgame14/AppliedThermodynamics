@@ -67,7 +67,7 @@ public class LogicBase implements IGridCache {
 
 			effects.OnOverHeat(finalHeat);
 		}
-		
+
 	}
 
 	/**
@@ -80,10 +80,8 @@ public class LogicBase implements IGridCache {
 		if (calc != null)
 			calc.refreshProperties(grid);
 
-		if (coolLogic != null) {
-			coolLogic.refreshCoolants();
+		if (coolLogic != null)
 			totalCoolant = coolLogic.calcTotalCoolant();
-		}
 
 		if (effects != null)
 			effects.refreshHeatEffects(grid, calc);

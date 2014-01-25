@@ -12,7 +12,7 @@ public interface IATCoolantMachine extends IGridMachine {
 	/**
 	 * 
 	 * @return the cooling Percentage of heat per machine,
-	 * For Example, return 0.1F to decrease 10% heat per machine
+	 * For Example, return 0.1 to decrease 10% heat per machine
 	 * 
 	 */
 	public double coolPerTick();

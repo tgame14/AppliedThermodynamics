@@ -1,6 +1,7 @@
 package com.tgame.apptherm.tileentities;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.MinecraftForge;
@@ -8,21 +9,25 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import appeng.api.DimentionalCoord;
 import appeng.api.WorldCoord;
 import appeng.api.events.GridTileLoadEvent;
 import appeng.api.events.GridTileUnloadEvent;
 import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.util.IGridInterface;
 
+import com.tgame.apptherm.api.events.ATRemapEvent;
+import com.tgame.apptherm.api.tiles.IATCoolantMachine;
 import com.tgame.apptherm.fluids.CoolingFluids;
 import com.tgame.apptherm.fluids.tanks.FluidTileTank;
 
-public class TileEntityLiquidCooler extends AEActiveCoolants implements
-		IFluidHandler, IGridMachine {
+public class TileEntityLiquidCooler extends TileEntity implements
+		IFluidHandler, IATCoolantMachine {
 
 	protected FluidTileTank tank = new FluidTileTank(16000);
 	private int drainValue;
 	private byte timer;
+	private boolean isActive;
 
 	private boolean powerStatus, networkReady;
 	private IGridInterface grid;
@@ -30,6 +35,8 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 	public TileEntityLiquidCooler() {
 		this.drainValue = 5;
 		this.timer = 21;
+		this.isActive = false;
+		
 
 		this.powerStatus = false;
 		this.networkReady = false;
@@ -45,6 +52,11 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 		this.timer--;
 
 	}
+	
+	private void setActiveState(boolean flag) {
+		this.isActive = flag;
+		grid.postEvent(new ATRemapEvent(this, (DimentionalCoord) getLocation()));
+	}
 
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
@@ -56,11 +68,11 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 		for (CoolingFluids dir : CoolingFluids.VALID_FLUIDS)
 			if (dir.fluidName.equalsIgnoreCase(attemptFluidName)) {
 				this.drainValue = dir.consumePerTick;
-				this.setIsActive(true);
+				this.isActive = true;
 				return this.tank.fill(resource, doFill);
 
 			}
-		this.setIsActive(true);
+		this.isActive = true;
 		return this.tank.fill(resource, doFill);
 	}
 
@@ -76,7 +88,7 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
 		if (this.tank.getFluidAmount() <= maxDrain)
-			this.setIsActive(false);
+			this.isActive = false;
 
 		return this.tank.drain(maxDrain, doDrain);
 	}
@@ -94,14 +106,14 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		this.timer = tag.getByte("secTimer");
-		super.readFromNBT(tag);
+		this.isActive = tag.getBoolean("activeState");
 		tank.writeToNBT(tag);
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag) {
 		tag.setByte("secTimer", timer);
-		super.writeToNBT(tag);
+		tag.setBoolean("activeState", this.isActive);
 		tank.readFromNBT(tag);
 	}
 
@@ -182,6 +194,16 @@ public class TileEntityLiquidCooler extends AEActiveCoolants implements
 			return true;
 		return false;
 
+	}
+
+	@Override
+	public double coolPerTick() {
+		return 0.1;
+	}
+
+	@Override
+	public boolean isActive() {
+		return this.isActive;
 	}
 
 }
