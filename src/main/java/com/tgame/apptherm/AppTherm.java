@@ -23,7 +23,6 @@ import com.tgame.apptherm.logic.LogicMap;
 import com.tgame.apptherm.network.ATConnectionHandler;
 import com.tgame.apptherm.network.PacketHandler;
 import com.tgame.apptherm.proxies.CommonProxy;
-import com.tgame.apptherm.tileentities.TileEntities;
 import com.tgame.apptherm.util.AppThermTab;
 import com.tgame.apptherm.util.ModInfo;
 import com.tgame.apptherm.util.Recipes;
@@ -38,7 +37,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerAboutToStartEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = "@VERSION@", dependencies = "required-after:"
 		+ Mods.APPLIED_ENERGISTICS)

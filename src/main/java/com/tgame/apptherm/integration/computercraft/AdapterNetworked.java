@@ -1,7 +1,5 @@
 package com.tgame.apptherm.integration.computercraft;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +8,6 @@ import openperipheral.api.IPeripheralAdapter;
 import openperipheral.api.LuaMethod;
 import openperipheral.api.LuaType;
 import appeng.api.DimentionalCoord;
-import appeng.api.me.tiles.IGridTileEntity;
 import appeng.api.me.util.IGridInterface;
 
 import com.tgame.apptherm.logic.LogicBase;
