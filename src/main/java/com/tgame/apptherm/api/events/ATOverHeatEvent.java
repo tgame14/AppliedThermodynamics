@@ -30,7 +30,7 @@ public class ATOverHeatEvent extends ATEvent {
 	public final int stageID;
 
 	/**
-	 * Instantiates a new aT over heat event.
+	 * Instantiates a new over heat event.
 	 * 
 	 * @param  tileEntity is Irellivent, a weird addition to AE that will be removed in AE2
 	 * 

@@ -66,12 +66,13 @@ public class AppTherm {
 	public static final Logger log = Logger.getLogger(ModInfo.ID);
 
 	/**
-	 * Instantiates a new Mod singleton. aswell as sets the parent for the
-	 * Logger
+	 * Registers logger and all Plugin support.
+	 * In general plugins can be registered in any phase but best compatibility is
+	 * pre-launch
+	 * 
 	 */
 	public AppTherm() {
 		this.log.setParent(FMLCommonHandler.instance().getFMLLogger());
-		
 		PluginRegistry.instance().registerExisting();
 	}
 
@@ -79,7 +80,7 @@ public class AppTherm {
 	public void preInit(FMLPreInitializationEvent event) {
 		this.log.info("Preinit Loading up");
 
-		this.log.info("Starting to Load Configs");
+		this.log.fine("Starting to Load Configs");
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 
 		this.log.fine("Loading Tick Handlers");
@@ -104,7 +105,7 @@ public class AppTherm {
 		this.log.fine("Plugins preInit");
 		PluginRegistry.instance().preInit();
 
-		this.log.finest("preinit for AT Over");
+		this.log.info("preinit for AT Over");
 	}
 
 	@EventHandler

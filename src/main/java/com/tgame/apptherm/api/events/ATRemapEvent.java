@@ -12,7 +12,7 @@ import appeng.api.me.tiles.IGridTileEntity;
  * @author tgame14
  *
  */
-public class ATRemapEvent extends ATEvent {
+public final class ATRemapEvent extends ATEvent {
 
 	public final DimentionalCoord dim;
 	

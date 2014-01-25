@@ -55,7 +55,7 @@ public class AdapterNetworked implements IPeripheralAdapter {
 			throw new Exception("Not Connected to Grid");
 
 		LogicMap logic = (LogicMap) grid.getCacheByID(LogicInfo.mapCacheID);
-		return logic.getCoolingMap().size();
+		return logic.getCoolersMap().size();
 
 	}
 
@@ -69,7 +69,7 @@ public class AdapterNetworked implements IPeripheralAdapter {
 
 		LogicMap logic = (LogicMap) grid.getCacheByID(LogicInfo.mapCacheID);
 		Map<Integer, DimentionalCoord> map = new HashMap<Integer, DimentionalCoord>();
-		for (DimentionalCoord dim : logic.getCoolingMap().keySet())
+		for (DimentionalCoord dim : logic.getCoolersMap().keySet())
 			map.put(dim.hashCode(), dim);
 
 		return map;

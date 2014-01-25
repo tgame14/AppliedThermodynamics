@@ -99,7 +99,7 @@ public class LogicMap implements IGridCache {
 		return sum;
 	}
 	
-	public Map<DimentionalCoord, IATCoolantMachine> getCoolingMap() {
+	public Map<DimentionalCoord, IATCoolantMachine> getCoolersMap() {
 		return this.coordMap;
 	}
 	
@@ -107,5 +107,6 @@ public class LogicMap implements IGridCache {
 	public void remapTile(ATRemapEvent event) {
 		coordMap.put(event.dim, (IATCoolantMachine) event.tile);
 	}
+	
 	
 }
