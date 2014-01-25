@@ -8,6 +8,7 @@ import net.minecraft.client.particle.EntityFlameFX;
 import net.minecraft.client.particle.EntitySmokeFX;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.ForgeSubscribe;
 import appeng.api.TileRef;
 import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.util.IGridInterface;
@@ -74,25 +75,44 @@ public class HeatEffects {
 	 */
 	protected void OnOverHeat(double heatValue) {
 		if (heatValue >= 0.9) {
-			if (ConfigInfo.LIQUID_CONSUME)
-				StageThree();
 			this.grid.postEvent(new ATOverHeatEvent(this.grid.getController(),
 					heatValue, 3));
 		}
 
 		if (heatValue >= 0.6) {
-			StageTwo();
 			this.grid.postEvent(new ATOverHeatEvent(this.grid.getController(),
 					heatValue, 2));
 		}
 
 		if (heatValue >= 0.15) {
-			StageOne();
 			this.grid.postEvent(new ATOverHeatEvent(this.grid.getController(),
 					heatValue, 1));
 		}
 
-		this.grid.useMEEnergy(calc.calcHeatIntake(heatValue), "HeatEffects");
+	}
+
+	@ForgeSubscribe
+	public void HeatEventFired(ATOverHeatEvent event) {
+		if (event.isCanceled())
+			return;
+
+		switch (event.stageID) {
+		case 3:
+			StageThree();
+			break;
+		case 2:
+			StageTwo();
+			break;
+		case 1:
+			StageOne();
+			break;
+
+		default:
+			break;
+		}
+
+		this.grid.useMEEnergy(calc.calcHeatIntake(event.heatValue),
+				"HeatEffects");
 	}
 
 	/**
@@ -102,23 +122,23 @@ public class HeatEffects {
 	 * particles around the network. through sending packets to the client.
 	 */
 	protected void StageThree() {
+		if (ConfigInfo.LIQUID_CONSUME) {
+			if (getMeltTicker() <= 0) {
+				TileRef machine;
+				do {
+					machine = getRandomAETile(grid, rand);
+				} while (calc.isSafeFromMelt(machine));
 
-		if (getMeltTicker() <= 0) {
-			TileRef machine;
-			do {
-				machine = getRandomAETile(grid, rand);
+				World machineWorld = machine.getCoord().getWorld();
+
+				machineWorld.destroyBlock(machine.x, machine.y, machine.z,
+						false);
+				machineWorld.setBlock(machine.x, machine.y, machine.z,
+						BlockInfo.LIQUID_ME_ID);
+				setMeltTicker(10000);
 			}
-			while (calc.isSafeFromMelt(machine));
-
-			World machineWorld = machine.getCoord().getWorld();
-
-			machineWorld.destroyBlock(machine.x, machine.y, machine.z, false);
-			machineWorld.setBlock(machine.x, machine.y, machine.z,
-					BlockInfo.LIQUID_ME_ID);
-			setMeltTicker(10000);
+			decrMeltTicker();
 		}
-		decrMeltTicker();
-
 	}
 
 	/**
@@ -231,8 +251,7 @@ public class HeatEffects {
 
 		if (lengthOfList == 1) {
 			indexOfList = 0;
-		}
-		else {
+		} else {
 			indexOfList = rand.nextInt(lengthOfList);
 		}
 
