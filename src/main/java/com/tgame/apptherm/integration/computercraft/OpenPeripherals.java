@@ -6,6 +6,10 @@ import com.tgame.apptherm.integration.IPlugin;
 import com.tgame.apptherm.integration.Mods;
 
 public class OpenPeripherals implements IPlugin {
+	
+	public OpenPeripherals() {
+			
+	}
 
 	@Override
 	public void preinit() {

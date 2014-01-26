@@ -2,6 +2,8 @@ package com.tgame.apptherm.integration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 import com.tgame.apptherm.AppTherm;
 import com.tgame.apptherm.integration.computercraft.OpenPeripherals;
@@ -21,7 +23,7 @@ public class PluginRegistry {
 	}
 
 	private static PluginRegistry instance;
-	private List<IPlugin> plugins = new ArrayList<IPlugin>();
+	private Queue<IPlugin> plugins = new PriorityQueue<IPlugin>();
 	private Phase state = Phase.PRELAUNCH;
 
 	private PluginRegistry() {
@@ -35,57 +37,62 @@ public class PluginRegistry {
 	}
 
 	public void registerPlugin(IPlugin plugin) {
-		if (Loader.isModLoaded(plugin.getModId())) {
-			AppTherm.log.info("Enabling Compat with: " + plugin.getModId());
-			plugins.add(plugin);
+		System.out.println("Debug \n \n \n");
+		System.out.println(plugin.getModId());
+		System.out.println(Loader.isModLoaded(plugin.getModId()));
+		if (!Loader.isModLoaded(plugin.getModId()))
+			return;
 
-			// ensures plugin will go through all states even if registered late
-			switch (state) {
-			case DONE:
-			case POSTINIT:
-				plugin.preinit();
-				plugin.init();
-				plugin.postinit();
-				break;
+		AppTherm.log.info("Enabling Compat with: " + plugin.getModId());
+		plugins.add(plugin);
 
-			case INIT:
-				plugin.preinit();
-				plugin.init();
-				break;
+		// ensures plugin will go through all states even if registered late
+		switch (state) {
+		case DONE:
+		case POSTINIT:
+			plugin.preinit();
+			plugin.init();
+			plugin.postinit();
+			break;
 
-			case PREINIT:
-				plugin.preinit();
-				break;
-			default:
-				break;
-			}
+		case INIT:
+			plugin.preinit();
+			plugin.init();
+			break;
+
+		case PREINIT:
+			plugin.preinit();
+			break;
+		default:
+			break;
+
 		}
 	}
-	
+
 	public void preInit() {
 		state = Phase.PREINIT;
-		
-		for(IPlugin plugin : plugins)
+
+		for (IPlugin plugin : plugins)
 			plugin.preinit();
 	}
-	
+
 	public void init() {
 		state = Phase.INIT;
-		
-		for(IPlugin plugin : plugins)
+
+		for (IPlugin plugin : plugins)
 			plugin.init();
 	}
-	
+
 	public void postInit() {
 		state = Phase.POSTINIT;
-		
-		for(IPlugin plugin : plugins)
+
+		for (IPlugin plugin : plugins)
 			plugin.postinit();
 		state = Phase.DONE;
 	}
-	
+
 	public void registerExisting() {
 		registerPlugin(new OpenPeripherals());
 	}
-	
+
 }

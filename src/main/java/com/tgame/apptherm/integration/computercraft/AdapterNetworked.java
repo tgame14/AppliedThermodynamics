@@ -10,14 +10,18 @@ import openperipheral.api.LuaType;
 import appeng.api.DimentionalCoord;
 import appeng.api.me.util.IGridInterface;
 
+import com.tgame.apptherm.integration.Mods;
 import com.tgame.apptherm.logic.LogicBase;
 import com.tgame.apptherm.logic.LogicInfo;
 import com.tgame.apptherm.logic.LogicMap;
 import com.tgame.apptherm.util.reflection.CallWrapper;
 import com.tgame.apptherm.util.reflection.ReflectionHelper;
 
+import cpw.mods.fml.common.Optional.Interface;
+import cpw.mods.fml.common.Optional.Method;
 import dan200.computer.api.IComputerAccess;
 
+@Interface(iface = "openperipherals.api.IPeripheralAdapter", modid = Mods.OPENPERIPHERAL)
 public class AdapterNetworked implements IPeripheralAdapter {
 
 	private static Class<?> clazz = ReflectionHelper.getClass("appeng.api.me.tiles.IGridTileEntity");
@@ -32,6 +36,7 @@ public class AdapterNetworked implements IPeripheralAdapter {
 
 	}
 
+	@Method(modid = Mods.OPENPERIPHERAL)
 	@LuaMethod(description = "get the current Heat levels in the network", returnType = LuaType.NUMBER)
 	public double getHeatValue(IComputerAccess computer, Object te)
 			throws Exception {
@@ -46,6 +51,7 @@ public class AdapterNetworked implements IPeripheralAdapter {
 
 	}
 
+	@Method(modid = Mods.OPENPERIPHERAL)
 	@LuaMethod(description = "get the amount of cooling blocks in the network", returnType = LuaType.NUMBER)
 	public int getCoolersAmount(IComputerAccess computer, Object te)
 			throws Exception {
@@ -59,6 +65,7 @@ public class AdapterNetworked implements IPeripheralAdapter {
 
 	}
 
+	@Method(modid = Mods.OPENPERIPHERAL)
 	@LuaMethod(description = "Returns a Table of coordinates and dimId's of all coolants", returnType = LuaType.TABLE)
 	public Map<Integer, DimentionalCoord> getCoolersCoords(
 			IComputerAccess computer, Object te) throws Exception {
@@ -76,6 +83,7 @@ public class AdapterNetworked implements IPeripheralAdapter {
 
 	}
 
+	@Method(modid = Mods.OPENPERIPHERAL)
 	@LuaMethod(description = "Returns the total cooling value forced on the network", returnType = LuaType.NUMBER)
 	public double getCoolingValue(IComputerAccess computer, Object te)
 			throws Exception {
